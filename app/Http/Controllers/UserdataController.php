@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\UserData;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserdataController extends Controller
@@ -18,7 +19,7 @@ class UserdataController extends Controller
     {
         $User = User::all();
 
-        return view('professor.index', compact('User'));
+        return view('user.index', compact('User'));
     }
 
     /**
@@ -26,9 +27,9 @@ class UserdataController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function register()
     {
-        return view('professor.create');
+        return view('users.create');
     }
 
     /**
@@ -42,11 +43,14 @@ class UserdataController extends Controller
         $user = new User;
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->phone = $request->phone;
         $user->password = Hash::make($request->password);
         $user->save();
 
-        return redirect()->route('professor.index')
-                        ->with('success','Dados de usuário criados com sucesso.');
+        Auth::login($user);
+
+        return redirect()->route('imovel.create')
+            ->with('success', 'Dados de usuário criados com sucesso.');
     }
 
     /**
@@ -55,9 +59,9 @@ class UserdataController extends Controller
      * @param  \App\Userdata  $userdata
      * @return \Illuminate\Http\Response
      */
-    public function show(User $userdata)
+    public function show()
     {
-        return view('professor.show', compact('userdata'));
+        return view('users.show');
     }
 
 
@@ -70,20 +74,22 @@ class UserdataController extends Controller
      */
     public function login()
     {
-        dd("aqui");
+        return view('users.login');
     }
 
-
-    public function register(Request $request)
+    public function auth(Request $request)
     {
-        $user = new User;
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->save();
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            return redirect()->route('imovel.create');
+        }
 
-        return redirect()->route('professor.index')
-                        ->with('success','Dados de usuário criados com sucesso.');
+        return redirect()->back()->withInput();
     }
 
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('user.login');
+    }
 }

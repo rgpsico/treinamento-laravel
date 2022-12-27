@@ -24,7 +24,7 @@
                 <div class="card-body">
 
                     
-
+                    <input type="hidden" name="user_id" value="{{ Auth::id() }}">
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">Tipo</label>

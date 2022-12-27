@@ -2,7 +2,7 @@
   @extends('layouts.app')
 
 @section('content')
-<form action="{{route('users.login')}}" method="POST"> 
+<form action="{{route('professor.login')}}" method="POST"> 
     @method('POST')
     @csrf
     <div class="form-group">
