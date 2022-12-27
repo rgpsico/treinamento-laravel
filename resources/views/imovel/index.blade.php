@@ -68,7 +68,7 @@
         @foreach ($data as $value)
             <div class="col-12 col-md-4">
                 <div class="card">
-                    <img src="https://img.clasf.com.br/2020/03/06/Kitnets-novas-na-Voldac-A-partir-de-R-500-00-20200306184600.7157950015.jpg"
+                    <img src="{{ asset('imagens/imoveis/'.$value->avatar) }}"
                         class="card-img" style="height:200px;">
                     <div class="card-body">
                         <h5 class="card-title">{{ $value->title ?? '' }}</h5>

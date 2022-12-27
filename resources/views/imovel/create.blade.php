@@ -19,7 +19,7 @@
             </div>
 
 
-            <form action="{{route('imovel.store')}}" method="POST" id="myForm">
+            <form action="{{route('imovel.store')}}" method="POST" id="myForm" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
 
@@ -58,11 +58,10 @@
                         <input type="text" class="form-control" name="price" id="price" placeholder="valor ">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputFile">Imagens</label>
-                        <div class="input-group">
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="exampleInputFile">
-                                <label class="custom-file-label" for="exampleInputFile">Escolher fotos</label>
+                      
+                   
+                                <input type="file" name="avatar"  id="avatar">
+                              
                             </div>
                             <div class="input-group-append">
                                 <span class="input-group-text">Enviar Imagens</span>

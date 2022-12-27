@@ -67,21 +67,32 @@ class ImovelController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ImoveisRequest $request)
+    public function store(Request $request)
     {
 
 
        
+       
         $imovel = new Imovel();
         $imovel->title = $request->title;
         $imovel->type = $request->type;
-        $imovel->avatar = '123';
+      
         $imovel->description = $request->description;
         $imovel->address = $request->address;
         $imovel->user_id = $request->user_id;
         $imovel->price = $request->price;
+
+        if ($request->avatar) {          
+            $avatar = $request->file('avatar');
+          
+            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            $path = public_path('/imagens/imoveis/');
+            $avatar->move($path, $filename);
+            $imovel->avatar =  $filename;
+          }
             
-        $imovel->save();
+          
+          $imovel->save();
 
         return redirect()->route('imovel.create')
                         ->with('success','Imovel criados com sucesso.');
