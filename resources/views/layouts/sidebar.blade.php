@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Imoveis PPG</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -123,7 +123,7 @@
                           <a href="#" class="nav-link ">
                               <i class="nav-icon fas fa-tachometer-alt"></i>
                               <p>
-                                  Home
+                                  Dashboard
                                   <i class="right fas fa-angle-left"></i>
                               </p>
                           </a>                          
@@ -140,6 +140,7 @@
                     </li>
 
 
+                    @if(Auth::user())
                     <li class="nav-item">
                         <a href="{{route('imovel.users',['user_id' =>Auth::user()->id ])}}" class="nav-link ">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -149,6 +150,7 @@
                             </p>
                         </a>                          
                     </li>
+                    @endif
 
 
                     

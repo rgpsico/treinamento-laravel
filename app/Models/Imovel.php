@@ -17,4 +17,9 @@ class Imovel extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function gallery()
+    {
+        return $this->hasMany(UserGallery::class);
+    }
 }

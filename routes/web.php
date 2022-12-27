@@ -20,6 +20,8 @@ Route::get('/imovel/{user_id}/users', [ImovelController::class,'myImoveis'])->na
 Route::get('/imovel/search', [ImovelController::class,'search'])->name('imovel.search');
 Route::get('/imovel/list', [ImovelController::class,'index'])->name('imovel.list');
 Route::get('/imovel/{id}/show', [ImovelController::class,'show'])->name('imovel.show');
+Route::get('/imovel/{id}/edit', [ImovelController::class,'edit'])->name('imovel.edit');
+Route::post('/imovel/{id}/update', [ImovelController::class,'update'])->name('imovel.update');
 Route::get('/imovel/create', [ImovelController::class,'create'])->name('imovel.create')->middleware('auth');;
 
 Route::post('/imovel/post', [ImovelController::class,'store'])->name('imovel.store');

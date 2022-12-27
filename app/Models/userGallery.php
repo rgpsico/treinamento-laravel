@@ -9,10 +9,12 @@ class userGallery extends Model
 {
     use HasFactory;
 
-    protected $table = 'userdata';
+    protected $table = 'usergallery';
 
     protected $fillable = [
         'image',
+        'user_id',
+        'imovel_id'
     ];
 
     public function user()

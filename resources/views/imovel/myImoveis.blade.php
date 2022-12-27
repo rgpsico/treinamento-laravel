@@ -6,12 +6,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Project Add</h1>
+                        <h1>Cadastrar Imovel</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Project Add</li>
+                            <li class="breadcrumb-item active">Cadastrar Imovel</li>
                         </ol>
                     </div>
                 </div>
@@ -80,7 +80,7 @@
                         <a class="btn btn-success m-2" href="{{ route('imovel.show', ['id' => $value->id]) }}"class="">Ver
                             imovel</a>
 
-                            <a class="btn btn-info m-2" href="{{ route('imovel.show', ['id' => $value->id]) }}"class="">Editar
+                            <a class="btn btn-info m-2" href="{{ route('imovel.edit', ['id' => $value->id]) }}"class="">Editar
                                 imovel</a>
 
                                 <form action="{{route('imovel.destroy',['id' => $value->id])}}" method="POST">

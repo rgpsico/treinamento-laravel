@@ -10,21 +10,15 @@
                 <div class="col-12 col-sm-6">
                     <h3 class="d-inline-block d-sm-none"></h3>
                     <div class="col-12">
-                        <img src="https://img.clasf.com.br/2020/03/06/Kitnets-novas-na-Voldac-A-partir-de-R-500-00-20200306184600.7157950015.jpg" class="product-image" alt="Product Image">
+                               
+                        <img src="{{ asset('imagens/imoveis/'.$data->avatar) }}" class="product-image" alt="Product Image">
                     </div>
                     <div class="col-12 product-image-thumbs">
-                        <div class="product-image-thumb">
-                          <img src="https://img.clasf.com.br/2020/03/06/Kitnets-novas-na-Voldac-A-partir-de-R-500-00-20200306184600.7157950015.jpg" alt="Product Image"></div>
-                        <div class="product-image-thumb">
-                          <img src="https://img.clasf.com.br/2020/03/06/Kitnets-novas-na-Voldac-A-partir-de-R-500-00-20200306184600.7157950015.jpg" alt="Product Image"></div>
-                        <div class="product-image-thumb active">
-                          <img src="https://img.clasf.com.br/2020/03/06/Kitnets-novas-na-Voldac-A-partir-de-R-500-00-20200306184600.7157950015.jpg" alt="Product Image">
-                        </div>
-                        <div class="product-image-thumb">
-                          <img src="https://img.clasf.com.br/2020/03/06/Kitnets-novas-na-Voldac-A-partir-de-R-500-00-20200306184600.7157950015.jpg" alt="Product Image"></div>
-                        <div class="product-image-thumb">
-                          <img src="https://img.clasf.com.br/2020/03/06/Kitnets-novas-na-Voldac-A-partir-de-R-500-00-20200306184600.7157950015.jpg" alt="Product Image"></div>
-                    </div>
+                        @foreach($galleries as $gallery)
+                            <div class="product-image-thumb">
+                                <img src="{{ asset('imagens/imoveis/'.$gallery->image) }}" alt="Product Image"></div>
+                            @endforeach
+                     </div>
                 </div>
                 <div class="col-12 col-sm-6">
                     <h3 class="my-3">{{$data->title}}</h3>

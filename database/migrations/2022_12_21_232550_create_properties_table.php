@@ -15,9 +15,9 @@ class CreatePropertiesTable extends Migration
     {
         Schema::create('imoveis', function (Blueprint $table) {
             $table->id();
-            $table->string('avatar');
+            $table->string('avatar')->nullable();
             $table->string('title');
-            $table->integer('type');
+            $table->integer('type')->default(1);
             $table->text('description')->nullable();
             $table->integer('user_id')->nullable();;
             $table->decimal('price', 8, 2);

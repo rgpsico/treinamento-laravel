@@ -6,9 +6,12 @@ use App\Http\Requests\ImoveisRequest;
 use App\Models\Imovel;
 use App\Models\User;
 use App\Models\UserData;
+use App\Models\userGallery;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Proengsoft\JsValidation\Facades\JsValidatorFacade;
+
 
 class ImovelController extends Controller
 {
@@ -61,6 +64,57 @@ class ImovelController extends Controller
         return view('imovel.create');
     }
 
+
+     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        if($data = Imovel::where('id', $id)->first()){
+            return view('imovel.edit',[
+                'data' => $data
+            ]);
+        }
+  
+    }
+
+    public function update(Request $request, $id)
+    {
+        // Valide os dados de entrada
+        // $request->validate([
+        //     'title' => 'required|max:255',
+        //     'description' => 'required',
+        // ]);
+
+        // Encontre o imóvel pelo ID
+        $imovel = Imovel::findOrFail($id);
+
+        // Atualize os dados do imóvel
+        $imovel->title = $request->input('title');
+        $imovel->description = $request->input('description');
+        $imovel->avatar = $request->input('avatar');
+        $imovel->type = $request->input('type');
+        $imovel->price = $request->input('price');
+
+  
+        if ($request->avatar) {          
+            $avatar = $request->file('avatar');
+          
+            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            $path = public_path('/imagens/imoveis/');
+            $avatar->move($path, $filename);
+            $imovel->avatar =  $filename;
+          }
+          
+        $imovel->save();
+
+        // Redirecione o usuário de volta para a página de exibição de imóveis
+        return redirect()->route('imovel.edit', ['id' => $imovel->id]);
+    }
+
+
     /**
      * Store a newly created resource in storage.
      *
@@ -70,9 +124,6 @@ class ImovelController extends Controller
     public function store(Request $request)
     {
 
-
-       
-       
         $imovel = new Imovel();
         $imovel->title = $request->title;
         $imovel->type = $request->type;
@@ -81,18 +132,28 @@ class ImovelController extends Controller
         $imovel->address = $request->address;
         $imovel->user_id = $request->user_id;
         $imovel->price = $request->price;
+        $imovel->save();
 
-        if ($request->avatar) {          
-            $avatar = $request->file('avatar');
-          
-            $filename = time() . '.' . $avatar->getClientOriginalExtension();
-            $path = public_path('/imagens/imoveis/');
-            $avatar->move($path, $filename);
-            $imovel->avatar =  $filename;
+        if ($request->avatar) {       
+            foreach($request->avatar as $value ){
+              $filename = time() . '.' . $value->getClientOriginalExtension();
+              $path = public_path('/imagens/imoveis/');
+              $value->move($path, $filename);
+              $imovel->avatar =  $filename;
+    
+              $imagem = new userGallery();
+              $imagem->user_id = auth()->user()->id;
+              $imagem->imovel_id = $imovel->id;
+              $imagem->image = $filename;
+              $imagem->save();
+              
+            }
           }
+          
+         
             
           
-          $imovel->save();
+         
 
         return redirect()->route('imovel.create')
                         ->with('success','Imovel criados com sucesso.');
@@ -107,8 +168,10 @@ class ImovelController extends Controller
     public function show($id)
     {
         if($data = Imovel::where('id', $id)->first()){
+            $galleries = $data->gallery()->get();
             return view('imovel.show',[
-                'data' => $data
+                'data' => $data,
+                'galleries' => $galleries
             ]);
         }
         

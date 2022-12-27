@@ -16,9 +16,12 @@ class UserGallery extends Migration
         Schema::create('userGallery', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('imovel_id');
             $table->string('image')->nullable();
-            $table->timestamps();
+          
+            $table->foreign('imovel_id')->references('id')->on('imoveis')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 

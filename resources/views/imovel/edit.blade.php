@@ -19,7 +19,7 @@
             </div>
 
 
-            <form action="{{route('imovel.store')}}" method="POST" id="myForm" enctype="multipart/form-data">
+            <form action="{{route('imovel.update',['id' => $data->id])}}" method="POST" id="myForm" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
 
@@ -29,14 +29,14 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">Tipo</label>
                         <select name="type" id="type"  name="type" class="form-control">
-                            <option value="0" class="form-control">Casa</option>
-                            <option value="1" class="form-control">KitNet</option>
+                            <option value="0"  {{$data->type == 0 ? 'selected' : ''}} class="form-control">Casa</option>
+                            <option value="1"  {{$data->type == 1 ? 'selected' : ''}} class="form-control">KitNet</option>
                         </select>          
                     </div>
                     
                     <div class="form-group">
                         <label for="andress">Titulo do Anuncio</label>
-                        <input type="text" class="form-control" id="title"  name="title" placeholder="Qual o anuncio">
+                        <input type="text" class="form-control" id="title"  name="title" value="{{$data->title}}">
                         @error('title')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -46,27 +46,21 @@
 
                     <div class="form-group">
                         <label for="description">Endereço</label>
-                        <input type="text" class="form-control" id="description"  name="description" placeholder="Descrição" >
+                        <input type="text" class="form-control" id="description"  name="description" value="{{$data->address}}" >
                     </div>
 
-                    <div class="form-group">
-                        <label for="address">Endereço</label>
-                        <input type="text" class="form-control" id="address"  name="address" placeholder="Enter email">
-                    </div>
+
                     <div class="form-group">
                         <label for="exampleInputPassword1">Valor</label>
-                        <input type="text" class="form-control" name="price" id="price" placeholder="valor ">
+                        <input type="text" class="form-control" name="price" id="price" value="{{$data->price}}">
                     </div>
-                    <div class="form-group">
-                      
-                   
-                                <input type="file" name="avatar[]" multiple id="avatar">
-                              
-                            </div>
-                            <div class="input-group-append">
-                                <span class="input-group-text">Enviar Imagens</span>
-                            </div>
+                        <div class="form-group">                      
+                            <input type="file" name="avatar[]"  id="avatar">
                         </div>
+                        <div class="input-group-append">
+                            <img src="{{ asset('imagens/imoveis/'.$data->avatar) }}"  height="200px" width="200px"/>
+                        </div>
+                    </div>
                     </div>
                    </div>
 
