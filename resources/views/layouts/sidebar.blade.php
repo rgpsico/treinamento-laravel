@@ -140,6 +140,17 @@
                     </li>
 
 
+                    <li class="nav-item">
+                        <a href="{{route('imovel.users',['user_id' =>Auth::user()->id ])}}" class="nav-link ">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Meus Imoveis
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>                          
+                    </li>
+
+
                     
                   
                     

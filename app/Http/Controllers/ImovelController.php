@@ -116,6 +116,19 @@ class ImovelController extends Controller
     }
 
 
+    public function myImoveis(Request $request, $user_id)
+    {
+        if($data = Imovel::where('user_id', $user_id)->get()){
+            return view('imovel.myImoveis',[
+                'data' => $data,
+                'request' => $request
+            ]);
+        }
+        
+       
+    }
+
+
 
     /**
      * Display the specified resource.
@@ -123,9 +136,17 @@ class ImovelController extends Controller
      * @param  \App\Userdata  $userdata
      * @return \Illuminate\Http\Response
      */
-    public function login()
+    public function destroy($id)
     {
-        dd("aqui");
+        if($imovel = Imovel::find($id)->first()){
+           
+           
+            $imovel->destroy($id);
+            return redirect()->route('imovel.users',[
+                'user_id' =>$imovel->user_id
+            ])
+            ->with('success','Imovel foi excluido com sucesso');
+        }
     }
 
 
