@@ -19,7 +19,7 @@
             </div>
 
 
-            <form action="{{route('imovel.store')}}" method="POST">
+            <form action="{{route('imovel.store')}}" method="POST" id="myForm">
                 @csrf
                 <div class="card-body">
 
@@ -36,17 +36,22 @@
                     
                     <div class="form-group">
                         <label for="andress">Titulo do Anuncio</label>
-                        <input type="text" class="form-control" id="title"  name="title" placeholder="Qual o anuncio" value="TESTE">
+                        <input type="text" class="form-control" id="title"  name="title" placeholder="Qual o anuncio">
+                        @error('title')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                     </div>
 
                     <div class="form-group">
                         <label for="description">Endereço</label>
-                        <input type="text" class="form-control" id="description"  name="description" placeholder="Descrição" value="TESTE DESC">
+                        <input type="text" class="form-control" id="description"  name="description" placeholder="Descrição" >
                     </div>
 
                     <div class="form-group">
                         <label for="address">Endereço</label>
-                        <input type="text" class="form-control" id="address"  name="address" placeholder="Enter email" value="TESTE">
+                        <input type="text" class="form-control" id="address"  name="address" placeholder="Enter email">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Valor</label>
@@ -72,5 +77,14 @@
             </form>
         </div>
 
+       <!-- Javascript Requirements -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
+<!-- Laravel Javascript Validation -->
+<script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+
+        {!! JsValidator::formRequest('App\Http\Requests\ImoveisRequest', '#myForm') !!}
+
+        
 @endsection

@@ -130,10 +130,10 @@
                       </li>
 
                       <li class="nav-item">
-                        <a href="#" class="nav-link ">
+                        <a href="{{route('imovel.list')}}" class="nav-link ">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
-                                Busca kitNets
+                                Busca Imoveis
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>                          
@@ -141,26 +141,7 @@
 
 
                     
-                    <li class="nav-item">
-                      <a href="#" class="nav-link ">
-                          <i class="nav-icon fas fa-tachometer-alt"></i>
-                          <p>
-                              Busca Casas
-                              <i class="right fas fa-angle-left"></i>
-                          </p>
-                      </a>                          
-                  </li>
-
-
-                  <li class="nav-item ">
-                    <a href="#" class="nav-link ">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            Adicionar Casas
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>                          
-                </li>
+                  
                     
                   </ul>
               </nav>

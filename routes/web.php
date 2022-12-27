@@ -14,6 +14,8 @@ Route::get('/register', [UserdataController::class,'register'])->name('user.crea
 Route::post('/store', [UserdataController::class,'store'])->name('user.store');;
 Route::get('/logout', [UserdataController::class,'logout'])->name('logout');;
 
+
+Route::get('/imovel/search', [ImovelController::class,'search'])->name('imovel.search');
 Route::get('/imovel/list', [ImovelController::class,'index'])->name('imovel.list');
 Route::get('/imovel/{id}/show', [ImovelController::class,'show'])->name('imovel.show');
 Route::get('/imovel/create', [ImovelController::class,'create'])->name('imovel.create')->middleware('auth');;

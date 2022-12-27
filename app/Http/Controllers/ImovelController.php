@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ImoveisRequest;
 use App\Models\Imovel;
 use App\Models\User;
 use App\Models\UserData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Proengsoft\JsValidation\Facades\JsValidatorFacade;
 
 class ImovelController extends Controller
 {
@@ -15,11 +17,38 @@ class ImovelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function search(Request $request)
     {
-        $data = Imovel::all();
+        $tipo = $request->input('type');
+        $comunidade = $request->input('comunidade');
+        $tamanho = $request->input('tamanho');
+      
+        $imoveis = Imovel::query();
+      
+        if ($tipo == 0 || $tipo == 1) {
+          $imoveis->where('type', $tipo);
+        }
+      
+        if ($comunidade) {
+          $imoveis->where('comunidade', $comunidade);
+        }
+      
+        if ($tamanho) {
+          $imoveis->where('tamanho', $tamanho);
+        }
+      
+        $data = $imoveis->get();
+      
+        return view('imovel.index', compact('data'), ['request' => $request]);
+    }
 
-        return view('imovel.index', compact('data'));
+    public function index(Request $request)
+    {
+       
+        $data = Imovel::paginate();
+      
+          
+        return view('imovel.index', compact('data'),  ['request' => $request]);
     }
 
     /**
@@ -38,8 +67,10 @@ class ImovelController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ImoveisRequest $request)
     {
+
+
        
         $imovel = new Imovel();
         $imovel->title = $request->title;
