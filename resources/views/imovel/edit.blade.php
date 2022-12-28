@@ -21,53 +21,7 @@
 
             <form action="{{route('imovel.update',['id' => $data->id])}}" method="POST" id="myForm" enctype="multipart/form-data">
                 @csrf
-                <div class="card-body">
-
-                    
-                    <input type="hidden" name="user_id" value="{{ Auth::id() }}">
-
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Tipo</label>
-                        <select name="type" id="type"  name="type" class="form-control">
-                            <option value="0"  {{$data->type == 0 ? 'selected' : ''}} class="form-control">Casa</option>
-                            <option value="1"  {{$data->type == 1 ? 'selected' : ''}} class="form-control">KitNet</option>
-                        </select>          
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="andress">Titulo do Anuncio</label>
-                        <input type="text" class="form-control" id="title"  name="title" value="{{$data->title}}">
-                        @error('title')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                    </div>
-
-                    <div class="form-group">
-                        <label for="description">Endereço</label>
-                        <input type="text" class="form-control" id="description"  name="description" value="{{$data->address}}" >
-                    </div>
-
-
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Valor</label>
-                        <input type="text" class="form-control" name="price" id="price" value="{{$data->price}}">
-                    </div>
-                        <div class="form-group">                      
-                            <input type="file" name="avatar[]"  id="avatar">
-                        </div>
-                        <div class="input-group-append">
-                            <img src="{{ asset('imagens/imoveis/'.$data->avatar) }}"  height="200px" width="200px"/>
-                        </div>
-                    </div>
-                    </div>
-                   </div>
-
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Enviar</button>
-                </div>
-            </form>
+                @include('imovel._partials.form')
         </div>
 
        <!-- Javascript Requirements -->
