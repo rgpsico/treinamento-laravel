@@ -49,6 +49,11 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
+    public function imoveis()
+    {
+        return $this->hasMany(Imovel::class);
+    }
+
     public function gallery()
     {
         return $this->hasMany(UserGallery::class);
