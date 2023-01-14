@@ -22,6 +22,13 @@ class UserdataController extends Controller
         return view('user.index', compact('User'));
     }
 
+    public function novo()
+    {
+        $User = User::all();
+
+        return view('novo.list');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

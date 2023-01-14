@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 
-
+Route::get('/novo', [UserdataController::class,'novo']);
 Route::get('/login', [UserdataController::class,'login'])->name('user.login');
 Route::post('/login', [UserdataController::class,'auth'])->name('user.auth');
 Route::get('/register', [UserdataController::class,'register'])->name('user.create');;
