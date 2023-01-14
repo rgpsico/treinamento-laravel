@@ -6,7 +6,7 @@ use App\Http\Requests\ImoveisRequest;
 use App\Models\Imovel;
 use App\Models\User;
 use App\Models\UserData;
-use App\Models\userGallery;
+use App\Models\UserGallery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
