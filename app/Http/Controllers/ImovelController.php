@@ -6,7 +6,7 @@ use App\Http\Requests\ImoveisRequest;
 use App\Models\Imovel;
 use App\Models\User;
 use App\Models\UserData;
-use App\Models\UserGallery;
+use App\Models\usergallery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -141,7 +141,7 @@ class ImovelController extends Controller
               $value->move($path, $filename);
               $imovel->avatar =  $filename;
     
-              $imagem = new UserGallery();
+              $imagem = new userGallery();
               $imagem->user_id = auth()->user()->id;
               $imagem->imovel_id = $imovel->id;
               $imagem->image = $filename;

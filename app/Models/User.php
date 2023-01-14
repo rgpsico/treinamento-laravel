@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use UserGallery;
+use usergallery;
 
 class User extends Authenticatable
 {
@@ -56,6 +56,6 @@ class User extends Authenticatable
 
     public function gallery()
     {
-        return $this->hasMany(UserGallery::class);
+        return $this->hasMany(usergallery::class);
     }
 }

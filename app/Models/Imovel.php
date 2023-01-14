@@ -20,6 +20,6 @@ class Imovel extends Model
 
     public function gallery()
     {
-        return $this->hasMany(UserGallery::class);
+        return $this->hasMany(usergallery::class);
     }
 }
