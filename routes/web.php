@@ -8,10 +8,10 @@ use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 
-Route::get('/categoria', [ImovelController::class,'categoria']);
-Route::get('/listar', [ImovelController::class,'listarN']);
-Route::get('/detalhes/{id}/show', [ImovelController::class,'detalhes'])->name('detalhes');
 
+Route::get('/listar', [ImovelController::class,'listarN'])->name('novo.listar');
+Route::get('/detalhes/{id}/show', [ImovelController::class,'detalhes'])->name('detalhes');
+Route::get('/categoria', [ImovelController::class,'categoria'])->name('novo.categoria');
 
 Route::get('/login', [UserdataController::class,'login'])->name('user.login');
 Route::post('/login', [UserdataController::class,'auth'])->name('user.auth');
