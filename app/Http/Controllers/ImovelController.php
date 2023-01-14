@@ -54,6 +54,28 @@ class ImovelController extends Controller
         return view('imovel.index', compact('data'),  ['request' => $request]);
     }
 
+    
+    public function categoria()
+    {
+       
+     
+      
+          
+        return view('novo.categoria');
+    }
+
+    public function detalhes()
+    {
+       
+        return view('novo.detalhes');
+    }
+
+    public function listarN()
+    {
+       
+        return view('novo.list');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
