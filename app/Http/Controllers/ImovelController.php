@@ -47,33 +47,28 @@ class ImovelController extends Controller
 
     public function index(Request $request)
     {
-       
-        $data = Imovel::paginate();
-      
-          
+       $data = Imovel::paginate();
         return view('imovel.index', compact('data'),  ['request' => $request]);
     }
 
     
     public function categoria()
     {
-       
-     
-      
-          
         return view('novo.categoria');
     }
 
-    public function detalhes()
+    public function detalhes($id)
     {
-       
-        return view('novo.detalhes');
+        $pageTitle = "Listar";
+        $data = Imovel::where('id', $id)->get()->first();
+        $imoveis = Imovel::all();
+       return view('novo.detalhes', compact('data', 'imoveis', 'pageTitle'));
     }
 
     public function listarN()
     {
-       
-        return view('novo.list');
+        $datas = Imovel::paginate();
+        return view('novo.list', compact('datas'));
     }
 
     /**

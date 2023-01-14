@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
 
 Route::get('/categoria', [ImovelController::class,'categoria']);
 Route::get('/listar', [ImovelController::class,'listarN']);
-Route::get('/detalhes', [ImovelController::class,'detalhes']);
+Route::get('/detalhes/{id}/show', [ImovelController::class,'detalhes'])->name('detalhes');
 
 
 Route::get('/login', [UserdataController::class,'login'])->name('user.login');

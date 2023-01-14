@@ -1757,7 +1757,9 @@ padding: .375rem .75rem;
 	padding: 84px 0 154px 0;
 }
 .Category_banner {
-	background-image: url(../images/banner4.png);
+	background-image: url(../images/bannersarpoador.jpg);
+	background-size: cover;
+	background-position: center;
 }
 .breadcrumb {
 	background-color: inherit;

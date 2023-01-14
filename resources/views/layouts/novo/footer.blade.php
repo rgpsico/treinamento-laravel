@@ -5,8 +5,16 @@
       <div class="container spacer b-t">
         <div class="row">
           <div class="col-lg-4 col-md-4 m-b-30">
-            <h3 class="mb-3"> <img class="img-fluid" src="images/footer-logo.png" alt="footer-logo"></h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc est justo, aliquam nec tempor fermentum, commodo et libero. Quisque et rutrum arcu. Vivamus dictum tincidunt magna id euismod. Nam sollicitudin mi quis orci lobortis feugiat.</p>
+            <h3 class="mb-3"> 
+              <img class="img-fluid" 
+              src="{{asset('images/footer-logo.png')}}" 
+              alt="footer-logo"></h3>
+            <p>Comunidade imobiliária na Zona Sul do Rio de Janeiro: 
+              aluguel e venda de imóveis de qualidade. 
+              Encontre o lugar perfeito para chamar de seu ou invista em imóveis comerciais rentáveis. 
+              Nós oferecemos opções para todos os gostos e orçamentos. 
+              Entre em contato conosco hoje e descubra como podemos ajudá-lo a 
+              encontrar ou vender seu imóvel na Zona Sul do Rio de Janeiro</p>
             <ul class="list-unstyled d-flex p-0 soical-icon m-t-20">
                             <li class="mr-2"><a href="#"><i class="fa fa-facebook-f"></i> </a></li>
                             <li class="mr-2"><a href="#"><i class="fa fa-twitter"></i> </a></li>
@@ -16,33 +24,30 @@
                           </ul>
           </div>
           <div class="col-lg-2 col-md-2 m-b-30">
-            <h3 class="mb-3">Quik Links </h3>
+            <h3 class="mb-3">Links </h3>
             <ul class="p-0">
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">Careers</a></li>
-            <li><a href="#">All Cities</a></li>
-            <li><a href="#">Help & Support</a></li>
-            <li><a href="#">Advertise With Us</a></li>
-            <li><a href="#">Blog</a></li>
+              <li><a href="#">Sobre Nós</a></li>
+              <li><a href="#">Contato</a></li>
+              <li><a href="#">Artigos</a></li>
+              <li><a href="#">Ajuda ou supporte</a></li>
             </ul>
           </div>
           <div class="col-lg-2 col-md-2 m-b-30">
-            <h3 class="mb-3">Tips And help</h3>
+            <h3 class="mb-3">Outros Serviços</h3>
             <ul class="p-0">
-            <li><a href="#">About</a></li>
-            <li><a href="#">Classified</a></li>
-            <li><a href="#">Classified Blog</a></li>
-            <li><a href="#">Help</a></li>
-            <li><a href="#">Press Contact</a></li>
-            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">KitNets</a></li>
+            <li><a href="#">Casas</a></li>
+            <li><a href="#">Lojas</a></li>
+            <li><a href="#">Comercios</a></li>
+            <li><a href="#">Profissionais</a></li>
+            <li><a href="#">Contato</a></li>
             </ul>
           </div>
           <div class="col-lg-4 col-md-4 m-b-30">
-            <h3 class="mb-3">Subscribe us</h3>
-            <p>We have over 15 years of experience
+            <h3 class="mb-3">Inscreva-se</h3>
+            <p>Temos mais de 5 anos de experiência
   </p>
-            <p>Our suppoer available to help you 24 hours a day, seven days week
+            <p>Envie uma mensagem assim que puder responderemos
   </p>
   <div class="input-group m-t-20">
               <input class="form-control" placeholder="Enter email" aria-label="Recipient's username" type="text">
@@ -51,7 +56,7 @@
               </div>
               
             </div>
-            <p class="font-italic">We respect your privacy</p>
+            <p class="font-italic">Nós respeitamos a sua privacidade</p>
           </div>
         </div>
       </div>
@@ -60,7 +65,9 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <p class="mt-3 mb-3 copyright">&copy;Copyright 2000-2018 example.com Limited. All rights reserved </p>
+            <p class="mt-3 mb-3 copyright">&copy;
+              Copyright 2000-2022 Roger Neves Da Silva 
+            </p>
           </div>
         </div>
       </div>

@@ -2,26 +2,8 @@
 @extends('layouts.master')
 <!-- Categories -->
 @section('content')
-<<section class="banner">
-  <div class="banner-innerpage Category_banner">
-<div class="container"> 
-<!-- Row  -->
-<div class="row justify-content-center "> 
-<!-- Column -->
-<div class="text-center">
-  <h1 class="title">Category teste</h1>
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="#">Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Category</li>
-    </ol>
-  </nav>
-</div>
-<!-- Column --> 
-</div>
-</div>
-</div>
-</section>
+
+@include('novo._partials.banner')
 <!-- End banner --> 
 
 <!-- Categories -->
