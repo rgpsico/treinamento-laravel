@@ -141,7 +141,7 @@ class ImovelController extends Controller
               $value->move($path, $filename);
               $imovel->avatar =  $filename;
     
-              $imagem = new userGallery();
+              $imagem = new UserGallery();
               $imagem->user_id = auth()->user()->id;
               $imagem->imovel_id = $imovel->id;
               $imagem->image = $filename;
