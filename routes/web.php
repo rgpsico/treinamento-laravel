@@ -12,6 +12,8 @@ use Illuminate\Support\Str;
 Route::get('/listar', [ImovelController::class,'listarN'])->name('novo.listar');
 Route::get('/detalhes/{id}/show', [ImovelController::class,'detalhes'])->name('detalhes');
 Route::get('/categoria', [ImovelController::class,'categoria'])->name('novo.categoria');
+Route::get('/home', [ImovelController::class,'home'])->name('novo.home');
+
 
 Route::get('/login', [UserdataController::class,'login'])->name('user.login');
 Route::post('/login', [UserdataController::class,'auth'])->name('user.auth');

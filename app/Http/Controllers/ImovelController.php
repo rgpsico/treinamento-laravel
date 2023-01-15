@@ -71,6 +71,12 @@ class ImovelController extends Controller
         return view('novo.list', compact('datas'));
     }
 
+    public function home()
+    {
+        $datas = Imovel::paginate();
+        return view('novo.home', compact('datas'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

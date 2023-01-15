@@ -22,21 +22,24 @@
         <a href="{{route('novo.listar')}}" class="navbar-brand">
           <img src="{{asset('images/logo2.png')}}" alt="Classified Plus"></a>
           <button class="navbar-toggler" 
-          type="button" data-toggle="collapse" 
-          data-target="#h5-info" aria-expanded="false" aria-label="Toggle navigation">
+          type="button" 
+          data-toggle="collapse" 
+          data-target="#h5-info" 
+          aria-expanded="false" 
+          aria-label="Toggle navigation">
             <i class="fa fa-bars"></i>
           </button>
+
         <div class="collapse navbar-collapse" id="h5-info">
           <ul class="navbar-nav">
             <li class="nav-item dropdown"> 
-              <a class="nav-link dropdown-toggle"
-               href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Home </a>
-              <ul class="b-none dropdown-menu font-14 animated fadeInUp">
-                <li><a class="dropdown-item" href="{{route('novo.listar')}}">home </a>
-                </li>
-               </ul>
+              <a class="nav-link "
+               href="{{route('novo.home')}}" 
+              > Home </a>
+             
             <li class="nav-item"> 
-              <a class="nav-link"  href="{{route('novo.categoria')}}l">Serviços</a></li>           
+              <a class="nav-link"  href="{{route('novo.categoria')}}">Serviços</a>
+            </li>           
            </ul>
 
           <div class="header_r d-flex">
