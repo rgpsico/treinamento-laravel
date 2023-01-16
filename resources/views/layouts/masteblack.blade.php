@@ -3,4 +3,4 @@
 
 @yield('content')
   
-  @include('layouts.black.footer')
+  @include('layouts.novo.footer')

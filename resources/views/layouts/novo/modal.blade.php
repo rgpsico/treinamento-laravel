@@ -5,14 +5,14 @@
           <h5 class="modal-title">Logar</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
              <span aria-hidden="true">
-              <img src="images/close.png"  alt="Classified Plus">
+              <img src="{{asset('images/close.png')}}"  alt="Classified Plus">
             </span> 
           </button>
         </div>
         <div class="modal-body">
         <div class="list-unstyled list-inline social-login">
            </div>
-           <form action="{{route('user.login')}}" >
+           <form action="{{route('user.login')}}"  method="POST" id="registerForm">
             @csrf
             @method('POST')
           <div class="row">
@@ -23,7 +23,7 @@
             </div>
             <div class="col-sm-12">
               <div class="form-group has-feedback">
-                <input type="password" class="form-control" name="senha" placeholder="senha">
+                <input type="password" class="form-control" name="password" placeholder="password">
               </div>
             </div>
           </div>
@@ -62,32 +62,32 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Registrar</h5>
+          <h5 class="modal-title">Registrassr</h5>
            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
              <span aria-hidden="true">
-                <img src="images/close.png" alt="Classified Plus"></span> 
+                <img src="{{asset('images/close.png')}}" alt="Classified Plus"></span> 
             </button>
         </div>
         <div class="modal-body">
         
+          <form action="{{route('user.store')}}" method="POST" id="formRegister" enctype="multipart/form-data">
          
+            @csrf
           <div class="row">
-            <form action="{{route('user.create')}}" >
-              @method('POST')
-              @csrf
-            <div class="col-sm-12">
+           
+            <div class="col-sm-12 col-12">
               <div class="form-group has-feedback">
                 <input type="text" class="form-control" name="name" placeholder="Name">
               </div>
             </div>
 
-            <div class="col-sm-12">
+            <div class="col-sm-12 col-12">
               <div class="form-group has-feedback">
-                <input type="Email" class="form-control" id="Email" name="Email" placeholder="E-mail">
+                <input type="Email" class="form-control" id="email" name="email" placeholder="E-mail">
               </div>
             </div>
 
-            <div class="col-sm-12">
+            <div class="col-sm-12 col-12">
               <div class="form-group has-feedback">
                 <input type="number" class="form-control" id="phone" name="phone" placeholder="(21) 9999-9999 Telefone">
               </div>
@@ -95,15 +95,15 @@
             
             
             
-            <div class="col-sm-12">
+            <div class="col-sm-12 col-12">
               <div class="form-group has-feedback">
                 <input type="password" class="form-control" name="password" placeholder="Password">
               </div>
             </div>
             
-            <div class="col-sm-12">
+            <div class="col-sm-12 col-12">
               <div class="form-group has-feedback">
-                <input type="password" class="form-control" id="Confirm_password" name="Confirm_password" placeholder="Confirm Password">
+                <input type="password" class="form-control" id="password_confirme" name="password_confirme" placeholder="Confirm Password">
               </div>
             </div>
             
@@ -123,3 +123,35 @@
       </div>
     </div>
   </div>
+
+  <script>
+    register() 
+    function register() {
+  const form = document.querySelector('#formRegister');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    fetch(form.action, {
+      method: form.method,
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+      if (data.errors) {
+        Object.keys(data.errors).forEach(key => {
+          const input = form.querySelector(`input[name=${key}]`);
+          const error = document.createElement('div');
+          error.classList.add('error');
+          error.innerHTML = data.errors[key];
+          input.insertAdjacentElement('afterend', error);
+        });
+      } else {
+        // handle success
+      }
+    })
+    .catch(error => console.log(error));
+  });
+}
+
+  </script>

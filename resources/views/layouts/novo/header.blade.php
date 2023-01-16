@@ -43,10 +43,27 @@
            </ul>
 
           <div class="header_r d-flex">
+            @if (Auth::check())
             <div class="loin"> 
-              <a class="nav-link" href="#" data-toggle="modal" data-target="#login">
-                <i class="fa fa-user m-r-5"></i>Registrar/Logar</a>  
-              </div>
+                <a class="nav-link" href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                    Sair
+                </a>
+        
+                <form id="logout-form" action="{{ route('logout') }}" method="GET" style="display: none;">
+                    @csrf
+                </form>
+            </div>
+        @else
+            <div class="loin"> 
+                <a class="nav-link" href="#" data-toggle="modal" data-target="#login">
+                    <i class="fa fa-user m-r-5">
+                    </i>Registrar/Logar
+                </a>  
+            </div>
+        @endif
+        
             <ul class="ml-auto post_ad">
               <li class="nav-item search">
                 <a class="nav-link" href="#">Adicionar Casa</a>
@@ -59,3 +76,4 @@
   </div>
    @include('layouts.novo.modal')
 </div>
+

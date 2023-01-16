@@ -17,22 +17,40 @@
                   <p>Anuncie seu imóvel conosco, nós cuidamos do resto</p>
                   <div>
                     <form class="book-now-home">
-                      <div class="form-group">
-                        <input type="email" class="form-control text-truncate" placeholder="What are you looking for">
-                      </div>
-                      <div class="form-group selectdiv">
+                      <div class="form-group selectdiv col-12 col-md-2 mr-1">
                         <select class="form-control text-truncate">
-                          <option>Nossa Localização</option>
+                          <option selected>Lugar</option>
+                          <option value="0">Cantagalo</option>
+                          <option value="1">Pavão</option>
                           
                         </select>
                       </div>
-                      <div class="form-group selectdiv">
+                      <div class="form-group selectdiv col-12 col-md-2">
                         <select class="form-control border-right-0 text-truncate">
-                          <option>Selecionar Categoria</option>
-            
+                          <option selected>Tipo</option>
+                          <option value="0">Casa</option>
+                          <option value="1">KitNet</option>            
                         </select>
                       </div>
-                      <button type="submit" class="btn btn-primary booknow btn-skin">Search Now</button>
+
+                      <div class="form-group selectdiv col-12 col-md-2">
+                        <select class="form-control border-right-0 text-truncate">
+                          <option selected>de</option>
+                          <option value="300">300</option>
+                          <option value="400">400</option>            
+                        </select>
+                      </div>
+
+                      <div class="form-group selectdiv col-12 col-md-2">
+                        <select class="form-control border-right-0 text-truncate">
+                          <option selected>até</option>
+                          <option value="400">400</option>
+                          <option value="500">500</option>            
+                        </select>
+                      </div>
+
+
+                      <button type="submit" class="btn btn-primary booknow btn-skin">Buscar</button>
                     </form>
                   </div>
                 </div>
