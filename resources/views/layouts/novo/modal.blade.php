@@ -62,7 +62,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Registrassr</h5>
+          <h5 class="modal-title">registrar</h5>
            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
              <span aria-hidden="true">
                 <img src="{{asset('images/close.png')}}" alt="Classified Plus"></span> 
