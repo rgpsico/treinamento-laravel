@@ -124,34 +124,39 @@
     </div>
   </div>
 
+<!-- Laravel Javascript Validation -->
+
+
   <script>
-    register() 
-    function register() {
-  const form = document.querySelector('#formRegister');
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    const formData = new FormData(form);
-    fetch(form.action, {
-      method: form.method,
-      body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log(data)
-      if (data.errors) {
-        Object.keys(data.errors).forEach(key => {
-          const input = form.querySelector(`input[name=${key}]`);
-          const error = document.createElement('div');
-          error.classList.add('error');
-          error.innerHTML = data.errors[key];
-          input.insertAdjacentElement('afterend', error);
-        });
-      } else {
-        // handle success
-      }
-    })
-    .catch(error => console.log(error));
-  });
-}
+
+
+//     register() 
+//     function register() {
+//   const form = document.querySelector('#formRegister');
+//   form.addEventListener('submit', e => {
+//     e.preventDefault();
+//     const formData = new FormData(form);
+//     fetch(form.action, {
+//       method: form.method,
+//       body: formData
+//     })
+//     .then(response => response.json())
+//     .then(data => {
+//       console.log(data)
+//       if (data.errors) {
+//         Object.keys(data.errors).forEach(key => {
+//           const input = form.querySelector(`input[name=${key}]`);
+//           const error = document.createElement('div');
+//           error.classList.add('error');
+//           error.innerHTML = data.errors[key];
+//           input.insertAdjacentElement('afterend', error);
+//         });
+//       } else {
+//         // handle success
+//       }
+//     })
+//     .catch(error => console.log(error));
+//   });
+// }
 
   </script>
