@@ -1,55 +1,107 @@
+<style>
+    .form-label {
+        display: inline-block;
+        margin-bottom: 0.1rem;
+        font-weight: 600;
+    }
+</style>
 <div class="card-body">
 
 
     <input type="hidden" name="user_id" value="{{ Auth::id() }}">
 
-    <div class="form-group">
-        <label for="exampleInputEmail1">Tipo</label>
-        @if(isset($data) && !is_null($data))
-        <select name="type" id="type" name="type" class="form-control">
-            <option value="0" {{ $data->type == 0 ? 'selected' : '' }} class="form-control">Casa</option>
-            <option value="1" {{ $data->type == 1 ? 'selected' : '' }} class="form-control">KitNet</option>
-        </select>
-    @else
-        <select name="type" id="type" name="type" class="form-control">
-            <option value="0" class="form-control">Casa</option>
-            <option value="1" class="form-control">KitNet</option>
-        </select>
-    @endif
-    </div>
-
-    <div class="form-group">
-        <label for="andress">Titulo do Anuncio</label>
-        <input type="text" class="form-control" id="title" name="title" value="{{ $data->title ?? '' }}">
-        @error('title')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
-    </div>
-
-    <div class="form-group">
-        <label for="description">Endereço</label>
-        <input type="text" class="form-control" id="description" name="description" value="{{ $data->address ?? '' }}">
-    </div>
 
 
-    <div class="form-group">
-        <label for="exampleInputPassword1">Valor</label>
-        <input type="text" class="form-control" name="price" id="price" value="{{ $data->price ?? '' }}">
+
+
+    <div class="col-12">
+        <div class="form-group">
+            <label for="type" class="form-label">Tipo</label>
+            @if (isset($data) && !is_null($data))
+                <select name="type" id="type" name="type" class="form-control">
+                    <option value="0" {{ $data->type == 0 ? 'selected' : '' }} class="form-control">Casa</option>
+                    <option value="1" {{ $data->type == 1 ? 'selected' : '' }} class="form-control">KitNet</option>
+                </select>
+            @else
+                <select name="type" id="type" name="type" class="form-control">
+                    <option value="1" class="form-control">Casa</option>
+                    <option value="2" class="form-control">Kitnet</option>
+                </select>
+            @endif
+
+        </div>
     </div>
+
+    <div class="col-12">
+        <div class="form-group">
+            <label for="title" class="form-label">Titulo:</label>
+            <input 
+            placeholder="Ex: Casa na Nova Brasilia"
+             type="text"
+             id="title" 
+             name="title" 
+             class="form-control" 
+             value="{{ $model->title ?? ''}}"
+              >
+            @if ($errors->has('title'))
+                <div class="text-danger">{{ $errors->first('title') }}</div>
+            @endif
+        </div>
+    </div>
+
+
+    <div class="col-12">
+        <div class="form-group">
+            <label for="description" class="form-label">Descrição:</label>
+            <input 
+            placeholder="Ex: Casa Com cozinha pequena e um Quarto "
+            type="text" 
+            id="description" 
+            name="description" 
+            class="form-control"
+                value="{{ $model->description ?? '' }}">
+            @if ($errors->has('description'))
+                <div class="text-danger">{{ $errors->first('email_desc') }}</div>
+            @endif
+        </div>
+    </div>
+
+
+
+    <div class="col-12">
+        <div class="form-group">
+            <label for="address" class="form-label">Lugar da comunidade:</label>
+            <input 
+            placeholder="Ex: Rampinha, Pistão, Terreirão "
+            type="text" 
+            id="address" 
+            name="address" 
+            class="form-control"
+                value="{{ $model->address ?? '' }}">
+            @if ($errors->has('address'))
+                <div class="text-danger">{{ $errors->first('address') }}</div>
+            @endif
+        </div>
+    </div>
+
+    <div class="col-12">
+        <div class="form-group">
+            <label for="price" class="form-label">Preço:</label>
+            <input type="number" placeholder="0,00" id="price" name="price" class="form-control" value=" {{ $model->price ?? '' }}">
+            @if ($errors->has('price'))
+                <div class="text-danger">{{ $errors->first('price') }}</div>
+            @endif
+        </div>
+    </div>
+
+
     <div class="form-group">
         <input type="file" name="avatar[]" multiple id="avatar">
+        @if ($errors->has('avatar'))
+                <div class="text-danger">{{ $errors->first('avatar') }}</div>
+            @endif
     </div>
-    @if(isset($data) && !is_null($data))
-    <div class="input-group-append">
-        <img src="{{ asset('imagens/imoveis/' . $data->avatar) }}" height="200px" width="200px" />
-    </div>
-    @else 
-    <div class="input-group-append">
-        <img src="" height="200px" width="200px" />
-    </div>
-    @endif
+
 </div>
 </div>
 </div>

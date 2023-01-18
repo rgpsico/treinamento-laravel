@@ -1,4 +1,4 @@
-<section class="slider">
+<section class="slider" style="position:absolute; z-index:initial;">
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -11,13 +11,15 @@
              max-height: 20%;  zoom: 50%;" alt="Classified Plus" class="slide-image">
           <div class="slide-text">
             <div class="container">
-              <div class="row">
+              <div class="row m-3">
                 <div class="col-md-12">
                   <h1>Encontre seu novo lar aqui</h1>
                   <p>Anuncie seu imóvel conosco, nós cuidamos do resto</p>
                   <div>
+                   
+                   
                     <form class="book-now-home">
-                      <div class="form-group selectdiv col-12 col-md-2 mr-1">
+                      <div class="form-group  col-12 col-md-3 mr-1">
                         <select class="form-control text-truncate">
                           <option selected>Lugar</option>
                           <option value="0">Cantagalo</option>
@@ -58,8 +60,13 @@
             </div>
           </div>
         </div>
-        
       </div>
+   
+    </div> 
+      
+        
+      
+
       <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a> </div>
   </section>
   <!-- End Slider --> 

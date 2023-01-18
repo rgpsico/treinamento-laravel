@@ -23,7 +23,7 @@ class Listagem extends Component
     public function render()
     {
 
-        $datas = Imovel::select('id','title');
+        $datas = Imovel::select('id','title','description', 'price', 'avatar');
 
       
         if($this->search)

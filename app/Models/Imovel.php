@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Imovel extends Model
 {
     use HasFactory;
-    
+
     protected $table = 'imoveis';
 
     protected $filliable =  ['title', 'description', 'price', 'type', 'address', 'user_id'];
@@ -21,5 +21,15 @@ class Imovel extends Model
     public function gallery()
     {
         return $this->hasMany(usergallery::class);
+    }
+
+    public function itens()
+    {
+        return $this->hasMany(ImovelItem::class);
+    }
+
+    public function regras()
+    {
+        return $this->hasMany(RegraImovel::class);
     }
 }

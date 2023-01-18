@@ -8,7 +8,7 @@
     <div class="row">
       <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
         <div class="detail_box"> 
-          <img class="img-fluid" src="{{ asset('imagens/imoveis/'.$data->avatar) }}" alt="{{$data->title}}">
+          <img class="img-fluid" src="{{ asset('imagens/imoveis/'.$data->gallery[0]->image) }}" alt="{{$data->title}}">
           <div class="m-t-20">
             <ul class="owl-carousel list-unstyled m-b-0" id="product_slider">
             

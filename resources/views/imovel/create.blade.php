@@ -10,7 +10,6 @@
     @endif
 
     <div class="col-md-12">
-
         <div class="card card-primary">
             <div class="card-header">
                 <h3 class="card-title">Adicionar Casa</h3>
@@ -20,7 +19,8 @@
             <form action="{{ route('imovel.store') }}" method="POST" id="myForm" enctype="multipart/form-data">
                 @csrf
                 @include('imovel._partials.form')
-    </div>
+        
+        </div>
 
     <!-- Javascript Requirements -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>

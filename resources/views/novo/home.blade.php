@@ -2,6 +2,7 @@
 @section('content')
 <!-- Slider -->
 @include('novo._partials.slider')
+
   <!-- Categories -->
 
   <!-- End Categories --> 

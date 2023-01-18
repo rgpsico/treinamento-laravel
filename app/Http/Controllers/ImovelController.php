@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ImoveisRequest;
+use App\Http\Requests\ImovelStoreRequest;
 use App\Models\Imovel;
 use App\Models\User;
 use App\Models\UserData;
@@ -10,6 +11,7 @@ use App\Models\usergallery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Proengsoft\JsValidation\Facades\JsValidatorFacade;
 
 
@@ -144,9 +146,9 @@ class ImovelController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ImovelStoreRequest $request)
     {
-
+        
         $imovel = new Imovel();
         $imovel->title = $request->title;
         $imovel->type = $request->type;
@@ -157,19 +159,21 @@ class ImovelController extends Controller
         $imovel->price = $request->price;
         $imovel->save();
 
+
         if ($request->avatar) {       
-            foreach($request->avatar as $value ){
+            foreach($request->avatar as $key => $value ){
+            echo $value;
               $filename = time() . '.' . $value->getClientOriginalExtension();
               $path = public_path('/imagens/imoveis/');
               $value->move($path, $filename);
-              $imovel->avatar =  $filename;
+    
     
               $imagem = new userGallery();
               $imagem->user_id = auth()->user()->id;
               $imagem->imovel_id = $imovel->id;
               $imagem->image = $filename;
               $imagem->save();
-              
+  
             }
           }
           

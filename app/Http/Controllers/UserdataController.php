@@ -87,17 +87,46 @@ class UserdataController extends Controller
 
     public function auth(Request $request)
     {
+        $validatedData = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             return redirect()->route('imovel.create');
         }
 
-        return redirect()->back()->withInput();
+        return back()->withErrors(['email' => 'Credenciais inválidas.']);
+    }
+
+    public function authApi(Request $request)
+    {
+       
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+    
+      
+        $credentials = $request->only(['email', 'password']);
+
+        
+    
+        if (!$token = auth()->attempt($credentials)) {
+            return response()->json(['error' => 'Usuario ou senha errado'], 401);
+        }
+    
+        return response()->json([
+            'token' => $token,
+            'type' => 'bearer'
+         
+        ]);
     }
 
 
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('user.login');
+        return redirect()->route('novo.listar');
     }
 }
