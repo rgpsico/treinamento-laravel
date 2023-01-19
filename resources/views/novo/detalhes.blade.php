@@ -1,4 +1,4 @@
-<x-layout title="Listagem">
+<x-layout title="Detalhes">
 <!-- Detail_part -->
 <section class="detail_part m-t-50">
   <div class="container">
@@ -139,51 +139,7 @@
     </div>
     <!-- Row  -->
     
-    <div class="row">      
-      @foreach ($imoveis as $imovel)  
-      <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-        <a href="{{route('detalhes',['id' => $imovel->id])}}">
-        <div class="featured-parts rounded m-t-30">
-          <div class="featured-img"> 
-            <img class="img-fluid rounded-top" src="{{ asset('imagens/imoveis/'.$imovel->avatar) }}" alt="Classified Plus"> </div>
-          <div class="featured-text">
-            <div class="text-top d-flex justify-content-between ">
-              <div class="heading"> 
-                <a href="#">{{$imovel->title}}</a> 
-              </div>
-              <div class="book-mark">
-                <a href="#">
-                  <i class="fa fa-bookmark"></i></a>
-                </div>
-            </div>
-            <div class="text-stars m-t-5">
-              <p>{{$imovel->description}}</p>
-              <i class="fa fa-star"></i>
-               <i class="fa fa-star"></i> 
-               <i class="fa fa-star"></i> 
-               <i class="fa fa-star"></i> 
-               <i class="fa fa-star"></i> 
-              </div>
-            <div class="featured-bottum m-t-30">
-              <ul class="d-flex justify-content-between list-unstyled m-b-20">
-                <li><a href="#">
-                  <i class="fa fa-map-marker">
-                  </i> {{$imovel->address}} </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fa fa-heart-o"></i> Salvar
-                  </a> 
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </a>
-      </div>
-      @endforeach  
-
-    </div>
+    @include('novo.components.listagemComponent')
     <div class="row">
            
         <div class="col-md-12">
