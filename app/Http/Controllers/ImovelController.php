@@ -62,9 +62,9 @@ class ImovelController extends Controller
     public function detalhes($id)
     {
         $pageTitle = "Listar";
-        $data = Imovel::where('id', $id)->get()->first();
+        $datas = Imovel::where('id', $id)->get()->first();
         $imoveis = Imovel::all();
-       return view('novo.detalhes', compact('data', 'imoveis', 'pageTitle'));
+       return view('novo.detalhes', compact('datas', 'imoveis', 'pageTitle'));
     }
 
     public function listarN()
