@@ -1,7 +1,4 @@
-@extends('layouts.master')
-<!-- Categories -->
-@section('content')
-   
+<x-layout title="Listagem">
 <!-- Detail_part -->
 <section class="detail_part m-t-50">
   <div class="container">
@@ -203,4 +200,4 @@
 </section>
 
         <!-- End Testimonial -->
-    @endsection
+</x-layout>
