@@ -1,9 +1,7 @@
 
-@extends('layouts.master')
+<x-layout title="Listagem">
 <!-- Categories -->
-@section('content')
 
 @livewire('listagem')
 
-@endsection
-
+</x-layout>

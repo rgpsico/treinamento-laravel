@@ -5,11 +5,11 @@
     <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
       <div class="featured-parts rounded m-t-30">
         <a href="{{route('detalhes',['id' =>$data->id ])}}">
-         
+         @php $img = $data->gallery[0]->image  ?? '' @endphp
           <div class="featured-img">                                 
               <img 
               class="img-fluid rounded-top" 
-              src="{{ asset('imagens/imoveis/'.$data->gallery[0]->image) }}" 
+              src="{{ asset('imagens/imoveis/'.$img) }}" 
               alt="{{$data->title}}"/>                  
             </div>  
         </a>

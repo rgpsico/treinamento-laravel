@@ -116,7 +116,7 @@ return [
     | such as APC or Memcached. Laravel makes it easy to dig right in.
     |
     */
-
+    'enabled' => env('TELESCOPE_ENABLED', true),
     'redis' => [
 
         'client' => env('REDIS_CLIENT', 'phpredis'),

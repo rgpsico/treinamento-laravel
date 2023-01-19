@@ -30,7 +30,7 @@ class Listagem extends Component
         {
             $datas->where(function ($query)
             {
-               $datas =  $query->orWhere('title', 'like', '%'.$this->search.'%');
+                $datas = $query->whereRaw("MATCH(title) AGAINST(? IN BOOLEAN MODE)", $this->search);
             });
         }
          
