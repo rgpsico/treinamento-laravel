@@ -180,7 +180,7 @@
           img.src = $('.principal').attr('src');
           img.onload = function() {
             $('.principal').fadeIn();
-};
+          };
         })
 
         
