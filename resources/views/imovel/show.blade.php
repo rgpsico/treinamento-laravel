@@ -61,5 +61,7 @@
         $('.image-thumb').click(function(){
             $('.img-principal').attr('src', $(this).attr('src'));
         })
+
+        
     })
 </script>

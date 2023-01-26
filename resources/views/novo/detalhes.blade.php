@@ -1,16 +1,30 @@
 <x-layout title="Detalhes">
+
+  <style>
+    .principal {
+   width: 500; /* Altere para o tamanho desejado */
+   height: 400px; /* Altere para o tamanho desejado */
+   object-fit: cover;
+}
+
+.thumb-gallery {
+   width: 100px; /* Altere para o tamanho desejado */
+   height: 75px; /* Altere para o tamanho desejado */
+   object-fit: cover;
+}
+  </style>
 <!-- Detail_part -->
 <section class="detail_part m-t-50">
   <div class="container">
     <div class="row">
       <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
         <div class="detail_box"> 
-          <img class="img-fluid" src="{{ asset('imagens/imoveis/'.$data->gallery[0]->image) }}" alt="{{$data->title}}">
+          <img class="img-fluid principal" src="{{ asset('imagens/imoveis/'.$data->gallery[0]->image) }}" alt="{{$data->title}}">
           <div class="m-t-20">
             <ul class="owl-carousel list-unstyled m-b-0" id="product_slider">
             
               @foreach ($data->gallery as $key => $gallery ) 
-                    <li> <img class="img-fluid" src="{{ asset('imagens/imoveis/'.$data->gallery[$key]->image) }}" alt="slide {{$key}}"> </li>
+                    <li> <img class="img-fluid thumb-gallery" src="{{ asset('imagens/imoveis/'.$data->gallery[$key]->image) }}" alt="slide {{$key}}"> </li>
               @endforeach
             </ul>
           </div>
@@ -157,3 +171,18 @@
 
         <!-- End Testimonial -->
 </x-layout>
+
+<script>
+   $(document).ready(function(){
+        $('.thumb-gallery').click(function(){
+          $('.principal').attr('src', $(this).attr('src')).fadeOut();
+          var img = new Image();
+          img.src = $('.principal').attr('src');
+          img.onload = function() {
+            $('.principal').fadeIn();
+};
+        })
+
+        
+    })
+</script>
