@@ -29,20 +29,22 @@
           </select>
       </div>
               <div class="form-group selectdiv">
-                <select class="form-control text-truncate " wire:model="search"  style="padding:10px;">
+                <select class="form-control text-truncate " wire:model="place"  style="padding:10px;">
                   <option selected> Lugar</option>
-                  <option value="0">Cantagalo</option>
-                  <option value="1">Pavão</option>
+                  <option value="cantagalo">Cantagalo</option>
+                  <option value="pavao">Pavão</option>
                 </select>
               </div>
              
               
               <div class="form-group selectdiv">
-                <select class="form-control text-truncate">
+                <select wire:model="price" class="form-control text-truncate">
                   <option selected>Preço</option>           
-                  <option value="0">200</option>
-                  <option value="1">300</option>
-                  <option value="2">Loja</option>
+                  <option value="300">300</option>
+                  <option value="400">400</option>
+                  <option value="500">500</option>
+                  <option value="600">600</option>
+                  <option value="700">700</option>
                 </select>
                   
               </div>

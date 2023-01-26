@@ -15,6 +15,8 @@ class Listagem extends Component
 
     public $search;
     public $type;
+    public $place;
+    public $price;
     public $qualificado;
     public $ordem;
 
@@ -34,11 +36,27 @@ class Listagem extends Component
             });
         }
 
+        if($this->place)
+        {
+            $datas->where(function ($query)
+            {
+                $datas = $query->where("address", "like", $this->place);
+            });
+        }
+
         if($this->type)
         {
             $datas->where(function ($query)
             {
                $query->where("type", "=", $this->type);
+            });
+        }
+
+        if($this->price)
+        {
+            $datas->where(function ($query)
+            {
+               $query->where("price", "=", $this->price);
             });
         }
          
