@@ -55,8 +55,8 @@
         @else
             <div class="loin"> 
                 <a class="nav-link" href="#" data-toggle="modal" data-target="#login">
-                    <i class="fa fa-user m-r-5">
-                    </i>Registrar/Logar
+                    <i class="fa fa-user m-r-5 registrar_btn_modal">
+                    </i>Registrar/Logarss
                 </a>  
             </div>
         @endif

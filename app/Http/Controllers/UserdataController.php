@@ -8,6 +8,7 @@ use App\Models\UserData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UserdataController extends Controller
 {
@@ -37,28 +38,46 @@ class UserdataController extends Controller
      */
     public function register()
     {
-        return view('users.create');
+        return view('novo.login.register');
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RegisterFormValidation
      */
-    public function store(RegisterFormValidation $request)
+    public function store(Request $request)
     {
-        $user = new User;
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->phone = $request->phone;
-        $user->password = Hash::make($request->password);
-        $user->save();
-
-        Auth::login($user);
-
-        return redirect()->route('imovel.create')
-            ->with('success', 'Dados de usuário criados com sucesso.');
+      
+       
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|unique:users',
+            'phone' => 'required',
+            'password' => 'required|same:confirm_password',
+        ]);
+        
+        if ($validator->fails()) {
+            return redirect('register')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+        
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'password' => Hash::make($request->password),
+        ]);
+    
+   
+        
+        if($user){
+            auth()->login($user);
+           
+            return redirect()->route('user.create')->with('success', 'Usuário cadastrado com sucesso!');
+        }
     }
 
     /**
@@ -82,7 +101,7 @@ class UserdataController extends Controller
      */
     public function login()
     {
-        return view('users.login');
+        return view('novo.login.login');
     }
 
     public function auth(Request $request)
@@ -96,7 +115,7 @@ class UserdataController extends Controller
             return redirect()->route('imovel.create');
         }
 
-        return back()->withErrors(['email' => 'Credenciais inválidas.']);
+        return back()->withErrors(['error' => 'Credenciais inválidas.']);
     }
 
     public function authApi(Request $request)

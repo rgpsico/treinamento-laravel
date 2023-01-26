@@ -14,7 +14,7 @@ class Listagem extends Component
     protected $paginationTheme = 'bootstrap';
 
     public $search;
-    public $tipo;
+    public $type;
     public $qualificado;
     public $ordem;
 
@@ -30,9 +30,18 @@ class Listagem extends Component
         {
             $datas->where(function ($query)
             {
-                $datas = $query->whereRaw("MATCH(title) AGAINST(? IN BOOLEAN MODE)", $this->search);
+                $datas = $query->where("title", "like", $this->search);
             });
         }
+
+        if($this->type)
+        {
+            $datas->where(function ($query)
+            {
+               $query->where("type", "=", $this->type);
+            });
+        }
+         
          
          $countLeads = $datas->count();
 

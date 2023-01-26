@@ -21,7 +21,7 @@
       </div>
 
       <div class="form-group selectdiv">
-        <select class="form-control text-truncate">
+        <select wire:model="type"  class="form-control text-truncate">
           <option selected>Tipo</option>
           <option value="1">Casa</option>
           <option value="2">KitNet</option>

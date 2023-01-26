@@ -34,12 +34,20 @@
           <ul class="navbar-nav">
             <li class="nav-item dropdown"> 
               <a class="nav-link "
-               href="{{route('novo.home')}}" 
+               href="{{route('novo.listar')}}" 
               > Home </a>
              
             <li class="nav-item"> 
               <a class="nav-link"  href="{{route('novo.categoria')}}">Serviços</a>
-            </li>           
+            </li>    
+            
+            <li class="nav-item"> 
+              <a class="nav-link"  href="{{route('user.create')}}">Registrar</a>
+            </li>   
+
+            <li class="nav-item"> 
+              <a class="nav-link"  href="{{route('user.login')}}">Login</a>
+            </li>   
            </ul>
 
           <div class="header_r d-flex">
@@ -56,19 +64,32 @@
                 </form>
             </div>
         @else
-            <div class="loin"> 
-                <a class="nav-link" href="#" data-toggle="modal" data-target="#login">
-                    <i class="fa fa-user m-r-5">
-                    </i>Registrar/Logar
-                </a>  
-            </div>
+        {{-- <div class="row join" style="padding-left: 20px"> 
+         
+          <div class="col-3">
+              <a class="nav-link text-dark" href="{{route('user.login')}}" >
+                  <i class="fa fa-user m-r-5 ">
+                  </i>Logar
+              </a> 
+          </div>
+          <div class="col-3">
+              <a class="nav-link text-dark" href="{{route('user.create')}}" >
+                  <i class="fa fa-plus m-r-5 ">
+                  </i>Registrar
+              </a> 
+          </div>
+      </div> --}}
+      
         @endif
-        
+        @if (Auth::check())
             <ul class="ml-auto post_ad">
               <li class="nav-item search">
-                <a class="nav-link" href="#">Adicionar Casa</a>
+                <a class="nav-link" href="{{route('imovel.create')}}">Adicionar Casa</a>
               </li>
             </ul>
+            @endif
+
+
           </div>
         </div>
       </nav>
