@@ -159,14 +159,13 @@ class ImovelController extends Controller
         $imovel->price = $request->price;
         $imovel->save();
 
-
-        if ($request->avatar) {       
-            foreach($request->avatar as $key => $value ){
-            echo $value;
-              $filename = time() . '.' . $value->getClientOriginalExtension();
+        
+        if($request->hasFile('avatar'))
+        {
+            foreach($request->avatar as $key => $value ){           
+              $filename = time() . '.' .rand(). $value->getClientOriginalExtension();
               $path = public_path('/imagens/imoveis/');
-              $value->move($path, $filename);
-    
+              $value->move($path, $filename);    
     
               $imagem = new userGallery();
               $imagem->user_id = auth()->user()->id;
@@ -175,11 +174,10 @@ class ImovelController extends Controller
               $imagem->save();
   
             }
-          }
-          
+        }
+                
          
-            
-          
+           
          
 
         return redirect()->route('imovel.create')

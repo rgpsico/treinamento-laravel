@@ -1,7 +1,7 @@
 
-@extends('layouts.master')
+<x-layout title="Categoria">
 <!-- Categories -->
-@section('content')
+
 
 @include('novo._partials.banner')
 <!-- End banner --> 
@@ -83,6 +83,9 @@
   </div>
 </div>
 </div>
+
+
+
 <div class="row">
 <div class="col-md-6">
 <div class="row">
@@ -185,5 +188,6 @@
 <!-- End Testimonial -->
 
 <!-- End Testimonial -->
-@endsection
+
+</x-layout>
 

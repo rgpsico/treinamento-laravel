@@ -22,7 +22,7 @@ Route::post('/store', [UserdataController::class,'store'])->name('user.store');;
 Route::get('/logout', [UserdataController::class,'logout'])->name('logout');;
 
 
-Route::get('/list',['middleware' => 'auth'], [ImovelController::class,'index'])->name('imovel.list');
+Route::get('/list', [ImovelController::class,'index'])->name('imovel.list');
 Route::get('/{id}/show', [ImovelController::class,'show'])->name('imovel.show');
 
 Route::group(['prefix' => '/imovel', 'middleware' => 'auth'], function () {
@@ -35,13 +35,16 @@ Route::group(['prefix' => '/imovel', 'middleware' => 'auth'], function () {
     Route::get('/create', [ImovelController::class,'create'])->name('imovel.create');
     Route::post('/post', [ImovelController::class,'store'])->name('imovel.store');
     Route::post('/{id}/destroy', [ImovelController::class,'destroy'])->name('imovel.destroy');
+   
 });
 
+Route::middleware(['auth'])->get('/dashboard', [DashBoardController::class, 'index'])->name('dashboard');
 
 
-Route::group(['prefix' => '/dashboard', 'middleware' => 'auth'], function () {
-    Route::get('/', [DashBoardController::class, 'index'])->name('dashboard');
-});
+
+
+    
+
 
 
 
