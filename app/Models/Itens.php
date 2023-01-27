@@ -9,5 +9,6 @@ class Itens extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'descricao'];
+   
+    protected $fillable = ['imovel_id', 'item', 'quantidade'];
 }

@@ -25,7 +25,7 @@ class Imovel extends Model
 
     public function itens()
     {
-        return $this->hasMany(ImovelItem::class);
+        return $this->hasMany(ImovelItens::class);
     }
 
     public function regras()

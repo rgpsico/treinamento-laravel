@@ -54,18 +54,15 @@
             </ul>
           </div>
           <ul class="list-unstyled d-inline-block float-left detail_left m-b-0">
-            <li>Arcondicionado:</li>
-            <li>Vista :</li>
-            <li>porão :</li>
-            <li>Barulho:</li>
-            <li>Aceita criança</li>
+            @foreach ($data->itens as $item )
+                        <li style="text-transform:capitalize;">{{$item->item->name}}</li>
+             @endforeach
           </ul>
           <ul class="list-unstyled d-inline-block m-l-40 detail_right  m-b-0">
-            <li>Sim</li>
-            <li>Sim</li>
-            <li>Não</li>
-            <li>Não</li>
-            <li>Sim</li>
+            @foreach ($data->itens as $item )
+                        <li>Ok</li>
+             @endforeach
+           
           </ul>
           <div class="detail_bottum m-t-15">
             <div class="row">
@@ -75,7 +72,8 @@
                   <label class="form-check-label"> </label>
                   <img src="{{asset('images/warrenty.png')}}" alt="{{$data->title}}">
                   <div class="warranty d-inline-block">
-                    Não precisa de deposito*<br>
+                    {{$data->deposito == 0 ? 'Não precisa de deposito*' : 'Precisa de deposito'}}
+                    <br>
                      </div>
                 </div>
               </div>

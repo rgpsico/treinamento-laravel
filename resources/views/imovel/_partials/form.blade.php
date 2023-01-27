@@ -98,12 +98,13 @@
 
     <div class="col-12">
         <div class="form-group">
-            <label for="price" class="form-label">Itens:</label>
+            <label for="item" class="form-label">Itens:</label>
             <br>
             <div class="row">
-                <label for="price" class="ml-4 m-2">Cama:</label>
-                <input type="checkbox"  class="" >
-             
+                @foreach ($itens as $item )                   
+                <label for="item" class="ml-4 m-2" name="item">{{$item->name}}</label>
+                <input type="checkbox"  class="" name="itens[]" value="{{$item->id}}" >
+                @endforeach
             </div>
           
         </div>

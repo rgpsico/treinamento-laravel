@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ImoveisRequest;
 use App\Http\Requests\ImovelStoreRequest;
 use App\Models\Imovel;
+use App\Models\ImovelItens;
+use App\Models\Itens;
 use App\Models\User;
 use App\Models\UserData;
 use App\Models\usergallery;
@@ -86,7 +88,8 @@ class ImovelController extends Controller
      */
     public function create()
     {
-        return view('imovel.create');
+        $itens = Itens::all();
+        return view('imovel.create')->with(['itens' => $itens]);
     }
 
 
@@ -175,10 +178,19 @@ class ImovelController extends Controller
   
             }
         }
-                
-         
+
+
+        $itens = $request->input('itens');
+      
+        foreach ($itens as $item) {
            
-         
+            $itens = new ImovelItens();
+            $itens->imovel_id = $imovel->id;
+            $itens->item_id = $item;
+          
+            $itens->save();
+               
+        }
 
         return redirect()->route('imovel.create')
                         ->with('success','Imovel criados com sucesso.');
