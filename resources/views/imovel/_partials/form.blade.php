@@ -95,6 +95,21 @@
     </div>
 
 
+
+    <div class="col-12">
+        <div class="form-group">
+            <label for="price" class="form-label">Itens:</label>
+            <br>
+            <div class="row">
+                <label for="price" class="ml-4 m-2">Cama:</label>
+                <input type="checkbox"  class="" >
+             
+            </div>
+          
+        </div>
+    </div>
+
+
     <div class="form-group">
         <input type="file" name="avatar[]" multiple id="avatar">
         @if ($errors->has('avatar'))

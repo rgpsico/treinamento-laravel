@@ -3,6 +3,8 @@
 use App\Events\PostCreated;
 use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\ImovelController;
+use App\Http\Controllers\ItensController;
+use App\Http\Controllers\ProprietarioController;
 use App\Http\Controllers\UserdataController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +38,23 @@ Route::group(['prefix' => '/imovel', 'middleware' => 'auth'], function () {
     Route::post('/post', [ImovelController::class,'store'])->name('imovel.store');
     Route::post('/{id}/destroy', [ImovelController::class,'destroy'])->name('imovel.destroy');
    
+        Route::group(['prefix' => '/proprietario'], function () {
+        Route::get('/', [ProprietarioController::class,'index'])->name('proprietario.index');
+        Route::get('/{id}/edit', [ProprietarioController::class,'edit'])->name('proprietario.edit');
+        Route::post('/{id}/update', [ProprietarioController::class,'update'])->name('proprietario.update');
+        Route::get('/create', [ProprietarioController::class,'create'])->name('proprietario.create');
+        Route::post('/post', [ProprietarioController::class,'store'])->name('proprietario.store');
+        Route::post('/{id}/destroy', [ProprietarioController::class,'destroy'])->name('proprietario.destroy');
+    });
+
+    Route::group(['prefix' => '/itens'], function () {
+        Route::get('/', [ItensController::class,'index'])->name('itens.index');
+         Route::get('/{id}/edit', [ItensController::class,'edit'])->name('itens.edit');
+        Route::post('/{id}/update', [ItensController::class,'update'])->name('itens.update');
+        Route::get('/create', [ItensController::class,'create'])->name('itens.create');
+        Route::post('/post', [ItensController::class,'store'])->name('itens.store');
+        Route::post('/{id}/destroy', [ItensController::class,'destroy'])->name('itens.destroy');
+    });
 });
 
 Route::middleware(['auth'])->get('/dashboard', [DashBoardController::class, 'index'])->name('dashboard');

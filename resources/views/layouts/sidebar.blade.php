@@ -130,6 +130,26 @@
                       </li>
 
                       <li class="nav-item">
+                        <a href="{{route('proprietario.index')}}" class="nav-link ">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Proprietarios
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>                          
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{route('itens.index')}}" class="nav-link ">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Itens
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>                          
+                    </li>
+
+                      <li class="nav-item">
                         <a href="{{route('imovel.list')}}" class="nav-link ">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
@@ -138,6 +158,10 @@
                             </p>
                         </a>                          
                     </li>
+
+
+                    
+
 
 
                     @if(Auth::user())
