@@ -44,3 +44,5 @@
     </div>
     @endforeach
 </div>
+
+<button class="view-btn hvr-pulse-grow"  wire:click="todos" >Ver todos</button>

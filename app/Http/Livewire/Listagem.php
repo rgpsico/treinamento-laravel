@@ -17,15 +17,18 @@ class Listagem extends Component
     public $type;
     public $place;
     public $price;
+    public $todos = false;
     public $qualificado;
     public $ordem;
 
     protected $queryString = ['search'];
 
+    protected $listeners = ['todos' => 'todos'];
+
     public function render()
     {
 
-        $datas = Imovel::select('id','title','description', 'price', 'avatar');
+        $datas = Imovel::select('id', 'title', 'description', 'price', 'avatar');
 
       
         if($this->search)
@@ -71,10 +74,23 @@ class Listagem extends Component
 
             $datas = $datas->orderBy('title');
         }
+       
+     
+        if ($this->todos) {
+            $datas = $datas->paginate(null);
+        } else {
+            $datas = $datas->paginate(10);
+        }
+        
 
-
-        $datas = $datas->paginate(25);
       
         return view('livewire.listagem', compact('datas'));
     }
+
+    
+    public function todos() {
+        $this->todos = true;
+        $this->setPage(1);
+    }
+    
 }

@@ -114,7 +114,9 @@
                                 <div class="row">
                                     <div class="col-sm-8"><h2>Proprietarios</h2></div>
                                     <div class="col-sm-4">
-                                        <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add Novo</button>
+                                        <a href="{{route('proprietario.create')}}" type="button" class="btn btn-info add-new">
+                                            <i class="fa fa-plus"></i> Add Novo
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -139,10 +141,10 @@
                                             <a class="add" title="Add" data-toggle="tooltip">
                                                 <i class="material-icons"></i>
                                             </a>
-                                            <a class="edit" title="Edit" data-toggle="tooltip">
+                                            <a href="{{route('proprietario.edit',['id'=>$value->id])}}" title="Edit" data-toggle="tooltip">
                                                 <i class="material-icons"></i>
                                             </a>
-                                            <a class="delete" title="Delete" data-toggle="tooltip">
+                                            <a class="delete" title="Delete" data-id="{{ $value->id }}" data-toggle="tooltip">
                                                 <i class="material-icons"></i>
                                             </a>
                                         </td>
@@ -170,6 +172,20 @@
     {!! JsValidator::formRequest('App\Http\Requests\ImoveisRequest', '#myForm') !!}
     <script>
         $(document).ready(function(){
+
+            function deletePropietario(id){
+                fetch(`/api/propietario/${id}/delete`, {
+                        method: 'DELETE'
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Success:', data);
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            }
+            
 	$('[data-toggle="tooltip"]').tooltip();
 	var actions = $("table td:last-child").html();
 	// Append table with add row form on add new button click
@@ -221,9 +237,11 @@
     });
 	// Delete row on delete button click
 	$(document).on("click", ".delete", function(){
-      
-        $(this).parents("tr").remove();
-		$(".add-new").removeAttr("disabled");
+        if (confirm("Você quer excluir esse item ?") == true) {
+            deletePropietario($(this).data('id'))
+                    $(this).parents("tr").remove();
+                    $(".add-new").removeAttr("disabled");
+                }
     });
 });
 

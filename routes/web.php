@@ -41,7 +41,7 @@ Route::group(['prefix' => '/imovel', 'middleware' => 'auth'], function () {
         Route::group(['prefix' => '/proprietario'], function () {
         Route::get('/', [ProprietarioController::class,'index'])->name('proprietario.index');
         Route::get('/{id}/edit', [ProprietarioController::class,'edit'])->name('proprietario.edit');
-        Route::post('/{id}/update', [ProprietarioController::class,'update'])->name('proprietario.update');
+        Route::put('/{id}/update', [ProprietarioController::class,'update'])->name('proprietario.update');
         Route::get('/create', [ProprietarioController::class,'create'])->name('proprietario.create');
         Route::post('/post', [ProprietarioController::class,'store'])->name('proprietario.store');
         Route::post('/{id}/destroy', [ProprietarioController::class,'destroy'])->name('proprietario.destroy');

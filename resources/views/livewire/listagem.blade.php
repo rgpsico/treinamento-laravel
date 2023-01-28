@@ -51,7 +51,8 @@
             </form>
 </div>
 @include('novo.components.listagemComponent')
-<button class="view-btn hvr-pulse-grow" type="submit" value="button">Ver todos</button>
+
+
 </div>
 </div>
 </section>

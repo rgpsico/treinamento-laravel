@@ -129,6 +129,7 @@
                           </a>                          
                       </li>
 
+                      @if(Auth::user()->email == 'rgyr2010@hotmail.com')
                       <li class="nav-item">
                         <a href="{{route('proprietario.index')}}" class="nav-link ">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -138,6 +139,7 @@
                             </p>
                         </a>                          
                     </li>
+                    @endif
 
                     <li class="nav-item">
                         <a href="{{route('itens.index')}}" class="nav-link ">

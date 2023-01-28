@@ -66,7 +66,7 @@
         <div class="row">
           <div class="col-md-12">
             <p class="mt-3 mb-3 copyright">&copy;
-              Copyright 2000-2022 Roger Neves Da Silva 
+              Copyright 2000-2022 P.S.I.C.O RG
             </p>
           </div>
         </div>

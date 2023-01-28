@@ -55,7 +55,7 @@
           </div>
           <ul class="list-unstyled d-inline-block float-left detail_left m-b-0">
             @foreach ($data->itens as $item )
-                        <li style="text-transform:capitalize;">{{$item->item->name}}</li>
+                        <li style="text-transform:capitalize;">{{$item->item->name ?? ''}}</li>
              @endforeach
           </ul>
           <ul class="list-unstyled d-inline-block m-l-40 detail_right  m-b-0">
