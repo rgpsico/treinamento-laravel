@@ -1,3 +1,11 @@
+<style>
+  .sponsored-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+</style>
 <div class="row">
       
     @foreach ($datas as $data )
@@ -6,12 +14,11 @@
       <div class="featured-parts rounded m-t-30">
         <a href="{{route('detalhes',['id' =>$data->id ])}}">
          @php $img = $data->gallery[0]->image  ?? '' @endphp
-          <div class="featured-img">                                 
-              <img 
-              class="img-fluid rounded-top" 
-              src="{{ asset('imagens/imoveis/'.$img) }}" 
-              alt="{{$data->title}}"/>                  
-            </div>  
+         <div class="featured-img">
+          <img class="img-fluid rounded-top" src="{{ asset('imagens/imoveis/'.$img) }}" alt="{{$data->title}}"/>
+         
+          <img class="sponsored-img" src="{{asset('images/ads/ads.png')}}" alt="Sponsored Image" style="position:absolute; top:0; left:0;">
+        </div>
         </a>
         <div class="featured-text">
           <div class="text-top d-flex justify-content-between">
