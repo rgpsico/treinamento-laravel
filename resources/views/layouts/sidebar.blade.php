@@ -11,6 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
 </head>
 <style>
@@ -146,6 +147,17 @@
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
                                 Itens
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>                          
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a href="{{route('category.index')}}" class="nav-link ">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Categoria
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>                          

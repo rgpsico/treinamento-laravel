@@ -1,6 +1,7 @@
 <?php
 
 use App\Events\PostCreated;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\ImovelController;
 use App\Http\Controllers\ItensController;
@@ -16,6 +17,19 @@ Route::get('/detalhes/{id}/show', [ImovelController::class,'detalhes'])->name('d
 Route::get('/categoria', [ImovelController::class,'categoria'])->name('novo.categoria');
 Route::get('/home', [ImovelController::class,'home'])->name('novo.home');
 
+
+Route::group(['prefix' => '/admin'], function () {
+
+    Route::group(['prefix' => '/categoria'], function () {
+        Route::get('/', [CategoryController::class,'index'])->name('category.index');
+        Route::get('/{id}/show', [CategoryController::class,'show'])->name('category.show');
+        Route::get('/create', [CategoryController::class,'create'])->name('category.create');
+        Route::get('/{id}/edit', [CategoryController::class,'edit'])->name('category.edit');
+        Route::put('/{id}/update', [CategoryController::class,'edit'])->name('category.update');
+        Route::post('/post', [CategoryController::class,'store'])->name('category.store');
+        Route::post('/{id}/destroy', [CategoryController::class, 'destroy'])->name('category.destroy');
+    });
+});
 
 Route::get('/login', [UserdataController::class,'login'])->name('user.login');
 Route::post('/login', [UserdataController::class,'auth'])->name('user.auth');
