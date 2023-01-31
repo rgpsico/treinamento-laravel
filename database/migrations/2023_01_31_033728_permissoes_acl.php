@@ -27,10 +27,18 @@ class PermissoesAcl extends Migration
     
         Schema::create('profile_permissoes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('profile_id')->nullable();
             $table->foreign('profile_id')->references('id')->on('profile')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');        
+            $table->timestamps(); 
+        });
+
+        Schema::create('profile_users', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('profile_id')->nullable();
+            $table->foreign('profile_id')->references('id')->on('profile')->onDelete('cascade');
+          
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps(); 
         });
 
@@ -50,5 +58,6 @@ class PermissoesAcl extends Migration
         Schema::dropIfExists('permissoes');
         Schema::dropIfExists('profile');
         Schema::dropIfExists('profile_permissoes');
+        Schema::dropIfExists('profile_users');
     }
 }
