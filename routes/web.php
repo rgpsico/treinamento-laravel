@@ -2,9 +2,12 @@
 
 use App\Events\PostCreated;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ConfiguracaoController;
 use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\ImovelController;
 use App\Http\Controllers\ItensController;
+use App\Http\Controllers\PermissoesController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProprietarioController;
 use App\Http\Controllers\UserdataController;
 use App\Models\User;
@@ -28,6 +31,26 @@ Route::group(['prefix' => '/admin'], function () {
         Route::put('/{id}/update', [CategoryController::class,'edit'])->name('category.update');
         Route::post('/post', [CategoryController::class,'store'])->name('category.store');
         Route::post('/{id}/destroy', [CategoryController::class, 'destroy'])->name('category.destroy');
+    });
+
+
+    
+    Route::group(['prefix' => '/profile'], function () {
+        Route::get('/', [ProfileController::class,'index'])->name('profile.index');
+        Route::get('/create', [ProfileController::class,'create'])->name('profile.create');
+        Route::get('/{id}/edit', [ProfileController::class,'edit'])->name('profile.edit');
+        Route::get('/{id}/addPermissoes', [ProfileController::class,'addPermissoes'])->name('profile.addPermissoes');
+        Route::post('/store', [ProfileController::class,'store'])->name('profile.store');
+        Route::post('/{id}/update', [ProfileController::class,'update'])->name('profile.update');
+    });
+
+
+    Route::group(['prefix' => '/permissoes'], function () {
+        Route::get('/', [PermissoesController::class,'index'])->name('permissoes.index');
+        Route::get('/create', [PermissoesController::class,'create'])->name('permissoes.create');
+        Route::get('/{id}/edit', [PermissoesController::class,'edit'])->name('permissoes.edit');
+        Route::post('/store', [PermissoesController::class,'store'])->name('permissoes.store');
+        Route::post('/{id}/update', [PermissoesController::class,'update'])->name('permissoes.update');
     });
 });
 

@@ -191,7 +191,26 @@
                     @endif
 
 
-                    
+                    <li class="nav-item">
+                        <a href="{{route('permissoes.index')}}" class="nav-link ">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Permissoes 
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>                          
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a href="{{route('profile.index')}}" class="nav-link ">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Profile 
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>                          
+                    </li>
                   
                     
                   </ul>
