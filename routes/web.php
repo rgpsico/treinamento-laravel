@@ -6,10 +6,12 @@ use App\Http\Controllers\ConfiguracaoController;
 use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\ImovelController;
 use App\Http\Controllers\ItensController;
+use App\Http\Controllers\ListaEsperaController;
 use App\Http\Controllers\PermissoesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProprietarioController;
 use App\Http\Controllers\UserdataController;
+
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
@@ -42,6 +44,16 @@ Route::group(['prefix' => '/admin'], function () {
         Route::get('/{id}/addPermissoes', [ProfileController::class,'addPermissoes'])->name('profile.addPermissoes');
         Route::post('/store', [ProfileController::class,'store'])->name('profile.store');
         Route::post('/{id}/update', [ProfileController::class,'update'])->name('profile.update');
+    });
+
+
+    Route::group(['prefix' => '/espera'], function () {
+        Route::get('/', [ListaEsperaController::class,'index'])->name('espera.index');
+        Route::get('/create', [ListaEsperaController::class,'create'])->name('espera.create');
+        Route::get('/{id}/edit', [ListaEsperaController::class,'edit'])->name('espera.edit');
+        Route::post('/store', [ListaEsperaController::class,'store'])->name('espera.store');
+        Route::post('/{id}/update', [ListaEsperaController::class,'update'])->name('espera.update');
+        Route::delete('/{id}/destroy', [ListaEsperaController::class,'destroy'])->name('espera.destroy');
     });
 
 
