@@ -32,4 +32,9 @@ class Imovel extends Model
     {
         return $this->hasMany(RegraImovel::class);
     }
+
+    public function listaEspera()
+    {
+        return $this->hasMany(ListaEsperaImovel::class);
+    }
 }

@@ -93,6 +93,8 @@ color: #999;
 <tr>
       <th style="text-align: left">Id</th>
       <th style="text-align: left">Nome</th>
+      <th style="text-align: left">imovel</th>
+      <th style="text-align: left">disponibilidade</th>
       <th>Ações</th>
    
   </tr>
@@ -102,6 +104,8 @@ color: #999;
   @foreach ($model as $value )
   <tr>
       <td>{{$value->id}}</td>
+      <td>{{$value->name}}</td>
+      <td>{{$value->name}}</td>
       <td>{{$value->name}}</td>
       <td>
         <a  href='{{route($route.'.edit',['id' => $value->id])}}' class="btn btn-info">Editar</a>

@@ -130,7 +130,7 @@
                           </a>                          
                       </li>
 
-                      @if(Auth::user()->email == 'rgyr2010@hotmail.com')
+                      @if(isset(Auth::user()->email) &&   Auth::user()->email == 'rgyr2010@hotmail.com')
                       <li class="nav-item">
                         <a href="{{route('proprietario.index')}}" class="nav-link ">
                             <i class="nav-icon fas fa-tachometer-alt"></i>

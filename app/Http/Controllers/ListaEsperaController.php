@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\ListaEspera;
+use App\Models\ListaEsperaImovel;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Hash;
@@ -14,10 +15,14 @@ class ListaEsperaController extends Controller
     protected $view = 'listaespera';
     protected $route = 'espera';
     protected $model;
+    protected $lista;
 
-    public function __construct( ListaEspera $model )
+    public function __construct( 
+    ListaEspera $model, 
+    ListaEsperaImovel $lista )
     {
         $this->model = $model;
+        $this->lista = $lista;
     }
    
     public function index(Request $request)
@@ -105,6 +110,21 @@ class ListaEsperaController extends Controller
         $model->place = $request->place;  
 
         if($model->save())
+        {
+            return redirect()->back();
+        }
+    }
+
+
+
+    public function storeApi(Request $request)
+    {
+        $imovelLista = $this->lista;
+        $imovelLista->user_id = $request->user_id;
+        $imovelLista->imovel_id = $request->imovel_id;     
+    
+
+        if($imovelLista->save())
         {
             return redirect()->back();
         }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ItensController;
+use App\Http\Controllers\ListaEsperaController;
 use App\Http\Controllers\ProprietarioController;
 use App\Http\Controllers\UserdataController;
 use Illuminate\Http\Request;
@@ -17,6 +18,12 @@ Route::delete('/propietario/{id}/delete', [ProprietarioController::class, 'delet
 Route::group(['prefix' => '/itens'], function () {
     Route::post('/store', [ItensController::class, 'store']);
     Route::delete('/{id}/delete', [ItensController::class, 'delete']);
+});
+
+
+Route::group(['prefix' => '/listaEspera'], function () {
+    Route::post('/store', [ListaEsperaController::class, 'storeApi'])->name('lista.esperaApi');
+    Route::delete('/{id}/delete', [ListaEsperaController::class, 'delete']);
 });
 
 
