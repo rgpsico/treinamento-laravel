@@ -180,7 +180,7 @@ class ImovelController extends Controller
         }
 
 
-        $itens = $request->input('itens');
+        if($itens = $request->input('itens')){
       
         foreach ($itens as $item) {
            
@@ -191,6 +191,7 @@ class ImovelController extends Controller
             $itens->save();
                
         }
+    }
 
         return redirect()->route('imovel.create')
                         ->with('success','Imovel criados com sucesso.');

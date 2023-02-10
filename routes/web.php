@@ -10,6 +10,7 @@ use App\Http\Controllers\ListaEsperaController;
 use App\Http\Controllers\PermissoesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProprietarioController;
+use App\Http\Controllers\RedisController;
 use App\Http\Controllers\UserdataController;
 
 use App\Models\User;
@@ -107,6 +108,9 @@ Route::group(['prefix' => '/imovel', 'middleware' => 'auth'], function () {
 });
 
 Route::middleware(['auth'])->get('/dashboard', [DashBoardController::class, 'index'])->name('dashboard');
+
+
+Route::get('/redis', [RedisController::class,'index']);
 
 
 

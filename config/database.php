@@ -119,7 +119,7 @@ return [
     'enabled' => env('TELESCOPE_ENABLED', true),
     'redis' => [
 
-        'client' => env('REDIS_CLIENT', 'phpredis'),
+        'client' => env('REDIS_CLIENT', 'predis'),
 
         'options' => [
             'cluster' => false,

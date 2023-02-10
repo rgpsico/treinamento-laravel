@@ -27,6 +27,9 @@ Route::group(['prefix' => '/listaEspera'], function () {
 });
 
 
+Route::get('/teste', function(){
+    return 'aqui';
+});
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

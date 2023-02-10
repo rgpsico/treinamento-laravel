@@ -19,15 +19,20 @@
     <div class="row">
       <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
         <div class="detail_box"> 
-          @if(isset($data->gallery) && $data->gallery = null)
+       
+          @if(isset($data->gallery))
             <img class="img-fluid principal" src="{{ asset('imagens/imoveis/'.$data->gallery[0]->image) }}" alt="{{$data->title}}">
           @endif
           <div class="m-t-20">
             <ul class="owl-carousel list-unstyled m-b-0" id="product_slider">
             
-              @if(isset($data->gallery) && $data->gallery = null)
+              @if(isset($data->gallery))
                 @foreach ($data->gallery as $key => $gallery ) 
-                      <li> <img class="img-fluid thumb-gallery" src="{{ asset('imagens/imoveis/'.$data->gallery[$key]->image) }}" alt="slide {{$key}}"> </li>
+                     <li> <img 
+                      class="img-fluid thumb-gallery" 
+                      src="{{ asset('imagens/imoveis/'.$data->gallery[$key]->image) }}" 
+                      alt="slide {{$key}}"> 
+                    </li>
                 @endforeach
               @endif
             </ul>
