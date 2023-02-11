@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ImovelApicontroller;
 use App\Http\Controllers\ItensController;
 use App\Http\Controllers\ListaEsperaController;
 use App\Http\Controllers\ProprietarioController;
@@ -19,6 +20,14 @@ Route::group(['prefix' => '/itens'], function () {
     Route::post('/store', [ItensController::class, 'store']);
     Route::delete('/{id}/delete', [ItensController::class, 'delete']);
 });
+
+
+
+Route::group(['prefix' => '/imovel'], function () {
+    Route::post('/store', [ImovelApicontroller::class, 'store']);
+    Route::get('/{id}/delete', [ImovelApicontroller::class, 'delete']);
+});
+
 
 
 Route::group(['prefix' => '/listaEspera'], function () {
