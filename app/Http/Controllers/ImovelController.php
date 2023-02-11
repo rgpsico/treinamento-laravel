@@ -9,7 +9,7 @@ use App\Models\ImovelItens;
 use App\Models\Itens;
 use App\Models\User;
 use App\Models\UserData;
-use App\Models\usergallery;
+use App\Models\UserGallery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;

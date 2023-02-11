@@ -20,7 +20,7 @@ class Imovel extends Model
 
     public function gallery()
     {
-        return $this->hasMany(usergallery::class);
+        return $this->hasMany(UserGallery::class);
     }
 
     public function itens()

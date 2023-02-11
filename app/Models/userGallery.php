@@ -9,7 +9,7 @@ class UserGallery extends Model
 {
     use HasFactory;
 
-    protected $table = 'usergallery';
+    protected $table = 'UserGallery';
 
     protected $fillable = [
         'image',
