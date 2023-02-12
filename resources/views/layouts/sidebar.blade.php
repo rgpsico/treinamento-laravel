@@ -120,6 +120,7 @@
                   <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                       data-accordion="false">
 
+                      @if(isset(Auth::user()->email) &&   Auth::user()->email == 'rgyr2010@hotmail.com')
                       <li class="nav-item">
                           <a href="{{route('dashboard')}}" class="nav-link ">
                               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -129,6 +130,7 @@
                               </p>
                           </a>                          
                       </li>
+                      @endif
 
                       @if(isset(Auth::user()->email) &&   Auth::user()->email == 'rgyr2010@hotmail.com')
                       <li class="nav-item">
@@ -151,18 +153,19 @@
                             </p>
                         </a>                          
                     </li>
+                    @if(isset(Auth::user()->email) &&   Auth::user()->email == 'rgyr2010@hotmail.com')
+                        <li class="nav-item">
+                            <a href="{{route('category.index')}}" class="nav-link ">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Categoria
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>                          
+                        </li>
+                    @endif
 
-
-                    <li class="nav-item">
-                        <a href="{{route('category.index')}}" class="nav-link ">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
-                            <p>
-                                Categoria
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>                          
-                    </li>
-
+                    @if(isset(Auth::user()->email) &&   Auth::user()->email == 'rgyr2010@hotmail.com')
                       <li class="nav-item">
                         <a href="{{route('imovel.list')}}" class="nav-link ">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -172,6 +175,7 @@
                             </p>
                         </a>                          
                     </li>
+                    @endif
 
 
                     
@@ -190,18 +194,19 @@
                     </li>
                     @endif
 
+                    @if(isset(Auth::user()->email) &&   Auth::user()->email == 'rgyr2010@hotmail.com')
+                        <li class="nav-item">
+                            <a href="{{route('permissoes.index')}}" class="nav-link ">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Permissoes 
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>                          
+                        </li>
+                    @endif
 
-                    <li class="nav-item">
-                        <a href="{{route('permissoes.index')}}" class="nav-link ">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
-                            <p>
-                                Permissoes 
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>                          
-                    </li>
-
-
+                    @if(isset(Auth::user()->email) &&   Auth::user()->email == 'rgyr2010@hotmail.com')
                     <li class="nav-item">
                         <a href="{{route('profile.index')}}" class="nav-link ">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -211,17 +216,20 @@
                             </p>
                         </a>                          
                     </li>
+                    @endif
 
 
-                    <li class="nav-item">
-                        <a href="{{route('espera.index')}}" class="nav-link ">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
-                            <p>
-                                Lista de espera 
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>                          
-                    </li>
+                    @if(isset(Auth::user()->email) &&   Auth::user()->email == 'rgyr2010@hotmail.com')
+                        <li class="nav-item">
+                            <a href="{{route('espera.index')}}" class="nav-link ">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Lista de espera 
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>                          
+                        </li>
+                    @endif
                   
                     
                   </ul>
