@@ -70,11 +70,11 @@
 
       <aside class="main-sidebar sidebar-dark-primary elevation-4">
 
-          <a href="/" class="brand-link">
+          <a href="/" class="brand-link bg-light">
               <img src="{{asset('images/logo2.png')}}" 
               alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                   style="opacity: .8">
-              <span class="brand-text font-weight-light">Comunidade PPG</span>
+              <span class="brand-text font-weight-light"></span>
           </a>
 
           <div class="sidebar">
