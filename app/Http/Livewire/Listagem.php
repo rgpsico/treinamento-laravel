@@ -59,7 +59,7 @@ class Listagem extends Component
         {
             $datas->where(function ($query)
             {
-               $query->where("price", "=", $this->price);
+               $query->where("price", ">=", $this->price);
             });
         }
          
@@ -88,7 +88,8 @@ class Listagem extends Component
     }
 
     
-    public function todos() {
+    public function todos() 
+    {
         $this->todos = true;
         $this->setPage(1);
     }

@@ -30,7 +30,8 @@
       </div>
               <div class="form-group selectdiv">
                 <select class="form-control text-truncate " wire:model="place"  style="padding:10px;">
-                  <option selected> Lugar</option>
+                  <option selected>Comunidade</option>
+                   <option value="" selected>Selecione</option>
                   <option value="cantagalo">Cantagalo</option>
                   <option value="pavao">Pavão</option>
                 </select>
@@ -39,7 +40,7 @@
               
               <div class="form-group selectdiv">
                 <select wire:model="price" class="form-control text-truncate">
-                  <option selected>Preço</option>           
+                  <option selected>Preço até</option>           
                   <option value="300">300</option>
                   <option value="400">400</option>
                   <option value="500">500</option>

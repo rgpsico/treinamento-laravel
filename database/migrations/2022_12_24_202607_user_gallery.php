@@ -13,7 +13,7 @@ class UserGallery extends Migration
      */
     public function up()
     {
-        Schema::create('UserGallery', function (Blueprint $table) {
+        Schema::create('usergallery', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('imovel_id')->nullable();;
@@ -32,6 +32,6 @@ class UserGallery extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('UserGallery');
+        Schema::dropIfExists('usergallery');
     }
 }
