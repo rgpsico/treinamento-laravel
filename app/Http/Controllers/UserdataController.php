@@ -57,6 +57,8 @@ class UserdataController extends Controller
             'phone' => 'required',
             'password' => 'required|same:confirm_password',
         ]);
+
+
         
         if ($validator->fails()) {
             return redirect('register')
@@ -69,14 +71,22 @@ class UserdataController extends Controller
             'email' => $request->email,
             'phone' => $request->phone,
             'password' => Hash::make($request->password),
-        ]);
-    
-   
-        
-        if($user){
-            auth()->login($user);
+        ]);    
            
-            return redirect()->route('user.create')->with('success', 'Usuário cadastrado com sucesso!');
+        if($user){          
+            auth()->login($user);  
+
+            if($request->type == 1) {
+                return redirect()->route('novo.listar')->with('success', 'Usuário cadastrado com sucesso!');
+            }  
+
+            if($request->type == 2) {
+                return redirect()->route('imovel.users',
+                ['user_id' => $user->id])->with('success', 'Usuário cadastrado com sucesso!');
+            }   
+            
+           
+            
         }
     }
 

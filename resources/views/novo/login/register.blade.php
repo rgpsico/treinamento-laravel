@@ -12,6 +12,19 @@
             @csrf
             <div class="row">
 
+                <div class="form-group col-12">
+                    <label for="isProprietario">Estou buscando Imovel:</label>
+                    <select name="type" id="type" class="form-control">
+                        <option value="1">Estou procurando uma casa ou kitnet para alugar</option>
+                        <option value="2">Tenho um Casa ou Kitnet e quero alugar</option>
+                    </select>
+                    @if ($errors->has('isProprietario'))
+                        <span class="help-block text-danger ">
+                            <strong>{{ $errors->first('isProprietario') }}</strong>
+                        </span>
+                    @endif
+                </div>
+
               <div class="form-group col-12">
                 <label for="name">Name:</label>
                 <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">

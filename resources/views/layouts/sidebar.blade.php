@@ -83,7 +83,8 @@
                       <img src="https://adminlte.io/themes/v3/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                   </div>
                   <div class="info">
-                      <a href="#" class="d-block">@if (Auth::check())
+                      <a href="#" class="d-block">
+                    @if (Auth::check())
                         Olá, {{ Auth::user()->name }}.
                     @endif</a>
                   </div>
@@ -149,6 +150,16 @@
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
                                 Itens
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>                          
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{route('itens.index')}}" class="nav-link ">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Regras no Imovel
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>                          
