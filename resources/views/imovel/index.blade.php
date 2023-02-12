@@ -78,7 +78,8 @@
                         <img src="{{ asset('imagens/imoveis/'.$value->gallery[0]->image) }}"
                 
                         class="card-img" style="height:200px;">
-                        @endif
+                    @endif
+                    
                     <div class="card-body">
                         <h5 class="card-title">{{ $value->title ?? '' }}</h5>
                         <p class="card-text">Preço: R${{ $value->price ?? '' }}</p>
@@ -86,7 +87,7 @@
                         <span class="">{{ $value->data_created ?? '' }}</span>
                     </div>
                     <div class="card-footer">
-                        <a class="btn btn-success" href="{{ route('imovel.show', ['id' => $value->id]) }}"class="">Ver
+                        <a class="btn btn-success" href="{{ route('imovel.show', ['id' => $value->id]) }}" class="">Ver
                             imovel</a>
                     </div>
                 </div>
