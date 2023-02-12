@@ -15,12 +15,13 @@
                 <div class="form-group col-12">
                     <label for="isProprietario">Estou buscando Imovel:</label>
                     <select name="type" id="type" class="form-control">
-                        <option value="1">Estou procurando uma casa ou kitnet para alugar</option>
-                        <option value="2">Tenho um Casa ou Kitnet e quero alugar</option>
+                        <option value="">Selecione</option>
+                        <option value="1">Estou procurando uma casa/kitnet para alugar</option>
+                        <option value="2">Tenho uma Casa/Kitnet e quero alugar</option>
                     </select>
-                    @if ($errors->has('isProprietario'))
+                    @if ($errors->has('type'))
                         <span class="help-block text-danger ">
-                            <strong>{{ $errors->first('isProprietario') }}</strong>
+                            <strong>{{ $errors->first('type') }}</strong>
                         </span>
                     @endif
                 </div>

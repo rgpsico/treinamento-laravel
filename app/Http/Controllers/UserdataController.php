@@ -54,6 +54,7 @@ class UserdataController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|unique:users',
+            'type' => 'required',
             'phone' => 'required',
             'password' => 'required|same:confirm_password',
         ]);
