@@ -107,12 +107,10 @@
     }
 </style>
 @section('content')
-
-  
     <div class="container">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Tabela Responsiva</h3>
+                <h3 class="card-title">Categoria</h3>
                 <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 150px;">
                         <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
@@ -134,9 +132,8 @@
                                     <h2>Itens</h2>
                                 </div>
                                 <div class="col-sm-4">
-                                    <a href="{{route('category.create')}}" 
-                                     class="btn btn-info add-new">
-                                     <i class="fa fa-plus"></i> Add
+                                    <a href="{{ route('category.create') }}" class="btn btn-info add-new">
+                                        <i class="fa fa-plus"></i> Add
                                         Novo</a>
                                 </div>
                             </div>
@@ -164,7 +161,8 @@
                                             <a class="edit" title="Edit" data-toggle="tooltip">
                                                 <i class="material-icons"></i>
                                             </a>
-                                            <a class="delete"  data-id='{{ $value->id }}' title="Delete" data-toggle="tooltip">
+                                            <a class="delete" data-id='{{ $value->id }}' title="Delete"
+                                                data-toggle="tooltip">
                                                 <i class="material-icons"></i>
                                             </a>
                                         </td>
@@ -194,13 +192,14 @@
         $(document).ready(function() {
             var csrf_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-            function deleteItem(id){
+            function deleteItem(id) {
                 fetch(`/admin/categoria/${id}/destroy`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
                             'Accept': 'application/json',
-                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
+                                'content')
                         },
                     })
                     .then(response => response.json())
@@ -214,19 +213,19 @@
             }
 
 
-           
-                   
-                    const data = {
-                        name: name,
-                        descricao: $('#description').val()
-                    };
 
-               
-                
-            
-                    $(document).on("click", ".add", function() {
-                        $('.modal').modal('show')
-                    });
+
+            const data = {
+                name: name,
+                descricao: $('#description').val()
+            };
+
+
+
+
+            $(document).on("click", ".add", function() {
+                $('.modal').modal('show')
+            });
 
 
             // Delete row on delete button click

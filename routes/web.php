@@ -11,8 +11,9 @@ use App\Http\Controllers\PermissoesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProprietarioController;
 use App\Http\Controllers\RedisController;
+use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UserdataController;
-
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
@@ -112,6 +113,19 @@ Route::middleware(['auth'])->get('/dashboard', [DashBoardController::class, 'ind
 
 Route::get('/redis', [RedisController::class,'index']);
 
+Route::get('/treino',[SiteController::class, 'index'] );
+
+Route::get('/create-posts', function(){
+   $user = User::first();
+   $post = $user->posts()->create([
+    'title' => Str::random('150'),
+    'body' => Str::random('100')
+]);
+
+event(New PostCreated($post));
+
+return 'ok';
+});
 
 
 
