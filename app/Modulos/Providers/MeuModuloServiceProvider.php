@@ -16,10 +16,10 @@ class MeuModuloServiceProvider extends ServiceProvider
         // Route::namespace('App\Modulos\Entregadores\Http\Controllers')
         //     ->group($this->url_dir . '/web.php');
 
-        $this->loadViewsFrom($this->url_dir . '/../resources/views', 'entregadores');
+        // $this->loadViewsFrom($this->url_dir . '/../resources/views', 'entregadores');
 
-        $this->publishes([
-            $this->url_dir . '/../resources/views' => base_path('resources/views/vendor/entregadores'),
-        ], 'views');
+        // $this->publishes([
+        //     $this->url_dir . '/../resources/views' => base_path('resources/views/vendor/entregadores'),
+        // ], 'views');
     }
 }

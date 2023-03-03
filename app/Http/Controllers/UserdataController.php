@@ -19,9 +19,9 @@ class UserdataController extends Controller
      */
     public function index()
     {
-        $User = User::all();
+        $data = User::all();
 
-        return view('user.index', compact('User'));
+        return view('users.index', compact('data'));
     }
 
     public function novo()
@@ -49,8 +49,8 @@ class UserdataController extends Controller
      */
     public function store(Request $request)
     {
-      
-       
+
+
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|unique:users',
@@ -60,34 +60,33 @@ class UserdataController extends Controller
         ]);
 
 
-        
+
         if ($validator->fails()) {
             return redirect('register')
-                        ->withErrors($validator)
-                        ->withInput();
+                ->withErrors($validator)
+                ->withInput();
         }
-        
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
             'password' => Hash::make($request->password),
-        ]);    
-           
-        if($user){          
-            auth()->login($user);  
+        ]);
 
-            if($request->type == 1) {
+        if ($user) {
+            auth()->login($user);
+
+            if ($request->type == 1) {
                 return redirect()->route('novo.listar')->with('success', 'Usuário cadastrado com sucesso!');
-            }  
+            }
 
-            if($request->type == 2) {
-                return redirect()->route('imovel.users',
-                ['user_id' => $user->id])->with('success', 'Usuário cadastrado com sucesso!');
-            }   
-            
-           
-            
+            if ($request->type == 2) {
+                return redirect()->route(
+                    'imovel.users',
+                    ['user_id' => $user->id]
+                )->with('success', 'Usuário cadastrado com sucesso!');
+            }
         }
     }
 
@@ -131,25 +130,25 @@ class UserdataController extends Controller
 
     public function authApi(Request $request)
     {
-       
+
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
-    
-      
+
+
         $credentials = $request->only(['email', 'password']);
 
-        
-    
+
+
         if (!$token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'Usuario ou senha errado'], 401);
         }
-    
+
         return response()->json([
             'token' => $token,
             'type' => 'bearer'
-         
+
         ]);
     }
 

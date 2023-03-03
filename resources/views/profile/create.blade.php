@@ -4,7 +4,7 @@
 @section('content')
     </div>
 
-    @include('permissoes._partials.form')
-</div>
-</div>
+    @include('profile._partials.form')
+    </div>
+    </div>
 @endsection

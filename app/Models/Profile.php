@@ -9,11 +9,18 @@ class Profile extends Model
 {
     protected $fillable = ['name'];
     use HasFactory;
-    
+
     protected $table = 'profile';
 
     public $timestamps = false;
 
+    public function permissoes()
+    {
+        return $this->belongsToMany(Permissoes::class, 'profile_permissoes');
+    }
 
-   
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
 }
