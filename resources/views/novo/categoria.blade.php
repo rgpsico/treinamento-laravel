@@ -19,17 +19,7 @@
 
 
 
-                <div class="col-md-6 m-t-30">
-                    <div class="categories_box"> <a href="#">
-                            <img src="images/Categories/categories3.png" alt="Classified Plus" /></a>
-                        <div class="overlay text-center"> <a href="#">
-                                <img src="{{ asset('images/icons8-motocross-80.png') }}" alt="Classified Plus" />
-                                <p> Moto Taxi </p>
-                            </a> </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 m-t-30">
+                <div class="col-md-4 m-t-30">
                     <div class="categories_box"> <a href="#">
                             <img src="images/Categories/categories4.png" alt="Classified Plus" /></a>
                         <div class="overlay text-center">
@@ -40,13 +30,13 @@
                     </div>
                 </div>
 
-                <div class="col-md-3 m-t-30">
+                <div class="col-md-4 m-t-30" style="opacity: 0.7;">
                     <div class="categories_box">
-                        <a href="#">
+                        <a href="{{ route('novo.listar') }}">
                             <img src="images/Categories/categories5.png" alt="Classified Plus" />
                         </a>
                         <div class="overlay text-center">
-                            <a href="#">
+                            <a href="{{ route('novo.listar') }}">
                                 <img src="{{ asset('images/Real-Estate.png') }}" alt="Classified Plus" />
                                 <p> Imoveis </p>
                             </a>
@@ -54,13 +44,52 @@
                     </div>
                 </div>
 
-                <div class="col-md-3 m-t-30">
+
+
+                <div class="col-md-3 m-t-30" style="opacity: 0.7;">
+                    <div class="categories_box"> <a href="#">
+                            <img src="images/Categories/categories3.png" alt="Classified Plus" /></a>
+                        <div class="overlay text-center"> <a href="#">
+                                <img src="{{ asset('images/icons8-motocross-80.png') }}" alt="Classified Plus" />
+                                <p> Moto Taxi </p>
+                            </a> </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 m-t-30" style="opacity: 0.7;">
                     <div class="categories_box"> <a href="#"><img src="images/Categories/categories6.png"
                                 alt="Classified Plus" /></a>
                         <div class="overlay text-center"> <a href="#"><img src="images/Categories/Mobiles.png"
                                     alt="Classified Plus" />
-                                <p> Celulares </p>
+                                <p> Eletronicos </p>
                             </a> </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 m-t-30" style="opacity: 0.7;">
+                    <div class="categories_box">
+                        <a href="#">
+                            <img src="images/Categories/categories6.png" alt="Classified Plus" /></a>
+                        <div class="overlay text-center">
+                            <a href="#">
+                                <img src="images/Categories/Mobiles.png" alt="Classified Plus" />
+                                <p> Material de Construção </p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-3 m-t-30" style="opacity: 0.7;">
+                    <div class="categories_box">
+                        <a href="#">
+                            <img src="images/Categories/categories6.png" alt="Classified Plus" /></a>
+                        <div class="overlay text-center">
+                            <a href="#">
+                                <img src="images/Categories/Mobiles.png" alt="Classified Plus" />
+                                <p>Salões de beleza </p>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
