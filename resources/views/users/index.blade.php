@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    @include('users._partials.modal')
     <div class="col-2 mb-2">
         <button class="btn btn-success">Criar Novo Usuário</button>
     </div>
@@ -19,7 +20,7 @@
                         <td>{{ $value->id }}</td>
                         <td>{{ $value->name }}</td>
                         <td> <span class="text-danger bg-success cursor-pointer"
-                                id="profile">{{ $value->UserProfile[0]->profile->name }}</span>
+                                id="profile">{{ $value->UserProfile[0]->profile->name ?? '' }}</span>
                         </td>
                         <td>
                             <button class="btn btn-info">Editar</button>
@@ -33,3 +34,11 @@
         </table>
     </div>
 @endsection
+<script src='{{ asset('js/app.js') }}'></script>
+
+<script>
+    $(document).on("click", "#profile", function() {
+        $('#userProfile').modal('show')
+
+    });
+</script>

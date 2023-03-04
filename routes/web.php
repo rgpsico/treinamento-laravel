@@ -40,6 +40,7 @@ Route::group(['prefix' => '/admin'], function () {
 
     Route::group(['prefix' => '/users'], function () {
         Route::get('/', [UserdataController::class, 'index'])->name('users.index');
+        Route::post('/profileUpdate', [UserdataController::class, 'profileUpdate'])->name('users.profileUpdate');
     });
 
 

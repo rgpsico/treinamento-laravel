@@ -6,7 +6,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-6">
-                      
+
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -17,14 +17,13 @@
                         </ol>
                     </div>
                 </div>
-                <a class="btn btn-success" 
-                style="font-size:12px; height:30px; width:120px;"
-                href="{{ route('imovel.create') }}
+                <a class="btn btn-success" style="font-size:12px; height:30px; width:120px;"
+                    href="{{ route('imovel.create') }}
                 ">Cadastrar Imovel</a>
             </div>
-        </section>        
-         
-        
+        </section>
+
+
     </div>
 
 
@@ -59,7 +58,8 @@
                   <option value="2">2 quartos</option>
                 </select>
               </div> --}}
-                <button type="submit" class="btn btn-primary btn-sm" style="margin-top:35px; height:30px;font-size:12px;">Filtrar</button>
+                <button type="submit" class="btn btn-primary btn-sm"
+                    style="margin-top:35px; height:30px;font-size:12px;">Filtrar</button>
             </div>
 
 
@@ -71,15 +71,13 @@
     <div class="card-group">
 
         @foreach ($data as $value)
-     
             <div class="col-12 col-md-4">
                 <div class="card">
-                    @if(isset($value->gallery[0]) && !is_null($value->gallery[0]))
-                        <img src="{{ asset('imagens/imoveis/'.$value->gallery[0]->image) }}"
-                
-                        class="card-img" style="height:200px;">
+                    @if (isset($value->gallery[0]) && !is_null($value->gallery[0]))
+                        <img src="{{ asset('imagens/imoveis/' . $value->gallery[0]->image) }}" class="card-img"
+                            style="height:200px;">
                     @endif
-                    
+
                     <div class="card-body">
                         <h5 class="card-title">{{ $value->title ?? '' }}</h5>
                         <p class="card-text">Preço: R${{ $value->price ?? '' }}</p>
@@ -87,7 +85,8 @@
                         <span class="">{{ $value->data_created ?? '' }}</span>
                     </div>
                     <div class="card-footer">
-                        <a class="btn btn-success" href="{{ route('imovel.show', ['id' => $value->id]) }}" class="">Ver
+                        <a class="btn btn-success" href="{{ route('imovel.show', ['id' => $value->id]) }}"
+                            class="">Ver
                             imovel</a>
                     </div>
                 </div>

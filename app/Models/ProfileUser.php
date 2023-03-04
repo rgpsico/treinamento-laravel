@@ -15,6 +15,8 @@ class ProfileUser extends Model
 
     public $timestamps = false;
 
+    public $fillable = ['profile_id', 'user_id'];
+
 
     public function profile()
     {

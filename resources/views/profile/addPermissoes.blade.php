@@ -27,6 +27,7 @@
                             <th>Nome</th>
                         </thead>
                         <tbody>
+
                             <form action="{{ route('profile.addProfileAndPermissao') }}" method="POST">
                                 <input type="hidden" name="profile_id" value="{{ $data->id }}">
                                 @csrf

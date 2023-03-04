@@ -32,6 +32,7 @@ class AppServiceProvider extends AuthServiceProvider
     {
         $this->registerPolicies();
 
+
         Gate::define('ver-itens', function ($user) {
             if ($user->UserProfile  === null) {
                 return false;

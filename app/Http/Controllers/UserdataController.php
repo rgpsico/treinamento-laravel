@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterFormValidation;
+use App\Models\Profile;
+use App\Models\ProfileUser;
 use App\Models\User;
 use App\Models\UserData;
 use Illuminate\Http\Request;
@@ -21,7 +23,9 @@ class UserdataController extends Controller
     {
         $data = User::all();
 
-        return view('users.index', compact('data'));
+        $profile = Profile::all();
+
+        return view('users.index', compact('data', 'profile'));
     }
 
     public function novo()
@@ -29,6 +33,32 @@ class UserdataController extends Controller
         $User = User::all();
 
         return view('novo.list');
+    }
+
+
+
+    public function profileUpdate(Request $request)
+    {
+        $id = $request->user_id;
+
+
+
+        $profile = ProfileUser::updateOrCreate(
+            ['user_id' => $id],
+            [
+                'profile_id' => $request->input('profile_id'),
+                'user_id' => $request->input('user_id'),
+                // Adicione outros campos aqui
+            ]
+        );
+
+        if ($profile->wasRecentlyCreated) {
+            // O registro foi criado
+            return redirect()->back()->with('success', 'O perfil foi criado com sucesso.');
+        } else {
+            // O registro foi atualizado
+            return redirect()->back()->with('success', 'O perfil foi atualizado com sucesso.');
+        }
     }
 
     /**

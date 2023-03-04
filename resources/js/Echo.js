@@ -4,5 +4,5 @@ window.Echo.channel('post-created')
                 console.log(e)
                 console.log(e.post.title)
                     
-                 Vue.$vToastify.success("SUcesso", 'novo post') 
+                ;
             })

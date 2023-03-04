@@ -64,36 +64,46 @@
     </div>
 
     <div class="card-group">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Imagem</th>
+                    <th>Título</th>
+                    <th>Preço</th>
+                    <th>Tipo</th>
 
-        @foreach ($data as $value)
-            <div class="col-12 col-md-4">
-                <div class="card">
-                    @if(isset($value->gallery[0]) && !is_null($value->gallery[0]))
-                    <img src="{{ asset('imagens/imoveis/'.$value->gallery[0]->image) }}"
-                        class="card-img" style="height:200px;">
-                    @endif
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $value->title ?? '' }}</h5>
-                        <p class="card-text">Preço: R${{ $value->price ?? '' }}</p>
-                        <p class="text-color-red"> {{ $value->type == 1 ? 'Casa' : 'KitNet' }}</p>
-                        <span class="">{{ $value->data_created ?? '' }}</span>
-                    </div>
-                    <div class="card-footer">
-                        <a class="btn btn-success m-2" href="{{ route('imovel.show', ['id' => $value->id]) }}"class="">Ver
-                            imovel</a>
+                    <th>Data de criação</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($data as $value)
+                    <tr>
+                        <td>
+                            @if (isset($value->gallery[0]) && !is_null($value->gallery[0]))
+                                <img src="{{ asset('imagens/imoveis/' . $value->gallery[0]->image) }}" width="30"
+                                    height="50" class="card-img">
+                            @endif
+                        </td>
+                        <td>{{ $value->title ?? '' }}</td>
+                        <td>R${{ $value->price ?? '' }}</td>
+                        <td>{{ $value->type == 1 ? 'Casa' : 'KitNet' }}</td>
 
-                            <a class="btn btn-info m-2" href="{{ route('imovel.edit', ['id' => $value->id]) }}"class="">Editar
-                                imovel</a>
-
-                                <form action="{{route('imovel.destroy',['id' => $value->id])}}" method="POST">
-                                    @csrf
-                                    @method('POST')
-                            <button class="btn btn-danger m-2" type="submit" class="">Excluir
-                                imovel</button>
+                        <td>{{ $value->data_created }}</td>
+                        <td>
+                            <a href="{{ route('imovel.edit', ['id' => $value->id]) }}" class="btn btn-primary">Editar</a>
+                            <form action="{{ route('imovel.destroy', ['id' => $value->id]) }}" method="POST"
+                                style="display: inline-block;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Excluir</button>
                             </form>
-                    </div>
-                </div>
-            </div>
-        @endforeach
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+
+
     </div>
 @endsection

@@ -10,6 +10,9 @@ window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
+window.$ = window.jQuery = require('jquery');
+
+require('bootstrap');
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
@@ -27,11 +30,12 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     forceTLS: true
 // });
 
-import Echo from 'laravel-echo';
- window.io = require('socket.io-client')
- window.Echo = new Echo({
-    broadcaster: 'socket.io',
-    host: window.location.hostname + ':6001'
- })
+// import Echo from 'laravel-echo';
+//  window.io = require('socket.io-client')
+//  window.Echo = new Echo({
+//     broadcaster: 'socket.io',
+//     host: window.location.hostname + ':6001'
+//  })
 
- require('./Echo')
+//  require('./Echo')
+

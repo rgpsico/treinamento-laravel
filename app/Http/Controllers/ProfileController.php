@@ -35,7 +35,10 @@ class ProfileController extends Controller
     public function addPermissoes($id)
     {
         $data = Profile::find($id);
+        $profile = ProfilePermissoes::where('profile_id', $id)->get();
+
         $permissoes = Permissoes::all();
+
         return  view('profile.addPermissoes', compact('data', 'permissoes'));
     }
 

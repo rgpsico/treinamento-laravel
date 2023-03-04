@@ -12,6 +12,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    @yield('styles')
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 </head>
@@ -234,10 +236,9 @@
                             </li>
                         @endif
 
-
                         @if (isset(Auth::user()->email) && Auth::user()->email == 'rgyr2010@hotmail.com')
                             <li class="nav-item">
-                                <a href="{{ route('espera.index') }}" class="nav-link ">
+                                <a href="{{ route('espera.index') }}" class="nav-link">
                                     <i class="nav-icon fas fa-tachometer-alt"></i>
                                     <p>
                                         Lista de espera
