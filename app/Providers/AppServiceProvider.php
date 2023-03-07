@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\ProfilePermissoes;
 use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
@@ -34,15 +35,20 @@ class AppServiceProvider extends AuthServiceProvider
 
 
         Gate::define('ver-itens', function ($user) {
-            if ($user->UserProfile  === null) {
+            if (!$user->profile) {
                 return false;
             }
+            $id_profile = $user->profile->profile_id;
 
-            $permissoes = $user->UserProfile->flatMap(function ($perfil) {
-                return $perfil->permissoes->pluck('nome');
-            });
+            $todasAsPermissoes = ProfilePermissoes::where('profile_id', $id_profile)->get();
 
-            return $permissoes->contains('ver-itens');
+            foreach ($todasAsPermissoes as $value) {
+                foreach ($value->permissoes as $permissoes) {
+                    if ($permissoes->name == 'ver-itens') {
+                        return true;
+                    }
+                }
+            }
         });
     }
 }

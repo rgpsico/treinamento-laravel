@@ -2,8 +2,7 @@
 
 
 @section('content')
-    <section class="content">
-
+    <div class="col-12">
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">Projects</h3>
@@ -103,8 +102,9 @@
                     </tbody>
                 </table>
             </div>
-
         </div>
 
-    </section>
-@endsection
+
+
+        </section>
+    @endsection

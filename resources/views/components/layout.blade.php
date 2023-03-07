@@ -1,7 +1,7 @@
 @include('layouts.novo.header')
 @livewireStyles
 <!-- banner -->
-{{$slot}}
+{{ $slot }}
 
 @livewireScripts
 @include('layouts.novo.footer')

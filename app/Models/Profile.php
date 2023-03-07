@@ -16,7 +16,7 @@ class Profile extends Model
 
     public function permissoes()
     {
-        return $this->belongsToMany(Permissoes::class, 'profile_permissoes');
+        return $this->belongsToMany(Permission::class, 'profile_permissoes');
     }
 
     public function users()

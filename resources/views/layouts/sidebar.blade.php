@@ -7,14 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Imoveis PPG</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+
+    <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
+    <script src="{{ asset('js/jquery.js') }}"></script>
+
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     @yield('styles')
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -109,21 +111,7 @@
                             </button>
                         </div>
                     </div>
-                    <div class="sidebar-search-results">
-                        <div class="list-group"><a href="#" class="list-group-item">
-                                <div class="search-title"><strong class="text-light"></strong>N<strong
-                                        class="text-light"></strong>o<strong class="text-light"></strong> <strong
-                                        class="text-light"></strong>e<strong class="text-light"></strong>l<strong
-                                        class="text-light"></strong>e<strong class="text-light"></strong>m<strong
-                                        class="text-light"></strong>e<strong class="text-light"></strong>n<strong
-                                        class="text-light"></strong>t<strong class="text-light"></strong> <strong
-                                        class="text-light"></strong>f<strong class="text-light"></strong>o<strong
-                                        class="text-light"></strong>u<strong class="text-light"></strong>n<strong
-                                        class="text-light"></strong>d<strong class="text-light"></strong>!<strong
-                                        class="text-light"></strong></div>
-                                <div class="search-path"></div>
-                            </a></div>
-                    </div>
+
                 </div>
 
                 <nav class="mt-2">
@@ -142,132 +130,108 @@
                             </li>
                         @endif
 
-                        @if (isset(Auth::user()->email) && Auth::user()->email == 'rgyr2010@hotmail.com')
-                            <li class="nav-item">
-                                <a href="{{ route('proprietario.index') }}" class="nav-link ">
-                                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                                    <p>
-                                        Proprietarios
-                                        <i class="right fas fa-angle-left"></i>
-                                    </p>
-                                </a>
-                            </li>
-                        @endif
-                        @can('ver-itens')
-                            <li class="nav-item">
-                                <a href="{{ route('itens.index') }}" class="nav-link ">
-                                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                                    <p>
-                                        Itens
-                                        <i class="right fas fa-angle-left"></i>
-                                    </p>
-                                </a>
-                            </li>
-                        @endcan
-                        <li class="nav-item">
-                            <a href="{{ route('itens.index') }}" class="nav-link ">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Regras no Imovel
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                        </li>
-                        @if (isset(Auth::user()->email) && Auth::user()->email == 'rgyr2010@hotmail.com')
-                            <li class="nav-item">
-                                <a href="{{ route('category.index') }}" class="nav-link ">
-                                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                                    <p>
-                                        Categoria
-                                        <i class="right fas fa-angle-left"></i>
-                                    </p>
-                                </a>
-                            </li>
-                        @endif
+
 
                         @if (isset(Auth::user()->email) && Auth::user()->email == 'rgyr2010@hotmail.com')
-                            <li class="nav-item">
-                                <a href="{{ route('imovel.list') }}" class="nav-link ">
-                                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                                    <p>
-                                        Busca Imoveis
-                                        <i class="right fas fa-angle-left"></i>
-                                    </p>
-                                </a>
-                            </li>
-                        @endif
-
-
-
-
-
-
-                        @if (Auth::user())
-                            <li class="nav-item">
-                                <a href="{{ route('imovel.users', ['user_id' => Auth::user()->id]) }}"
-                                    class="nav-link ">
-                                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                                    <p>
-                                        Meus Imoveis
-                                        <i class="right fas fa-angle-left"></i>
-                                    </p>
-                                </a>
-                            </li>
-                        @endif
-
-                        <li class="nav-item">
-                            <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Dashboard
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview" style="display: none;">
-                                <li class="nav-item">
-                                    <a href="./index.html" class="nav-link active">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Dashboard v1</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="./index2.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Dashboard v2</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="./index3.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Dashboard v3</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        @if (isset(Auth::user()->email) && Auth::user()->email == 'rgyr2010@hotmail.com')
-                            <li class="nav-item">
+                            <li class="nav-item ">
                                 <a href="{{ route('profile.index') }}" class="nav-link ">
                                     <i class="nav-icon fas fa-tachometer-alt"></i>
                                     <p>
-                                        Profile
+                                        Imoveis
                                         <i class="right fas fa-angle-left"></i>
                                     </p>
                                 </a>
+
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{ route('imovel.users', ['user_id' => Auth::user()->id]) }}"
+                                            class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Meus Imoveis</p>
+                                        </a>
+                                    </li>
+
+                                </ul>
+
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{ route('proprietario.index') }}" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Proprietários</p>
+                                        </a>
+                                    </li>
+
+                                </ul>
+
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{ route('profile.index') }}" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Todos Imoveis</p>
+                                        </a>
+                                    </li>
+
+                                </ul>
+
+                                <ul class="nav nav-treeview">
+                                    {{-- @can('ver-itens') --}}
+                                    <li class="nav-item">
+                                        <a href="{{ route('itens.index') }}" class="nav-link ">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Itens</p>
+                                        </a>
+                                    </li>
+                                    {{-- @endcan --}}
+
+                                </ul>
+
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{ route('espera.index') }}" class="nav-link">
+                                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                                            <p>
+                                                Lista de espera
+                                                <i class="right fas fa-angle-left"></i>
+                                            </p>
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                         @endif
 
-                        @if (isset(Auth::user()->email) && Auth::user()->email == 'rgyr2010@hotmail.com')
-                            <li class="nav-item">
-                                <a href="{{ route('espera.index') }}" class="nav-link">
-                                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                                    <p>
-                                        Lista de espera
-                                        <i class="right fas fa-angle-left"></i>
-                                    </p>
-                                </a>
-                            </li>
-                        @endif
+
+
+
+
+                        <li class="nav-item ">
+                            <a href="" class="nav-link ">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Acesso
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('permissoes.index') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Permissoes</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('profile.index') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Profile</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+
 
 
                         <li class="nav-item">
@@ -278,6 +242,9 @@
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
+                        </li>
+
+
                         </li>
 
 

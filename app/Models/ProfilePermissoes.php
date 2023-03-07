@@ -16,6 +16,6 @@ class ProfilePermissoes extends Model
 
     public function permissoes()
     {
-        return $this->hasMany(Permissoes::class);
+        return $this->hasMany(Permissoes::class, 'id', 'permission_id');
     }
 }
