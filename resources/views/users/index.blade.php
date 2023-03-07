@@ -6,7 +6,7 @@
         <button class="btn btn-success">Criar Novo Usuário</button>
     </div>
     <div class="card container">
-        <table class="table">
+        <table class="table" id="ususario_table">
             <thead>
                 <th>#</th>
                 <th>Nome</th>
@@ -15,19 +15,7 @@
             </thead>
             <tbody>
 
-                @foreach ($data as $value)
-                    <tr>
-                        <td>{{ $value->id }}</td>
-                        <td>{{ $value->name }}</td>
-                        <td> <span class="text-danger bg-success cursor-pointer"
-                                id="profile">{{ $value->UserProfile[0]->profile->name ?? '' }}</span>
-                        </td>
-                        <td>
-                            <button class="btn btn-info">Editar</button>
-                            <button class="btn btn-danger">Excluir</button>
-                        </td>
-                    <tr>
-                @endforeach
+
 
             </tbody>
 
@@ -35,7 +23,7 @@
     </div>
 @endsection
 <script src='{{ asset('js/app.js') }}'></script>
-
+<script src='{{ asset('js/teste.js') }}'></script>
 <script>
     $(document).on("click", "#profile", function() {
         $('#userProfile').modal('show')

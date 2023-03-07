@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\ImovelApicontroller;
+use App\Http\Controllers\Api\UserApiController;
 use App\Http\Controllers\ItensController;
 use App\Http\Controllers\ListaEsperaController;
 use App\Http\Controllers\ProprietarioController;
@@ -9,12 +10,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
-Route::post('/auth', [UserdataController::class,'authApi']);
+Route::post('/auth', [UserdataController::class, 'authApi']);
 
 Route::post('/register', [UserdataController::class, 'store']);
 
 
 Route::delete('/propietario/{id}/delete', [ProprietarioController::class, 'delete']);
+
+Route::group(['prefix' => '/users'], function () {
+    Route::get('/', [UserApiController::class, 'index']);
+});
+
 
 Route::group(['prefix' => '/itens'], function () {
     Route::post('/store', [ItensController::class, 'store']);
@@ -36,7 +42,7 @@ Route::group(['prefix' => '/listaEspera'], function () {
 });
 
 
-Route::get('/teste', function(){
+Route::get('/teste', function () {
     return 'aqui';
 });
 
