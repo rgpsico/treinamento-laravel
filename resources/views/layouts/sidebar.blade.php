@@ -59,8 +59,8 @@
                     <div class="navbar-search-block">
                         <form class="form-inline">
                             <div class="input-group input-group-sm">
-                                <input class="form-control form-control-navbar" type="search" placeholder="Search"
-                                    aria-label="Search">
+                                <input class="form-control form-control-navbar" type="search" placeholder="Buscar"
+                                    aria-label="Buscar">
                                 <div class="input-group-append">
                                     <button class="btn btn-navbar" type="submit">
                                         <i class="fas fa-search"></i>
@@ -77,41 +77,49 @@
         </nav>
 
 
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background:#0f172a;">
 
-            <a href="/" class="brand-link" style="background:#fff;">
-                <img src="{{ asset('images/logo2.png') }}" alt="AdminLTE Logo"
-                    class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">AdminLTE 3</span>
-            </a>
+
 
             <div class="sidebar">
-
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                        <img src="https://adminlte.io/themes/v3/dist/img/user2-160x160.jpg"
-                            class="img-circle elevation-2" alt="User Image">
+                <div class="row my-4 ml-2">
+                    <div class="col-8">
+                        <img src="https://angular-material.fusetheme.com/assets/images/logo/logo.svg" width="20px"
+                            height="20px" alt="">
                     </div>
-                    <div class="info">
-                        <a href="#" class="d-block">
-                            @if (Auth::check())
-                                Olá, {{ Auth::user()->name }}.
-                            @endif
-                        </a>
+                    <div class="col-4 d-flex justify-content-between">
+                        <i class="fas fa-bell text-white"></i>
+                        <i class="fas fa-user text-white mr-3"></i>
+
                     </div>
                 </div>
 
-                <div class="form-inline">
-                    <div class="input-group" data-widget="sidebar-search">
-                        <input class="form-control form-control-sidebar" type="search" placeholder="Search"
-                            aria-label="Search">
-                        <div class="input-group-append">
-                            <button class="btn btn-sidebar">
-                                <i class="fas fa-search fa-fw"></i>
-                            </button>
+
+
+                <div class="row mb-5 my-5">
+                    <div class="col-12 mb-2">
+                        <div class="image d-flex justify-content-center align-items-center">
+                            <img src="https://angular-material.fusetheme.com/assets/images/avatars/brian-hughes.jpg"
+                                class="img-circle elevation-2 img-fluid scale-down" width="80" height="80"
+                                alt="User Image">
                         </div>
                     </div>
 
+                    <div class="col-12">
+                        <a href="#" class="d-flex justify-content-center align-items-center small">
+                            @if (Auth::check())
+                                {{ Auth::user()->name }}.
+                            @endif
+                        </a>
+                    </div>
+
+                    <div class="col-12">
+                        <a href="#" class="d-flex justify-content-center align-items-center small text-light">
+                            @if (Auth::check())
+                                {{ Auth::user()->email }}.
+                            @endif
+                        </a>
+                    </div>
                 </div>
 
                 <nav class="mt-2">
@@ -121,10 +129,10 @@
                         @if (isset(Auth::user()->email) && Auth::user()->email == 'rgyr2010@hotmail.com')
                             <li class="nav-item">
                                 <a href="{{ route('dashboard') }}" class="nav-link ">
-                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <i class="nav-icon fas fa-chart-pie"></i>
                                     <p>
                                         Dashboard
-                                        <i class="right fas fa-angle-left"></i>
+
                                     </p>
                                 </a>
                             </li>
@@ -135,7 +143,7 @@
                         @if (isset(Auth::user()->email) && Auth::user()->email == 'rgyr2010@hotmail.com')
                             <li class="nav-item ">
                                 <a href="{{ route('profile.index') }}" class="nav-link ">
-                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <i class="nav-icon fas fa-home"></i>
                                     <p>
                                         Imoveis
                                         <i class="right fas fa-angle-left"></i>
@@ -201,7 +209,8 @@
 
                         <li class="nav-item ">
                             <a href="" class="nav-link ">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
+
+                                <i class="nav-icon fas fa-key"></i>
                                 <p>
                                     Acesso
                                     <i class="right fas fa-angle-left"></i>
@@ -232,10 +241,10 @@
 
                         <li class="nav-item">
                             <a href="{{ route('users.index') }}" class="nav-link ">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <i class="nav-icon fas fa-user-circle"></i>
                                 <p>
                                     Usuário
-                                    <i class="right fas fa-angle-left"></i>
+
                                 </p>
                             </a>
                         </li>

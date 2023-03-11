@@ -10,6 +10,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
+
+Route::apiResource('acl', UserApiController::class);
+
+
+
+
 Route::post('/auth', [UserdataController::class, 'authApi']);
 
 Route::post('/register', [UserdataController::class, 'store']);
@@ -18,7 +24,7 @@ Route::post('/register', [UserdataController::class, 'store']);
 Route::delete('/propietario/{id}/delete', [ProprietarioController::class, 'delete']);
 
 Route::group(['prefix' => '/users'], function () {
-    Route::get('/', [UserApiController::class, 'index']);
+    Route::post('/post', [UserApiController::class, 'store']);
 });
 
 

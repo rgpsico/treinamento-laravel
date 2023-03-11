@@ -5,7 +5,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Projects</h3>
+                <h3 class="card-title">Imoveis</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                         <i class="fas fa-minus"></i>
@@ -23,81 +23,52 @@
                                 #
                             </th>
                             <th style="width: 20%">
-                                Nome
+                                foto
                             </th>
                             <th style="width: 30%">
-                                Membros
+                                Local
                             </th>
                             <th>
-                                Projeto
+                                Preço
                             </th>
                             <th style="width: 8%" class="text-center">
                                 Status
                             </th>
-                            <th style="width: 20%">
+                            <th style="width: 20%; text-align:center;">
+                                Ações
                             </th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="dados">
                         <tr>
-                            <td>
-                                #
+                            <td>10</td>
+                            <td><img src="" alt=""></td>
+                            <td>Rampinha</td>
+                            <td>400</td>
+                            <td> <span class="badge badge-pill badge-danger badge-3">Alugado</span>
                             </td>
-                            <td>
-                                <a>
-                                    AdminLTE v3
-                                </a>
-                                <br>
-                                <small>
-                                    Created 01.01.2019
-                                </small>
-                            </td>
-                            <td>
-                                <ul class="list-inline">
-                                    <li class="list-inline-item">
-                                        <img alt="Avatar" class="table-avatar" src="../../dist/img/avatar.png">
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <img alt="Avatar" class="table-avatar" src="../../dist/img/avatar2.png">
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <img alt="Avatar" class="table-avatar" src="../../dist/img/avatar3.png">
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <img alt="Avatar" class="table-avatar" src="../../dist/img/avatar4.png">
-                                    </li>
-                                </ul>
-                            </td>
-                            <td class="project_progress">
-                                <div class="progress progress-sm">
-                                    <div class="progress-bar bg-green" role="progressbar" aria-valuenow="57"
-                                        aria-valuemin="0" aria-valuemax="100" style="width: 57%">
-                                    </div>
-                                </div>
-                                <small>
-                                    57% Complete
-                                </small>
-                            </td>
-                            <td class="project-state">
-                                <span class="badge badge-success">Success</span>
-                            </td>
+
+
                             <td class="project-actions text-right">
                                 <a class="btn btn-primary btn-sm" href="#">
                                     <i class="fas fa-folder">
                                     </i>
-                                    View
+                                    Ver
                                 </a>
                                 <a class="btn btn-info btn-sm" href="#">
                                     <i class="fas fa-pencil-alt">
                                     </i>
-                                    Edit
+                                    Editar
                                 </a>
                                 <a class="btn btn-danger btn-sm" href="#">
                                     <i class="fas fa-trash">
                                     </i>
-                                    Delete
+                                    Excluir
                                 </a>
                             </td>
+                            </td>
+                        </tr>
+
 
                     </tbody>
                 </table>
