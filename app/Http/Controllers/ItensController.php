@@ -61,10 +61,10 @@ class ItensController extends Controller
             ->with('success', 'Item  criado com sucesso.');
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
         $item = Itens::findOrFail($id);
         $item->delete();
-        return response()->json(['message' => 'Item deletado com sucesso']);
+        return redirect()->back()->with(['success' => 'Item deleteado com sucesso']);
     }
 }

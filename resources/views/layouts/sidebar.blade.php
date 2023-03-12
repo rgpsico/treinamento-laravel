@@ -159,7 +159,7 @@
 
 
                         @if (isset(Auth::user()->email) && Auth::user()->email == 'rgyr2010@hotmail.com')
-                            <li class="nav-item ">
+                            <li class="nav-item open menu-is-opening menu-open">
                                 <a href="{{ route('profile.index') }}" class="nav-link ">
                                     <i class="nav-icon fas fa-home"></i>
                                     <p>
@@ -169,9 +169,9 @@
                                 </a>
 
                                 <ul class="nav nav-treeview">
-                                    <li class="nav-item">
+                                    <li class="nav-item ">
                                         <a href="{{ route('imovel.users', ['user_id' => Auth::user()->id]) }}"
-                                            class="nav-link">
+                                            class="nav-link myImoveis">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Meus Imoveis</p>
                                         </a>
@@ -181,7 +181,7 @@
 
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
-                                        <a href="{{ route('proprietario.index') }}" class="nav-link">
+                                        <a href="{{ route('proprietario.index') }}" class="nav-link proprietario">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Proprietários</p>
                                         </a>
@@ -202,7 +202,7 @@
                                 <ul class="nav nav-treeview">
                                     {{-- @can('ver-itens') --}}
                                     <li class="nav-item">
-                                        <a href="{{ route('itens.index') }}" class="nav-link ">
+                                        <a href="{{ route('itens.index') }}" class="nav-link itensMenu">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Itens</p>
                                         </a>
@@ -213,7 +213,7 @@
 
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
-                                        <a href="{{ route('espera.index') }}" class="nav-link">
+                                        <a href="{{ route('espera.index') }}" class="nav-link espera">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>
                                                 Lista de espera
@@ -287,5 +287,39 @@
 
                 name.style.display = 'none';
                 email.style.display = 'none';
+            });
+
+
+            $(document).ready(function() {
+                if (window.location.href.indexOf('imovel/' + {{ Auth::user()->id }} + '/myimoveis') > -1) {
+                    $('.myImoveis').addClass('active');
+                    $('.propriedade').removeClass('active');
+                    $('.itensMenu').removeClass('active');
+                }
+
+                if (window.location.href.indexOf('imovel/itens') > -1) {
+                    $('.myImoveis').removeClass('active');
+                    $('.propriedade').removeClass('active');
+                    $('.itensMenu').addClass('active');
+                    $('.espera').removeClass('active');
+                }
+
+
+                if (window.location.href.indexOf('imovel/proprietario') > -1) {
+                    $('.myImoveis').removeClass('active');
+                    $('.itensMenu').removeClass('active');
+                    $('.proprietario').addClass('active');
+                    $('.espera').removeClass('active');
+                }
+
+                if (window.location.href.indexOf('admin/espera') > -1) {
+                    $('.myImoveis').removeClass('active');
+                    $('.itensMenu').removeClass('active');
+                    $('.proprietario').removeClass('active');
+                    $('.espera').addClass('active');
+                }
+
+                // Adiciona as classes "menu-open" e "menu-is-opening" ao elemento <li> correspondente ao menu "Imoveis"
+                $('li.nav-item.active').parent().addClass('menu-open menu-is-opening');
             });
         </script>

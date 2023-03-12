@@ -117,7 +117,7 @@ Route::group(['prefix' => '/imovel', 'middleware' => 'auth'], function () {
         Route::put('/{id}/update', [ItensController::class, 'update'])->name('itens.update');
         Route::get('/create', [ItensController::class, 'create'])->name('itens.create');
         Route::post('/post', [ItensController::class, 'store'])->name('itens.store');
-        Route::post('/{id}/destroy', [ItensController::class, 'destroy'])->name('itens.destroy');
+        Route::delete('/{id}/destroy', [ItensController::class, 'destroy'])->name('itens.destroy');
     });
 });
 
