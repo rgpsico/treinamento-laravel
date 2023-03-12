@@ -17,20 +17,7 @@
             <!-- Row  -->
             <div class="row">
 
-
-
                 <div class="col-md-4 m-t-30">
-                    <div class="categories_box"> <a href="#">
-                            <img src="images/Categories/categories4.png" alt="Classified Plus" /></a>
-                        <div class="overlay text-center">
-                            <a href="#"><img src="{{ asset('images/amburguer.png') }}" alt="Classified Plus" />
-                                <p> FastFood </p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 m-t-30" style="opacity: 0.7;">
                     <div class="categories_box">
                         <a href="{{ route('novo.listar') }}">
                             <img src="images/Categories/categories5.png" alt="Classified Plus" />
@@ -43,6 +30,21 @@
                         </div>
                     </div>
                 </div>
+
+
+
+                <div class="col-md-4 m-t-30" style="opacity: 0.7;">
+                    <div class="categories_box"> <a href="#">
+                            <img src="images/Categories/categories4.png" alt="Classified Plus" /></a>
+                        <div class="overlay text-center">
+                            <a href="#"><img src="{{ asset('images/amburguer.png') }}" alt="Classified Plus" />
+                                <p> FastFood </p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
 
 
 
@@ -100,7 +102,7 @@
     <!-- End Categories -->
 
     <!-- App_Store -->
-    <x-AplicativoComponent />
+    {{-- <x-AplicativoComponent /> --}}
     <!-- End App_Store -->
 
     <!-- Testimonial -->

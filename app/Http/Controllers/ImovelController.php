@@ -190,7 +190,7 @@ class ImovelController extends Controller
         }
 
         return redirect()->route('imovel.create')
-            ->with('success', 'Imovel criados com sucesso.');
+            ->with('success', "Imóvel criado com sucesso. <a href='/imovel/" . $imovel->id . "/show'>Clique aqui</a> para ir para a página de teste.");
     }
 
     /**
@@ -232,9 +232,8 @@ class ImovelController extends Controller
     public function destroy($id)
     {
         if ($imovel = Imovel::find($id)->first()) {
-
-
             $imovel->destroy($id);
+
             return redirect()->route('imovel.users', [
                 'user_id' => $imovel->user_id
             ])

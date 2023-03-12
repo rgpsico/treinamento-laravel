@@ -9,16 +9,18 @@ use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
-    protected $profile;
+    protected $model;
+    protected $pageTitle = 'Profile';
 
     public function __construct(Profile $profile)
     {
-        $this->profile = $profile;
+        $this->model = $profile;
     }
     public function index()
     {
-        $data = $this->profile->all();
-        return  view('profile.index')->with('data', $data);
+        $model = $this->model->all();
+        $pageTitle = $this->pageTitle;
+        return  view('profile.index', compact('model', 'pageTitle'));
     }
 
     public function create()
@@ -46,7 +48,7 @@ class ProfileController extends Controller
     {
         $data = $request->all();
 
-        $result = $this->profile->create($data);
+        $result = $this->model->create($data);
 
         if ($result) {
             return  view('profile.create')->with("success", 'Profile cadastrado com sucesso');

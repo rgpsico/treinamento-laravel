@@ -34,6 +34,24 @@
     #navbarToggleExternalContent.menu-show {
         transform: translateX(0%);
     }
+
+    .header {
+        display: flex;
+        align-items: center;
+    }
+
+    .name,
+    .email {
+        margin-right: 20px;
+    }
+
+    @media (max-width: 768px) {
+
+        .name,
+        .email {
+            display: none;
+        }
+    }
 </style>
 
 <body class="sidebar-mini" style="height: auto;">
@@ -43,8 +61,8 @@
 
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button">
-                        <i class="fas fa-bars"></i>
+                    <a class="nav-link " data-widget="pushmenu" href="#" role="button">
+                        <i class="fas fa-bars" id="menu-icon"></i>
                     </a>
                 </li>
 
@@ -54,7 +72,7 @@
 
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('logout') }}">
-                        <i class="fas fa-search">Sair</i>
+                        Sair
                     </a>
                     <div class="navbar-search-block">
                         <form class="form-inline">
@@ -63,10 +81,10 @@
                                     aria-label="Buscar">
                                 <div class="input-group-append">
                                     <button class="btn btn-navbar" type="submit">
-                                        <i class="fas fa-search"></i>
+
                                     </button>
                                     <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                                        <i class="fas fa-times"></i>
+
                                     </button>
                                 </div>
                             </div>
@@ -82,12 +100,12 @@
 
 
             <div class="sidebar">
-                <div class="row my-4 ml-2">
+                <div class="row my-4 ml-2 nav-treeview">
                     <div class="col-8">
                         <img src="https://angular-material.fusetheme.com/assets/images/logo/logo.svg" width="20px"
                             height="20px" alt="">
                     </div>
-                    <div class="col-4 d-flex justify-content-between">
+                    <div class="col-4 d-flex justify-content-between nav-treeview">
                         <i class="fas fa-bell text-white"></i>
                         <i class="fas fa-user text-white mr-3"></i>
 
@@ -96,7 +114,7 @@
 
 
 
-                <div class="row mb-5 my-5">
+                <div class="row mb-5 my-5 nav-treeview">
                     <div class="col-12 mb-2">
                         <div class="image d-flex justify-content-center align-items-center">
                             <img src="https://angular-material.fusetheme.com/assets/images/avatars/brian-hughes.jpg"
@@ -105,7 +123,7 @@
                         </div>
                     </div>
 
-                    <div class="col-12">
+                    <div class="col-12 nav-treeview name">
                         <a href="#" class="d-flex justify-content-center align-items-center small">
                             @if (Auth::check())
                                 {{ Auth::user()->name }}.
@@ -113,7 +131,7 @@
                         </a>
                     </div>
 
-                    <div class="col-12">
+                    <div class="col-12 email">
                         <a href="#" class="d-flex justify-content-center align-items-center small text-light">
                             @if (Auth::check())
                                 {{ Auth::user()->email }}.
@@ -259,3 +277,15 @@
             </div>
 
         </aside>
+
+        <script>
+            const menuIcon = document.getElementById('menu-icon');
+            const name = document.querySelector('.name');
+            const email = document.querySelector('.email');
+
+            menuIcon.addEventListener('click', function() {
+
+                name.style.display = 'none';
+                email.style.display = 'none';
+            });
+        </script>

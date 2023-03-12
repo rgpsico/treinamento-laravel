@@ -9,21 +9,22 @@ use Illuminate\Support\Facades\Hash;
 class ProprietarioController extends Controller
 {
     protected $model;
+    protected $pageTitle = 'Proprietário';
 
-    public function __construct(User $model )
+    public function __construct(User $model)
     {
         $this->model = $model;
-        
     }
     public function index()
     {
-        $model = $this->model::all(['id','name']);
-        return view('imovel.proprietarios.index')->with(['model' => $model]);
+        $pageTitle = $this->pageTitle;
+        $model = $this->model::all(['id', 'name']);
+        return view('imovel.proprietarios.index')->with(['model' => $model, 'pageTitle' => $pageTitle]);
     }
 
     public function create()
     {
-       
+
         return view('imovel.proprietarios.create');
     }
 
@@ -43,7 +44,7 @@ class ProprietarioController extends Controller
         $user->save();
 
         return redirect()->route('proprietario.create')
-        ->with(['success'=>'Propietario criado com sucesso']);
+            ->with(['success' => 'Propietario criado com sucesso']);
     }
 
     public function update(Request $request, $id)
@@ -51,10 +52,10 @@ class ProprietarioController extends Controller
 
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|unique:users,email,'.$id,
+            'email' => 'required|string|email|unique:users,email,' . $id,
             'phone' => 'required|string|max:255',
         ]);
-        
+
         $user = User::find($id);
         $user->name = $request->name;
         $user->email = $request->email;
@@ -62,8 +63,8 @@ class ProprietarioController extends Controller
         $user->password = Hash::make('123456');
 
         $user->save();
-        return redirect()->route('proprietario.edit', ['id' =>$id])
-        ->with(['success'=>'Propietario Atualizado  com sucesso']);;
+        return redirect()->route('proprietario.edit', ['id' => $id])
+            ->with(['success' => 'Propietario Atualizado  com sucesso']);;
     }
 
     public function delete($id)

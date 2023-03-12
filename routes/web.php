@@ -83,18 +83,18 @@ Route::get('/logout', [UserdataController::class, 'logout'])->name('logout');;
 
 
 Route::get('/list', [ImovelController::class, 'index'])->name('imovel.list');
-Route::get('/{id}/show', [ImovelController::class, 'show'])->name('imovel.show');
 
 Route::group(['prefix' => '/imovel', 'middleware' => 'auth'], function () {
-    Route::get('/{user_id}/users', [ImovelController::class, 'myImoveis'])->name('imovel.users');
+    Route::get('/{user_id}/myimoveis', [ImovelController::class, 'myImoveis'])->name('imovel.users');
     Route::get('/search', [ImovelController::class, 'search'])->name('imovel.search');
+    Route::get('/{id}/show', [ImovelController::class, 'show'])->name('imovel.show');
 
 
     Route::get('/{id}/edit', [ImovelController::class, 'edit'])->name('imovel.edit');
     Route::post('/{id}/update', [ImovelController::class, 'update'])->name('imovel.update');
     Route::get('/create', [ImovelController::class, 'create'])->name('imovel.create');
     Route::post('/post', [ImovelController::class, 'store'])->name('imovel.store');
-    Route::post('/{id}/destroy', [ImovelController::class, 'destroy'])->name('imovel.destroy');
+    Route::delete('/{id}/destroy', [ImovelController::class, 'destroy'])->name('imovel.destroy');
 
     Route::group(['prefix' => '/proprietario'], function () {
         Route::get('/', [ProprietarioController::class, 'index'])->name('proprietario.index');
@@ -103,6 +103,7 @@ Route::group(['prefix' => '/imovel', 'middleware' => 'auth'], function () {
         Route::get('/create', [ProprietarioController::class, 'create'])->name('proprietario.create');
         Route::post('/post', [ProprietarioController::class, 'store'])->name('proprietario.store');
         Route::post('/{id}/destroy', [ProprietarioController::class, 'destroy'])->name('proprietario.destroy');
+        Route::post('/{id}/shoe', [ProprietarioController::class, 'destroy'])->name('proprietario.show');
     });
 
 
@@ -113,7 +114,7 @@ Route::group(['prefix' => '/imovel', 'middleware' => 'auth'], function () {
     Route::group(['prefix' => '/itens'], function () {
         Route::get('/', [ItensController::class, 'index'])->name('itens.index');
         Route::get('/{id}/edit', [ItensController::class, 'edit'])->name('itens.edit');
-        Route::post('/{id}/update', [ItensController::class, 'update'])->name('itens.update');
+        Route::put('/{id}/update', [ItensController::class, 'update'])->name('itens.update');
         Route::get('/create', [ItensController::class, 'create'])->name('itens.create');
         Route::post('/post', [ItensController::class, 'store'])->name('itens.store');
         Route::post('/{id}/destroy', [ItensController::class, 'destroy'])->name('itens.destroy');

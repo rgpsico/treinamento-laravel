@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 class PermissoesController extends Controller
 {
     protected $permissoes;
+    protected $pageTitle = 'Permissões';
 
     public function __construct(Permissoes $permissoes)
     {
@@ -15,8 +16,9 @@ class PermissoesController extends Controller
     }
     public function index()
     {
-        $data = $this->permissoes->all();
-        return  view('permissoes.index')->with('data', $data);
+        $model = $this->permissoes->all();
+        $pageTitle = $this->pageTitle;
+        return  view('permissoes.index', compact('model', 'pageTitle'));
     }
 
     public function create()
@@ -33,25 +35,23 @@ class PermissoesController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        
-      
+
+
         $result = $this->permissoes->create($data);
 
-       if($result){
+        if ($result) {
             return  view('permissoes.create')->with("success", 'Permissoes cadastrado com sucesso');
-       }
-       
+        }
     }
 
     public function update($id, Request $request)
     {
         $Permissoes = Permissoes::find($id);
-        
+
         $result = $Permissoes->update($request->all());
 
-       if($result){
+        if ($result) {
             return  redirect()->route('permissoes.edit', ['id' => $id])->with("success", 'Permissoes Editado com sucesso');
-       }
-       
+        }
     }
 }
