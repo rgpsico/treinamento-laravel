@@ -108,15 +108,23 @@
                                     <td>{{ $value->descricao }}</td>
 
                                     <td class="d-flex">
-                                        <a href="{{ route('itens.edit', ['id' => $value->id]) }}" class=" mr-2 btn btn-info"
+                                        <a href="{{ route('profile.edit', ['id' => $value->id]) }}" data-toggle="tooltip"
+                                            data-placement="top" title="Editar perfil" class=" mr-2 btn btn-info"
                                             style="height:40px; padding:10px;">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <form action="{{ route('itens.destroy', ['id' => $value->id]) }}" method="POST">
+                                        <a href='{{ route('profile.addPermissoes', ['id' => $value->id]) }}'
+                                            data-toggle="tooltip" data-placement="top" title="Adicionar permissões"
+                                            class="btn btn-success mr-2" style="height:40px; padding:10px;">
+                                            <i class="fas fa-plus-circle"></i></a>
+
+                                        <form action="{{ route('profile.destroy', ['id' => $value->id]) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn btn-danger mr-2" type="submit"
-                                                style="height:40px; padding:10px;">
+                                            <button class="btn btn-danger mr-2" type="submit" data-toggle="tooltip"
+                                                data-placement="top" title="Excluir perfil"
+                                                style="height:40px;
+                                                padding:10px;">
                                                 <i class="fas fa-trash-alt"></i>
                                             </button>
                                         </form>

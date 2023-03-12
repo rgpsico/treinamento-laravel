@@ -89,4 +89,14 @@ class ProfileController extends Controller
             return  redirect()->route('profile.edit', ['id' => $id])->with("success", 'Profile Editado com sucesso');
         }
     }
+
+
+    public function destroy($id)
+    {
+        if ($profile = Profile::find($id)) {
+            $profile->delete();
+
+            return redirect()->back()->with(['success' => 'Perfil deletado com sucesso']);
+        }
+    }
 }

@@ -146,7 +146,7 @@
 
                         @if (isset(Auth::user()->email) && Auth::user()->email == 'rgyr2010@hotmail.com')
                             <li class="nav-item">
-                                <a href="{{ route('dashboard') }}" class="nav-link ">
+                                <a href="{{ route('dashboard') }}" class="nav-link menuDashboard">
                                     <i class="nav-icon fas fa-chart-pie"></i>
                                     <p>
                                         Dashboard
@@ -159,7 +159,7 @@
 
 
                         @if (isset(Auth::user()->email) && Auth::user()->email == 'rgyr2010@hotmail.com')
-                            <li class="nav-item open menu-is-opening menu-open">
+                            <li class="nav-item menuImoveis open menu-is-opening menu-open">
                                 <a href="{{ route('profile.index') }}" class="nav-link ">
                                     <i class="nav-icon fas fa-home"></i>
                                     <p>
@@ -172,8 +172,8 @@
                                     <li class="nav-item ">
                                         <a href="{{ route('imovel.users', ['user_id' => Auth::user()->id]) }}"
                                             class="nav-link myImoveis">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Meus Imoveis</p>
+
+                                            <p class="ml-3">Meus Imoveis</p>
                                         </a>
                                     </li>
 
@@ -182,8 +182,8 @@
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
                                         <a href="{{ route('proprietario.index') }}" class="nav-link proprietario">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Proprietários</p>
+
+                                            <p class="ml-3">Proprietários</p>
                                         </a>
                                     </li>
 
@@ -192,8 +192,8 @@
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
                                         <a href="{{ route('profile.index') }}" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Todos Imoveis</p>
+
+                                            <p class="ml-3">Todos Imoveis</p>
                                         </a>
                                     </li>
 
@@ -203,8 +203,8 @@
                                     {{-- @can('ver-itens') --}}
                                     <li class="nav-item">
                                         <a href="{{ route('itens.index') }}" class="nav-link itensMenu">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Itens</p>
+
+                                            <p class="ml-3">Itens</p>
                                         </a>
                                     </li>
                                     {{-- @endcan --}}
@@ -214,8 +214,8 @@
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
                                         <a href="{{ route('espera.index') }}" class="nav-link espera">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>
+
+                                            <p class="ml-3">
                                                 Lista de espera
 
                                             </p>
@@ -225,21 +225,21 @@
                             </li>
                         @endif
 
-                        <li class="nav-item ">
+                        <li class="nav-item menuAcesso">
                             <a href="" class="nav-link ">
 
                                 <i class="nav-icon fas fa-key"></i>
                                 <p>
                                     Acesso
-                                    <i class="right fas fa-angle-left"></i>
+
                                 </p>
+                                <i class="right fas fa-angle-left"></i>
                             </a>
 
                             <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('permissoes.index') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Permissoes</p>
+                                <li class="nav-item ">
+                                    <a href="{{ route('permissoes.index') }}" class="nav-link menuPermissao">
+                                        <p class="ml-3">Permissoes</p>
                                     </a>
                                 </li>
 
@@ -247,9 +247,9 @@
 
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ route('profile.index') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Profile</p>
+                                    <a href="{{ route('profile.index') }}" class="nav-link menuProfile">
+
+                                        <p class="ml-3">Profile</p>
                                     </a>
                                 </li>
 
@@ -291,6 +291,7 @@
 
 
             $(document).ready(function() {
+
                 if (window.location.href.indexOf('imovel/' + {{ Auth::user()->id }} + '/myimoveis') > -1) {
                     $('.myImoveis').addClass('active');
                     $('.propriedade').removeClass('active');
@@ -302,6 +303,7 @@
                     $('.propriedade').removeClass('active');
                     $('.itensMenu').addClass('active');
                     $('.espera').removeClass('active');
+                    $('.menuDashboard').removeClass('active')
                 }
 
 
@@ -310,6 +312,7 @@
                     $('.itensMenu').removeClass('active');
                     $('.proprietario').addClass('active');
                     $('.espera').removeClass('active');
+                    $('.menuDashboard').removeClass('active')
                 }
 
                 if (window.location.href.indexOf('admin/espera') > -1) {
@@ -317,7 +320,48 @@
                     $('.itensMenu').removeClass('active');
                     $('.proprietario').removeClass('active');
                     $('.espera').addClass('active');
+                    $('.menuDashboard').removeClass('active')
                 }
+
+                if (window.location.href.indexOf('admin/permissoes') > -1) {
+                    $('.myImoveis').removeClass('active');
+                    $('.itensMenu').removeClass('active');
+                    $('.proprietario').removeClass('active');
+                    $('.espera').removeClass('active');
+                    $('.menuImoveis').removeClass('open menu-is-opening menu-open');
+                    $('.menuAcesso').addClass('open menu-is-opening menu-open')
+                    $('.menuPermissao').addClass('active')
+                    $('.menuProfile').removeClass('profile')
+                    $('.menuDashboard').removeClass('active')
+                }
+
+
+                if (window.location.href.indexOf('admin/profile') > -1) {
+                    $('.myImoveis').removeClass('active');
+                    $('.itensMenu').removeClass('active');
+                    $('.proprietario').removeClass('active');
+                    $('.espera').removeClass('active');
+                    $('.menuImoveis').removeClass('open menu-is-opening menu-open');
+                    $('.menuAcesso').addClass('open menu-is-opening menu-open')
+                    $('.menuPermissao').removeClass('active')
+                    $('.menuProfile').addClass('active')
+                    $('.menuDashboard').removeClass('active')
+                }
+
+                if (window.location.href.indexOf('dashboard') > -1) {
+                    $('.myImoveis').removeClass('active');
+                    $('.itensMenu').removeClass('active');
+                    $('.proprietario').removeClass('active');
+                    $('.espera').removeClass('active');
+                    $('.menuImoveis').removeClass('open menu-is-opening menu-open');
+                    $('.menuAcesso').removeClass('open menu-is-opening menu-open')
+                    $('.menuPermissao').removeClass('active')
+                    $('.menuProfile').removeClass('active')
+                    $('.menuDashboard').addClass('active')
+                }
+
+
+
 
                 // Adiciona as classes "menu-open" e "menu-is-opening" ao elemento <li> correspondente ao menu "Imoveis"
                 $('li.nav-item.active').parent().addClass('menu-open menu-is-opening');

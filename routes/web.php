@@ -51,6 +51,8 @@ Route::group(['prefix' => '/admin'], function () {
         Route::get('/{id}/edit', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::get('/{id}/addPermissoes', [ProfileController::class, 'addPermissoes'])->name('profile.addPermissoes');
         Route::post('/store', [ProfileController::class, 'store'])->name('profile.store');
+
+        Route::delete('/{id}/destroy', [ProfileController::class, 'destroy'])->name('profile.destroy');
         Route::post('/{id}/update', [ProfileController::class, 'update'])->name('profile.update');
         Route::post('/addProfileAndPermissao', [ProfileController::class, 'addProfileAndPermissao'])->name('profile.addProfileAndPermissao');
     });
