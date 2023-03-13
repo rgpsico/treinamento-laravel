@@ -287,6 +287,7 @@
 
                 name.style.display = 'none';
                 email.style.display = 'none';
+
             });
 
 

@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Validator;
 
 class UserdataController extends Controller
 {
+    protected $pageTitle = 'Usuarios';
+
     /**
      * Display a listing of the resource.
      *
@@ -21,11 +23,12 @@ class UserdataController extends Controller
      */
     public function index()
     {
-        $data = User::all();
+        $pageTitle = $this->pageTitle;
+        $model = User::all();
 
         $profile = Profile::all();
 
-        return view('users.index', compact('data', 'profile'));
+        return view('users.index', compact('model', 'profile', 'pageTitle'));
     }
 
     public function novo()
