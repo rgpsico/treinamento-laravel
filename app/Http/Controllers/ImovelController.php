@@ -216,6 +216,7 @@ class ImovelController extends Controller
         if ($data = Imovel::where('user_id', $user_id)->get()) {
             return view('imovel.myImoveis', [
                 'data' => $data,
+                'pageTitle' => 'Meus Imovéis',
                 'request' => $request
             ]);
         }
