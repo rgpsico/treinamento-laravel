@@ -31,9 +31,10 @@ class ItensController extends Controller
 
     public function edit($id)
     {
-        $model = $this->model->where('id', $id)->first();
 
-        return view('imovel.itens.create', compact('model'));
+        if ($model = $this->model->where('id', $id)->first()) {
+            return view('imovel.itens.create', compact('model'));
+        }
     }
 
     public function update(Request $request, $id)
@@ -57,7 +58,7 @@ class ItensController extends Controller
         $item->descricao = $request->descricao;
         $item->save();
 
-        return redirect()->route('itens.create')
+        return redirect()->route('itens.index')
             ->with('success', 'Item  criado com sucesso.');
     }
 

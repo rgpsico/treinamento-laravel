@@ -110,10 +110,6 @@
 
 
                                     <td class="d-flex">
-                                        <a href="{{ route('users.show', ['id' => $value->id]) }}" class=" mr-2 btn btn-dark"
-                                            style="height:40px; padding:10px;">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
 
                                         <a href="{{ route('users.edit', ['id' => $value->id]) }}" class=" mr-2 btn btn-info"
                                             style="height:40px; padding:10px;">

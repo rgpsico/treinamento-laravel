@@ -69,7 +69,7 @@ Route::group(['prefix' => '/admin'], function () {
         Route::get('/{id}/edit', [ListaEsperaController::class, 'edit'])->name('espera.edit');
         Route::post('/store', [ListaEsperaController::class, 'store'])->name('espera.store');
         Route::post('/{id}/update', [ListaEsperaController::class, 'update'])->name('espera.update');
-        Route::delete('/{id}/destroy', [ListaEsperaController::class, 'destroy'])->name('espera.destroy');
+        Route::any('/{id}/destroy', [ListaEsperaController::class, 'destroy'])->name('espera.destroy');
     });
 
 
@@ -79,6 +79,7 @@ Route::group(['prefix' => '/admin'], function () {
         Route::get('/{id}/edit', [PermissoesController::class, 'edit'])->name('permissoes.edit');
         Route::post('/store', [PermissoesController::class, 'store'])->name('permissoes.store');
         Route::post('/{id}/update', [PermissoesController::class, 'update'])->name('permissoes.update');
+        Route::delete('/{id}/destroy', [PermissoesController::class, 'destroy'])->name('permissoes.destroy');
     });
 });
 
@@ -109,8 +110,8 @@ Route::group(['prefix' => '/imovel', 'middleware' => 'auth'], function () {
         Route::put('/{id}/update', [ProprietarioController::class, 'update'])->name('proprietario.update');
         Route::get('/create', [ProprietarioController::class, 'create'])->name('proprietario.create');
         Route::post('/post', [ProprietarioController::class, 'store'])->name('proprietario.store');
-        Route::post('/{id}/destroy', [ProprietarioController::class, 'destroy'])->name('proprietario.destroy');
-        Route::post('/{id}/shoe', [ProprietarioController::class, 'destroy'])->name('proprietario.show');
+        Route::delete('/{id}/destroy', [ProprietarioController::class, 'destroy'])->name('proprietario.destroy');
+        Route::post('/{id}/show', [ProprietarioController::class, 'destroy'])->name('proprietario.show');
     });
 
 

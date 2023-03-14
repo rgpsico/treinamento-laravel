@@ -10,12 +10,12 @@ class ProfilePermissoes extends Model
 
     use HasFactory;
 
-    protected $table = 'profile_permissoes';
+    protected $table = 'users_permissoes';
 
     public $timestamps = false;
 
-    public function permissoes()
+    public function user()
     {
-        return $this->hasMany(Permissoes::class, 'id', 'permission_id');
+        return $this->belongsTo(User::class);
     }
 }

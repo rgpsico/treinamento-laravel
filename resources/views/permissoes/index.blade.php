@@ -22,20 +22,14 @@
 
 @section('content')
     <div class="container">
-        @if (session()->has('success'))
-            <div class="row">
-                <div class=" col-12 alert alert-success">
-                    {!! html_entity_decode(session('success')) !!}
-                </div>
-            </div>
-        @endif
+        <x-alert />
     </div>
 
     <div class="col-6 mb-2 d-flex justify-content-start align-items-start">
         <h1 class="text-dark font-weight-bold">{{ $pageTitle }}</h1>
     </div>
     <div class="col-6 mb-2 d-flex justify-content-end align-items-end">
-        <a href="{{ route('profile.create') }}" class="btn btn-success">
+        <a href="{{ route('permissoes.create') }}" class="btn btn-success">
             <i class="fas fa-home"></i>
             <span>Adicionar {{ $pageTitle }}</span></a>
     </div>
@@ -108,11 +102,12 @@
                                     <td>{{ $value->descricao }}</td>
 
                                     <td class="d-flex">
-                                        <a href="{{ route('itens.edit', ['id' => $value->id]) }}" class=" mr-2 btn btn-info"
-                                            style="height:40px; padding:10px;">
+                                        <a href="{{ route('permissoes.edit', ['id' => $value->id]) }}"
+                                            class=" mr-2 btn btn-info" style="height:40px; padding:10px;">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <form action="{{ route('itens.destroy', ['id' => $value->id]) }}" method="POST">
+                                        <form action="{{ route('permissoes.destroy', ['id' => $value->id]) }}"
+                                            method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button class="btn btn-danger mr-2" type="submit"

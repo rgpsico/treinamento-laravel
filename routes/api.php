@@ -43,6 +43,7 @@ Route::group(['prefix' => '/imovel'], function () {
 
 
 Route::group(['prefix' => '/listaEspera'], function () {
+    Route::get('/all', [ListaEsperaController::class, 'get']);
     Route::post('/store', [ListaEsperaController::class, 'storeApi'])->name('lista.esperaApi');
     Route::delete('/{id}/delete', [ListaEsperaController::class, 'delete']);
 });

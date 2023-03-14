@@ -59,13 +59,9 @@ class User extends Authenticatable
         return $this->hasMany(UserGallery::class);
     }
 
-    public function profile()
-    {
-        return $this->hasOne(ProfileUser::class);
-    }
 
-    public function ProfileUser()
+    public function userPermissoes()
     {
-        return $this->hasMany(ProfileUser::class);
+        return $this->hasMany(userPermissoes::class);
     }
 }

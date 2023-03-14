@@ -34,13 +34,13 @@ class PermissoesController extends Controller
 
     public function store(Request $request)
     {
+
         $data = $request->all();
-
-
         $result = $this->permissoes->create($data);
 
         if ($result) {
-            return  view('permissoes.create')->with("success", 'Permissoes cadastrado com sucesso');
+            return redirect()->route('permissoes.create')
+                ->with(['success' => 'Permissao criada  com sucesso']);;
         }
     }
 
@@ -53,5 +53,12 @@ class PermissoesController extends Controller
         if ($result) {
             return  redirect()->route('permissoes.edit', ['id' => $id])->with("success", 'Permissoes Editado com sucesso');
         }
+    }
+
+    public function destroy($id)
+    {
+        $permissao = Permissoes::findOrFail($id);
+        $permissao->delete();
+        return  redirect()->route('permissoes.index')->with("success", 'Permissoes Excluida com sucesso');
     }
 }

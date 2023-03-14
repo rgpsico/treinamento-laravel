@@ -67,10 +67,11 @@ class ProprietarioController extends Controller
             ->with(['success' => 'Propietario Atualizado  com sucesso']);;
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
         $user = User::findOrFail($id);
         $user->delete();
-        return response()->json(['message' => 'Usuario  deletado com sucesso']);
+        return redirect()->route('proprietario.index')
+            ->with(['success' => 'Propietario Excluido  com sucesso']);;
     }
 }

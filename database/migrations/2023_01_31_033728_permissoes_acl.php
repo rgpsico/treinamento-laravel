@@ -19,28 +19,12 @@ class PermissoesAcl extends Migration
             $table->timestamps();
         });
 
-        Schema::create('profile', function (Blueprint $table) {
-            $table->id();
-            $table->string('name')->nullable();
-        });
 
-
-        Schema::create('profile_permissoes', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('profile_id')->nullable();
-            $table->unsignedBigInteger('permission_id')->nullable();
-            $table->foreign('profile_id')->references('id')->on('profile')->onDelete('cascade');
-            $table->foreign('permission_id')->references('id')->on('permissoes')->onDelete('cascade');
-            $table->timestamps();
-        });
-
-        Schema::create('profile_users', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('profile_id')->nullable();
-            $table->foreign('profile_id')->references('id')->on('profile')->onDelete('cascade');
-
+        Schema::create('users_permissoes', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('permission_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('permission_id')->references('id')->on('permissoes')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -53,8 +37,6 @@ class PermissoesAcl extends Migration
     public function down()
     {
         Schema::dropIfExists('permissoes');
-        Schema::dropIfExists('profile');
-        Schema::dropIfExists('profile_permissoes');
-        Schema::dropIfExists('profile_users');
+        Schema::dropIfExists('users_permissoes');
     }
 }

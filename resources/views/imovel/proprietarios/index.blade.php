@@ -22,22 +22,16 @@
 
 @section('content')
     <div class="container">
-        @if (session()->has('success'))
-            <div class="row">
-                <div class=" col-12 alert alert-success">
-                    {!! html_entity_decode(session('success')) !!}
-                </div>
-            </div>
-        @endif
+        <x-alert />
     </div>
 
     <div class="col-6 mb-2 d-flex justify-content-start align-items-start">
         <h1 class="text-dark font-weight-bold">{{ $pageTitle }}</h1>
     </div>
     <div class="col-6 mb-2 d-flex justify-content-end align-items-end">
-        <a href="{{ route('imovel.create') }}" class="btn btn-success">
+        <a href="{{ route('proprietario.create') }}" class="btn btn-success">
             <i class="fas fa-home"></i>
-            <span>Adicionar Imóveis</span></a>
+            <span>Adicionar Proprietario</span></a>
     </div>
 
     <div class="container">

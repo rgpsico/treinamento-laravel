@@ -30,7 +30,7 @@
                 @endif
             </div>
 
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label for="title" class="form-label">Descrição:</label>
                 <input placeholder="Ex:Armário, sofa , cama , geladeira" type="text" id="descricao" name="descricao"
                     class="form-control" value="{{ $model->descricao ?? '' }}">
@@ -38,7 +38,7 @@
                 @if ($errors->has('title'))
                     <div class="text-danger">{{ $errors->first('descricao') }}</div>
                 @endif
-            </div>
+            </div> --}}
 
         </div>
 
@@ -47,7 +47,7 @@
 
 
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary">{{ $model ? 'Atualizar' : 'Cadastrar' }}</button>
+            <button type="submit" class="btn btn-primary">{{ isset($model) ? 'Atualizar' : 'Cadastrar' }}</button>
         </div>
     </div>
 

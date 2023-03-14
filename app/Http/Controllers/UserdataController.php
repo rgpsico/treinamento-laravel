@@ -26,9 +26,9 @@ class UserdataController extends Controller
         $pageTitle = $this->pageTitle;
         $model = User::all();
 
-        $profile = Profile::all();
 
-        return view('users.index', compact('model', 'profile', 'pageTitle'));
+
+        return view('users.index', compact('model', 'pageTitle'));
     }
 
     public function novo()
@@ -46,7 +46,7 @@ class UserdataController extends Controller
 
     public function edit($id)
     {
-        $user = User::where('id', $id)->get();
+        $user = User::where('id', $id)->first();
         return view(
             'users.edit',
             ['data' => $user]
