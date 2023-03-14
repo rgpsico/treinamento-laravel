@@ -38,13 +38,26 @@ class UserdataController extends Controller
         return view('novo.list');
     }
 
+    public function create()
+    {
+
+        return view('users.edit');
+    }
+
+    public function edit($id)
+    {
+        $user = User::where('id', $id)->get();
+        return view(
+            'users.edit',
+            ['data' => $user]
+        );
+    }
+
 
 
     public function profileUpdate(Request $request)
     {
         $id = $request->user_id;
-
-
 
         $profile = ProfileUser::updateOrCreate(
             ['user_id' => $id],
@@ -129,9 +142,10 @@ class UserdataController extends Controller
      * @param  \App\Userdata  $userdata
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-        return view('users.show');
+        $data = User::where('id', $id)->get();
+        return view('users.show', ['data' => $data]);
     }
 
 

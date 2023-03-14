@@ -35,7 +35,7 @@
         <h1 class="text-dark font-weight-bold">{{ $pageTitle }}</h1>
     </div>
     <div class="col-6 mb-2 d-flex justify-content-end align-items-end">
-        <a href="{{ route('imovel.create') }}" class="btn btn-success">
+        <a href="{{ route('users.create') }}" class="btn btn-success">
             <i class="fas fa-home"></i>
             <span>Adicionar {{ $pageTitle }}</span></a>
     </div>
@@ -110,16 +110,16 @@
 
 
                                     <td class="d-flex">
-                                        <a href="{{ route('imovel.show', ['id' => $value->id]) }}"
-                                            class=" mr-2 btn btn-dark" style="height:40px; padding:10px;">
+                                        <a href="{{ route('users.show', ['id' => $value->id]) }}" class=" mr-2 btn btn-dark"
+                                            style="height:40px; padding:10px;">
                                             <i class="fas fa-eye"></i>
                                         </a>
 
-                                        <a href="{{ route('imovel.edit', ['id' => $value->id]) }}"
-                                            class=" mr-2 btn btn-info" style="height:40px; padding:10px;">
+                                        <a href="{{ route('users.edit', ['id' => $value->id]) }}" class=" mr-2 btn btn-info"
+                                            style="height:40px; padding:10px;">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <form action="{{ route('imovel.destroy', ['id' => $value->id]) }}" method="POST">
+                                        <form action="{{ route('users.destroy', ['id' => $value->id]) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button class="btn btn-danger mr-2" type="submit"

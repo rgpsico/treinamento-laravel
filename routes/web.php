@@ -41,6 +41,11 @@ Route::group(['prefix' => '/admin'], function () {
 
     Route::group(['prefix' => '/users'], function () {
         Route::get('/', [UserdataController::class, 'index'])->name('users.index');
+        Route::get('/{id}/show', [UserdataController::class, 'show'])->name('users.show');
+        Route::get('/create', [UserdataController::class, 'create'])->name('users.create');
+        Route::get('/{id}/edit', [UserdataController::class, 'edit'])->name('users.edit');
+        Route::put('/{id}/update', [UserdataController::class, 'edit'])->name('users.update');
+        Route::put('/{id}/destroy', [UserdataController::class, 'edit'])->name('users.destroy');
         Route::post('/profileUpdate', [UserdataController::class, 'profileUpdate'])->name('users.profileUpdate');
     });
 
