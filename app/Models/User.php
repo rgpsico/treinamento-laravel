@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use UserGallery;
+
 
 class User extends Authenticatable
 {
@@ -60,8 +60,8 @@ class User extends Authenticatable
     }
 
 
-    public function userPermissoes()
+    public function permissoesUser()
     {
-        return $this->hasMany(userPermissoes::class);
+        return $this->hasMany(PermissaoUser::class, 'user_id', 'id');
     }
 }

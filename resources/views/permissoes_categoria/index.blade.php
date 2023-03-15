@@ -29,7 +29,7 @@
         <h1 class="text-dark font-weight-bold">{{ $pageTitle }}</h1>
     </div>
     <div class="col-6 mb-2 d-flex justify-content-end align-items-end">
-        <a href="{{ route('permissoes.create') }}" class="btn btn-success">
+        <a href="{{ route('permissoes_categoria.create') }}" class="btn btn-success">
             <i class="fas fa-home"></i>
             <span>Adicionar {{ $pageTitle }}</span></a>
     </div>
@@ -102,11 +102,11 @@
                                     <td>{{ $value->label }}</td>
 
                                     <td class="d-flex">
-                                        <a href="{{ route('permissoes.edit', ['id' => $value->id]) }}"
+                                        <a href="{{ route('permissoes_categoria.edit', ['id' => $value->id]) }}"
                                             class=" mr-2 btn btn-info" style="height:40px; padding:10px;">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <form action="{{ route('permissoes.destroy', ['id' => $value->id]) }}"
+                                        <form action="{{ route('permissoes_categoria.destroy', ['id' => $value->id]) }}"
                                             method="POST">
                                             @csrf
                                             @method('DELETE')

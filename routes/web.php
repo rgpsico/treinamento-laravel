@@ -8,7 +8,7 @@ use App\Http\Controllers\ImovelController;
 use App\Http\Controllers\ItensController;
 use App\Http\Controllers\ListaEsperaController;
 use App\Http\Controllers\PermissoesController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PermissoesCategoriaController;
 use App\Http\Controllers\ProprietarioController;
 use App\Http\Controllers\RedisController;
 use App\Http\Controllers\SiteController;
@@ -46,20 +46,17 @@ Route::group(['prefix' => '/admin'], function () {
         Route::get('/{id}/edit', [UserdataController::class, 'edit'])->name('users.edit');
         Route::put('/{id}/update', [UserdataController::class, 'edit'])->name('users.update');
         Route::put('/{id}/destroy', [UserdataController::class, 'edit'])->name('users.destroy');
-        Route::post('/profileUpdate', [UserdataController::class, 'profileUpdate'])->name('users.profileUpdate');
+        Route::post('/addPermisssao', [UserdataController::class, 'addPermissao'])->name('users.addPermissao');
     });
 
 
-    Route::group(['prefix' => '/profile'], function () {
-        Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
-        Route::get('/create', [ProfileController::class, 'create'])->name('profile.create');
-        Route::get('/{id}/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-        Route::get('/{id}/addPermissoes', [ProfileController::class, 'addPermissoes'])->name('profile.addPermissoes');
-        Route::post('/store', [ProfileController::class, 'store'])->name('profile.store');
-
-        Route::delete('/{id}/destroy', [ProfileController::class, 'destroy'])->name('profile.destroy');
-        Route::post('/{id}/update', [ProfileController::class, 'update'])->name('profile.update');
-        Route::post('/addProfileAndPermissao', [ProfileController::class, 'addProfileAndPermissao'])->name('profile.addProfileAndPermissao');
+    Route::group(['prefix' => '/permissoesCategoria'], function () {
+        Route::get('/', [PermissoesCategoriaController::class, 'index'])->name('permissoes_categoria.index');
+        Route::post('/store', [PermissoesCategoriaController::class, 'store'])->name('permissoes_categoria.store');
+        Route::get('/create', [PermissoesCategoriaController::class, 'create'])->name('permissoes_categoria.create');
+        Route::get('/{id}/edit', [PermissoesCategoriaController::class, 'edit'])->name('permissoes_categoria.edit');
+        Route::delete('/{id}/destroy', [PermissoesCategoriaController::class, 'destroy'])->name('permissoes_categoria.destroy');
+        Route::post('/{id}/update', [PermissoesCategoriaController::class, 'update'])->name('permissoes_categoria.update');
     });
 
 

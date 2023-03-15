@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\RegisterFormValidation;
-use App\Models\Profile;
-use App\Models\ProfileUser;
+use App\Models\PermissaoUser;
+use App\Models\Permissoes;
+use App\Models\PermissoesCategoria;
+use App\Models\PermissoesUser;
+
 use App\Models\User;
-use App\Models\UserData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -46,36 +47,40 @@ class UserdataController extends Controller
 
     public function edit($id)
     {
+        $permissoes = Permissoes::all();
+        $categorias = PermissoesCategoria::all();
         $user = User::where('id', $id)->first();
         return view(
             'users.edit',
-            ['data' => $user]
-        );
-    }
-
-
-
-    public function profileUpdate(Request $request)
-    {
-        $id = $request->user_id;
-
-        $profile = ProfileUser::updateOrCreate(
-            ['user_id' => $id],
             [
-                'profile_id' => $request->input('profile_id'),
-                'user_id' => $request->input('user_id'),
-                // Adicione outros campos aqui
+                'data' => $user,
+                'permissoes' => $permissoes,
+                'categorias' => $categorias
             ]
         );
-
-        if ($profile->wasRecentlyCreated) {
-            // O registro foi criado
-            return redirect()->back()->with('success', 'O perfil foi criado com sucesso.');
-        } else {
-            // O registro foi atualizado
-            return redirect()->back()->with('success', 'O perfil foi atualizado com sucesso.');
-        }
     }
+
+
+    public function addPermissao(Request $request)
+    {
+        $user_id = $request->user_id;
+        $permission_ids = $request->permission_id ?? [];
+
+        PermissaoUser::where('user_id', $user_id)
+            ->whereNotIn('permission_id', $permission_ids)
+            ->delete();
+
+        foreach ($permission_ids as $permission_id) {
+            PermissaoUser::updateOrCreate(
+                ['user_id' => $user_id, 'permission_id' => $permission_id],
+                ['user_id' => $user_id, 'permission_id' => $permission_id]
+            );
+        }
+
+        return redirect()->back()->with('success', 'As permissões foram atualizadas com sucesso.');
+    }
+
+
 
     /**
      * Show the form for creating a new resource.

@@ -160,7 +160,7 @@
 
                         @if (isset(Auth::user()->email) && Auth::user()->email == 'rgyr2010@hotmail.com')
                             <li class="nav-item menuImoveis open menu-is-opening menu-open">
-                                <a href="{{ route('profile.index') }}" class="nav-link ">
+                                <a href="{{ route('permissoes_categoria.index') }}" class="nav-link ">
                                     <i class="nav-icon fas fa-home"></i>
                                     <p>
                                         Imoveis
@@ -191,7 +191,7 @@
 
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
-                                        <a href="{{ route('profile.index') }}" class="nav-link">
+                                        <a href="{{ route('permissoes_categoria.index') }}" class="nav-link">
 
                                             <p class="ml-3">Todos Imoveis</p>
                                         </a>
@@ -237,6 +237,18 @@
                             </a>
 
                             <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('permissoes_categoria.index') }}"
+                                        class="nav-link menupermissoes_categoria">
+
+                                        <p class="ml-3">Permissoes Categoria</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+
+
+                            <ul class="nav nav-treeview">
                                 <li class="nav-item ">
                                     <a href="{{ route('permissoes.index') }}" class="nav-link menuPermissao">
                                         <p class="ml-3">Permissoes</p>
@@ -245,15 +257,7 @@
 
                             </ul>
 
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('profile.index') }}" class="nav-link menuProfile">
 
-                                        <p class="ml-3">Profile</p>
-                                    </a>
-                                </li>
-
-                            </ul>
 
 
 
@@ -332,12 +336,12 @@
                     $('.menuImoveis').removeClass('open menu-is-opening menu-open');
                     $('.menuAcesso').addClass('open menu-is-opening menu-open')
                     $('.menuPermissao').addClass('active')
-                    $('.menuProfile').removeClass('profile')
+                    $('.menupermissoes_categoria').removeClass('permissoes_categoria')
                     $('.menuDashboard').removeClass('active')
                 }
 
 
-                if (window.location.href.indexOf('admin/profile') > -1) {
+                if (window.location.href.indexOf('admin/permissoes_categoria') > -1) {
                     $('.myImoveis').removeClass('active');
                     $('.itensMenu').removeClass('active');
                     $('.proprietario').removeClass('active');
@@ -345,7 +349,7 @@
                     $('.menuImoveis').removeClass('open menu-is-opening menu-open');
                     $('.menuAcesso').addClass('open menu-is-opening menu-open')
                     $('.menuPermissao').removeClass('active')
-                    $('.menuProfile').addClass('active')
+                    $('.menupermissoes_categoria').addClass('active')
                     $('.menuDashboard').removeClass('active')
                 }
 
@@ -357,7 +361,7 @@
                     $('.menuImoveis').removeClass('open menu-is-opening menu-open');
                     $('.menuAcesso').removeClass('open menu-is-opening menu-open')
                     $('.menuPermissao').removeClass('active')
-                    $('.menuProfile').removeClass('active')
+                    $('.menupermissoes_categoria').removeClass('active')
                     $('.menuDashboard').addClass('active')
                 }
 

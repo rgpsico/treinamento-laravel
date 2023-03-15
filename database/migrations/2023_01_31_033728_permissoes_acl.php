@@ -13,14 +13,24 @@ class PermissoesAcl extends Migration
      */
     public function up()
     {
-        Schema::create('permissoes', function (Blueprint $table) {
+
+        Schema::create('permissoes_categoria', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
             $table->timestamps();
         });
 
+        Schema::create('permissoes', function (Blueprint $table) {
+            $table->id();
+            $table->string('label')->nullable();
+            $table->string('name')->nullable();
+            $table->unsignedBigInteger('categoria_id')->nullable();
+            $table->foreign('categoria_id')->references('id')->on('permissoes_categoria')->onDelete('cascade');
+            $table->timestamps();
+        });
 
-        Schema::create('users_permissoes', function (Blueprint $table) {
+
+        Schema::create('permissoes_users', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('permission_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

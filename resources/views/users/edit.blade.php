@@ -47,13 +47,16 @@
             border: solid 1px #BA68C8
         }
     </style>
+
     <div class="container rounded bg-white ">
+        <x-alert />
         <div class="row">
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                     <img class="rounded-circle mt-5"
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQF2psCzfbB611rnUhxgMi-lc2oB78ykqDGYb4v83xQ1pAbhPiB&usqp=CAU"><span
-                        class="font-weight-bold">Amelly</span><span class="text-black-50">amelly12@bbb.com</span><span>
+                        class="font-weight-bold">{{ $data->name }}</span>
+                    <span class="text-black-50">{{ $data->email }}</span><span>
                     </span>
                 </div>
             </div>
@@ -97,7 +100,7 @@
                         </div>
                     </div>
                     <div class="mt-5 text-center">
-                        <button class="btn btn-primary profile-button" type="button">Save Profile</button>
+                        <button class="btn btn-primary profile-button" type="button">Salvar</button>
                     </div>
                 </div>
             </div>
@@ -105,14 +108,43 @@
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center experience">
                         <span>Editar Permissões</span>
-                        <span class="border px-3 p-1 add-experience">
-                            <i class="fa fa-plus"></i>&nbsp;Experience</span>
                     </div>
                     <br>
-                    <div class="col-md-12">
-                        <label class="labels">Experience in Designing</label>
-                        <input type="text" class="form-control" placeholder="experience" value="">
-                    </div>
+                    <form action="{{ route('users.addPermissao') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="user_id" value="{{ $data->id }}">
+                        @foreach ($categorias as $categoria)
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="card-title">
+                                        {{ $categoria->name }}
+                                    </div>
+                                </div>
+                                <div class="card-body">
+
+                                    @foreach ($permissoes->where('categoria_id', $categoria->id) as $permissao)
+                                        <div class="col-md-12">
+                                            <p class="medium">
+                                                <input type="checkbox" name="permission_id[]" value="{{ $permissao->id }}"
+                                                    @if ($data->permissoesUser->pluck('permission_id')->contains($permissao->id)) checked @endif />
+                                                {{ $permissao->name }}
+                                            </p>
+                                        </div>
+                                    @endforeach
+                                    @if ($permissoes->where('categoria_id', $categoria->id)->isEmpty())
+                                        <div class="col-md-12">
+                                            <p class="medium">Nenhuma permissão encontrada.</p>
+                                        </div>
+                                    @endif
+                                </div>
+
+                            </div>
+                        @endforeach
+                        <div class="col-12 d-flex justify-content-end ">
+                            <button class="btn btn-success">Salvar</button>
+                        </div>
+
+                    </form>
                     <br>
 
                 </div>
