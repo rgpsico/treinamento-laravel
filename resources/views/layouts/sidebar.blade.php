@@ -160,7 +160,7 @@
 
                         @if (isset(Auth::user()->email) && Auth::user()->email == 'rgyr2010@hotmail.com')
                             <li class="nav-item menuImoveis open menu-is-opening menu-open">
-                                <a href="{{ route('permissoes_categoria.index') }}" class="nav-link ">
+                                <a href="{{ route('permissoes_categoria.index') }}" class="nav-link">
                                     <i class="nav-icon fas fa-home"></i>
                                     <p>
                                         Imoveis
@@ -237,9 +237,9 @@
                             </a>
 
                             <ul class="nav nav-treeview">
-                                <li class="nav-item">
+                                <li class="nav-item ">
                                     <a href="{{ route('permissoes_categoria.index') }}"
-                                        class="nav-link menupermissoes_categoria">
+                                        class="nav-link permissoesCategoria">
 
                                         <p class="ml-3">Permissoes Categoria</p>
                                     </a>
@@ -363,6 +363,20 @@
                     $('.menuPermissao').removeClass('active')
                     $('.menupermissoes_categoria').removeClass('active')
                     $('.menuDashboard').addClass('active')
+                }
+
+                if (window.location.href.indexOf('permissoesCategoria') > -1) {
+                    $('.myImoveis').removeClass('active');
+                    $('.itensMenu').removeClass('active');
+                    $('.proprietario').removeClass('active');
+                    $('.espera').removeClass('active');
+                    $('.menuImoveis').removeClass('open menu-is-opening menu-open');
+
+                    $('.menuPermissao').removeClass('active')
+                    $('.menupermissoes_categoria').removeClass('active')
+                    $('.menuDashboard').removeClass('active')
+                    $('.menuAcesso').addClass('open menu-is-opening menu-open')
+                    $('.permissoesCategoria').addClass('active')
                 }
 
 
