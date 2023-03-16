@@ -19,4 +19,9 @@ class Permissoes extends Model
     {
         return $this->hasOne(PermissoesCategoria::class, 'id', 'categoria_id');
     }
+
+    public function permissoesUser()
+    {
+        return $this->hasMany(PermissaoUser::class, 'id', 'permission_id');
+    }
 }

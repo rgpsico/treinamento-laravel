@@ -65,6 +65,20 @@ class User extends Authenticatable
         return $this->hasMany(PermissaoUser::class, 'user_id', 'id');
     }
 
+
+
+
+    public function temPermissao($nomePermissao)
+    {
+        foreach ($this->permissoesUser as $permissaoUser) {
+            if ($permissaoUser->permissao->name === $nomePermissao) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public function endereco()
     {
         return $this->hasOne(UserEndereco::class, 'user_id', 'id');

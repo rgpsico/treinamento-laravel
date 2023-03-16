@@ -20,8 +20,8 @@ class PermissaoUser extends Model
         return $this->hasMany(User::class, 'id', 'user_id');
     }
 
-    public function permissoes()
+    public function permissao()
     {
-        return $this->hasMany(Permissoes::class, 'permissoes_id', 'id');
+        return $this->belongsTo(Permissoes::class, 'permission_id', 'id');
     }
 }

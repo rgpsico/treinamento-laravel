@@ -144,7 +144,7 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
 
-                        @if (isset(Auth::user()->email) && Auth::user()->email == 'rgyr2010@hotmail.com')
+                        @can('ver_dashboard')
                             <li class="nav-item">
                                 <a href="{{ route('dashboard') }}" class="nav-link menuDashboard">
                                     <i class="nav-icon fas fa-chart-pie"></i>
@@ -154,7 +154,7 @@
                                     </p>
                                 </a>
                             </li>
-                        @endif
+                        @endcan
 
 
 
@@ -169,13 +169,17 @@
                                 </a>
 
                                 <ul class="nav nav-treeview">
-                                    <li class="nav-item ">
-                                        <a href="{{ route('imovel.users', ['user_id' => Auth::user()->id]) }}"
-                                            class="nav-link myImoveis">
+                                    @can('ver_meus_imoveis')
+                                        <li class="nav-item ">
+                                            <a href="{{ route('imovel.users', ['user_id' => Auth::user()->id]) }}"
+                                                class="nav-link myImoveis">
 
-                                            <p class="ml-3">Meus Imoveis</p>
-                                        </a>
-                                    </li>
+
+                                                <p class="ml-3">Meus Imoveis</p>
+
+                                            </a>
+                                        </li>
+                                    @endcan
 
                                 </ul>
 
@@ -190,12 +194,14 @@
                                 </ul>
 
                                 <ul class="nav nav-treeview">
-                                    <li class="nav-item">
-                                        <a href="{{ route('permissoes_categoria.index') }}" class="nav-link">
+                                    @can('ver_all_imoveis')
+                                        <li class="nav-item">
+                                            <a href="{{ route('permissoes_categoria.index') }}" class="nav-link">
 
-                                            <p class="ml-3">Todos Imoveis</p>
-                                        </a>
-                                    </li>
+                                                <p class="ml-3">Todos Imoveis</p>
+                                            </a>
+                                        </li>
+                                    @endcan
 
                                 </ul>
 
@@ -259,17 +265,17 @@
 
 
 
+                            @can('ver_usuarios')
+                            <li class="nav-item">
+                                <a href="{{ route('users.index') }}" class="nav-link ">
+                                    <i class="nav-icon fas fa-user-circle"></i>
+                                    <p>
+                                        Usuário
 
-
-                        <li class="nav-item">
-                            <a href="{{ route('users.index') }}" class="nav-link ">
-                                <i class="nav-icon fas fa-user-circle"></i>
-                                <p>
-                                    Usuário
-
-                                </p>
-                            </a>
-                        </li>
+                                    </p>
+                                </a>
+                            </li>
+                        @endcan
 
 
                         </li>
