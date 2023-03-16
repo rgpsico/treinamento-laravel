@@ -35,14 +35,8 @@
     <div class="col-12">
         <div class="form-group">
             <label for="title" class="form-label">Titulo:</label>
-            <input 
-            placeholder="Ex: Casa na Nova Brasilia"
-             type="text"
-             id="title" 
-             name="title" 
-             class="form-control" 
-             value="{{ $model->title ?? ''}}"
-              >
+            <input placeholder="Ex: Casa na Nova Brasilia" type="text" id="title" name="title"
+                class="form-control" value="{{ $data->title ?? '' }}">
             @if ($errors->has('title'))
                 <div class="text-danger">{{ $errors->first('title') }}</div>
             @endif
@@ -53,13 +47,8 @@
     <div class="col-12">
         <div class="form-group">
             <label for="description" class="form-label">Descrição:</label>
-            <input 
-            placeholder="Ex: Casa Com cozinha pequena e um Quarto "
-            type="text" 
-            id="description" 
-            name="description" 
-            class="form-control"
-                value="{{ $model->description ?? '' }}">
+            <input placeholder="Ex: Casa Com cozinha pequena e um Quarto " type="text" id="description"
+                name="description" class="form-control" value="{{ $data->description ?? '' }}">
             @if ($errors->has('description'))
                 <div class="text-danger">{{ $errors->first('email_desc') }}</div>
             @endif
@@ -71,13 +60,8 @@
     <div class="col-12">
         <div class="form-group">
             <label for="address" class="form-label">Lugar da comunidade:</label>
-            <input 
-            placeholder="Ex: Rampinha, Pistão, Terreirão "
-            type="text" 
-            id="address" 
-            name="address" 
-            class="form-control"
-                value="{{ $model->address ?? '' }}">
+            <input placeholder="Ex: Rampinha, Pistão, Terreirão " type="text" id="address" name="address"
+                class="form-control" value="{{ $data->address ?? '' }}">
             @if ($errors->has('address'))
                 <div class="text-danger">{{ $errors->first('address') }}</div>
             @endif
@@ -87,7 +71,8 @@
     <div class="col-12">
         <div class="form-group">
             <label for="price" class="form-label">Preço:</label>
-            <input type="number" placeholder="0,00" id="price" name="price" class="form-control" value=" {{ $model->price ?? '' }}">
+            <input type="number" id="price" name="price" step="0.01" min="0" max="10000"
+                class="form-control" value="{{ $data->price }}">
             @if ($errors->has('price'))
                 <div class="text-danger">{{ $errors->first('price') }}</div>
             @endif
@@ -101,14 +86,14 @@
                 <label for="item" class="form-label">Itens:</label>
                 <br>
                 <div class="row">
-                
-                        @foreach ($itens as $item )                   
-                            <label for="item" class="ml-4 m-2" name="item">{{$item->name}}</label>
-                            <input type="checkbox"  class="" name="itens[]" value="{{$item->id}}" >
-                        @endforeach
-                
+
+                    @foreach ($itens as $item)
+                        <label for="item" class="ml-4 m-2" name="item">{{ $item->name }}</label>
+                        <input type="checkbox" class="" name="itens[]" value="{{ $item->id }}">
+                    @endforeach
+
                 </div>
-            
+
             </div>
         </div>
     @endif
@@ -117,8 +102,8 @@
     <div class="form-group">
         <input type="file" name="avatar[]" multiple id="avatar">
         @if ($errors->has('avatar'))
-                <div class="text-danger">{{ $errors->first('avatar') }}</div>
-            @endif
+            <div class="text-danger">{{ $errors->first('avatar') }}</div>
+        @endif
     </div>
 
 </div>

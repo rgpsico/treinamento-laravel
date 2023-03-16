@@ -63,46 +63,58 @@
             <div class="col-md-5 border-right">
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4 class="text-right">Profile Settings</h4>
+                        <h4 class="text-right">Editar Usúario</h4>
                     </div>
                     <div class="row mt-2">
-                        <div class="col-md-6">
-                            <label class="labels">Nome</label>
-                            <input type="text" class="form-control" placeholder="Nome" value="{{ $data->name }}">
-                        </div>
+                        <form action="{{ route('users.update', ['id' => $data->id]) }}" method="POST">
+                            @csrf
+                            <div class="col-md-12">
+                                <label class="labels">Nome</label>
+                                <input type="text" class="form-control" placeholder="Nome" name="name"
+                                    value="{{ $data->name }}">
+                            </div>
                     </div>
+
                     <div class="row mt-3">
                         <div class="col-md-12">
                             <label class="labels">Telefone</label>
-                            <input type="text" class="form-control" placeholder="Seu telefone"
+                            <input type="text" class="form-control" name="phone" placeholder="Seu telefone"
                                 value="{{ $data->phone }}">
                         </div>
                         <div class="col-md-12">
-                            <label class="labels">Endereço</label>
-                            <input type="text" class="form-control" placeholder="enter address" value="">
+                            <label class="labels">Cep</label>
+                            <input type="text" class="form-control" name="cep" placeholder="Digite seu Cep"
+                                value="{{ $data->endereco->cep ?? '' }}">
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="labels">Rua</label>
+                            <input type="text" class="form-control" name="rua" placeholder="Rua "
+                                value="{{ $data->endereco->rua ?? '' }}">
                         </div>
                         <div class="col-md-12">
                             <label class="labels">Email </label>
-                            <input type="text" class="form-control" placeholder="enter email id" value="">
+                            <input type="text" class="form-control" name="email" placeholder="Seu email "
+                                value="{{ $data->email }}">
                         </div>
-                        <div class="col-md-12">
-                            <label class="labels">Education</label>
-                            <input type="text" class="form-control" placeholder="education" value="">
-                        </div>
+
                     </div>
                     <div class="row mt-3">
-                        <div class="col-md-6"><label class="labels">Country</label>
-                            <input type="text" class="form-control" placeholder="country" value="">
+                        <div class="col-md-6"><label class="labels">Cidade</label>
+                            <input type="text" class="form-control" name="cidade" placeholder="cidade"
+                                value="{{ $data->endereco->cidade ?? '' }}">
                         </div>
                         <div class="col-md-6">
-                            <label class="labels">State/Region</label>
-                            <input type="text" class="form-control" value="" placeholder="state">
+                            <label class="labels">Estado</label>
+                            <input type="text" class="form-control" name="estado"
+                                value="{{ $data->endereco->estado ?? '' }}" placeholder="state">
                         </div>
                     </div>
                     <div class="mt-5 text-center">
-                        <button class="btn btn-primary profile-button" type="button">Salvar</button>
+                        <button class="btn btn-primary profile-button" type="submit">Salvar</button>
                     </div>
                 </div>
+                </form>
             </div>
             <div class="col-md-4">
                 <div class="p-3 py-5">

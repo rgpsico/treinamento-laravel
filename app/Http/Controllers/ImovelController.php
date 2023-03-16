@@ -109,16 +109,11 @@ class ImovelController extends Controller
 
     public function update(Request $request, $id)
     {
-        // Valide os dados de entrada
-        // $request->validate([
-        //     'title' => 'required|max:255',
-        //     'description' => 'required',
-        // ]);
 
-        // Encontre o imóvel pelo ID
+
+
         $imovel = Imovel::findOrFail($id);
 
-        // Atualize os dados do imóvel
         $imovel->title = $request->input('title');
         $imovel->description = $request->input('description');
         $imovel->avatar = $request->input('avatar');
@@ -137,6 +132,7 @@ class ImovelController extends Controller
 
         $imovel->save();
 
+
         // Redirecione o usuário de volta para a página de exibição de imóveis
         return redirect()->route('imovel.edit', ['id' => $imovel->id]);
     }
@@ -150,6 +146,8 @@ class ImovelController extends Controller
      */
     public function store(ImovelStoreRequest $request)
     {
+
+
 
         $imovel = new Imovel();
         $imovel->title = $request->title;

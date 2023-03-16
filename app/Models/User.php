@@ -64,4 +64,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(PermissaoUser::class, 'user_id', 'id');
     }
+
+    public function endereco()
+    {
+        return $this->hasOne(UserEndereco::class, 'user_id', 'id');
+    }
 }

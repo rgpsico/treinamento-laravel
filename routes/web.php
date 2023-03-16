@@ -44,8 +44,8 @@ Route::group(['prefix' => '/admin'], function () {
         Route::get('/{id}/show', [UserdataController::class, 'show'])->name('users.show');
         Route::get('/create', [UserdataController::class, 'create'])->name('users.create');
         Route::get('/{id}/edit', [UserdataController::class, 'edit'])->name('users.edit');
-        Route::put('/{id}/update', [UserdataController::class, 'edit'])->name('users.update');
-        Route::put('/{id}/destroy', [UserdataController::class, 'edit'])->name('users.destroy');
+        Route::post('/{id}/update', [UserdataController::class, 'update'])->name('users.update');
+        Route::delete('/{id}/destroy', [UserdataController::class, 'edit'])->name('users.destroy');
         Route::post('/addPermisssao', [UserdataController::class, 'addPermissao'])->name('users.addPermissao');
     });
 

@@ -8,10 +8,12 @@ use App\Models\PermissoesCategoria;
 use App\Models\PermissoesUser;
 
 use App\Models\User;
+use App\Models\UserEndereco;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+
 
 class UserdataController extends Controller
 {
@@ -49,7 +51,7 @@ class UserdataController extends Controller
     {
         $permissoes = Permissoes::all();
         $categorias = PermissoesCategoria::all();
-        $user = User::where('id', $id)->first();
+        $user = User::with('endereco')->where('id', $id)->first();
         return view(
             'users.edit',
             [
@@ -59,6 +61,35 @@ class UserdataController extends Controller
             ]
         );
     }
+
+    public function update(Request $request, $id)
+    {
+
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|unique:users,email,' . $id,
+            'phone' => 'required|string|max:255',
+        ]);
+
+
+
+        $user = User::find($id)->first();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+
+        $endereco = UserEndereco::where('user_id', $id)->first();
+        $endereco->rua = $request->rua;
+        $endereco->cep = $request->cep;
+        $endereco->estado = $request->estado;
+
+
+        $endereco->save();
+        $user->save();
+        return redirect()->route('users.edit', ['id' => $id])
+            ->with(['success' => 'Usuario Atualizado  com sucesso']);;
+    }
+
 
 
     public function addPermissao(Request $request)
