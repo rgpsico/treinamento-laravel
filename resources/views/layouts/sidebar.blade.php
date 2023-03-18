@@ -158,7 +158,7 @@
 
 
 
-                        @if (isset(Auth::user()->email) && Auth::user()->email == 'rgyr2010@hotmail.com')
+                        @can('ver_imoveis')
                             <li class="nav-item menuImoveis open menu-is-opening menu-open">
                                 <a href="{{ route('permissoes_categoria.index') }}" class="nav-link">
                                     <i class="nav-icon fas fa-home"></i>
@@ -169,32 +169,29 @@
                                 </a>
 
                                 <ul class="nav nav-treeview">
-                                    @can('ver_meus_imoveis')
-                                        <li class="nav-item ">
-                                            <a href="{{ route('imovel.users', ['user_id' => Auth::user()->id]) }}"
-                                                class="nav-link myImoveis">
-
-
-                                                <p class="ml-3">Meus Imoveis</p>
-
-                                            </a>
-                                        </li>
-                                    @endcan
-
-                                </ul>
-
-                                <ul class="nav nav-treeview">
-                                    <li class="nav-item">
-                                        <a href="{{ route('proprietario.index') }}" class="nav-link proprietario">
-
-                                            <p class="ml-3">Proprietários</p>
+                                    <li class="nav-item ">
+                                        <a href="{{ route('imovel.users', ['user_id' => Auth::user()->id]) }}"
+                                            class="nav-link myImoveis">
+                                            <p class="ml-3">Meus Imoveisss</p>
                                         </a>
                                     </li>
 
                                 </ul>
 
+                                @can('admin')
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="{{ route('proprietario.index') }}" class="nav-link proprietario">
+
+                                                <p class="ml-3">Proprietários</p>
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                @endcan
+
                                 <ul class="nav nav-treeview">
-                                    @can('ver_all_imoveis')
+                                    @can('admin')
                                         <li class="nav-item">
                                             <a href="{{ route('permissoes_categoria.index') }}" class="nav-link">
 
@@ -229,57 +226,59 @@
                                     </li>
                                 </ul>
                             </li>
-                        @endif
-
-                        <li class="nav-item menuAcesso">
-                            <a href="" class="nav-link ">
-
-                                <i class="nav-icon fas fa-key"></i>
-                                <p>
-                                    Acesso
-
-                                </p>
-                                <i class="right fas fa-angle-left"></i>
-                            </a>
-
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item ">
-                                    <a href="{{ route('permissoes_categoria.index') }}"
-                                        class="nav-link permissoesCategoria">
-
-                                        <p class="ml-3">Permissoes Categoria</p>
-                                    </a>
-                                </li>
-
-                            </ul>
-
-
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item ">
-                                    <a href="{{ route('permissoes.index') }}" class="nav-link menuPermissao">
-                                        <p class="ml-3">Permissoes</p>
-                                    </a>
-                                </li>
-
-                            </ul>
-
-
-
-                            @can('ver_usuarios')
-                            <li class="nav-item">
-                                <a href="{{ route('users.index') }}" class="nav-link ">
-                                    <i class="nav-icon fas fa-user-circle"></i>
-                                    <p>
-                                        Usuário
-
-                                    </p>
-                                </a>
-                            </li>
                         @endcan
 
+                        @can('admin')
 
-                        </li>
+                            <li class="nav-item menuAcesso">
+                                <a href="" class="nav-link ">
 
+                                    <i class="nav-icon fas fa-key"></i>
+                                    <p>
+                                        Acesso
+
+                                    </p>
+                                    <i class="right fas fa-angle-left"></i>
+                                </a>
+
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item ">
+                                        <a href="{{ route('permissoes_categoria.index') }}"
+                                            class="nav-link permissoesCategoria">
+
+                                            <p class="ml-3">Permissoes Categoria</p>
+                                        </a>
+                                    </li>
+
+                                </ul>
+
+
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item ">
+                                        <a href="{{ route('permissoes.index') }}" class="nav-link menuPermissao">
+                                            <p class="ml-3">Permissoes</p>
+                                        </a>
+                                    </li>
+
+                                </ul>
+
+
+
+                                @can('ver_usuarios')
+                                <li class="nav-item">
+                                    <a href="{{ route('users.index') }}" class="nav-link ">
+                                        <i class="nav-icon fas fa-user-circle"></i>
+                                        <p>
+                                            Usuário
+
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+
+
+                            </li>
+                        @endcan
 
                     </ul>
                 </nav>

@@ -53,7 +53,7 @@
         <div class="row">
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                    <img class="rounded-circle mt-5"
+                    <img class="rounded-circle mt-5" id="avatar"
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQF2psCzfbB611rnUhxgMi-lc2oB78ykqDGYb4v83xQ1pAbhPiB&usqp=CAU"><span
                         class="font-weight-bold">{{ $data->name }}</span>
                     <span class="text-black-50">{{ $data->email }}</span><span>

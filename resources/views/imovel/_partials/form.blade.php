@@ -72,7 +72,7 @@
         <div class="form-group">
             <label for="price" class="form-label">Preço:</label>
             <input type="number" id="price" name="price" step="0.01" min="0" max="10000"
-                class="form-control" value="{{ $data->price }}">
+                class="form-control" value="{{ $data->price ?? '' }}">
             @if ($errors->has('price'))
                 <div class="text-danger">{{ $errors->first('price') }}</div>
             @endif

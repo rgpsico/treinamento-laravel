@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Permissoes;
 use App\Models\ProfilePermissoes;
 use App\Models\User;
+use App\Observers\UserObserver;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider;
@@ -33,6 +34,7 @@ class AppServiceProvider extends AuthServiceProvider
     public function boot()
     {
         $this->registerPolicies();
+        User::observe(UserObserver::class);
 
         $permissoes = Permissoes::all();
 
