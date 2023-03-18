@@ -172,7 +172,7 @@
                                     <li class="nav-item ">
                                         <a href="{{ route('imovel.users', ['user_id' => Auth::user()->id]) }}"
                                             class="nav-link myImoveis">
-                                            <p class="ml-3">Meus Imoveisss</p>
+                                            <p class="ml-3">Meus Imoveis</p>
                                         </a>
                                     </li>
 
@@ -228,8 +228,7 @@
                             </li>
                         @endcan
 
-                        @can('admin')
-
+                        @if (Auth::user()->email == 'rgyr2010@hotmail.com')
                             <li class="nav-item menuAcesso">
                                 <a href="" class="nav-link ">
 
@@ -278,7 +277,7 @@
 
 
                             </li>
-                        @endcan
+                        @endif
 
                     </ul>
                 </nav>
