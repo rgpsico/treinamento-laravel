@@ -80,7 +80,7 @@
     </div>
 
 
-    @if (!empty($itens))
+    @if (count($itens) > 0)
         <div class="col-12">
             <div class="form-group">
                 <label for="item" class="form-label">Itens:</label>
@@ -100,7 +100,9 @@
 
 
     <div class="form-group">
-        <input type="file" name="avatar[]" multiple id="avatar">
+        <label class="label"> Fotos do imovel </label>
+        <br>
+        <input type="file" name="avatar[]" multiple id="avatar" class="forn-control">
         @if ($errors->has('avatar'))
             <div class="text-danger">{{ $errors->first('avatar') }}</div>
         @endif

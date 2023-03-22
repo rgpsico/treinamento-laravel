@@ -102,8 +102,10 @@
             <div class="sidebar">
                 <div class="row my-4 ml-2 nav-treeview">
                     <div class="col-8">
+
                         <img src="https://angular-material.fusetheme.com/assets/images/logo/logo.svg" width="20px"
                             height="20px" alt="">
+
                     </div>
                     <div class="col-4 d-flex justify-content-between nav-treeview">
                         <i class="fas fa-bell text-white"></i>
@@ -117,9 +119,11 @@
                 <div class="row mb-5 my-5 nav-treeview">
                     <div class="col-12 mb-2">
                         <div class="image d-flex justify-content-center align-items-center">
-                            <img src="https://angular-material.fusetheme.com/assets/images/avatars/brian-hughes.jpg"
-                                class="img-circle elevation-2 img-fluid scale-down" width="80" height="80"
-                                alt="User Image">
+                            <a href="{{ route('users.edit', ['id' => Auth::user()->id]) }}">
+                                <img src="https://angular-material.fusetheme.com/assets/images/avatars/brian-hughes.jpg"
+                                    class="img-circle elevation-2 img-fluid scale-down" width="80" height="80"
+                                    alt="User Image">
+                            </a>
                         </div>
                     </div>
 

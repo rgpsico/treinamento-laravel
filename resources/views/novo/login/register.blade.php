@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="form-group col-12">
-                    <label for="name">Name:</label>
+                    <label for="name">Nome:</label>
                     <input type="text" class="form-control" id="name" name="name"
                         value="{{ old('name') }}">
                     @if ($errors->has('name'))
@@ -45,7 +45,7 @@
                 </div>
 
                 <div class="form-group col-12">
-                    <label for="phone">Phone:</label>
+                    <label for="phone">Telefone:</label>
                     <input type="text" class="form-control" id="phone" name="phone"
                         value="{{ old('phone') }}">
                     @if ($errors->has('phone'))
