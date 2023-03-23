@@ -182,7 +182,7 @@
 
                                 </ul>
 
-                                @can('admin')
+                                @if (Auth::user()->email == 'rgyr2010@hotmail.com')
                                     <ul class="nav nav-treeview">
                                         <li class="nav-item">
                                             <a href="{{ route('proprietario.index') }}" class="nav-link proprietario">
@@ -192,17 +192,17 @@
                                         </li>
 
                                     </ul>
-                                @endcan
+                                @endif
 
                                 <ul class="nav nav-treeview">
-                                    @can('admin')
+                                    @if (Auth::user()->email == 'rgyr2010@hotmail.com')
                                         <li class="nav-item">
-                                            <a href="{{ route('permissoes_categoria.index') }}" class="nav-link">
+                                            <a href="{{ route('imovel.all') }}" class="nav-link">
 
                                                 <p class="ml-3">Todos Imoveis</p>
                                             </a>
                                         </li>
-                                    @endcan
+                                    @endif
 
                                 </ul>
 

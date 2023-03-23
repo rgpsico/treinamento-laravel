@@ -25,8 +25,8 @@ class AddFieldStatussInTableImovel extends Migration
      */
     public function down()
     {
-        Schema::table('table_imovel', function (Blueprint $table) {
-            //
+        Schema::table('imoveis', function (Blueprint $table) {
+            $table->dropColumn('imoveis');
         });
     }
 }

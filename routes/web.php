@@ -99,7 +99,7 @@ Route::group(['prefix' => '/imovel', 'middleware' => 'auth'], function () {
     Route::get('/{user_id}/myimoveis', [ImovelController::class, 'myImoveis'])->name('imovel.users');
     Route::get('/search', [ImovelController::class, 'search'])->name('imovel.search');
     Route::get('/{id}/show', [ImovelController::class, 'show'])->name('imovel.show');
-
+    Route::get('/all', [ImovelController::class, 'all'])->name('imovel.all');
 
     Route::get('/{id}/edit', [ImovelController::class, 'edit'])->name('imovel.edit');
     Route::post('/{id}/update', [ImovelController::class, 'update'])->name('imovel.update');

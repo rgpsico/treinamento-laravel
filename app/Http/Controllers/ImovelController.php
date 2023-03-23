@@ -75,6 +75,14 @@ class ImovelController extends Controller
         return view('novo.list', compact('datas'));
     }
 
+    public function all()
+    {
+        $data = Imovel::all();
+        $pageTitle = 'Todos os Imoveis ';
+
+        return view('imovel.index', compact('data',  'pageTitle'));
+    }
+
     public function home()
     {
         $datas = Imovel::paginate();
@@ -100,9 +108,13 @@ class ImovelController extends Controller
      */
     public function edit($id)
     {
+
+
         if ($data = Imovel::where('id', $id)->first()) {
             return view('imovel.edit', [
-                'data' => $data
+                'data' => $data,
+                'itens' => [],
+                'pageTitle' => 'Todos os Imoveis'
             ]);
         }
     }
@@ -119,7 +131,7 @@ class ImovelController extends Controller
         $imovel->avatar = $request->input('avatar');
         $imovel->type = $request->input('type');
         $imovel->price = $request->input('price');
-
+        $imovel->status = $request->input('status');
 
         if ($request->avatar) {
             $avatar = $request->file('avatar');
@@ -157,6 +169,7 @@ class ImovelController extends Controller
         $imovel->address = $request->address;
         $imovel->user_id = $request->user_id;
         $imovel->price = $request->price;
+        $imovel->status = 0;
         $imovel->save();
 
 
