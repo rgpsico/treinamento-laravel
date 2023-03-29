@@ -18,6 +18,18 @@
         .fa-plus {
             color: #D8D9E3;
         }
+
+        .livre {
+            color: green;
+        }
+
+        .alugado {
+            color: red;
+        }
+
+        table {
+            font-size: 12px;
+        }
     </style>
 
 @section('content')
@@ -116,7 +128,7 @@
                                     <td>{{ $value->type == 1 ? 'Casa' : 'KitNet' }}</td>
                                     <td>{{ $value->status == 1 ? 'Alugado' : 'Livre' }}</td>
 
-                                    <td>{{ $value->created_at }}</td>
+                                    <td>{{ date('d/m/Y', strtotime($value->created_at)) }}</td>
                                     <td class="d-flex">
                                         <a href="{{ route('imovel.show', ['id' => $value->id]) }}"
                                             class=" mr-2 btn btn-dark" style="height:40px; padding:10px;">
