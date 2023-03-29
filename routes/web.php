@@ -4,6 +4,7 @@ use App\Events\PostCreated;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ConfiguracaoController;
 use App\Http\Controllers\DashBoardController;
+use App\Http\Controllers\DepoimentoController;
 use App\Http\Controllers\ImovelController;
 use App\Http\Controllers\ItensController;
 use App\Http\Controllers\ListaEsperaController;
@@ -18,7 +19,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 
-Route::get('/teste', [CategoryController::class, 'teste'])->name('novo.teste');
+Route::get('/teste', [UserdataController::class, 'teste'])->name('novo.teste');
 
 Route::get('/imoveis', [ImovelController::class, 'listarN'])->name('novo.listar');
 Route::get('/detalhes/{id}/show', [ImovelController::class, 'detalhes'])->name('detalhes');
@@ -36,6 +37,17 @@ Route::group(['prefix' => '/admin'], function () {
         Route::put('/{id}/update', [CategoryController::class, 'edit'])->name('category.update');
         Route::post('/post', [CategoryController::class, 'store'])->name('category.store');
         Route::post('/{id}/destroy', [CategoryController::class, 'destroy'])->name('category.destroy');
+    });
+
+
+    Route::group(['prefix' => '/depoimento'], function () {
+        Route::get('/', [DepoimentoController::class, 'index'])->name('depoimento.index');
+        Route::get('/{id}/show', [DepoimentoController::class, 'show'])->name('depoimento.show');
+        Route::get('/create', [DepoimentoController::class, 'create'])->name('depoimento.create');
+        Route::get('/{id}/edit', [DepoimentoController::class, 'edit'])->name('depoimento.edit');
+        Route::put('/{id}/update', [DepoimentoController::class, 'edit'])->name('depoimento.update');
+        Route::post('/post', [DepoimentoController::class, 'store'])->name('depoimento.store');
+        Route::post('/{id}/destroy', [DepoimentoController::class, 'destroy'])->name('depoimento.destroy');
     });
 
 

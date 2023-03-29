@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Intervention\Image\Facades\Image;
+use PhpSerial\Serial;
 
 
 class UserdataController extends Controller
@@ -78,6 +80,16 @@ class UserdataController extends Controller
         $user->email = $request->email;
         $user->phone = $request->phone;
 
+        if ($request->hasFile('avatar')) {
+            $avatar = $request->file('avatar');
+            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            $path = public_path('/avatars/' . $filename);
+            Image::make($avatar->getRealPath())->resize(200, 200)->save($path);
+            $user->avatar = '/avatars/' . $filename;
+        }
+
+
+
         $endereco = UserEndereco::where('user_id', $id)->first();
         $endereco->rua = $request->rua;
         $endereco->cep = $request->cep;
@@ -85,6 +97,7 @@ class UserdataController extends Controller
 
 
         $endereco->save();
+
         $user->save();
         return redirect()->route('users.edit', ['id' => $id])
             ->with(['success' => 'Usuario Atualizado  com sucesso']);;
@@ -184,6 +197,31 @@ class UserdataController extends Controller
         return view('users.show', ['data' => $data]);
     }
 
+
+    public function teste()
+    {
+
+
+        // Let's start the class
+        $serial = new Serial;
+
+        // First we must specify the device. This works on both linux and windows (if
+        // your linux serial device is /dev/ttyS0 for COM1, etc)
+        $serial->deviceSet("COM1");
+
+        // We can change the baud rate, parity, length, stop bits, flow control
+        $serial->confBaudRate(2400);
+        $serial->confParity("none");
+        $serial->confCharacterLength(8);
+        $serial->confStopBits(1);
+        $serial->confFlowControl("none");
+
+        // Then we need to open it
+        $serial->deviceOpen();
+
+        // To write into
+        $serial->sendMessage("Hello !");
+    }
 
 
     /**

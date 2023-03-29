@@ -4,17 +4,20 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddFieldStatussInTableImovel extends Migration
+class CreateTableDepoimento extends Migration
 {
     /**
      * Run the migrations.
-     *g
+     *
      * @return void
      */
     public function up()
     {
-        Schema::table('imoveis', function (Blueprint $table) {
-            $table->integer('status')->default(0);
+        Schema::create('depoimento', function (Blueprint $table) {
+            $table->id();
+            $table->string('autor');
+            $table->string('depoimento');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class AddFieldStatussInTableImovel extends Migration
      */
     public function down()
     {
-        Schema::table('imoveis', function (Blueprint $table) {
-            $table->dropColumn('imoveis');
-        });
+        Schema::dropIfExists('table_depoimento');
     }
 }

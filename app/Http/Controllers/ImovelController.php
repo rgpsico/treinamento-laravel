@@ -159,7 +159,7 @@ class ImovelController extends Controller
     public function store(ImovelStoreRequest $request)
     {
 
-
+        $imoveis    = new Imovel();
 
         $imovel = new Imovel();
         $imovel->title = $request->title;
@@ -222,6 +222,7 @@ class ImovelController extends Controller
     }
 
 
+
     public function myImoveis(Request $request, $user_id)
     {
         if ($data = Imovel::where('user_id', $user_id)->get()) {
@@ -264,5 +265,11 @@ class ImovelController extends Controller
 
         return redirect()->route('imovel.index')
             ->with('success', 'Dados de usuário criados com sucesso.');
+    }
+
+    public function register2(Request $request)
+    {
+        $user = User::all();
+        return $user;
     }
 }

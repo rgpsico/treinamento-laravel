@@ -35,9 +35,10 @@
         <div class="form-group">
             <label for="">Status</label>
             <select name="status" id="status" class="form-control">
-                <option value="" selected>Todos</option>
-                <option value="0">Livre</option>
-                <option value="1">Alugado</option>
+                <option value="" selected>Selecione</option>
+                <option value="0" {{ $data->status == 0 ? 'selected' : '' }} class="form-control">Livre</option>
+                <option value="1" {{ $data->status == 1 ? 'selected' : '' }} class="form-control">Alugado</option>
+
             </select>
         </div>
     </div>

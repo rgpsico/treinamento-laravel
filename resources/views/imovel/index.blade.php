@@ -18,6 +18,18 @@
         .fa-plus {
             color: #D8D9E3;
         }
+
+        .livre {
+            color: green;
+        }
+
+        .alugado {
+            color: red;
+        }
+
+        .table {
+            font-size: 12px;
+        }
     </style>
 
 @section('content')
@@ -32,12 +44,12 @@
     </div>
 
     <div class="col-6 mb-2 d-flex justify-content-start align-items-start">
-        <h1 class="text-dark font-weight-bold">{{ $pageTitle }}</h1>
+        <h1 class="text-dark font-weight-bold">{{ $pageTitle ?? '' }}</h1>
     </div>
     <div class="col-6 mb-2 d-flex justify-content-end align-items-end">
         <a href="{{ route('imovel.create') }}" class="btn btn-success">
             <i class="fas fa-home"></i>
-            <span>Adicionar {{ $pageTitle }}</span></a>
+            <span>Adicionar {{ $pageTitle ?? '' }}</span></a>
     </div>
 
     <div class="container">
@@ -96,7 +108,7 @@
                                 <th>Título</th>
                                 <th>Preço</th>
                                 <th>Tipo</th>
-
+                                <th>Status</th>
                                 <th>Data de criação</th>
                                 <th>Ações</th>
                             </tr>
@@ -114,8 +126,10 @@
                                     <td>{{ $value->title ?? '' }}</td>
                                     <td>R${{ $value->price ?? '' }}</td>
                                     <td>{{ $value->type == 1 ? 'Casa' : 'KitNet' }}</td>
-
-                                    <td>{{ $value->data_created }}</td>
+                                    <td class='{{ $value->status == 1 ? 'red' : 'gren' }}'>
+                                        {{ $value->status == 1 ? 'Alugado' : 'Livre' }}</td>
+                                    <td>{{ date('d/m/Y', strtotime($value->created_at)) }}
+                                    </td>
                                     <td class="d-flex">
                                         <a href="{{ route('imovel.show', ['id' => $value->id]) }}"
                                             class=" mr-2 btn btn-dark" style="height:40px; padding:10px;">

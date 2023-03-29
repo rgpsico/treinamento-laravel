@@ -96,7 +96,7 @@
                                 <th>Título</th>
                                 <th>Preço</th>
                                 <th>Tipo</th>
-
+                                <th>Status</th>
                                 <th>Data de criação</th>
                                 <th>Ações</th>
                             </tr>
@@ -114,8 +114,9 @@
                                     <td>{{ $value->title ?? '' }}</td>
                                     <td>R${{ $value->price ?? '' }}</td>
                                     <td>{{ $value->type == 1 ? 'Casa' : 'KitNet' }}</td>
+                                    <td>{{ $value->status == 1 ? 'Alugado' : 'Livre' }}</td>
 
-                                    <td>{{ $value->data_created }}</td>
+                                    <td>{{ $value->created_at }}</td>
                                     <td class="d-flex">
                                         <a href="{{ route('imovel.show', ['id' => $value->id]) }}"
                                             class=" mr-2 btn btn-dark" style="height:40px; padding:10px;">
