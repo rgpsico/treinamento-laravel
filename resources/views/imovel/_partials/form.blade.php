@@ -19,8 +19,12 @@
             <label for="type" class="form-label">Tipo</label>
             @if (isset($data) && !is_null($data))
                 <select name="type" id="type" name="type" class="form-control">
-                    <option value="0" {{ $data->type == 0 ? 'selected' : '' }} class="form-control">Casa</option>
-                    <option value="1" {{ $data->type == 1 ? 'selected' : '' }} class="form-control">KitNet</option>
+                    @if (isset($data->type))
+                        <option value="0" {{ $data->type == 0 ? 'selected' : '' }} class="form-control">Casa
+                        </option>
+                        <option value="1" {{ $data->type == 1 ? 'selected' : '' }} class="form-control">KitNet
+                        </option>
+                    @endif
                 </select>
             @else
                 <select name="type" id="type" name="type" class="form-control">
