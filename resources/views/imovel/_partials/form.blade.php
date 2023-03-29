@@ -41,7 +41,12 @@
                     </option>
                     <option value="1" {{ $data->status == 1 ? 'selected' : '' }} class="form-control">Alugado
                     </option>
+                @else
+                    <option value="0" class="form-control">Livre </option>
+                    <option value="1" class="form-control">Alugado</option>
                 @endif
+
+
             </select>
         </div>
     </div>
