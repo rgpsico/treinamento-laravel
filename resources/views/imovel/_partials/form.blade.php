@@ -17,7 +17,7 @@
     <div class="col-12">
         <div class="form-group">
             <label for="type" class="form-label">Tipo</label>
-            @if (isset($data) && !is_null($data))
+            @if (isset($data->type) && !is_null($data->type))
                 <select name="type" id="type" name="type" class="form-control">
                     <option value="0" {{ $data->type == 0 ? 'selected' : '' }} class="form-control">Casa</option>
                     <option value="1" {{ $data->type == 1 ? 'selected' : '' }} class="form-control">KitNet</option>
@@ -36,7 +36,7 @@
             <label for="">Status</label>
             <select name="status" id="status" class="form-control">
                 <option value="" selected>Selecione</option>
-                @if (isset($data) && !is_null($data))
+                @if (isset($data->status) && !is_null($data->status))
                     <option value="0" {{ $data->status == 0 ? 'selected' : '' }} class="form-control">Livre
                     </option>
                     <option value="1" {{ $data->status == 1 ? 'selected' : '' }} class="form-control">Alugado
@@ -44,6 +44,26 @@
                 @else
                     <option value="0" class="form-control">Livre </option>
                     <option value="1" class="form-control">Alugado</option>
+                @endif
+
+
+            </select>
+        </div>
+    </div>
+
+    <div class="col-12">
+        <div class="form-group">
+            <label for="">Status Admin</label>
+            <select name="status" id="status" class="form-control">
+                <option value="" selected>Selecione</option>
+                @if (isset($data->status_admin) && !is_null($data->status_admin))
+                    <option value="0" {{ $data->status_admin == 0 ? 'selected' : '' }} class="form-control">Livre
+                    </option>
+                    <option value="1" {{ $data->status_admin == 1 ? 'selected' : '' }} class="form-control">Alugado
+                    </option>
+                @else
+                    <option value="0" class="form-control">Bloqueado </option>
+                    <option value="1" class="form-control">Liberado</option>
                 @endif
 
 

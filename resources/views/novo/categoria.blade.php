@@ -98,7 +98,11 @@
 
             </div>
         </div>
+
     </section>
+    <div class="container" style="margin-bottom:20px;">
+
+    </div>
     <!-- End Categories -->
 
     <!-- App_Store -->
@@ -106,7 +110,7 @@
     <!-- End App_Store -->
 
     <!-- Testimonial -->
-    <x-DepoimentoComponent />
+    {{-- <x-DepoimentoComponent /> --}}
     <!-- End Testimonial -->
 
     <!-- End Testimonial -->

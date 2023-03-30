@@ -95,20 +95,39 @@
 
             <div class="card-body">
 
-                <h4 class="card-title text-dark">Imoveis <span class="text-dark small">{{ count($data) }}</span></h4>
-                <p class="card-description">
+                <div class="row">
+                    <h4 class="card-title text-dark">Imoveis
+                        <span class="text-dark small">{{ count($data) }}</span>
+                    </h4>
+                </div>
 
-                </p>
+                <div class="row">
+                    <div class="form-group col-3">
+                        <label for="acao_imoveiss">Ação</label>
+                        <select name="acao_imoveiss" id="acao_imoveiss" class="form-control">
+                            <option value="update">Atualizar</option>
+                            <option value="excluir">Excluir</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-2">
+                        <form action="">
+                            <button class="btn btn-success my-4">Enviar</button>
+                    </div>
+                </div>
+
+
                 <div class="table-responsive">
-                    <table class="table table-striped">
+                    <table class="table table-striped" id="imovelLista">
                         <thead>
                             <tr>
-                                <th>#</th>
+                                <th><input type="checkbox" name="" id="marcarTodos"></th>
                                 <th>Imagem</th>
                                 <th>Título</th>
                                 <th>Preço</th>
                                 <th>Tipo</th>
                                 <th>Status</th>
+                                <th>Status Admin</th>
                                 <th>Data de criação</th>
                                 <th>Ações</th>
                             </tr>
@@ -126,8 +145,22 @@
                                     <td>{{ $value->title ?? '' }}</td>
                                     <td>R${{ $value->price ?? '' }}</td>
                                     <td>{{ $value->type == 1 ? 'Casa' : 'KitNet' }}</td>
+
                                     <td class='{{ $value->status == 1 ? 'red' : 'gren' }}'>
                                         {{ $value->status == 1 ? 'Alugado' : 'Livre' }}</td>
+
+                                    <td class='{{ $value->status_admin == 1 ? 'red' : 'green' }}'>
+                                        <select name="status" class="form-control">
+                                            @foreach (['ativo', 'inativo'] as $status)
+                                                <option value="{{ $status }}"
+                                                    {{ $status == $value->status ? 'selected' : '' }}>
+                                                    {{ $status }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </td>
+
+
                                     <td>{{ date('d/m/Y', strtotime($value->created_at)) }}
                                     </td>
                                     <td class="d-flex">
@@ -157,4 +190,22 @@
             </div>
         </div>
     </div>
+    <script>
+        // Selecione o checkbox com o id "marcarTodos"
+        const marcarTodos = document.querySelector('#marcarTodos');
+
+        // Selecione todos os checkboxes dentro da tabela com o id "tableLisst"
+        const checkboxes = document.querySelectorAll('#imovelLista input[type="checkbox"]');
+
+        // Adicione um listener de evento no checkbox "marcarTodos"
+        marcarTodos.addEventListener('click', function() {
+            // Verifique se o checkbox "marcarTodos" está marcado ou não
+            const isChecked = marcarTodos.checked;
+
+            // Percorra todos os checkboxes dentro da tabela "tableLisst" e marque/desmarque cada um deles
+            checkboxes.forEach(function(checkbox) {
+                checkbox.checked = isChecked;
+            });
+        });
+    </script>
 @endsection

@@ -97,7 +97,7 @@ class ImovelController extends Controller
     public function create()
     {
         $itens = Itens::all();
-        return view('imovel.create')->with(['itens' => $itens]);
+        return view('imovel.create')->with(['itens' => $itens, 'data' => []]);
     }
 
 
