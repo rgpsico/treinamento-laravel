@@ -87,4 +87,25 @@ class UserApiController extends Controller
 
         return response()->json(['message' => 'User updated successfully']);
     }
+
+    public function upload(Request $request)
+    {
+        $user = User::find($request->id);
+
+        if ($request->hasFile('imagem')) {
+            $imagem = $request->file('imagem');
+            $nomeImagem = time() . '.' . $imagem->getClientOriginalExtension();
+            $caminhoImagem = public_path('uploads') . '/' . $nomeImagem;
+
+
+            $user->avatar = $nomeImagem;
+            $user->save();
+
+            $imagem->move(public_path('uploads'), $nomeImagem);
+
+            return response()->json(['status' => 'sucesso', 'mensagem' => 'Imagem enviada com sucesso', 'caminho' => $caminhoImagem]);
+        } else {
+            return response()->json(['status' => 'erro', 'mensagem' => 'Nenhuma imagem enviada']);
+        }
+    }
 }

@@ -170,6 +170,7 @@ class ImovelController extends Controller
         $imovel->user_id = $request->user_id;
         $imovel->price = $request->price;
         $imovel->status = 0;
+        $imovel->status_admin = 0;
         $imovel->save();
 
 
@@ -266,6 +267,8 @@ class ImovelController extends Controller
         return redirect()->route('imovel.index')
             ->with('success', 'Dados de usuário criados com sucesso.');
     }
+
+
 
     public function register2(Request $request)
     {

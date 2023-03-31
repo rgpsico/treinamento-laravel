@@ -113,6 +113,8 @@ Route::group(['prefix' => '/imovel', 'middleware' => 'auth'], function () {
     Route::get('/{id}/show', [ImovelController::class, 'show'])->name('imovel.show');
     Route::get('/all', [ImovelController::class, 'all'])->name('imovel.all');
 
+
+
     Route::get('/{id}/edit', [ImovelController::class, 'edit'])->name('imovel.edit');
     Route::post('/{id}/update', [ImovelController::class, 'update'])->name('imovel.update');
     Route::get('/create', [ImovelController::class, 'create'])->name('imovel.create');

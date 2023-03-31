@@ -33,6 +33,7 @@ Route::group(['prefix' => '/itens'], function () {
     Route::delete('/{id}/delete', [ItensController::class, 'delete']);
 });
 
+Route::post('/upload-imagem', [UserApiController::class, 'upload'])->name('user.upload');
 
 
 Route::group(['prefix' => '/imovel'], function () {

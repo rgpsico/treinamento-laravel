@@ -53,12 +53,23 @@
         <div class="row">
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                    <img class="rounded-circle mt-5" id="avatar"
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQF2psCzfbB611rnUhxgMi-lc2oB78ykqDGYb4v83xQ1pAbhPiB&usqp=CAU"><span
-                        class="font-weight-bold">{{ $data->name }}</span>
+                    @if (isset($data->avatar))
+                        <img src="{{ asset('/uploads/' . $data->avatar) }}" width="100px" height="100px"
+                            alt="Descrição da imagem">
+                    @else
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQF2psCzfbB611rnUhxgMi-lc2oB78ykqDGYb4v83xQ1pAbhPiB&usqp=CAU"
+                            alt="Descrição da imagem">
+                    @endif
+
+                    <span class="font-weight-bold">{{ $data->name }}</span>
                     <span class="text-black-50">{{ $data->email }}</span><span>
                     </span>
                 </div>
+                <form id="form-imagem" method="POST" enctype="multipart/form-data">
+                    <input type="file" style="width: 150px;" name="imagem" id="input-imagem">
+                    <br>
+                    <button type="submit" class="btn btn-success my-3">Enviar</button>
+                </form>
             </div>
             <div class="col-md-5 border-right">
                 <div class="p-3 py-5">
@@ -153,7 +164,7 @@
                             </div>
                         @endforeach
                         <div class="col-12 d-flex justify-content-end ">
-                            <button class="btn btn-success">Salvar</button>
+                            <button class="btn btn-success">Salvar Permissões</button>
                         </div>
 
                     </form>
@@ -165,4 +176,33 @@
     </div>
     </div>
     </div>
+
+    <script>
+        $(document).on('click', '#minha-imagem', function() {
+            $('#input-imagem').trigger('click');
+        });
+
+        $('#form-imagem').on('submit', function(e) {
+            e.preventDefault();
+            var formData = new FormData(this);
+            formData.append('_token', '{{ csrf_token() }}'); // adiciona o token CSRF ao FormData
+            formData.append('id', '{{ $data->id }}');
+            $.ajax({
+                url: '/api/upload-imagem',
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                headers: {
+                    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+                }, // adiciona o cabeçalho X-CSRF-Token à solicitação AJAX
+                success: function(response) {
+                    console.log(response);
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        });
+    </script>
 @endsection
