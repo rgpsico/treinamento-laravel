@@ -39,6 +39,7 @@ Route::group(['prefix' => '/imovel'], function () {
     Route::post('/store', [ImovelApicontroller::class, 'store']);
     Route::get('/{id}/delete', [ImovelApicontroller::class, 'delete']);
     Route::put('/{id}/update', [ImovelApicontroller::class, 'update']);
+    Route::post('/delete-selected', [ImovelApicontroller::class, 'deleteSelected'])->name('delete-selected');
 });
 
 

@@ -104,7 +104,7 @@
                 <div class="row">
                     <div class="form-group col-3">
                         <label for="acao_imoveiss">Ação</label>
-                        <select name="acao_imoveiss" id="acao_imoveiss" class="form-control">
+                        <select name="acao_imoveiss" id="" class="form-control">
                             <option value="update">Atualizar</option>
                             <option value="excluir">Excluir</option>
                         </select>
@@ -112,7 +112,7 @@
 
                     <div class="form-group col-2">
                         <form action="">
-                            <button class="btn btn-success my-4">Enviar</button>
+                            <button id="acao_imoveis" class="btn btn-success my-4">Enviar</button>
                     </div>
                 </div>
 
@@ -135,7 +135,8 @@
                         <tbody>
                             @foreach ($data as $value)
                                 <tr>
-                                    <td><input type="checkbox"></td>
+                                    <td><input type="checkbox" data-id="{{ $value->id }}" name="checkboxImovel"
+                                            id="checkboxImovel"></td>
                                     <td>
                                         @if (isset($value->gallery[0]) && !is_null($value->gallery[0]))
                                             <img src="{{ asset('imagens/imoveis/' . $value->gallery[0]->image) }}"
@@ -192,6 +193,36 @@
         </div>
     </div>
     <script>
+        $('#acao_imoveis').click(function(e) {
+            e.preventDefault()
+            var ids = [];
+            $('input[name="checkboxImovel"]:checked').each(function() {
+                ids.push($(this).data('id'));
+            });
+            if (ids.length === 0) {
+                alert('Nenhum item selecionado');
+                return;
+            }
+            if (confirm('Tem certeza que deseja excluir os itens selecionados?')) {
+                $.ajax({
+                    url: '{{ route('delete-selected') }}',
+                    method: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        ids: ids
+                    },
+                    success: function(response) {
+                        alert('Itens excluídos com sucesso');
+                        location.reload();
+                    },
+                    error: function() {
+                        alert('Ocorreu um erro ao excluir os itens');
+                    }
+                });
+            }
+        });
+
+
         $(document).on('change', '#status_admin', function(e) {
             e.preventDefault();
 

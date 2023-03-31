@@ -33,4 +33,11 @@ class ImovelApicontroller extends Controller
 
         return response()->json(['content' => 'success']);
     }
+
+    public function deleteSelected(Request $request)
+    {
+        $ids = $request->input('ids');
+        Imovel::whereIn('id', $ids)->delete();
+        return response()->json(['success' => true]);
+    }
 }
