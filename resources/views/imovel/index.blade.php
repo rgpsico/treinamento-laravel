@@ -150,10 +150,11 @@
                                         {{ $value->status == 1 ? 'Alugado' : 'Livre' }}</td>
 
                                     <td class='{{ $value->status_admin == 1 ? 'red' : 'green' }}'>
-                                        <select name="status" class="form-control">
-                                            @foreach (['ativo', 'inativo'] as $status)
-                                                <option value="{{ $status }}"
-                                                    {{ $status == $value->status ? 'selected' : '' }}>
+                                        <select name="status_admin" data-id='{{ $value->id }}' id="status_admin"
+                                            class="form-control">
+                                            @foreach (['ativo', 'inativo'] as $key => $status)
+                                                <option value="{{ $key }}"
+                                                    {{ $key == $value->status_admin ? 'selected' : '' }}>
                                                     {{ $status }}
                                                 </option>
                                             @endforeach
@@ -191,6 +192,26 @@
         </div>
     </div>
     <script>
+        $(document).on('change', '#status_admin', function(e) {
+            e.preventDefault();
+
+            var id = $(this).data('id');
+            var url = '/api/imovel/' + id + '/update';
+
+            $.ajax({
+                type: 'PUT',
+                url: url,
+                data: {
+                    status_admin: $(this).val()
+                },
+                success: function(data) {
+                    console.log(data.content);
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        });
         // Selecione o checkbox com o id "marcarTodos"
         const marcarTodos = document.querySelector('#marcarTodos');
 

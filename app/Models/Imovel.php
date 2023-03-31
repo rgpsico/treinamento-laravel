@@ -11,7 +11,7 @@ class Imovel extends Model
 
     protected $table = 'imoveis';
 
-    protected $filliable =  ['title', 'description', 'price', 'type', 'address', 'user_id', 'status'];
+    protected $fillable =  ['title', 'description', 'price', 'type', 'address', 'user_id', 'status', 'status_admin'];
 
     public function user()
     {

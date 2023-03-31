@@ -38,6 +38,7 @@ Route::group(['prefix' => '/itens'], function () {
 Route::group(['prefix' => '/imovel'], function () {
     Route::post('/store', [ImovelApicontroller::class, 'store']);
     Route::get('/{id}/delete', [ImovelApicontroller::class, 'delete']);
+    Route::put('/{id}/update', [ImovelApicontroller::class, 'update']);
 });
 
 
