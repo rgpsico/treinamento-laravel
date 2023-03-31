@@ -9,6 +9,7 @@ use App\Models\Imovel;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class UserApiController extends Controller
 {
@@ -97,6 +98,10 @@ class UserApiController extends Controller
             $nomeImagem = time() . '.' . $imagem->getClientOriginalExtension();
             $caminhoImagem = public_path('uploads') . '/' . $nomeImagem;
 
+            // Remove a imagem antiga, se existir
+            if ($user->avatar) {
+                Storage::delete('uploads/' . $user->avatar);
+            }
 
             $user->avatar = $nomeImagem;
             $user->save();

@@ -197,7 +197,12 @@
                     'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
                 }, // adiciona o cabeçalho X-CSRF-Token à solicitação AJAX
                 success: function(response) {
-                    console.log(response);
+                    if (response.status == "sucesso") {
+                        alert('Enviado com sucesso')
+                        setTimeout(function() {
+                            window.location.reload();
+                        }, 2000);
+                    }
                 },
                 error: function(xhr, status, error) {
                     console.error(error);
