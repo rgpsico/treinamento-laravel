@@ -59,7 +59,7 @@
 
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
 
-            <ul class="navbar-nav">
+            <ul class="navbar-nav" id="navbar-nav_bt">
                 <li class="nav-item">
                     <a class="nav-link " data-widget="pushmenu" href="#" role="button">
                         <i class="fas fa-bars" id="menu-icon"></i>
@@ -102,14 +102,12 @@
             <div class="sidebar">
                 <div class="row my-4 ml-2 nav-treeview">
                     <div class="col-8">
-
                         <img src="https://angular-material.fusetheme.com/assets/images/logo/logo.svg" width="20px"
                             height="20px" alt="">
-
                     </div>
-                    <div class="col-4 d-flex justify-content-between nav-treeview">
-                        <i class="fas fa-bell text-white"></i>
-                        <i class="fas fa-user text-white mr-3"></i>
+                    <div class="col-4 d-flex justify-content-between nav-treeview ">
+                        <i class="fas fa-bell text-white icones"></i>
+                        <i class="fas fa-user text-white mr-3 icones"></i>
 
                     </div>
                 </div>
@@ -120,9 +118,21 @@
                     <div class="col-12 mb-2">
                         <div class="image d-flex justify-content-center align-items-center">
                             <a href="{{ route('users.edit', ['id' => Auth::user()->id]) }}">
-                                <img src="https://angular-material.fusetheme.com/assets/images/avatars/brian-hughes.jpg"
-                                    class="img-circle elevation-2 img-fluid scale-down" width="80" height="80"
-                                    alt="User Image">
+
+
+                                @if (Auth::user()->avatar)
+                                    <img src="{{ asset('/uploads/' . Auth::user()->avatar) }}" alt="Descrição da imagem"
+                                        class="img-circle elevation-2 img-fluid scale-down" width="80"
+                                        height="80" alt="User Image">
+                                @else
+                                    <img src="https://angular-material.fusetheme.com/assets/images/avatars/brian-hughes.jpg"
+                                        class="img-circle elevation-2 img-fluid scale-down" width="80"
+                                        height="80" alt="User Image">
+                                @endif
+
+
+
+
                             </a>
                         </div>
                     </div>
@@ -302,11 +312,13 @@
         </aside>
 
         <script>
-            const menuIcon = document.getElementById('menu-icon');
+            const menuIcon = document.getElementById('navbar-nav_bt');
             const name = document.querySelector('.name');
             const email = document.querySelector('.email');
-
+            $('.icones').show();
             menuIcon.addEventListener('click', function() {
+                // Mostra o elemento
+                $('.icones').toggle(); // Alterna entre mostrar/esconder o elemento
 
                 name.style.display = 'none';
                 email.style.display = 'none';
