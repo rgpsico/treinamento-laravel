@@ -284,20 +284,34 @@
                                             Usuário
 
                                         </p>
+                                        <i class="right fas fa-angle-left"></i>
                                     </a>
+
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item ">
+                                            <a href="{{ route('users.index') }}" class="nav-link permissoesCategoria">
+
+                                                <p class="ml-3">Listar Usuários</p>
+                                            </a>
+                                        </li>
+
+                                    </ul>
+
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item ">
+                                            <a href="{{ route('depoimento.index') }}"
+                                                class="nav-link permissoesCategoria">
+
+                                                <p class="ml-3">Depoimentos</p>
+                                            </a>
+                                        </li>
+
+                                    </ul>
                                 </li>
                             @endcan
 
 
-                            <li class="nav-item">
-                                <a href="{{ route('depoimento.index') }}" class="nav-link ">
-                                    <i class="nav-icon fas fa-user-circle"></i>
-                                    <p>
-                                        Depoimentos
 
-                                    </p>
-                                </a>
-                            </li>
 
 
                             </li>
