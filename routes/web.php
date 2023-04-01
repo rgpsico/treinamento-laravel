@@ -8,12 +8,14 @@ use App\Http\Controllers\DepoimentoController;
 use App\Http\Controllers\ImovelController;
 use App\Http\Controllers\ItensController;
 use App\Http\Controllers\ListaEsperaController;
+use App\Http\Controllers\LogsController;
 use App\Http\Controllers\PermissoesController;
 use App\Http\Controllers\PermissoesCategoriaController;
 use App\Http\Controllers\ProprietarioController;
 use App\Http\Controllers\RedisController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UserdataController;
+
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -48,6 +50,17 @@ Route::group(['prefix' => '/admin'], function () {
         Route::put('/{id}/update', [DepoimentoController::class, 'edit'])->name('depoimento.update');
         Route::post('/post', [DepoimentoController::class, 'store'])->name('depoimento.store');
         Route::post('/{id}/destroy', [DepoimentoController::class, 'destroy'])->name('depoimento.destroy');
+    });
+
+
+    Route::group(['prefix' => '/log'], function () {
+        Route::get('/', [LogsController::class, 'index'])->name('log.index');
+        Route::get('/{id}/show', [LogsController::class, 'show'])->name('log.show');
+        Route::get('/create', [LogsController::class, 'create'])->name('log.create');
+        Route::get('/{id}/edit', [LogsController::class, 'edit'])->name('log.edit');
+        Route::put('/{id}/update', [LogsController::class, 'edit'])->name('log.update');
+        Route::post('/post', [LogsController::class, 'store'])->name('log.store');
+        Route::post('/{id}/destroy', [LogsController::class, 'destroy'])->name('log.destroy');
     });
 
 

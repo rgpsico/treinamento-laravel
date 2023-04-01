@@ -171,6 +171,8 @@
 
 
 
+
+
                         @can('ver_imoveis')
                             <li class="nav-item menuImoveis open menu-is-opening menu-open">
                                 <a href="{{ route('permissoes_categoria.index') }}" class="nav-link">
@@ -303,6 +305,27 @@
                                                 class="nav-link permissoesCategoria">
 
                                                 <p class="ml-3">Depoimentos</p>
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                            @endcan
+
+                            @can('ver_dashboard')
+                                <li class="nav-item">
+                                    <a href="{{ route('dashboard') }}" class="nav-link menuDashboard">
+                                        <i class="nav-icon fas fa-chart-pie"></i>
+                                        <p>
+                                            Administrativo
+                                        </p>
+                                        <i class="right fas fa-angle-left"></i>
+                                    </a>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item ">
+                                            <a href="{{ route('log.index') }}" class="nav-link permissoesCategoria">
+
+                                                <p class="ml-3">Logs</p>
                                             </a>
                                         </li>
 
