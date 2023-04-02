@@ -109,11 +109,11 @@ class ImovelController extends Controller
     public function edit($id)
     {
 
-
+        $itens = Itens::all();
         if ($data = Imovel::where('id', $id)->first()) {
             return view('imovel.edit', [
                 'data' => $data,
-                'itens' => [],
+                'itens' => $itens,
                 'pageTitle' => 'Todos os Imoveis'
             ]);
         }
