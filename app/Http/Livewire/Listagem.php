@@ -28,70 +28,59 @@ class Listagem extends Component
     public function render()
     {
 
-        $datas = Imovel::with('gallery')->select('id', 'title', 'description', 'price', 'avatar');
+        $datas = Imovel::with('gallery')->select('id', 'title', 'description', 'price', 'avatar')->where('status_admin', 1);
 
-      
-        if($this->search)
-        {
-            $datas->where(function ($query)
-            {
+
+        if ($this->search) {
+            $datas->where(function ($query) {
                 $datas = $query->where("title", "like", $this->search);
             });
         }
 
-        if($this->place)
-        {
-            $datas->where(function ($query)
-            {
+        if ($this->place) {
+            $datas->where(function ($query) {
                 $datas = $query->where("address", "like", $this->place);
             });
         }
 
-        if($this->type)
-        {
-            $datas->where(function ($query)
-            {
-               $query->where("type", "=", $this->type);
+        if ($this->type) {
+            $datas->where(function ($query) {
+                $query->where("type", "=", $this->type);
             });
         }
 
-        if($this->price)
-        {
-            $datas->where(function ($query)
-            {
-               $query->where("price", ">=", $this->price);
+        if ($this->price) {
+            $datas->where(function ($query) {
+                $query->where("price", ">=", $this->price);
             });
         }
-         
-         
-         $countLeads = $datas->count();
 
-        if($this->ordem == 'desc' || $this->ordem == 'asc')
-        {
+
+        $countLeads = $datas->count();
+
+        if ($this->ordem == 'desc' || $this->ordem == 'asc') {
             $datas = $datas->orderBy('id', $this->ordem);
-        
         } else {
 
             $datas = $datas->orderBy('title');
         }
-       
-     
+
+
         if ($this->todos) {
             $datas = $datas->paginate(null);
         } else {
             $datas = $datas->paginate(10);
         }
-        
 
-      
+
+
         return view('livewire.listagem', compact('datas'));
     }
 
-    
-    public function todos() 
+
+    public function todos()
     {
         $this->todos = true;
         $this->setPage(1);
     }
-    
 }
