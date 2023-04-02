@@ -32,7 +32,7 @@
                     <div class="collapse navbar-collapse" id="h5-info">
                         <ul class="navbar-nav">
                             <li class="nav-item dropdown">
-                                <a class="nav-link " href="{{ route('novo.categoria') }}"> Home </a>
+                                <a class="nav-link " href="{{ route('novo.listar') }}"> Imovéis </a>
 
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('novo.categoria') }}">Serviços</a>

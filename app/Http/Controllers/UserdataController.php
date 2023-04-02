@@ -152,14 +152,24 @@ class UserdataController extends Controller
             'type' => 'required',
             'phone' => 'required',
             'password' => 'required|same:confirm_password',
+        ], [
+            'name.required' => 'O campo nome é obrigatório.',
+            'email.required' => 'O campo email é obrigatório.',
+            'email.unique' => 'Este email já está em uso.',
+            'type.required' => 'O campo tipo é obrigatório.',
+            'phone.required' => 'O campo telefone é obrigatório.',
+            'password.required' => 'O campo senha é obrigatório.',
+            'password.same' => 'As senhas informadas não são iguais.',
         ]);
+
 
 
 
         if ($validator->fails()) {
             return redirect('register')
                 ->withErrors($validator)
-                ->withInput();
+                ->withInput()
+                ->with('error', 'Usuário Não pode ser Cadastrado!');;
         }
 
         $user = User::create([

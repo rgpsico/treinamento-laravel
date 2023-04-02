@@ -37,4 +37,9 @@ class Imovel extends Model
     {
         return $this->hasMany(ListaEsperaImovel::class);
     }
+
+    public function avaliacoes()
+    {
+        return $this->hasMany(ImovelAvaliacao::class);
+    }
 }

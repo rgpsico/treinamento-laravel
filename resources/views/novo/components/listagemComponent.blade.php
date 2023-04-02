@@ -5,6 +5,7 @@
         left: 0;
     }
 </style>
+
 <div class="row">
 
     @foreach ($datas as $data)
@@ -33,18 +34,16 @@
                     <div class="text-stars m-t-5">
                         <p>{{ $data->description }}</p>
                         <p><b>Preço:</b>{{ $data->price }}</p>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
+
+                        @php  echo renderizaEstrelasAvaliacao($data->avaliacoes()->avg('avaliacao')) @endphp
+
                     </div>
                     <div class="featured-bottum m-t-30">
                         <ul class="d-flex justify-content-between list-unstyled m-b-20">
                             <li><a href="#">
                                     <i class="fa fa-map-marker"></i> {{ $data->address }}</a></li>
                             <li><a href="#">
-                                    <i class="fa fa-heart-o"></i> Save</a> </li>
+                                    <i class="fa fa-heart-o"></i> Salvar</a> </li>
                         </ul>
                     </div>
                 </div>
