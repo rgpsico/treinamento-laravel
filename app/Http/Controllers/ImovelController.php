@@ -110,7 +110,7 @@ class ImovelController extends Controller
     {
 
         $itens = Itens::all();
-        if ($data = Imovel::where('id', $id)->first()) {
+        if ($data = Imovel::with('itens')->find($id)->first()) {
             return view('imovel.edit', [
                 'data' => $data,
                 'itens' => $itens,
@@ -141,6 +141,26 @@ class ImovelController extends Controller
             $avatar->move($path, $filename);
             $imovel->avatar =  $filename;
         }
+
+        ImovelItens::where('imovel_id', $id)->delete();
+        $itensMarcados = $request->input('itens') ?? []; // Retorna um array vazio se não houver itens marcados
+
+
+
+        foreach ($itensMarcados as $item) {
+
+            if (!$imovel->itens->contains($item)) { // Verifica se o item não está associado ao imóvel
+
+                ImovelItens::updateOrCreate(
+
+                    ['item_id' => $item, 'item_id' => $item],
+                    ['imovel_id' => $imovel->id, 'item_id' => $item]
+                );
+            }
+        }
+
+
+
 
         $imovel->save();
 

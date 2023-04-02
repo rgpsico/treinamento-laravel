@@ -83,4 +83,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(UserEndereco::class, 'user_id', 'id');
     }
+
+    public function itens()
+    {
+        return $this->hasOne(Itens::class, 'user_id', 'id');
+    }
 }

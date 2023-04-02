@@ -18,8 +18,14 @@ class ImovelItens extends Model
         return $this->belongsTo(Imovel::class);
     }
 
-    public function item()
+    public function itens()
     {
-        return $this->belongsTo(Itens::class);
+        return $this->belongsTo(Itens::class, 'item_id');
+    }
+
+    public function hastem($id)
+    {
+
+        return $item = Itens::find($id)->all();
     }
 }

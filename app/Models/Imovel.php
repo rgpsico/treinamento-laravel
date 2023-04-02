@@ -13,6 +13,11 @@ class Imovel extends Model
 
     protected $fillable =  ['title', 'description', 'price', 'type', 'address', 'user_id', 'status', 'status_admin'];
 
+    public function itens()
+    {
+        return $this->hasMany(ImovelItens::class);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -23,10 +28,7 @@ class Imovel extends Model
         return $this->hasMany(UserGallery::class);
     }
 
-    public function itens()
-    {
-        return $this->hasMany(ImovelItens::class);
-    }
+
 
     public function regras()
     {
