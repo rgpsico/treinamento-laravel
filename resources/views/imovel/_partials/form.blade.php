@@ -128,17 +128,15 @@
                 <label for="item" class="form-label">Itens:</label>
                 <br>
                 <div class="row">
-
                     @foreach ($itens as $item)
-                        <label for="item" class="ml-4 m-2" name="item">{{ $item->name }}</label>
-                       
-                        @if(isset($item->id))
-                            <input type="checkbox" class="" name="itens[]" value="{{ $item->id }}" {{ $data->itens->contains('item_id', $item->id) ? 'checked' : '' }}>
-                        
-                        @else 
-                        <input type="checkbox" class="" name="itens[]" value="{{ $item->id }}" />
-                        @endif
-                    @endforeach
+                    <label for="item" class="ml-4 m-2" name="item">{{ $item->name }}</label>
+                    @if(isset($data) && is_object($data) && isset($data->itens) && $data->itens->contains('item_id', $item->id))
+                        <input type="checkbox" class="" name="itens[]" value="{{ $item->id }}" checked>
+                    @else
+                        <input type="checkbox" class="" name="itens[]" value="{{ $item->id }}">
+                    @endif
+                @endforeach
+                
 
 
                 </div>
@@ -149,9 +147,9 @@
 
 
     <div class="form-group">
-        <label class="label"> Fotos do imovel </label>
+        <label class="label"> Fotos do imovel (Max) 5 Fotos</label>
         <br>
-        <input type="file" name="avatar[]" multiple id="avatar" class="forn-control">
+        <input type="file" name="avatar[]" multiple id="avatar" class="forn-control" maxlength="5">
         @if ($errors->has('avatar'))
             <div class="text-danger">{{ $errors->first('avatar') }}</div>
         @endif
