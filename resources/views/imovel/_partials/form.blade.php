@@ -131,8 +131,13 @@
 
                     @foreach ($itens as $item)
                         <label for="item" class="ml-4 m-2" name="item">{{ $item->name }}</label>
-                        <input type="checkbox" class="" name="itens[]" value="{{ $item->id }}"
-                            {{ $data->itens->contains('item_id', $item->id) ? 'checked' : '' }}>
+                       
+                        @if(isset($item->id))
+                            <input type="checkbox" class="" name="itens[]" value="{{ $item->id }}" {{ $data->itens->contains('item_id', $item->id) ? 'checked' : '' }}>
+                        
+                        @else 
+                        <input type="checkbox" class="" name="itens[]" value="{{ $item->id }}" />
+                        @endif
                     @endforeach
 
 
