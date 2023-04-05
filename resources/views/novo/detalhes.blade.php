@@ -1,4 +1,5 @@
 <x-layout title="Detalhes">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
         .principal {
@@ -60,35 +61,45 @@
                             </ul>
                         </div>
                         <ul class="list-unstyled d-inline-block float-left detail_left m-b-0">
-                            @foreach ($data->itens as $item)
-                                <li style="text-transform:capitalize;">{{ $item->item->name ?? '' }}</li>
-                            @endforeach
-                        </ul>
+                            <h4>Informações do Imóvel:</h4>                          
+                                <li>Área: 100 m²</li>
+                                <li>Quartos: 3</li>
+                                <li>Banheiros: 2</li>
+                                <li>Vagas de garagem: 1</li>
+                                <li>Localização: Nova Brasília</li>
+                                <!-- Adicione mais informações conforme necessário --></ul>
+                       
                         <ul class="list-unstyled d-inline-block m-l-40 detail_right  m-b-0">
-
-                            @foreach ($data->itens as $item)
-                                <li>Ok</li>
-                            @endforeach
-
+                            <h4>Regras do imovel</h4>
+                            <ul class="list-unstyled d-inline-block float-left detail_left m-b-0">                             
+                                    <li>Área: 100 m²</li>
+                                    <li>Quartos: 3</li>
+                                    <li>Banheiros: 2</li>
+                                    <li>Vagas de garagem: 1</li>
+                                    <li>Localização: Nova Brasília</li>
+                                    <!-- Adicione mais informações conforme necessário -->
+                           </ul>
                         </ul>
+                        
                         <div class="detail_bottum m-t-15">
                             <div class="row">
                                 <div class="col-lg-12 col-xl-6 col-md-12 col-sm-12 col-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" value="" type="checkbox">
+                                       
                                         <label class="form-check-label"> </label>
-                                        <img src="{{ asset('images/warrenty.png') }}" alt="{{ $data->title }}">
+                                        <i class="fas fa-money-bill"></i>
                                         <div class="warranty d-inline-block">
                                             {{ $data->deposito == 0 ? 'Não precisa de deposito*' : 'Precisa de deposito' }}
                                             <br>
                                         </div>
                                     </div>
+                                    
                                 </div>
                                 <div class="col-lg-12 col-xl-6 col-md-12 col-sm-12 col-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" value="" type="checkbox">
                                         <label class="form-check-label"> </label>
-                                        <img src="{{ asset('images/insurance.png') }}" alt="{{ $data->title }}">
+                                        <i class="fas fa-sun"></i>
+
                                         <div class="warranty d-inline-block">10 minutos da praia<br>
                                         </div>
                                     </div>

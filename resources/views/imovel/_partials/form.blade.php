@@ -16,16 +16,19 @@
 
     <div class="col-12">
         <div class="form-group">
-            <label for="type" class="form-label">Tipo</label>
+            <label for="type" class="form-label">Tipo de imovel</label>
             @if (isset($data->type) && !is_null($data->type))
                 <select name="type" id="type" name="type" class="form-control">
-                    <option value="0" {{ $data->type == 0 ? 'selected' : '' }} class="form-control">Casa</option>
-                    <option value="1" {{ $data->type == 1 ? 'selected' : '' }} class="form-control">KitNet</option>
+                    <option value="1" {{ $data->type == 0 ? 'selected' : '' }} class="form-control">Casa</option>
+                    <option value="2" {{ $data->type == 1 ? 'selected' : '' }} class="form-control">Kitnet</option>
+                    <option value="3" {{ $data->type == 2 ? 'selected' : '' }} class="form-control">Loja</option>
                 </select>
             @else
                 <select name="type" id="type" name="type" class="form-control">
+                    <option value="" selected>Selecione</option>
                     <option value="1" class="form-control">Casa</option>
                     <option value="2" class="form-control">Kitnet</option>
+                    <option value="3" class="form-control">Loja</option>
                 </select>
             @endif
 
@@ -33,7 +36,7 @@
     </div>
     <div class="col-12">
         <div class="form-group">
-            <label for="">Status</label>
+            <label for="">Status do imovél</label>
             <select name="status" id="status" class="form-control">
                 <option value="" selected>Selecione</option>
                 @if (isset($data->status) && !is_null($data->status))
@@ -42,8 +45,8 @@
                     <option value="1" {{ $data->status == 1 ? 'selected' : '' }} class="form-control">Alugado
                     </option>
                 @else
-                    <option value="0" class="form-control">Livre </option>
-                    <option value="1" class="form-control">Alugado</option>
+                    <option value="0" class="form-control">Livre</option>
+                    <option value="1" class="form-control">Oculpado</option>
                 @endif
 
 
@@ -51,6 +54,7 @@
         </div>
     </div>
 
+    @if(Auth::user()->is_admin)
     <div class="col-12">
         <div class="form-group">
             <label for="">Status Admin</label>
@@ -70,10 +74,11 @@
             </select>
         </div>
     </div>
+    @endif
 
     <div class="col-12">
         <div class="form-group">
-            <label for="title" class="form-label">Titulo:</label>
+            <label for="title" class="form-label">Titulo do imovél:</label>
             <input placeholder="Ex: Casa na Nova Brasilia" type="text" id="title" name="title"
                 class="form-control" value="{{ $data->title ?? '' }}">
             @if ($errors->has('title'))
@@ -98,8 +103,8 @@
 
     <div class="col-12">
         <div class="form-group">
-            <label for="address" class="form-label">Lugar da comunidade:</label>
-            <input placeholder="Ex: Rampinha, Pistão, Terreirão " type="text" id="address" name="address"
+            <label for="address" class="form-label">Lugar da Comunidade:</label>
+            <input placeholder="Ex: Rampinha, Pistão, Terreirão" type="text" id="address" name="address"
                 class="form-control" value="{{ $data->address ?? '' }}">
             @if ($errors->has('address'))
                 <div class="text-danger">{{ $errors->first('address') }}</div>
@@ -135,24 +140,26 @@
                     @else
                         <input type="checkbox" class="" name="itens[]" value="{{ $item->id }}">
                     @endif
-                @endforeach
-                
-
-
-                </div>
-
+                @endforeach               
             </div>
         </div>
+     </div>
     @endif
 
 
-    <div class="form-group">
-        <label class="label"> Fotos do imovel (Max) 5 Fotos</label>
-        <br>
-        <input type="file" name="avatar[]" multiple id="avatar" class="forn-control" maxlength="5">
-        @if ($errors->has('avatar'))
-            <div class="text-danger">{{ $errors->first('avatar') }}</div>
-        @endif
+
+    <div class="row">
+        <div class="form-group col-6">
+            <label class="label"> Fotos do imovel (Max) 5 Fotos</label>
+            <br>
+            <input type="file" name="avatar[]" multiple id="avatar" class="forn-control" maxlength="5">
+            @if ($errors->has('avatar'))
+                <div class="text-danger">{{ $errors->first('avatar') }}</div>
+            @endif
+        </div>
+        <div class="col-6">
+           
+        </div>
     </div>
 
 </div>
@@ -160,6 +167,6 @@
 </div>
 
 <div class="card-footer">
-    <button type="submit" class="btn btn-primary">Enviar</button>
+    <button type="submit" class="btn btn-primary"> {{isset($data) == true ? 'Editar Imóvel' : 'Cadastrar Imóvel'}}</button>
 </div>
 </form>

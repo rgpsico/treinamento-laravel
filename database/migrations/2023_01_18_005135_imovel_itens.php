@@ -16,9 +16,9 @@ class ImovelItens extends Migration
         Schema::create('imovel_itens', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('imovel_id');
-            $table->unsignedBigInteger('item_id');          
+            $table->unsignedBigInteger('item_id');
             $table->timestamps();
-            $table->foreign('imovel_id')->references('id')->on('imoveis');
+            $table->foreign('imovel_id')->references('id')->on('imoveis')->onDelete('cascade');
         });
     }
 

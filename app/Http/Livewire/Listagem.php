@@ -28,7 +28,7 @@ class Listagem extends Component
     public function render()
     {
 
-        $datas = Imovel::with('gallery')->select('id', 'title', 'description', 'price', 'avatar')->where('status_admin', 1);
+        $datas = Imovel::with('gallery')->select('id', 'title', 'description', 'price', 'avatar')->where('status_admin', 0);
 
 
         if ($this->search) {
