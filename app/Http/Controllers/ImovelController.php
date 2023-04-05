@@ -219,7 +219,6 @@ class ImovelController extends Controller
             if (!$imovel->itens->contains($item)) { // Verifica se o item não está associado ao imóvel
 
                 ImovelItens::updateOrCreate(
-
                     ['item_id' => $item, 'item_id' => $item],
                     ['imovel_id' => $imovel->id, 'item_id' => $item]
                 );

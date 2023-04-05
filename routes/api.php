@@ -25,6 +25,8 @@ Route::delete('/propietario/{id}/delete', [ProprietarioController::class, 'delet
 
 Route::group(['prefix' => '/users'], function () {
     Route::post('/post', [UserApiController::class, 'store']);
+    Route::put('/{id}/update', [UserApiController::class, 'update']);
+    Route::put('/{id}/updateAdmin', [UserApiController::class, 'updateAdmin']);
 });
 
 

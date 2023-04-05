@@ -62,6 +62,26 @@ class UserApiController extends Controller
         return response()->json(['message' => 'User created successfully']);
     }
 
+    public function updateAdmin(Request $request, $id)
+    {
+
+        $user = User::find($id);
+
+        if (!$user) {
+            return response()->json(['message' => 'User not found'], 404);
+        }
+
+        $user->is_admin = $request->is_admin;
+
+        $user->save();
+
+        if ($request->is_admin == 1) {
+            return response()->json(['message' => 'Usuario agora é um administrador']);
+        }
+
+        return response()->json(['message' => 'Usuário agora é um usuário comum ']);
+    }
+
 
     public function update(Request $request, $id)
     {

@@ -193,7 +193,7 @@
 
                                 </ul>
 
-                                @if (Auth::user()->email == 'rgyr2010@hotmail.com')
+                                @if (Auth::user()->is_admin)
                                     <ul class="nav nav-treeview">
                                         <li class="nav-item">
                                             <a href="{{ route('proprietario.index') }}" class="nav-link proprietario">
@@ -206,7 +206,7 @@
                                 @endif
 
                                 <ul class="nav nav-treeview">
-                                    @if (Auth::user()->email == 'rgyr2010@hotmail.com')
+                                    @if (Auth::user()->is_admin)
                                         <li class="nav-item">
                                             <a href="{{ route('imovel.all') }}" class="nav-link">
 
@@ -243,7 +243,7 @@
                             </li>
                         @endcan
 
-                        @if (Auth::user()->email == 'rgyr2010@hotmail.com')
+                        @if (Auth::user()->is_admin)
                             <li class="nav-item menuAcesso">
                                 <a href="" class="nav-link ">
 
@@ -278,7 +278,7 @@
 
 
 
-                                @can('ver_usuarios')
+                                @can('ver_usuarios') 
                                 <li class="nav-item">
                                     <a href="{{ route('users.index') }}" class="nav-link ">
                                         <i class="nav-icon fas fa-user-circle"></i>

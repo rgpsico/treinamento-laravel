@@ -133,6 +133,12 @@
                         <span>Editar Permissões</span>
                     </div>
                     <br>
+
+                    <div class="form-group">
+                        <input type="checkbox" {{ $data->is_admin == true ? 'checked' : '' }} name="is_admin" data-id="{{ $data->id }}" id="is_admin">
+                        <label for=""> Administrador</label>
+                        
+                    </div>
                     <form action="{{ route('users.addPermissao') }}" method="POST">
                         @csrf
                         <input type="hidden" name="user_id" value="{{ $data->id }}">
@@ -178,6 +184,41 @@
     </div>
 
     <script>
+       $(document).on("click", "#is_admin", function(){
+    // Verifica se o checkbox está marcado
+    
+    if ($(this).is(":checked")) {
+        // Marca todos os checkboxes na tela
+        $("input[type='checkbox']").prop("checked", true);
+    } else {
+        // Desmarca todos os checkboxes na tela
+        $("input[type='checkbox']").prop("checked", false);
+    }
+        // Recupera o ID do usuário
+        var userId = $(this).data("id");
+        
+        // Faz a requisição PUT para a API para atualizar o usuário para administrador
+        $.ajax({
+            url: '/api/users/' + userId + '/updateAdmin', // URL da API para atualização do usuário
+            type: 'PUT',
+            dataType: 'json',
+            data:{
+                'is_admin': $(this).is(":checked") == true ? 1 : 0
+            },
+            success: function (response) {
+            
+                alert(response.message);
+            },
+            error: function (error) {
+                // Erro na requisição
+                console.log(error);
+            }
+        });
+    
+});
+
+
+
         $(document).on('click', '#minha-imagem', function() {
             $('#input-imagem').trigger('click');
         });

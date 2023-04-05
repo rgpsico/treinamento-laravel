@@ -40,7 +40,7 @@ class AppServiceProvider extends AuthServiceProvider
 
         foreach ($permissoes as $permissao) {
             Gate::define($permissao->name, function ($user) use ($permissao) {
-                return $user->temPermissao($permissao->name);
+                return $user->temPermissao($permissao->name) || $user->is_admin;
             });
         }
     }
