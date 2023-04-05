@@ -209,15 +209,20 @@ class ImovelController extends Controller
         }
 
 
-        if ($itens = $request->input('itens')) {
+        ImovelItens::where('imovel_id', $imovel->id)->delete();
+        $itensMarcados = $request->input('itens') ?? []; // Retorna um array vazio se não houver itens marcados
 
-            foreach ($itens as $item) {
 
-                $itens = new ImovelItens();
-                $itens->imovel_id = $imovel->id;
-                $itens->item_id = $item;
 
-                $itens->save();
+        foreach ($itensMarcados as $item) {
+
+            if (!$imovel->itens->contains($item)) { // Verifica se o item não está associado ao imóvel
+
+                ImovelItens::updateOrCreate(
+
+                    ['item_id' => $item, 'item_id' => $item],
+                    ['imovel_id' => $imovel->id, 'item_id' => $item]
+                );
             }
         }
 
