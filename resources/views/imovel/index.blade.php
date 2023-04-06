@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 
 @section('content')
     <style>
@@ -55,34 +56,34 @@
     <div class="container">
         <div class="row">
             <div class="form-group col-12 col-md-2">
-                <select name="" id="" class="form-control">
-                    <option value="Selecione">KitNets</option>
-                    <option value="Selecione">Casas</option>
-                    <option value="Selecione">Loja</option>
+                <select name="" id="tipo" class="form-control filtro">
+                    <option value="1">Kitnet</option>
+                    <option value="2">Casa</option>
+                    <option value="3">Loja</option>
                 </select>
             </div>
 
             <div class="form-group col-12 col-md-2">
-                <select name="" id="" class="form-control">
-                    <option value="Selecione">Status</option>
-                    <option value="Selecione">Alugado</option>
-                    <option value="Selecione">Vago</option>
+                <select name="" id="" class="form-control filtro">
+                    <option value="1">Status</option>
+                    <option value="2">Alugado</option>
+                    <option value="3">Vago</option>
                 </select>
             </div>
 
             <div class="form-group col-12 col-md-2">
-                <select name="" id="" class="form-control">
-                    <option value="Selecione">Proprietario</option>
-                    <option value="Selecione">ROger</option>
-                    <option value="Selecione">Fabiane</option>
+                <select name="" id="" class="form-control filtro">
+                    <option value="1">Proprietario</option>
+                    <option value="2">ROger</option>
+                    <option value="3">Fabiane</option>
                 </select>
             </div>
 
             <div class="form-group col-12 col-md-2">
-                <select name="" id="" class="form-control">
+                <select name="" id="" class="form-control filtro">
                     <option value="Selecione">Preço</option>
-                    <option value="Selecione">400</option>
-                    <option value="Selecione">500</option>
+                    <option value="1">400</option>
+                    <option value="2">500</option>
                 </select>
             </div>
         </div>
@@ -132,7 +133,7 @@
                                 <th>Ações</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="imoveis_body">
                             @foreach ($data as $value)
                                 <tr>
                                     <td><input type="checkbox" data-id="{{ $value->id }}" name="checkboxImovel"
@@ -193,6 +194,62 @@
         </div>
     </div>
     <script>
+
+function row(data) {
+    var created_at = moment(data.created_at).format('DD/MM/YYYY');
+
+    return `
+        <tr>
+            <td><input type="checkbox" name="ids[]" value="${data.id}" class="checkbox-item"></td>
+            <td><img src="http://127.0.0.1:8000/imagens/imoveis/${data.gallery[0].image}" width="50"></td>
+            <td>${data.title}</td>
+            <td>${data.price}</td>
+            <td>${data.type}</td>
+            <td>${data.status}</td>
+            <td>${data.status_admin}</td>
+            <td>${created_at}</td>
+            <td>
+                <a href="/${data.id}/edit" class="btn btn-primary btn-sm">Editar</a>
+                <a href="/${data.id}/show" class="btn btn-info btn-sm">Ver</a>
+                <a href="/${data.id}/destroy" class="btn btn-danger btn-sm">Excluir</a>
+            </td>
+        </tr>
+    `;
+}
+
+
+   
+
+ 
+    $('.filtro').change(function() {
+
+    var tipo = $(this).val();
+   
+   
+    $.ajax({
+        url: '/api/imovel/search',
+        type: 'GET',
+        data: {
+            tipo: tipo,
+            status:$('#status').val(),
+            proprietario:$('#proprietario').val()
+        
+        },
+        success: function(response) {
+            var imoveisBody = $('#imoveis_body');
+            imoveisBody.empty();
+            $.each(response.imoveis, function(index, imovel) {
+                var rowHtml = row(imovel);
+                imoveisBody.append(rowHtml);
+            });
+        },
+        error: function(response) {
+            console.log(response);
+        }
+    });
+});
+
+      
         $('#acao_imoveis').click(function(e) {
             e.preventDefault()
             var ids = [];

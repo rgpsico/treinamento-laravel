@@ -11,6 +11,47 @@ use Illuminate\Http\Request;
 class ImovelApicontroller extends Controller
 {
 
+    public function index()
+    {
+        $imoveis = Imovel::all();
+        return response()->json(['imoveis' => $imoveis]);
+    }
+
+    public function search(Request $request)
+    {
+        $query = Imovel::query();
+
+        // Filtro por tipo
+        if ($request->has('tipo')) {
+            $tipo = $request->input('tipo');
+            $query->where('type', $tipo);
+        }
+
+        // Filtro por status
+        if ($request->has('status')) {
+            $status = $request->input('status');
+            $query->where('status', $status);
+        }
+
+        // Filtro por proprietário
+        if ($request->has('proprietario')) {
+            $proprietario = $request->input('proprietario');
+            $query->where('proprietario', $proprietario);
+        }
+
+        // Filtro por preço
+        if ($request->has('preco')) {
+            $preco = $request->input('preco');
+            $query->where('price', $preco);
+        }
+
+        $imoveis = $query->with('gallery')->get();
+
+        return response()->json(['imoveis' => $imoveis]);
+    }
+
+
+
     public function delete($id)
     {
         if ($imovel = Imovel::where('id', $id)->first()) {

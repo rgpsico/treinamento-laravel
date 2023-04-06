@@ -39,6 +39,8 @@ Route::post('/upload-imagem', [UserApiController::class, 'upload'])->name('user.
 
 
 Route::group(['prefix' => '/imovel'], function () {
+    Route::get('/search', [ImovelApicontroller::class, 'search']);
+    Route::get('/', [ImovelApicontroller::class, 'index']);
     Route::post('/store', [ImovelApicontroller::class, 'store']);
     Route::get('/{id}/delete', [ImovelApicontroller::class, 'delete']);
     Route::put('/{id}/update', [ImovelApicontroller::class, 'update']);
