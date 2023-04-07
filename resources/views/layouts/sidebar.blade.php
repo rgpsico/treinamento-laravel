@@ -230,6 +230,18 @@
                                 </ul>
 
                                 <ul class="nav nav-treeview">
+                                    {{-- @can('ver-itens') --}}
+                                    <li class="nav-item">
+                                        <a href="{{ route('regras.index') }}" class="nav-link itensMenu">
+
+                                            <p class="ml-3">Regras</p>
+                                        </a>
+                                    </li>
+                                    {{-- @endcan --}}
+
+                                </ul>
+
+                                <ul class="nav nav-treeview">
                                     <li class="nav-item">
                                         <a href="{{ route('espera.index') }}" class="nav-link espera">
 

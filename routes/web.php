@@ -13,6 +13,7 @@ use App\Http\Controllers\PermissoesController;
 use App\Http\Controllers\PermissoesCategoriaController;
 use App\Http\Controllers\ProprietarioController;
 use App\Http\Controllers\RedisController;
+use App\Http\Controllers\RegrasController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UserdataController;
 
@@ -156,6 +157,15 @@ Route::group(['prefix' => '/imovel', 'middleware' => 'auth'], function () {
         Route::get('/create', [ItensController::class, 'create'])->name('itens.create');
         Route::post('/post', [ItensController::class, 'store'])->name('itens.store');
         Route::delete('/{id}/destroy', [ItensController::class, 'destroy'])->name('itens.destroy');
+    });
+
+    Route::group(['prefix' => '/regras'], function () {
+        Route::get('/', [RegrasController::class, 'index'])->name('regras.index');
+        Route::get('/{id}/edit', [RegrasController::class, 'edit'])->name('regras.edit');
+        Route::put('/{id}/update', [RegrasController::class, 'update'])->name('regras.update');
+        Route::get('/create', [RegrasController::class, 'create'])->name('regras.create');
+        Route::post('/post', [RegrasController::class, 'store'])->name('regras.store');
+        Route::delete('/{id}/destroy', [RegrasController::class, 'destroy'])->name('regras.destroy');
     });
 });
 

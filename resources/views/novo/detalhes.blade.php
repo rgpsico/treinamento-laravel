@@ -61,23 +61,19 @@
                             </ul>
                         </div>
                         <ul class="list-unstyled d-inline-block float-left detail_left m-b-0">
-                            <h4>Informações do Imóvel:</h4>                          
-                                <li>Área: 100 m²</li>
-                                <li>Quartos: 3</li>
-                                <li>Banheiros: 2</li>
-                                <li>Vagas de garagem: 1</li>
-                                <li>Localização: Nova Brasília</li>
-                                <!-- Adicione mais informações conforme necessário --></ul>
+                            <h4>Itens</h4>   
+                            @foreach ( $data->itens as $value )
+                                <li>{{$value->itens->name}}</li> 
+                            @endforeach                       
+                               
+                              
+                        </ul>   
                        
                         <ul class="list-unstyled d-inline-block m-l-40 detail_right  m-b-0">
-                            <h4>Regras do imovel</h4>
+                            <h4>Regras</h4>
                             <ul class="list-unstyled d-inline-block float-left detail_left m-b-0">                             
                                     <li>Área: 100 m²</li>
-                                    <li>Quartos: 3</li>
-                                    <li>Banheiros: 2</li>
-                                    <li>Vagas de garagem: 1</li>
-                                    <li>Localização: Nova Brasília</li>
-                                    <!-- Adicione mais informações conforme necessário -->
+                             
                            </ul>
                         </ul>
                         
