@@ -65,14 +65,19 @@
                             @foreach ( $data->itens as $value )
                                 <li>{{$value->itens->name}}</li> 
                             @endforeach                       
-                               
+                            <li>    <i class="fas fa-money-bill"></i> {{ $data->deposito == 0 ? 'Não precisa de deposito*' : 'Precisa de deposito' }}</li> 
+                            <li> <i class="fas fa-sun"></i> <div class="warranty d-inline-block">10 minutos da praia<br>
+                                        </div>
+                                    </li> 
+                                    <li class="d-inline-block pr-3 detail_prize my-3"> Preço Mensal : </li>
+                                    <li class="d-inline-block Price_m detail_prize text-dark font-weight-bold"> {{ $data->price }}</li>
                               
                         </ul>   
                        
-                        <ul class="list-unstyled d-inline-block m-l-40 detail_right  m-b-0">
+                        <ul class="list-unstyled d-inline-block m-l-60 detail_right  m-b-0">
                             <h4>Regras</h4>
                             <ul class="list-unstyled d-inline-block float-left detail_left m-b-0">                             
-                                    <li>Área: 100 m²</li>
+                                    <li></li>
                              
                            </ul>
                         </ul>
@@ -83,9 +88,9 @@
                                     <div class="form-check">
                                        
                                         <label class="form-check-label"> </label>
-                                        <i class="fas fa-money-bill"></i>
+                                     
                                         <div class="warranty d-inline-block">
-                                            {{ $data->deposito == 0 ? 'Não precisa de deposito*' : 'Precisa de deposito' }}
+                                           
                                             <br>
                                         </div>
                                     </div>
@@ -94,18 +99,16 @@
                                 <div class="col-lg-12 col-xl-6 col-md-12 col-sm-12 col-12">
                                     <div class="form-check">
                                         <label class="form-check-label"> </label>
-                                        <i class="fas fa-sun"></i>
+                                       
 
-                                        <div class="warranty d-inline-block">10 minutos da praia<br>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="detail_prize p-t-10">
+                        <div class="detail_prize p-t-10 my-5">
                             <ul class="list-unstyled">
-                                <li class="d-inline-block pr-3"> Preço Mensal : </li>
-                                <li class="d-inline-block Price_m"> {{ $data->price }}</li>
+                          
 
                             </ul>
 
