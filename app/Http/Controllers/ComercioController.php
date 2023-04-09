@@ -44,6 +44,12 @@ class ComercioController extends Controller
         return $this->data($model, 'create');
     }
 
+    public function registerHome()
+    {
+        $model = [];
+        return $this->data($model, 'registerHome');
+    }
+
 
 
     public function store(Request $request)

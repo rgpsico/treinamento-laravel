@@ -178,6 +178,7 @@ Route::group(['prefix' => '/comercio'], function () {
     Route::get('/{id}/edit', [ComercioController::class, 'edit'])->name('comercio.edit');
     Route::put('/{id}/update', [ComercioController::class, 'update'])->name('comercio.update');
     Route::get('/create', [ComercioController::class, 'create'])->name('comercio.create');
+    Route::get('/registerHome', [ComercioController::class, 'registerHome'])->name('comercio.registerHome');
     Route::post('/post', [ComercioController::class, 'store'])->name('comercio.store');
     Route::delete('/{id}/destroy', [ComercioController::class, 'destroy'])->name('comercio.destroy');
 });
@@ -195,6 +196,7 @@ Route::group(['prefix' => '/entregadores'], function () {
     Route::get('/', [EntregadoresController::class, 'index'])->name('entregadores.index');
     Route::get('/{id}/edit', [EntregadoresController::class, 'edit'])->name('entregadores.edit');
     Route::put('/{id}/update', [EntregadoresController::class, 'update'])->name('entregadores.update');
+    Route::get('/registerHome', [EntregadoresController::class, 'registerHome'])->name('entregadores.registerHome');
     Route::get('/create', [EntregadoresController::class, 'create'])->name('entregadores.create');
     Route::post('/post', [EntregadoresController::class, 'store'])->name('entregadores.store');
     Route::delete('/{id}/destroy', [EntregadoresController::class, 'destroy'])->name('entregadores.destroy');

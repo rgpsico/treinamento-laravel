@@ -6,6 +6,7 @@ use App\Models\Comercio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
+use App\Traits\ControllerDataTrait;
 
 class EntregadoresController extends Controller
 {
@@ -14,6 +15,8 @@ class EntregadoresController extends Controller
     protected $route = 'entregadores';
     protected $model;
     protected $fillable = ['nome', 'endereco', 'telefone', 'status', 'logo'];
+
+    use ControllerDataTrait;
 
     public function __construct(Comercio $model)
     {
@@ -26,29 +29,14 @@ class EntregadoresController extends Controller
         return $this->data($model, 'index');
     }
 
-    public function data($model, $page)
-    {
-
-        return view($this->view . '.' . $page, [
-            'model' => $model,
-            'pageTitle' => $this->pageTitle,
-            'route' => $this->route,
-            'view' => $this->view . '.' . $page,
-            'partials' => $this->view
-        ]);
-    }
-
     public function create()
     {
         $model = [];
         return $this->data($model, 'create');
     }
 
-
-
     public function store(Request $request)
     {
-
         $data = $request->only($this->fillable);
 
 
@@ -58,7 +46,6 @@ class EntregadoresController extends Controller
             $request->file('logo')->move($path, $filename);
             $data['logo'] = $filename;
         }
-
 
 
         $comercio = Comercio::create($data);
@@ -96,6 +83,12 @@ class EntregadoresController extends Controller
     {
         $comercio = $this->model->find($id);
         return $this->data($comercio, 'create');
+    }
+
+    public function registerHome()
+    {
+        $comercio = [];
+        return $this->data($comercio, 'registerHome');
     }
 
 
