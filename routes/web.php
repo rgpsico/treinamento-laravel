@@ -2,9 +2,11 @@
 
 use App\Events\PostCreated;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ComercioController;
 use App\Http\Controllers\ConfiguracaoController;
 use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\DepoimentoController;
+use App\Http\Controllers\EntregadoresController;
 use App\Http\Controllers\ImovelController;
 use App\Http\Controllers\ItensController;
 use App\Http\Controllers\ListaEsperaController;
@@ -14,6 +16,7 @@ use App\Http\Controllers\PermissoesCategoriaController;
 use App\Http\Controllers\ProprietarioController;
 use App\Http\Controllers\RedisController;
 use App\Http\Controllers\RegrasController;
+use App\Http\Controllers\SaloesController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UserdataController;
 
@@ -167,6 +170,34 @@ Route::group(['prefix' => '/imovel', 'middleware' => 'auth'], function () {
         Route::post('/post', [RegrasController::class, 'store'])->name('regras.store');
         Route::delete('/{id}/destroy', [RegrasController::class, 'destroy'])->name('regras.destroy');
     });
+});
+
+
+Route::group(['prefix' => '/comercio'], function () {
+    Route::get('/', [ComercioController::class, 'index'])->name('comercio.index');
+    Route::get('/{id}/edit', [ComercioController::class, 'edit'])->name('comercio.edit');
+    Route::put('/{id}/update', [ComercioController::class, 'update'])->name('comercio.update');
+    Route::get('/create', [ComercioController::class, 'create'])->name('comercio.create');
+    Route::post('/post', [ComercioController::class, 'store'])->name('comercio.store');
+    Route::delete('/{id}/destroy', [ComercioController::class, 'destroy'])->name('comercio.destroy');
+});
+
+Route::group(['prefix' => '/saloes'], function () {
+    Route::get('/', [SaloesController::class, 'index'])->name('saloes.index');
+    Route::get('/{id}/edit', [SaloesController::class, 'edit'])->name('saloes.edit');
+    Route::put('/{id}/update', [SaloesController::class, 'update'])->name('saloes.update');
+    Route::get('/create', [SaloesController::class, 'create'])->name('saloes.create');
+    Route::post('/post', [SaloesController::class, 'store'])->name('saloes.store');
+    Route::delete('/{id}/destroy', [SaloesController::class, 'destroy'])->name('saloes.destroy');
+});
+
+Route::group(['prefix' => '/entregadores'], function () {
+    Route::get('/', [EntregadoresController::class, 'index'])->name('entregadores.index');
+    Route::get('/{id}/edit', [EntregadoresController::class, 'edit'])->name('entregadores.edit');
+    Route::put('/{id}/update', [EntregadoresController::class, 'update'])->name('entregadores.update');
+    Route::get('/create', [EntregadoresController::class, 'create'])->name('entregadores.create');
+    Route::post('/post', [EntregadoresController::class, 'store'])->name('entregadores.store');
+    Route::delete('/{id}/destroy', [EntregadoresController::class, 'destroy'])->name('entregadores.destroy');
 });
 
 Route::middleware(['auth'])->get('/dashboard', [DashBoardController::class, 'index'])->name('dashboard');

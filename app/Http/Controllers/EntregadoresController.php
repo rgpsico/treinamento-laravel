@@ -7,11 +7,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 
-class ComercioController extends Controller
+class EntregadoresController extends Controller
 {
-    protected $pageTitle = 'Comércio';
-    protected $view = 'comercio';
-    protected $route = 'comercio';
+    protected $pageTitle = 'Entregadores';
+    protected $view = 'entregadores';
+    protected $route = 'entregadores';
     protected $model;
     protected $fillable = ['nome', 'endereco', 'telefone', 'status', 'logo'];
 
@@ -54,7 +54,7 @@ class ComercioController extends Controller
 
         if ($request->hasFile('logo')) {
             $filename = time() . '_' . rand() . '.' . $request->file('logo')->getClientOriginalExtension();
-            $path = public_path('imagens/comercio/');
+            $path = public_path('imagens/' . $this->view);
             $request->file('logo')->move($path, $filename);
             $data['logo'] = $filename;
         }

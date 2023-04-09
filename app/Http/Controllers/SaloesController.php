@@ -7,11 +7,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 
-class ComercioController extends Controller
+class SaloesController extends Controller
 {
-    protected $pageTitle = 'Comércio';
-    protected $view = 'comercio';
-    protected $route = 'comercio';
+    protected $pageTitle = 'Salão';
+    protected $view = 'saloes';
+    protected $route = 'saloes';
     protected $model;
     protected $fillable = ['nome', 'endereco', 'telefone', 'status', 'logo'];
 

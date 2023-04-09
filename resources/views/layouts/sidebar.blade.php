@@ -117,7 +117,7 @@
                 <div class="row mb-5 my-5 nav-treeview">
                     <div class="col-12 mb-2">
                         <div class="image d-flex justify-content-center align-items-center">
-                            <a href="{{ route('users.edit', ['id' => Auth::user()->id]) }}">
+                            <a href="{{ route('users.edit', ['id' => Auth::user()->id ?? '']) }}">
 
 
                                 @if (Auth::user()->avatar)
