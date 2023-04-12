@@ -255,6 +255,28 @@
                             </li>
                         @endcan
 
+                        <li class="nav-item menuAcesso">
+                            <a href="" class="nav-link ">
+
+                                <i class="nav-icon fas fa-key"></i>
+                                <p>
+                                        Cadastro
+                                </p>
+                                <i class="right fas fa-angle-left"></i>
+                            </a>
+
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item ">
+                                    <a href="{{ route('category.index') }}"
+                                        class="nav-link permissoesCategoria">
+
+                                        <p class="ml-3">Categoria</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
                         @if (Auth::user()->is_admin)
                             <li class="nav-item menuAcesso">
                                 <a href="" class="nav-link ">

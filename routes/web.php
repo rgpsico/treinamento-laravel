@@ -40,9 +40,9 @@ Route::group(['prefix' => '/admin'], function () {
         Route::get('/{id}/show', [CategoryController::class, 'show'])->name('category.show');
         Route::get('/create', [CategoryController::class, 'create'])->name('category.create');
         Route::get('/{id}/edit', [CategoryController::class, 'edit'])->name('category.edit');
-        Route::put('/{id}/update', [CategoryController::class, 'edit'])->name('category.update');
+        Route::post('/{id}/update', [CategoryController::class, 'update'])->name('category.update');
         Route::post('/post', [CategoryController::class, 'store'])->name('category.store');
-        Route::post('/{id}/destroy', [CategoryController::class, 'destroy'])->name('category.destroy');
+        Route::delete('/{id}/destroy', [CategoryController::class, 'destroy'])->name('category.destroy');
     });
 
 

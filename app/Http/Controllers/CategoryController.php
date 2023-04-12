@@ -2,132 +2,102 @@
 
 namespace App\Http\Controllers;
 
-
-
-
 use App\Models\Category;
 use Illuminate\Http\Request;
 
-use Illuminate\Support\Facades\Hash;
-
-
 class CategoryController extends Controller
 {
-
+    protected $pageTitle = 'Categoria';
     protected $view = 'category';
+    protected $route = 'category';
+    protected $model;
+    protected $fillable = ['name', 'description', 'link'];
 
-
-    public function index(Request $request)
+    public function __construct(Category $model)
     {
-        $model = Category::paginate();
-        return view($this->view . '.index', compact('model'),  ['request' => $request]);
+        $this->model = $model;
     }
 
-
-
-
-    public function show($id)
+    public function index()
     {
 
-        $category = Category::find($id);
-
-        return view($this->view . '.show', compact('category'));
+        $model = $this->model::all();
+        return $this->data($model, 'index');
     }
 
+    public function data($model, $page)
+    {
 
+        return view($this->view . '.' . $page, [
+            'model' => $model,
+            'pageTitle' => $this->pageTitle,
+            'route' => $this->route,
+            'view' => $this->view . '.' . $page,
+            'partials' => $this->view
+        ]);
+    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-
-        return view($this->view . '.create');
+        $model = [];
+        return $this->data($model, 'create');
     }
 
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function registerHome()
     {
-        if ($data = Category::where('id', $id)->first()) {
-
-            return view($this->view . '.edit', [
-                'data' => $data
-            ]);
-        }
+        $model = [];
+        return $this->data($model, 'registerHome');
     }
 
 
 
-    public function teste()
+    public function store(Request $request)
     {
 
+        $data = $request->only($this->fillable);
 
-        return view('teste.index');
+
+        $categoria = $this->model::create($data);
+
+        return redirect()->back()->with(['success' => 'Cadastrado com sucesso']);
     }
 
     public function update(Request $request, $id)
     {
-        // Valide os dados de entrada
-        $request->validate([
-            'name' => 'required|max:255',
-
-        ]);
 
 
-        $category = Category::findOrFail($id);
+        $data = $request->all();
+        $categoria = $this->model::find($id);
 
-        // Atualize os dados do imóvel
-        $category->name = $request->input('name');
-        $category->description = $request->input('description');
+        $categoria->update($data);
 
-
-        $category->save();
-
-        // Redirecione o usuário de volta para a página de exibição de imóveis
-        return redirect()->route($this->view . '.edit', ['id' => $category->id]);
+        return redirect()->route('category.index', ['categoria' => $categoria->id])->with(['success' => 'Atualizada com sucesssso']);
     }
 
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function show($id)
     {
-
-        $category = new Category();
-        $category->name = $request->name;
-        $category->description = $request->description;
-
-
-        if ($category->save()) {
-            return redirect()->back();
-        }
+        $model = $this->model->find($id);
+        return view($this->view . '.show', [
+            'model' => $model
+        ]);
     }
 
-
+    public function edit($id)
+    {
+        $model = $this->model->find($id);
+        return $this->data($model, 'create');
+    }
 
 
 
     public function destroy($id)
     {
-        if ($model = Category::where('id', $id)->first()) {
-
-            $model->destroy($id);
-
-            return redirect()->route('category.index', [
-                'id' => $model->id
-            ])
-                ->with('success', 'Imovel foi excluido com sucesso');
+        $model = $this->model->find($id);
+        if ($model) {
+            $model->delete();
+            return redirect()->route($this->route . '.index')->with('success', 'Categoria excluída com sucesso.');
+        } else {
+            return redirect()->route($this->route . '.index')->with('error', 'Categoria foi não encontrada.');
         }
     }
 }

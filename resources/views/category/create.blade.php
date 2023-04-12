@@ -2,24 +2,21 @@
 
 
 @section('content')
-
-</div>
-</div>
-
-<div class="row">
-    @if (session()->has('success'))
-<div class="row">
-    <div class=" col-12 alert alert-success">
-        {{ session()->get('success') }}
     </div>
-</div>
-@endif
-</div>
+    </div>
 
-<div class="row">
-<form action="{{route('category.store')}}" method="POST">
-    @csrf
-    @include('category._partials.form')
-</form>
-</div>
+
+    <form method="POST" enctype="multipart/form-data"
+
+        @if (isset($model) && isset($model->id)) 
+            action="{{ route($route.'.update', $model->id) }}"
+            @csrf
+        @else
+            action="{{ route($route.'.store') }}"> @endif 
+            @csrf
+      
+      
+         
+        @include($partials.'._partials.form')
+    </form>
 @endsection
