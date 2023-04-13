@@ -13,6 +13,7 @@ use App\Http\Controllers\ListaEsperaController;
 use App\Http\Controllers\LogsController;
 use App\Http\Controllers\PermissoesController;
 use App\Http\Controllers\PermissoesCategoriaController;
+use App\Http\Controllers\PrestadorServicoController;
 use App\Http\Controllers\ProprietarioController;
 use App\Http\Controllers\RedisController;
 use App\Http\Controllers\RegrasController;
@@ -181,6 +182,16 @@ Route::group(['prefix' => '/comercio'], function () {
     Route::get('/registerHome', [ComercioController::class, 'registerHome'])->name('comercio.registerHome');
     Route::post('/post', [ComercioController::class, 'store'])->name('comercio.store');
     Route::delete('/{id}/destroy', [ComercioController::class, 'destroy'])->name('comercio.destroy');
+});
+
+Route::group(['prefix' => '/prestador'], function () {
+    Route::get('/', [PrestadorServicoController::class, 'index'])->name('prestador.index');
+    Route::get('/{id}/edit', [PrestadorServicoController::class, 'edit'])->name('prestador.edit');
+    Route::put('/{id}/update', [PrestadorServicoController::class, 'update'])->name('prestador.update');
+    Route::get('/create', [PrestadorServicoController::class, 'create'])->name('prestador.create');
+    Route::get('/registerHome', [PrestadorServicoController::class, 'registerHome'])->name('prestador.registerHome');
+    Route::post('/post', [PrestadorServicoController::class, 'store'])->name('prestador.store');
+    Route::delete('/{id}/destroy', [PrestadorServicoController::class, 'destroy'])->name('prestador.destroy');
 });
 
 Route::group(['prefix' => '/saloes'], function () {

@@ -4,20 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Comercio;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Storage;
 
-class ComercioController extends Controller
+
+class PrestadorServicoController extends Controller
 {
-    protected $pageTitle = 'Comércio';
-    protected $view = 'comercio';
-    protected $route = 'comercio';
+    protected $pageTitle = 'Prestador';
+    protected $view = 'prestador';
+    protected $route = 'prestador';
     protected $model;
     protected $categorias;
-    protected $fillable = ['nome', 'endereco', 'telefone', 'status', 'logo'];
+    protected $fillable = ['name', 'email', 'phone', 'telefone'];
 
-    public function __construct(Comercio $model, Category $categoria)
+    public function __construct(User $model, Category $categoria)
     {
         $this->model = $model;
         $this->categorias = $categoria;
@@ -25,6 +25,7 @@ class ComercioController extends Controller
 
     public function index()
     {
+
         $model = $this->model::all();
         return $this->data($model, 'index');
     }
@@ -50,6 +51,7 @@ class ComercioController extends Controller
 
     public function registerHome()
     {
+
         $model = [];
         return $this->data($model, 'registerHome');
     }
@@ -71,9 +73,9 @@ class ComercioController extends Controller
 
 
 
-        $comercio = Comercio::create($data);
+        $model = $this->model::create($data);
 
-        return $this->data($comercio, 'index');
+        return $this->data($model, 'index');
     }
 
     public function update(Request $request, $id)
@@ -96,25 +98,25 @@ class ComercioController extends Controller
 
     public function show($id)
     {
-        $comercio = $this->model->find($id);
+        $model = $this->model->find($id);
         return view($this->view . '.show', [
-            'comercio' => $comercio
+            'model' => $model
         ]);
     }
 
     public function edit($id)
     {
-        $comercio = $this->model->find($id);
-        return $this->data($comercio, 'create');
+        $model = $this->model->find($id);
+        return $this->data($model, 'create');
     }
 
 
 
     public function destroy($id)
     {
-        $comercio = $this->model->find($id);
-        if ($comercio) {
-            $comercio->delete();
+        $model = $this->model->find($id);
+        if ($model) {
+            $model->delete();
             return redirect()->route($this->route . '.index')->with('success', 'Comércio excluído com sucesso.');
         } else {
             return redirect()->route($this->route . '.index')->with('error', 'Comércio não encontrado.');

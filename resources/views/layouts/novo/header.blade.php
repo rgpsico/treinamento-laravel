@@ -44,6 +44,7 @@
                                   <li><a class="dropdown-item" href="{{ route('user.create') }}">Usuário </a></li>
                                   <li><a class="dropdown-item" href="{{ route('entregadores.registerHome') }}">Entregador</a></li>
                                   <li><a class="dropdown-item" href="{{ route('comercio.registerHome') }}">Comércio</a></li>
+                                  <li><a class="dropdown-item" href="{{ route('prestador.registerHome') }}">Prestador de Serviço</a></li>
                                 </ul>
                               </li>
                             

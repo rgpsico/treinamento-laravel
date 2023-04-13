@@ -4,7 +4,7 @@
 
 
         <div class="col-12">
-            <h1>Cadastrar Comércio </h1>
+            <h1>Cadastrar {{$pageTitle}} </h1>
         </div>
         <form action="{{ route('comercio.store') }}" method="POST" id="formRegister" enctype="multipart/form-data">
 

@@ -14,6 +14,7 @@ trait ControllerDataTrait
             'route' => $this->route,
             'view' => $this->view . '.' . $page,
             'partials' => $this->view
+
         ]);
     }
 

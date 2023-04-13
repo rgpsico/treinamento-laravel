@@ -23,28 +23,11 @@
                 </div>
                     <input type="hidden" name="status" value="0">
 
-                <div class="form-group col-12">
-                    <label for="descricao">Descrição:</label>
-                    <input type="text" class="form-control" id="descricao" descricao="descricao"
-                        placeholder="Ex: Loja material de construção" value="{{ old('descricao') }}">
-                    @if ($errors->has('descricao'))
-                        <span class="help-block text-danger ">
-                            <strong>{{ $errors->first('descricao') }}</strong>
-                        </span>
-                    @endif
-                </div>
-
-                <div class="form-group col-12">
-                    <label for="telefone">Categoria:</label>
-                   <select name="" id="" class="form-control">Selecione
-                    <option value="">Construção civil</option>
-                   </select>
-                   
-                </div>
-
+            
+           
                 <div class="form-group col-12">
                     <label for="telefone">Telefone:</label>
-                    <input type="telefone" class="form-control" id="telefone" name="telefone" placeholder="telefone"
+                    <input type="telefone" class="form-control" id="telefone" name="telefone" placeholder="(21) 9999-9999"
                         value="{{ old('telefone') }}">
                     @if ($errors->has('telefone'))
                         <span class="help-block text-danger">
@@ -54,7 +37,7 @@
                 </div>
 
                 <div class="form-group col-12">
-                    <label for="imagem">Logo:</label>
+                    <label for="imagem">Foto:</label>
                     <input type="file" class="form-control" id="avatar" name="avatar" placeholder="avatar"
                         value="{{ old('avatar') }}">
                     @if ($errors->has('avatar'))
@@ -68,7 +51,7 @@
             </div>
             <div class="form-group">
                 <button class="buttons login_btn register_btn" name="login" value="Login">
-                    Continue
+                    Cadastrar
                 </button>
             </div>
         </form>

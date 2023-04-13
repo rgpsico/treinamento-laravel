@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Comercio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -15,12 +16,13 @@ class EntregadoresController extends Controller
     protected $route = 'entregadores';
     protected $model;
     protected $fillable = ['nome', 'endereco', 'telefone', 'status', 'logo'];
-
+    protected $categorias;
     use ControllerDataTrait;
 
-    public function __construct(Comercio $model)
+    public function __construct(Comercio $model, Category $categorias)
     {
         $this->model = $model;
+        $this->categorias = $categorias;
     }
 
     public function index()
