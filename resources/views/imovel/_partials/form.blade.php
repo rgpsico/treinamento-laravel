@@ -4,6 +4,21 @@
         margin-bottom: 0.1rem;
         font-weight: 600;
     }
+
+    .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.gallery-image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
 </style>
 <div class="card-body">
 
@@ -157,7 +172,25 @@
                 <div class="text-danger">{{ $errors->first('avatar') }}</div>
             @endif
         </div>
-        <div class="col-6">
+        <div class="col-12">           
+            <div class="gallery">
+                @if(count($data->gallery) > 0)
+                    @foreach ($data->gallery as $gallery)
+                    <div class="card img_imovel-{{$gallery->id}}">
+                        <div class="card-body">
+                            <img class="gallery-image" src="{{ asset('imagens/imoveis/' . $gallery->image) }}" alt="{{ $data->title }}">
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-danger excluir_imagem" data-id={{$gallery->id}}>
+                                <i class="fas fa-trash-alt "></i> Excluir
+                            </button>
+                            
+                        </div>
+                    </div>
+                    @endforeach
+                @endif    
+            </div>
+            
            
         </div>
     </div>
@@ -170,3 +203,36 @@
     <button type="submit" class="btn btn-primary"> {{isset($data) == true ? 'Editar Imóvel' : 'Cadastrar Imóvel'}}</button>
 </div>
 </form>
+
+<script>
+   $(document).ready(function() {
+    $(document).on('click', '.excluir_imagem', function(e) {
+        e.preventDefault();
+
+        let id = $(this).data('id');
+        let token = $('meta[name="csrf-token"]').attr('content'); // obter o valor do token CSRF
+
+        
+        if (confirm('Tem certeza que deseja excluir essa imagem?')) { // pergunta de confirmação
+            $.ajax({
+                url: "/api/galeria/"+id+'/delete',
+                type: 'DELETE',
+                headers: {
+                    'X-CSRF-TOKEN': token // adicionar o cabeçalho CSRF com o valor do token
+                },
+                success: function(response) {
+                    alert(response.message )
+                    if(response.message == "Imagem excluída com sucesso.")
+                    {
+                        $('.img_imovel-'+id).hide('slow')
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        }
+    });
+});
+
+</script>

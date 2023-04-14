@@ -101,15 +101,17 @@
 
             <div class="sidebar">
                 <div class="row my-4 ml-2 nav-treeview">
-                    <div class="col-8">
-                        <img src="https://angular-material.fusetheme.com/assets/images/logo/logo.svg" width="20px"
-                            height="20px" alt="">
-                    </div>
-                    <div class="col-4 d-flex justify-content-between nav-treeview ">
-                        <i class="fas fa-bell text-white icones"></i>
-                        <i class="fas fa-user text-white mr-3 icones"></i>
+                    <div class="col-7">
+                        <i class="fas fa-eye text-white mr-3" onclick="window.open('/', '_blank');" style="cursor: pointer;" data-toggle="tooltip" title="Ver site"></i>
 
                     </div>
+                    
+                    <div class="col-4 d-flex justify-content-between nav-treeview cursor-pointer">
+       
+                        <i class="fas fa-bell text-white mr-3 icones"></i>
+                        <i class="fas fa-user text-white mr-3 icones"></i>
+                    </div>
+                    
                 </div>
 
 
@@ -380,8 +382,10 @@
             </div>
 
         </aside>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script>
+     
             const menuIcon = document.getElementById('navbar-nav_bt');
             const name = document.querySelector('.name');
             const email = document.querySelector('.email');
@@ -395,9 +399,13 @@
 
             });
 
+            $('[data-toggle="tooltip"]').tooltip(); 
+
+
 
             $(document).ready(function() {
-
+            
+  
                 if (window.location.href.indexOf('imovel/' + {{ Auth::user()->id }} + '/myimoveis') > -1) {
                     $('.myImoveis').addClass('active');
                     $('.propriedade').removeClass('active');

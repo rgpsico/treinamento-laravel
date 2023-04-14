@@ -27,6 +27,8 @@
 
                         @if (isset($data->gallery))
                             <img class="img-fluid principal"
+                                width="550px"
+                                height="400px"
                                 src="{{ asset('imagens/imoveis/' . $data->gallery[0]->image) }}"
                                 alt="{{ $data->title }}">
                         @endif
@@ -55,7 +57,7 @@
                                 <li class="d-inline-block p-r-20">
                                     <a href="#">
                                         <i class="fa fa-clock-o ml-2">
-                                        </i> Postado há: <span> 20 dias</span>
+                                        </i> Postado <span>{{ diasDesdePostagem($data->created_at) == '0' ? 'Hoje' : "a ".diasDesdePostagem($data->created_at). " dias." }}</span>
                                     </a>
                                 </li>
                             </ul>

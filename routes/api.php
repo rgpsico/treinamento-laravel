@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\ImovelApicontroller;
 use App\Http\Controllers\Api\UserApiController;
+use App\Http\Controllers\ImageApiController;
 use App\Http\Controllers\ItensController;
 use App\Http\Controllers\ListaEsperaController;
 use App\Http\Controllers\ProprietarioController;
@@ -45,6 +46,12 @@ Route::group(['prefix' => '/imovel'], function () {
     Route::get('/{id}/delete', [ImovelApicontroller::class, 'delete']);
     Route::put('/{id}/update', [ImovelApicontroller::class, 'update']);
     Route::post('/delete-selected', [ImovelApicontroller::class, 'deleteSelected'])->name('delete-selected');
+});
+
+
+Route::group(['prefix' => '/galeria'], function () {
+
+    Route::delete('/{id}/delete', [ImageApiController::class, 'delete']);
 });
 
 

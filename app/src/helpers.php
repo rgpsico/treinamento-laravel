@@ -20,3 +20,13 @@ function renderizaEstrelasAvaliacao($pontuacao)
 
     return $html;
 }
+
+
+use Carbon\Carbon;
+
+if (!function_exists('diasDesdePostagem')) {
+    function diasDesdePostagem($dataPostagem)
+    {
+        return Carbon::parse($dataPostagem)->diffInDays();
+    }
+}

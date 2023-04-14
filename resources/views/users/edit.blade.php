@@ -53,7 +53,7 @@
         <div class="row">
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                    @if (isset($data->avatar))
+                    @if (isset($data->avatar) && $data->avatar != null)
                         <img src="{{ asset('/uploads/' . $data->avatar) }}" width="100px" height="100px"
                             alt="Descrição da imagem">
                     @else
@@ -250,5 +250,11 @@
                 }
             });
         });
+
+        function substituirImagemPadrao(imagem) 
+        {
+            $(imagem).attr('src', 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQF2psCzfbB611rnUhxgMi-lc2oB78ykqDGYb4v83xQ1pAbhPiB&usqp=CAU');
+        }
+
     </script>
 @endsection
