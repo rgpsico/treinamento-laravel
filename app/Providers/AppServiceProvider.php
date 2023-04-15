@@ -36,7 +36,9 @@ class AppServiceProvider extends AuthServiceProvider
         $this->registerPolicies();
         User::observe(UserObserver::class);
 
+
         $permissoes = Permissoes::all();
+
 
         foreach ($permissoes as $permissao) {
             Gate::define($permissao->name, function ($user) use ($permissao) {

@@ -26,12 +26,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 
-Route::get('/teste', [UserdataController::class, 'teste'])->name('novo.teste');
 
-Route::get('/imoveis', [ImovelController::class, 'listarN'])->name('novo.listar');
-Route::get('/imovel/{id}/detalhes', [ImovelController::class, 'detalhes'])->name('public.imovel.show');
-Route::get('/', [ImovelController::class, 'categoria'])->name('novo.categoria');
-Route::get('/home', [ImovelController::class, 'home'])->name('novo.home');
 
 
 Route::group(['prefix' => '/admin'], function () {
@@ -81,11 +76,6 @@ Route::group(['prefix' => '/admin'], function () {
 
 
 
-
-
-
-
-
     Route::group(['prefix' => '/permissoesCategoria'], function () {
         Route::get('/', [PermissoesCategoriaController::class, 'index'])->name('permissoes_categoria.index');
         Route::post('/store', [PermissoesCategoriaController::class, 'store'])->name('permissoes_categoria.store');
@@ -114,103 +104,98 @@ Route::group(['prefix' => '/admin'], function () {
         Route::post('/{id}/update', [PermissoesController::class, 'update'])->name('permissoes.update');
         Route::delete('/{id}/destroy', [PermissoesController::class, 'destroy'])->name('permissoes.destroy');
     });
-});
-
-Route::get('/login', [UserdataController::class, 'login'])->name('user.login');
-Route::post('/login', [UserdataController::class, 'auth'])->name('user.auth');
-Route::get('/register', [UserdataController::class, 'register'])->name('user.create');;
-Route::post('/store', [UserdataController::class, 'store'])->name('user.store');;
-Route::get('/logout', [UserdataController::class, 'logout'])->name('logout');;
-
-
-Route::get('/list', [ImovelController::class, 'index'])->name('imovel.list');
-
-Route::group(['prefix' => '/imovel', 'middleware' => 'auth'], function () {
-    Route::get('/{user_id}/myimoveis', [ImovelController::class, 'myImoveis'])->name('imovel.users');
-    Route::get('/search', [ImovelController::class, 'search'])->name('imovel.search');
-    Route::get('/{id}/show', [ImovelController::class, 'show'])->name('imovel.show');
-    Route::get('/all', [ImovelController::class, 'all'])->name('imovel.all');
 
 
 
-    Route::get('/{id}/edit', [ImovelController::class, 'edit'])->name('imovel.edit');
-    Route::post('/{id}/update', [ImovelController::class, 'update'])->name('imovel.update');
-    Route::get('/create', [ImovelController::class, 'create'])->name('imovel.create');
-    Route::post('/post', [ImovelController::class, 'store'])->name('imovel.store');
-    Route::delete('/{id}/destroy', [ImovelController::class, 'destroy'])->name('imovel.destroy');
 
-    Route::group(['prefix' => '/proprietario'], function () {
-        Route::get('/', [ProprietarioController::class, 'index'])->name('proprietario.index');
-        Route::get('/{id}/edit', [ProprietarioController::class, 'edit'])->name('proprietario.edit');
-        Route::put('/{id}/update', [ProprietarioController::class, 'update'])->name('proprietario.update');
-        Route::get('/create', [ProprietarioController::class, 'create'])->name('proprietario.create');
-        Route::post('/post', [ProprietarioController::class, 'store'])->name('proprietario.store');
-        Route::delete('/{id}/destroy', [ProprietarioController::class, 'destroy'])->name('proprietario.destroy');
-        Route::post('/{id}/show', [ProprietarioController::class, 'destroy'])->name('proprietario.show');
+    Route::get('/list', [ImovelController::class, 'index'])->name('imovel.list');
+
+    Route::group(['prefix' => '/imovel', 'middleware' => 'auth'], function () {
+        Route::get('/{user_id}/myimoveis', [ImovelController::class, 'myImoveis'])->name('imovel.users');
+        Route::get('/search', [ImovelController::class, 'search'])->name('imovel.search');
+        Route::get('/{id}/show', [ImovelController::class, 'show'])->name('imovel.show');
+        Route::get('/all', [ImovelController::class, 'all'])->name('imovel.all');
+
+
+
+        Route::get('/{id}/edit', [ImovelController::class, 'edit'])->name('imovel.edit');
+        Route::post('/{id}/update', [ImovelController::class, 'update'])->name('imovel.update');
+        Route::get('/create', [ImovelController::class, 'create'])->name('imovel.create');
+        Route::post('/post', [ImovelController::class, 'store'])->name('imovel.store');
+        Route::delete('/{id}/destroy', [ImovelController::class, 'destroy'])->name('imovel.destroy');
+
+        Route::group(['prefix' => '/proprietario'], function () {
+            Route::get('/', [ProprietarioController::class, 'index'])->name('proprietario.index');
+            Route::get('/{id}/edit', [ProprietarioController::class, 'edit'])->name('proprietario.edit');
+            Route::put('/{id}/update', [ProprietarioController::class, 'update'])->name('proprietario.update');
+            Route::get('/create', [ProprietarioController::class, 'create'])->name('proprietario.create');
+            Route::post('/post', [ProprietarioController::class, 'store'])->name('proprietario.store');
+            Route::delete('/{id}/destroy', [ProprietarioController::class, 'destroy'])->name('proprietario.destroy');
+            Route::post('/{id}/show', [ProprietarioController::class, 'destroy'])->name('proprietario.show');
+        });
+
+
+
+
+
+
+        Route::group(['prefix' => '/itens'], function () {
+            Route::get('/', [ItensController::class, 'index'])->name('itens.index');
+            Route::get('/{id}/edit', [ItensController::class, 'edit'])->name('itens.edit');
+            Route::put('/{id}/update', [ItensController::class, 'update'])->name('itens.update');
+            Route::get('/create', [ItensController::class, 'create'])->name('itens.create');
+            Route::post('/post', [ItensController::class, 'store'])->name('itens.store');
+            Route::delete('/{id}/destroy', [ItensController::class, 'destroy'])->name('itens.destroy');
+        });
+
+        Route::group(['prefix' => '/regras'], function () {
+            Route::get('/', [RegrasController::class, 'index'])->name('regras.index');
+            Route::get('/{id}/edit', [RegrasController::class, 'edit'])->name('regras.edit');
+            Route::put('/{id}/update', [RegrasController::class, 'update'])->name('regras.update');
+            Route::get('/create', [RegrasController::class, 'create'])->name('regras.create');
+            Route::post('/post', [RegrasController::class, 'store'])->name('regras.store');
+            Route::delete('/{id}/destroy', [RegrasController::class, 'destroy'])->name('regras.destroy');
+        });
     });
 
 
-
-
-
-
-    Route::group(['prefix' => '/itens'], function () {
-        Route::get('/', [ItensController::class, 'index'])->name('itens.index');
-        Route::get('/{id}/edit', [ItensController::class, 'edit'])->name('itens.edit');
-        Route::put('/{id}/update', [ItensController::class, 'update'])->name('itens.update');
-        Route::get('/create', [ItensController::class, 'create'])->name('itens.create');
-        Route::post('/post', [ItensController::class, 'store'])->name('itens.store');
-        Route::delete('/{id}/destroy', [ItensController::class, 'destroy'])->name('itens.destroy');
+    Route::group(['prefix' => '/comercio'], function () {
+        Route::get('/', [ComercioController::class, 'index'])->name('comercio.index');
+        Route::get('/{id}/edit', [ComercioController::class, 'edit'])->name('comercio.edit');
+        Route::put('/{id}/update', [ComercioController::class, 'update'])->name('comercio.update');
+        Route::get('/create', [ComercioController::class, 'create'])->name('comercio.create');
+        Route::get('/registerHome', [ComercioController::class, 'registerHome'])->name('comercio.registerHome');
+        Route::post('/post', [ComercioController::class, 'store'])->name('comercio.store');
+        Route::delete('/{id}/destroy', [ComercioController::class, 'destroy'])->name('comercio.destroy');
     });
 
-    Route::group(['prefix' => '/regras'], function () {
-        Route::get('/', [RegrasController::class, 'index'])->name('regras.index');
-        Route::get('/{id}/edit', [RegrasController::class, 'edit'])->name('regras.edit');
-        Route::put('/{id}/update', [RegrasController::class, 'update'])->name('regras.update');
-        Route::get('/create', [RegrasController::class, 'create'])->name('regras.create');
-        Route::post('/post', [RegrasController::class, 'store'])->name('regras.store');
-        Route::delete('/{id}/destroy', [RegrasController::class, 'destroy'])->name('regras.destroy');
+    Route::group(['prefix' => '/prestador'], function () {
+        Route::get('/', [PrestadorServicoController::class, 'index'])->name('prestador.index');
+        Route::get('/{id}/edit', [PrestadorServicoController::class, 'edit'])->name('prestador.edit');
+        Route::put('/{id}/update', [PrestadorServicoController::class, 'update'])->name('prestador.update');
+        Route::get('/create', [PrestadorServicoController::class, 'create'])->name('prestador.create');
+        Route::get('/registerHome', [PrestadorServicoController::class, 'registerHome'])->name('prestador.registerHome');
+        Route::post('/post', [PrestadorServicoController::class, 'store'])->name('prestador.store');
+        Route::delete('/{id}/destroy', [PrestadorServicoController::class, 'destroy'])->name('prestador.destroy');
     });
-});
 
+    Route::group(['prefix' => '/saloes'], function () {
+        Route::get('/', [SaloesController::class, 'index'])->name('saloes.index');
+        Route::get('/{id}/edit', [SaloesController::class, 'edit'])->name('saloes.edit');
+        Route::put('/{id}/update', [SaloesController::class, 'update'])->name('saloes.update');
+        Route::get('/create', [SaloesController::class, 'create'])->name('saloes.create');
+        Route::post('/post', [SaloesController::class, 'store'])->name('saloes.store');
+        Route::delete('/{id}/destroy', [SaloesController::class, 'destroy'])->name('saloes.destroy');
+    });
 
-Route::group(['prefix' => '/comercio'], function () {
-    Route::get('/', [ComercioController::class, 'index'])->name('comercio.index');
-    Route::get('/{id}/edit', [ComercioController::class, 'edit'])->name('comercio.edit');
-    Route::put('/{id}/update', [ComercioController::class, 'update'])->name('comercio.update');
-    Route::get('/create', [ComercioController::class, 'create'])->name('comercio.create');
-    Route::get('/registerHome', [ComercioController::class, 'registerHome'])->name('comercio.registerHome');
-    Route::post('/post', [ComercioController::class, 'store'])->name('comercio.store');
-    Route::delete('/{id}/destroy', [ComercioController::class, 'destroy'])->name('comercio.destroy');
-});
-
-Route::group(['prefix' => '/prestador'], function () {
-    Route::get('/', [PrestadorServicoController::class, 'index'])->name('prestador.index');
-    Route::get('/{id}/edit', [PrestadorServicoController::class, 'edit'])->name('prestador.edit');
-    Route::put('/{id}/update', [PrestadorServicoController::class, 'update'])->name('prestador.update');
-    Route::get('/create', [PrestadorServicoController::class, 'create'])->name('prestador.create');
-    Route::get('/registerHome', [PrestadorServicoController::class, 'registerHome'])->name('prestador.registerHome');
-    Route::post('/post', [PrestadorServicoController::class, 'store'])->name('prestador.store');
-    Route::delete('/{id}/destroy', [PrestadorServicoController::class, 'destroy'])->name('prestador.destroy');
-});
-
-Route::group(['prefix' => '/saloes'], function () {
-    Route::get('/', [SaloesController::class, 'index'])->name('saloes.index');
-    Route::get('/{id}/edit', [SaloesController::class, 'edit'])->name('saloes.edit');
-    Route::put('/{id}/update', [SaloesController::class, 'update'])->name('saloes.update');
-    Route::get('/create', [SaloesController::class, 'create'])->name('saloes.create');
-    Route::post('/post', [SaloesController::class, 'store'])->name('saloes.store');
-    Route::delete('/{id}/destroy', [SaloesController::class, 'destroy'])->name('saloes.destroy');
-});
-
-Route::group(['prefix' => '/entregadores'], function () {
-    Route::get('/', [EntregadoresController::class, 'index'])->name('entregadores.index');
-    Route::get('/{id}/edit', [EntregadoresController::class, 'edit'])->name('entregadores.edit');
-    Route::put('/{id}/update', [EntregadoresController::class, 'update'])->name('entregadores.update');
-    Route::get('/registerHome', [EntregadoresController::class, 'registerHome'])->name('entregadores.registerHome');
-    Route::get('/create', [EntregadoresController::class, 'create'])->name('entregadores.create');
-    Route::post('/post', [EntregadoresController::class, 'store'])->name('entregadores.store');
-    Route::delete('/{id}/destroy', [EntregadoresController::class, 'destroy'])->name('entregadores.destroy');
+    Route::group(['prefix' => '/entregadores'], function () {
+        Route::get('/', [EntregadoresController::class, 'index'])->name('entregadores.index');
+        Route::get('/{id}/edit', [EntregadoresController::class, 'edit'])->name('entregadores.edit');
+        Route::put('/{id}/update', [EntregadoresController::class, 'update'])->name('entregadores.update');
+        Route::get('/create', [EntregadoresController::class, 'create'])->name('entregadores.create');
+        Route::post('/post', [EntregadoresController::class, 'store'])->name('entregadores.store');
+        Route::delete('/{id}/destroy', [EntregadoresController::class, 'destroy'])->name('entregadores.destroy');
+    });
 });
 
 Route::middleware(['auth'])->get('/dashboard', [DashBoardController::class, 'index'])->name('dashboard');
@@ -231,3 +216,4 @@ Route::get('/create-posts', function () {
 
     return 'ok';
 });
+require __DIR__ . '/public.php';

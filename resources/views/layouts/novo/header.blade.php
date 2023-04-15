@@ -22,7 +22,7 @@
         <div class="header">
             <div class="container po-relative">
                 <nav class="navbar navbar-expand-lg hover-dropdown header-nav-bar">
-                    <a href="{{ route('novo.listar') }}" class="navbar-brand">
+                    <a href="{{ route('listar.imoveis.public') }}" class="navbar-brand">
                         <img src="{{ asset('images/logo2.png') }}" alt="Classified Plus"></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#h5-info"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +32,7 @@
                     <div class="collapse navbar-collapse" id="h5-info">
                         <ul class="navbar-nav">
                             <li class="nav-item dropdown">
-                                <a class="nav-link " href="{{ route('novo.listar') }}"> Imovéis </a>
+                                <a class="nav-link " href="{{ route('listar.imoveis.public') }}"> Imovéis </a>
 
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('novo.categoria') }}">Serviços</a>
@@ -50,7 +50,7 @@
                             
                               @if (Auth::check())
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('imovel.users', ['user_id' => Auth::user()->id]) }}">Meus Imovéis</a>
+                                    <a class="nav-link" href="{{ route('imovel.users', ['user_id' => Auth::user()->id]) }}">Painel</a>
                                 </li>
                                 @else 
                                 <li class="nav-item">

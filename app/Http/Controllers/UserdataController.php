@@ -183,7 +183,7 @@ class UserdataController extends Controller
             auth()->login($user);
 
             if ($request->type == 1) {
-                return redirect()->route('novo.listar')->with('success', 'Usuário cadastrado com sucesso!');
+                return redirect()->route('listar.imoveis.public')->with('success', 'Usuário cadastrado com sucesso!');
             }
 
             if ($request->type == 2) {
@@ -287,6 +287,6 @@ class UserdataController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('novo.listar');
+        return redirect()->route('listar.imoveis.public');
     }
 }

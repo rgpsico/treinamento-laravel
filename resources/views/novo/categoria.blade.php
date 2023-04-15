@@ -19,11 +19,11 @@
 
                 <div class="col-md-4 m-t-30">
                     <div class="categories_box">
-                        <a href="{{ route('novo.listar') }}">
+                        <a href="{{ route('listar.imoveis.public') }}">
                             <img src="images/Categories/categories5.png" alt="Classified Plus" />
                         </a>
                         <div class="overlay text-center">
-                            <a href="{{ route('novo.listar') }}">
+                            <a href="{{ route('listar.imoveis.public') }}">
                                 <img src="{{ asset('images/Real-Estate.png') }}" alt="Classified Plus" />
                                 <p> Imoveis </p>
                             </a>
@@ -34,13 +34,15 @@
 
 
                 <div class="col-md-4 m-t-30" style="opacity: 0.7;">
-                    <div class="categories_box"> <a href="#">
-                            <img src="images/Categories/categories4.png" alt="Classified Plus" /></a>
+                    <div class="categories_box">
+                         <a href="{{route('listar.entregadores.public')}}">
+                            <img src="images/Categories/categories4.png" alt="Classified Plus" />
                         <div class="overlay text-center">
-                            <a href="#"><img src="{{ asset('images/amburguer.png') }}" alt="Classified Plus" />
-                                <p> FastFood </p>
+                            <a href="{{route('listar.entregadores.public')}}"><img src="{{ asset('images/amburguer.png') }}" alt="Classified Plus" />
+                                <p> Entregadores </p>
                             </a>
                         </div>
+                    </a>
                     </div>
                 </div>
 

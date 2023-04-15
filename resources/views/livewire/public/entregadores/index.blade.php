@@ -51,7 +51,7 @@
                     </div>
                 </form>
             </div>
-            @include('novo.components.listagemComponent')
+            @include('livewire.public.entregadores._partials.listagemComponent')
 
 
         </div>

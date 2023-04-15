@@ -63,7 +63,9 @@
                             </ul>
                         </div>
                         <ul class="list-unstyled d-inline-block float-left detail_left m-b-0">
-                            <h4>Itens</h4>   
+                           @if(count($data->itens) > 0)
+                           <h4>Itens</h4> 
+                           @endif  
                             @foreach ( $data->itens as $value )
                                 <li>{{$value->itens->name}}</li> 
                             @endforeach                       
@@ -77,7 +79,9 @@
                         </ul>   
                        
                         <ul class="list-unstyled d-inline-block m-l-60 detail_right  m-b-0">
-                            <h4>Regras</h4>
+                            @if(count($data->itens) > 0)
+                            <h4>Regras</h4> 
+                            @endif  
                             <ul class="list-unstyled d-inline-block float-left detail_left m-b-0">                             
                                     <li></li>
                              

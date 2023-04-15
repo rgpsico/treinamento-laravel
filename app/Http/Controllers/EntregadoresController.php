@@ -25,6 +25,11 @@ class EntregadoresController extends Controller
         $this->categorias = $categorias;
     }
 
+    public function listar()
+    {
+        return  view("entregadores.list");
+    }
+
     public function index()
     {
         $model = $this->model::all();
