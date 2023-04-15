@@ -29,7 +29,7 @@ use Illuminate\Support\Str;
 Route::get('/teste', [UserdataController::class, 'teste'])->name('novo.teste');
 
 Route::get('/imoveis', [ImovelController::class, 'listarN'])->name('novo.listar');
-Route::get('/detalhes/{id}/show', [ImovelController::class, 'detalhes'])->name('detalhes');
+Route::get('/imovel/{id}/detalhes', [ImovelController::class, 'detalhes'])->name('public.imovel.show');
 Route::get('/', [ImovelController::class, 'categoria'])->name('novo.categoria');
 Route::get('/home', [ImovelController::class, 'home'])->name('novo.home');
 

@@ -2,35 +2,45 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ImoveisRequest;
 use App\Http\Requests\ImovelStoreRequest;
 use App\Models\Imovel;
 use App\Models\ImovelItens;
 use App\Models\Itens;
 use App\Models\User;
-use App\Models\UserData;
+
 use App\Models\UserGallery;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use Proengsoft\JsValidation\Facades\JsValidatorFacade;
+
 
 
 class ImovelController extends Controller
 {
+
+    protected $view;
+    protected $route;
+    protected $model;
+
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct(Imovel $model)
+    {
+        $this->model = $model;
+    }
+
+
     public function search(Request $request)
     {
         $tipo = $request->input('type');
         $comunidade = $request->input('comunidade');
         $tamanho = $request->input('tamanho');
 
-        $imoveis = Imovel::query();
+        $imoveis = $this->model::query();
 
         if ($tipo == 0 || $tipo == 1) {
             $imoveis->where('type', $tipo);
@@ -51,7 +61,7 @@ class ImovelController extends Controller
 
     public function index(Request $request)
     {
-        $data = Imovel::paginate();
+        $data = $this->model::paginate();
         return view('imovel.index', compact('data'),  ['request' => $request]);
     }
 
@@ -64,20 +74,20 @@ class ImovelController extends Controller
     public function detalhes($id)
     {
         $pageTitle = "Imoveis";
-        $data = Imovel::where('id', $id)->get()->first();
-        $imoveis = Imovel::all();
-        return view('novo.detalhes', compact('data', 'imoveis', 'pageTitle'));
+        $data = $this->model::where('id', $id)->get()->first();
+        $imoveis = $this->model::all();
+        return view('public.imoveis.show', compact('data', 'imoveis', 'pageTitle'));
     }
 
     public function listarN()
     {
-        $datas = Imovel::paginate();
+        $datas = $this->model::paginate();
         return view('novo.list', compact('datas'));
     }
 
     public function all()
     {
-        $data = Imovel::all();
+        $data = $this->model::all();
         $pageTitle = 'Todos os Imoveis ';
 
         return view('imovel.index', compact('data',  'pageTitle'));
@@ -85,7 +95,7 @@ class ImovelController extends Controller
 
     public function home()
     {
-        $datas = Imovel::paginate();
+        $datas = $this->model::paginate();
         return view('novo.home', compact('datas'));
     }
 
@@ -110,7 +120,7 @@ class ImovelController extends Controller
     {
 
         $itens = Itens::all();
-        if ($data = Imovel::with('itens')->find($id)->first()) {
+        if ($data = $this->model::with('itens')->find($id)->first()) {
             return view('imovel.edit', [
                 'data' => $data,
                 'itens' => $itens,
@@ -124,7 +134,7 @@ class ImovelController extends Controller
 
 
 
-        $imovel = Imovel::findOrFail($id);
+        $imovel = $this->model::findOrFail($id);
 
         $imovel->title = $request->input('title');
         $imovel->description = $request->input('description');
@@ -179,7 +189,7 @@ class ImovelController extends Controller
     public function store(ImovelStoreRequest $request)
     {
 
-        $imoveis    = new Imovel();
+
 
         $imovel = new Imovel();
         $imovel->title = $request->title;

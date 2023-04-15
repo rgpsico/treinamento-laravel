@@ -11,7 +11,7 @@
     @foreach ($datas as $data)
         <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
             <div class="featured-parts rounded m-t-30">
-                <a href="{{ route('detalhes', ['id' => $data->id]) }}">
+                <a href="{{ route('public.imovel.show', ['id' => $data->id]) }}">
                     @php $img = $data->gallery[0]->image  ?? '' @endphp
                     <div class="featured-img">
                         <img style="max-width:100%; height:200px;" class="img-fluid rounded-top"
@@ -24,10 +24,10 @@
                 <div class="featured-text">
                     <div class="text-top d-flex justify-content-between">
                         <div class="heading">
-                            <a href="{{ route('detalhes', ['id' => $data->id]) }}">{{ $data->title }}</a>
+                            <a href="{{ route('public.imovel.show', ['id' => $data->id]) }}">{{ $data->title }}</a>
                         </div>
                         <div class="book-mark">
-                            <a href="{{ route('detalhes', ['id' => $data->id]) }}">
+                            <a href="{{ route('public.imovel.show', ['id' => $data->id]) }}">
                                 <i class="fa fa-bookmark"></i></a>
                         </div>
                     </div>
