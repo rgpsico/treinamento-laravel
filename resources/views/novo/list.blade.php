@@ -2,6 +2,6 @@
 <x-layout title="Listagem">
 <!-- Categories -->
 
-@livewire('listagem')
+@livewire('admin.imovel.lista')
 
 </x-layout>

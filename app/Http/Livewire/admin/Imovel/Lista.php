@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Admin\Imovel;
 
 use App\Models\Imovel;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class Listagem extends Component
+class Lista extends Component
 {
 
     use WithPagination;
@@ -74,7 +74,7 @@ class Listagem extends Component
 
 
 
-        return view('livewire.listagem', compact('datas'));
+        return view('livewire.public.imovel.index', compact('datas'));
     }
 
 
