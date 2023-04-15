@@ -174,7 +174,7 @@
         </div>
         <div class="col-12">           
             <div class="gallery">
-                @if(count($data->gallery) > 0)
+                @if(isset($data->gallery))
                     @foreach ($data->gallery as $gallery)
                     <div class="card img_imovel-{{$gallery->id}}">
                         <div class="card-body">

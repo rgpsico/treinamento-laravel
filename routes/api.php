@@ -50,7 +50,6 @@ Route::group(['prefix' => '/imovel'], function () {
 
 
 Route::group(['prefix' => '/galeria'], function () {
-
     Route::delete('/{id}/delete', [ImageApiController::class, 'delete']);
 });
 
