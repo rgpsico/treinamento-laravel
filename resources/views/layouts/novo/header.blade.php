@@ -48,10 +48,15 @@
                                 </ul>
                               </li>
                             
- 
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('user.login') }}">Login</a>
-                            </li>
+                              @if (Auth::check())
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('imovel.users', ['user_id' => Auth::user()->id]) }}">Meus Imovéis</a>
+                                </li>
+                                @else 
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('user.login') }}">Login</a>
+                                </li>
+                            @endif
                         </ul>
 
                         <div class="header_r d-flex">
