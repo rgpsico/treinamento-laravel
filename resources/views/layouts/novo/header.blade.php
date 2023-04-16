@@ -39,12 +39,10 @@
                             </li>
 
                             <li class="nav-item dropdown"> 
-                                <a class="nav-link dropdown-toggle show" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> Registrar </a>
+                                <a class="nav-link dropdown-toggle show" href="{{ route('user.create') }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> Registrar </a>
                                 <ul class="b-none dropdown-menu font-14 animated fadeInUp hidden">
-                                  <li><a class="dropdown-item" href="{{ route('user.create') }}">Usuário </a></li>
-                                  <li><a class="dropdown-item" href="{{ route('entregadores.registerHome') }}">Entregador</a></li>
-                                  <li><a class="dropdown-item" href="{{ route('comercio.registerHome') }}">Comércio</a></li>
-                                  <li><a class="dropdown-item" href="{{ route('prestador.registerHome') }}">Prestador de Serviço</a></li>
+                                  <li><a class="dropdown-item" href="{{ route('user.create') }}">Registrar </a></li>
+
                                 </ul>
                               </li>
                             

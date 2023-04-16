@@ -68,15 +68,13 @@ class User extends Authenticatable
         return $this->hasMany(PermissaoUser::class, 'user_id', 'id');
     }
 
-    public function tiposUsuarios()
+
+
+    public function userTipoUsers()
     {
-        return $this->belongsToMany(TipoUsuario::class);
+        return $this->hasMany(UserTipoUser::class);
     }
 
-    public function tiposUsuario()
-    {
-        return $this->belongsToMany(TipoUsuario::class, 'users_tipo_users');
-    }
 
 
     public function temPermissao($nomePermissao)

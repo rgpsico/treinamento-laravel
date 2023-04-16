@@ -12,8 +12,9 @@
                     <label for="isProprietario">O que eu quero</label>
                     <select name="type" id="type" class="form-control">
                         <option value="">Selecione</option>
-                        <option value="1">Estou procurando uma imovel para alugar</option>
-                        <option value="2">Tenho uma imovel e quero alugar</option>
+                       @foreach ($tipoUser as $tipo )
+                          <option  style="text-transform: capitalize" value="{{$tipo->id}}">{{$tipo->nome}}</option>
+                       @endforeach
                     </select>
                     @if ($errors->has('type'))
                         <span class="help-block text-danger ">

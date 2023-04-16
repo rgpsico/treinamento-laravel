@@ -19,6 +19,7 @@ use App\Http\Controllers\RedisController;
 use App\Http\Controllers\RegrasController;
 use App\Http\Controllers\SaloesController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\StripeController;
 use App\Http\Controllers\UserdataController;
 
 use App\Models\Post;
@@ -27,6 +28,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 
 
+Route::get('/stripe', [StripeController::class, 'index'])->name('stripe.index');
 
 
 Route::group(['prefix' => '/admin'], function () {

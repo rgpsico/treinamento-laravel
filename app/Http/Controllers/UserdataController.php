@@ -6,7 +6,7 @@ use App\Models\PermissaoUser;
 use App\Models\Permissoes;
 use App\Models\PermissoesCategoria;
 use App\Models\PermissoesUser;
-
+use App\Models\TipoUsuario;
 use App\Models\User;
 use App\Models\UserEndereco;
 use Illuminate\Http\Request;
@@ -30,9 +30,6 @@ class UserdataController extends Controller
     {
         $pageTitle = $this->pageTitle;
         $model = User::all();
-
-
-
         return view('users.index', compact('model', 'pageTitle'));
     }
 
@@ -133,7 +130,9 @@ class UserdataController extends Controller
      */
     public function register()
     {
-        return view('novo.login.register');
+
+        $tipoUser = TipoUsuario::all();
+        return view('novo.login.register', compact('tipoUser'));
     }
 
     /**
@@ -177,6 +176,11 @@ class UserdataController extends Controller
             'email' => $request->email,
             'phone' => $request->phone,
             'password' => Hash::make($request->password),
+        ]);
+
+        $user->userTipoUsers()->create([
+            'user_id' => $user->id,
+            'tipo_usuario_id' => $request->type
         ]);
 
         if ($user) {

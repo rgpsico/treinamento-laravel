@@ -6,6 +6,7 @@ use App\Http\Controllers\ImageApiController;
 use App\Http\Controllers\ItensController;
 use App\Http\Controllers\ListaEsperaController;
 use App\Http\Controllers\ProprietarioController;
+use App\Http\Controllers\StripeController;
 use App\Http\Controllers\UserdataController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -15,7 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::apiResource('acl', UserApiController::class);
 
 
+Route::get('/treinoStripeAll', [StripeController::class, 'all'])->name('stripe.all');
 
+Route::post('/treinoStripe', [StripeController::class, 'treinoStripe'])->name('stripe.treinoStripe');
+
+Route::post('/pagamento', [StripeController::class, 'pagamento'])->name('stripe.pagamento');
 
 Route::post('/auth', [UserdataController::class, 'authApi']);
 
