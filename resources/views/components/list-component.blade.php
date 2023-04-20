@@ -11,7 +11,7 @@
     @foreach ($model as $data)
         <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
             <div class="featured-parts rounded m-t-30">
-                <a href="{{ route('show.imovel.public', ['id' => $data->id]) }}">
+                <a href="{{ route($route, ['id' => $data->id]) }}">
                 
                     <div class="featured-img">
                         <img style="max-width:100%; height:200px;" class="img-fluid rounded-top"

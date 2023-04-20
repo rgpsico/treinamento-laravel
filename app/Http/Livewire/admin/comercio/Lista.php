@@ -28,12 +28,12 @@ class Lista extends Component
     public function render()
     {
 
-        $datas = Comercio::select('id', 'nome', 'telefone')->where('status', 0);
+        $model = Comercio::select('id', 'nome', 'telefone')->where('status', 0);
 
 
         if ($this->search) {
-            $datas->where(function ($query) {
-                $datas = $query->where("nome", "like", $this->search);
+            $model->where(function ($query) {
+                $model = $query->where("nome", "like", $this->search);
             });
         }
 
@@ -41,25 +41,25 @@ class Lista extends Component
 
 
 
-        $countLeads = $datas->count();
+        $countLeads = $model->count();
 
         if ($this->ordem == 'desc' || $this->ordem == 'asc') {
-            $datas = $datas->orderBy('id', $this->ordem);
+            $model = $model->orderBy('id', $this->ordem);
         } else {
 
-            $datas = $datas->orderBy('nome');
+            $model = $model->orderBy('nome');
         }
 
 
         if ($this->todos) {
-            $datas = $datas->paginate(null);
+            $model = $model->paginate(null);
         } else {
-            $datas = $datas->paginate(10);
+            $model = $model->paginate(10);
         }
 
 
 
-        return view('livewire.public.comercio.index', compact('datas'));
+        return view('livewire.public.comercio.index', compact('model'));
     }
 
 

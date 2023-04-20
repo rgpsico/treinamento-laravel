@@ -199,7 +199,10 @@ Route::group(['prefix' => '/admin'], function () {
     });
 });
 
+use Inertia\Inertia;
+
 Route::middleware(['auth'])->get('/dashboard', [DashBoardController::class, 'index'])->name('dashboard');
+
 
 
 Route::get('/redis', [RedisController::class, 'index']);

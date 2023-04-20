@@ -1,5 +1,5 @@
 <div>
-    @include('livewire.public.comercio._partials.banners')
+    <x-bannerscomponent title="Comércio" />
     <!-- Categories -->
     <section class="top_listings">
         <div class="container">
@@ -52,7 +52,7 @@
                 </form>
             </div>
           
-            @include('livewire.public.comercio._partials.list')
+            <x-listcomponent :model="$model" route="show.comercio.public" />
 
 
         </div>

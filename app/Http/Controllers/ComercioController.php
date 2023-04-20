@@ -31,8 +31,8 @@ class ComercioController extends Controller
 
     public function indexPublic()
     {
-        $datas = $this->model::paginate();
-        return view('comercio.list', compact('datas'));
+        $model = $this->model::paginate();
+        return view('comercio.list', compact('model'));
     }
 
     public function data($model, $page)
