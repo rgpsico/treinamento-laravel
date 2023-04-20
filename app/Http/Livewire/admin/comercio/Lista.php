@@ -28,32 +28,17 @@ class Lista extends Component
     public function render()
     {
 
-        $datas = Comercio::select('id', 'title', 'description', 'price', 'avatar')->where('status_admin', 0);
+        $datas = Comercio::select('id', 'nome', 'telefone')->where('status', 0);
 
 
         if ($this->search) {
             $datas->where(function ($query) {
-                $datas = $query->where("title", "like", $this->search);
+                $datas = $query->where("nome", "like", $this->search);
             });
         }
 
-        if ($this->place) {
-            $datas->where(function ($query) {
-                $datas = $query->where("address", "like", $this->place);
-            });
-        }
 
-        if ($this->type) {
-            $datas->where(function ($query) {
-                $query->where("type", "=", $this->type);
-            });
-        }
 
-        if ($this->price) {
-            $datas->where(function ($query) {
-                $query->where("price", ">=", $this->price);
-            });
-        }
 
 
         $countLeads = $datas->count();
@@ -62,7 +47,7 @@ class Lista extends Component
             $datas = $datas->orderBy('id', $this->ordem);
         } else {
 
-            $datas = $datas->orderBy('title');
+            $datas = $datas->orderBy('nome');
         }
 
 

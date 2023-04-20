@@ -1,5 +1,5 @@
 <div>
-    @include('novo._partials.banner')
+    @include('livewire.public.comercio._partials.banners')
     <!-- Categories -->
     <section class="top_listings">
         <div class="container">
@@ -51,7 +51,8 @@
                     </div>
                 </form>
             </div>
-            @include('novo.components.listagemComponent')
+          
+            @include('livewire.public.comercio._partials.list')
 
 
         </div>

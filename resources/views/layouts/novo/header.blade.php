@@ -36,7 +36,7 @@
                                 <ul class="b-none dropdown-menu font-14 animated fadeInUp hidden">
                                   <li><a class="dropdown-item" href="{{ route('listar.imoveis.public') }}">Imoveis </a></li>
                                   <li><a class="dropdown-item" href="{{ route('listar.entregadores.public') }}">Entregadores </a></li>
-                                  <li><a class="dropdown-item" href="{{ route('listar.entregadores.public') }}">Comércio </a></li>
+                                  <li><a class="dropdown-item" href="{{ route('listar.comercio.public') }}">Comércio </a></li>
                                   <li><a class="dropdown-item" href="{{ route('listar.entregadores.public') }}">Salões </a></li>
                        
                                 </ul>
