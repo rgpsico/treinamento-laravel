@@ -28,3 +28,12 @@
         </div>
     @endif
 </div>
+
+
+<div>
+    @if($errors->has('errors'))
+        <div class="col-12 ">
+            <div class="alert alert-danger col-12">{{ $errors->first('errors') }}</div>
+        </div>
+    @endif
+</div>

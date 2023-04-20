@@ -144,13 +144,33 @@ class ImovelController extends Controller
         $imovel->status = $request->input('status');
 
         if ($request->hasFile('avatar')) {
+
+            $userId = auth()->user()->id;
+
+            $currentImageCount = userGallery::where('user_id', $userId)->count();
+
+            if ($currentImageCount >= 5) {
+
+                return redirect()->route('imovel.edit', ['id' => $imovel->id])
+                    ->withErrors(['errors' => 'Não pode ter mais de 5 fotos']);
+            }
+
+
             $avatars = $request->file('avatar');
 
             foreach ($avatars as $avatar) {
+
                 $filename = time() . '.' . $avatar->getClientOriginalExtension();
+
+
                 $path = public_path('/imagens/imoveis/');
                 $avatar->move($path, $filename);
-                $imovel->avatar = $filename; // ou qualquer outro processamento que você precisa fazer com o arquivo
+
+                $imagem = new userGallery();
+                $imagem->user_id = auth()->user()->id;
+                $imagem->imovel_id = $imovel->id;
+                $imagem->image = $filename;
+                $imagem->save(); // ou qualquer outro processamento que você precisa fazer com o arquivo
             }
         }
 

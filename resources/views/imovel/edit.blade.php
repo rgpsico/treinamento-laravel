@@ -1,13 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    @if (session()->has('success'))
-        <div class="row">
-            <div class=" col-12 alert alert-success">
-                {{ session()->get('success') }}
-            </div>
-        </div>
-    @endif
+  <x-alert/>
+ 
 
     <div class="col-md-12">
 
