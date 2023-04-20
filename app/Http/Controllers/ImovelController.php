@@ -143,13 +143,15 @@ class ImovelController extends Controller
         $imovel->price = $request->input('price');
         $imovel->status = $request->input('status');
 
-        if ($request->avatar) {
-            $avatar = $request->file('avatar');
+        if ($request->hasFile('avatar')) {
+            $avatars = $request->file('avatar');
 
-            $filename = time() . '.' . $avatar->getClientOriginalExtension();
-            $path = public_path('/imagens/imoveis/');
-            $avatar->move($path, $filename);
-            $imovel->avatar =  $filename;
+            foreach ($avatars as $avatar) {
+                $filename = time() . '.' . $avatar->getClientOriginalExtension();
+                $path = public_path('/imagens/imoveis/');
+                $avatar->move($path, $filename);
+                $imovel->avatar = $filename; // ou qualquer outro processamento que você precisa fazer com o arquivo
+            }
         }
 
         ImovelItens::where('imovel_id', $id)->delete();

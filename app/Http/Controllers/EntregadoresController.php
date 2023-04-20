@@ -80,10 +80,11 @@ class EntregadoresController extends Controller
 
     public function show($id)
     {
-        $comercio = $this->model->find($id);
-        return view($this->view . '.show', [
-            'comercio' => $comercio
-        ]);
+        $model = $this->model->find($id);
+        return view(
+            'public.entregadores.show',
+            ['model' => $model]
+        );
     }
 
     public function edit($id)

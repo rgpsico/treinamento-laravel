@@ -27,7 +27,7 @@ Route::group(['prefix' => '/public'], function () {
 
     Route::group(['prefix' => '/entregadores'], function () {
         Route::get('', [EntregadoresController::class, 'listar'])->name('listar.entregadores.public');
-        Route::get('/{id}/detalhes', [EntregadoresController::class, 'detalhes'])->name('show.entregadores.public');
+        Route::get('/{id}/detalhes', [EntregadoresController::class, 'show'])->name('show.entregadores.public');
     });
 
 

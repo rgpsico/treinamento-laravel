@@ -9,8 +9,8 @@
             <div class="row">
 
                 <div class="form-group col-12">
-                    <label for="isProprietario">O que eu quero</label>
-                    <select name="type" id="type" class="form-control">
+                    <label for="isProprietario">O que eu sou</label>
+                    <select name="type" id="type" class="form-control large">
                         <option value="">Selecione</option>
                        @foreach ($tipoUser as $tipo )
                           <option  style="text-transform: capitalize" value="{{$tipo->id}}">{{$tipo->nome}}</option>

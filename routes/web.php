@@ -32,7 +32,6 @@ Route::get('/stripe', [StripeController::class, 'index'])->name('stripe.index');
 
 
 Route::group(['prefix' => '/admin'], function () {
-
     Route::group(['prefix' => '/categoria'], function () {
         Route::get('/', [CategoryController::class, 'index'])->name('category.index');
         Route::get('/{id}/show', [CategoryController::class, 'show'])->name('category.show');

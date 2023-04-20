@@ -12,8 +12,13 @@ class UserTipoUser extends Model
     protected $table = 'users_tipo_users';
     protected $fillable = ['tipo_usuario_id', 'user_id'];
 
-    public function users()
+    public function user()
     {
-        return $this->belongsToMany(User::class, 'user_tipo_user')->withTimestamps();
+        return $this->belongsTo(User::class);
+    }
+
+    public function userType()
+    {
+        return $this->belongsTo(TipoUsuario::class);
     }
 }
