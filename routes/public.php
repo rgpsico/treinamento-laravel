@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ComercioController;
 use App\Http\Controllers\EntregadoresController;
 use App\Http\Controllers\ImovelController;
 use App\Http\Controllers\UserdataController;
@@ -22,6 +23,11 @@ Route::group(['prefix' => '/public'], function () {
     Route::group(['prefix' => '/imoveis'], function () {
         Route::get('', [ImovelController::class, 'listarN'])->name('listar.imoveis.public');
         Route::get('/{id}/detalhes', [ImovelController::class, 'detalhes'])->name('show.imovel.public');
+    });
+
+    Route::group(['prefix' => '/comercio'], function () {
+        Route::get('', [ComercioController::class, 'indexPublic'])->name('listar.comercio.public');
+        Route::get('/{id}/show', [ComercioController::class, 'showPublic'])->name('show.comercio.public');
     });
 
 

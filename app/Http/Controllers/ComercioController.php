@@ -29,6 +29,13 @@ class ComercioController extends Controller
         return $this->data($model, 'index');
     }
 
+    public function indexPublic()
+    {
+        dd('aaa');
+        $model = $this->model::all();
+        return $this->data($model, 'index');
+    }
+
     public function data($model, $page)
     {
 

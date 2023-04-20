@@ -39,11 +39,11 @@
 
                 <div class="col-md-4 m-t-30" style="opacity: 0.7;">
                     <div class="categories_box">
-                         <a href="{{route('listar.entregadores.public')}}">
+                         <a href="{{route('listar.comercio.public')}}">
                             <img src="images/Categories/categories4.png" alt="Classified Plus" />
                         <div class="overlay text-center">
-                            <a href="{{route('listar.entregadores.public')}}"><img src="{{ asset('images/amburguer.png') }}" alt="Classified Plus" />
-                                <p> Entregadores </p>
+                            <a href="{{route('listar.comercio.public')}}"><img src="{{ asset('images/amburguer.png') }}" alt="Classified Plus" />
+                                <p> Comercio </p>
                             </a>
                         </div>
                     </a>

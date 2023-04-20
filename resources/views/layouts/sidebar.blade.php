@@ -119,10 +119,10 @@
                 <div class="row mb-5 my-5 nav-treeview">
                     <div class="col-12 mb-2">
                         <div class="image d-flex justify-content-center align-items-center">
-                            <a href="{{ route('users.edit', ['id' => Auth::user()->id ?? '']) }}">
+                            <a href="{{ route('users.edit', ['id' => Auth::user()->id ?? '0']) }}">
 
 
-                                @if (Auth::user()->avatar)
+                                @if (isset(Auth::user()->avatar))
                                     <img src="{{ asset('/uploads/' . Auth::user()->avatar) }}" alt="Descrição da imagem"
                                         class="img-circle elevation-2 img-fluid scale-down" width="80"
                                         height="80" alt="User Image">
@@ -279,7 +279,7 @@
                             </ul>
                         </li>
 
-                        @if (Auth::user()->is_admin)
+                        @if (isset(Auth::user()->is_admin))
                             <li class="nav-item menuAcesso">
                                 <a href="" class="nav-link ">
 
@@ -406,7 +406,7 @@
             $(document).ready(function() {
             
   
-                if (window.location.href.indexOf('imovel/' + {{ Auth::user()->id }} + '/myimoveis') > -1) {
+                if (window.location.href.indexOf('imovel/' + {{ Auth::user()->id ?? '' }} + '/myimoveis') > -1) {
                     $('.myImoveis').addClass('active');
                     $('.propriedade').removeClass('active');
                     $('.itensMenu').removeClass('active');
