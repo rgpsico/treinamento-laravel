@@ -4,7 +4,11 @@
 
 
     <!-- End banner -->
+    <div class="d-flex justify-content-center font-weight-bold">
+        <x-alert/>
+    </div>
 
+    
     <!-- Categories -->
     <section class="categories">
         <div class="container">

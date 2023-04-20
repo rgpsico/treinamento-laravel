@@ -13,8 +13,8 @@
 
                 <div class="form-group col-12">
                     <label for="name">Nome:</label>
-                    <input type="text" class="form-control" id="name" name="name"
-                        placeholder="Ex: Padaria da Estrada" value="{{ old('name') }}">
+                    <input type="text" class="form-control" id="nome" name="nome"
+                        placeholder="Ex: Padaria da Estrada" value="{{ old('nome') }}">
                     @if ($errors->has('name'))
                         <span class="help-block text-danger ">
                             <strong>{{ $errors->first('name') }}</strong>
@@ -55,6 +55,17 @@
                     @if ($errors->has('telefone'))
                         <span class="help-block text-danger">
                             <strong>{{ $errors->first('telefone') }}</strong>
+                        </span>
+                    @endif
+                </div>
+
+                <div class="form-group col-12">
+                    <label for="endereco">Endereço:</label>
+                    <input type="endereco" class="form-control" id="endereco" name="endereco" placeholder="Saint roman"
+                        value="{{ old('endereco') }}">
+                    @if ($errors->has('endereco'))
+                        <span class="help-block text-danger">
+                            <strong>{{ $errors->first('endereco') }}</strong>
                         </span>
                     @endif
                 </div>

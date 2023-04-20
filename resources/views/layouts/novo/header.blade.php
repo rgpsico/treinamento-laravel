@@ -46,14 +46,14 @@
                                 <a class="nav-link" href="{{ route('novo.categoria') }}">Serviços</a>
                             </li>
 
-                            @if (!Auth::check())
-                            <li class="nav-item dropdown"> 
-                                <a class="nav-link dropdown-toggle show" href="{{ route('user.create') }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> Registrar </a>
-                                <ul class="b-none dropdown-menu font-14 animated fadeInUp hidden">
-                                  <li><a class="dropdown-item" href="{{ route('user.create') }}">Registrar </a></li>
+                            <li class="nav-item"> 
+                                <a class="nav-link" href="{{ route('comercio.registerHome') }}">Cadastrar Comercio</a>
+                             </li>
 
-                                </ul>
-                              </li>
+                            @if (!Auth::check())
+                            <li class="nav-item"> 
+                               <a class="nav-link" href="{{ route('user.create') }}">Registrar</a>
+                            </li>
                              @endif 
                             
                               @if (Auth::check())

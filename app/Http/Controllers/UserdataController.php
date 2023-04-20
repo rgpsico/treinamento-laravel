@@ -185,17 +185,7 @@ class UserdataController extends Controller
 
         if ($user) {
             auth()->login($user);
-
-            if ($request->type == 1) {
-                return redirect()->route('listar.imoveis.public')->with('success', 'Usuário cadastrado com sucesso!');
-            }
-
-            if ($request->type == 2) {
-                return redirect()->route(
-                    'imovel.users',
-                    ['user_id' => $user->id]
-                )->with('success', 'Usuário cadastrado com sucesso!');
-            }
+            return redirect()->route('novo.categoria')->with('success', 'Cadastrado com sucesso!');
         }
     }
 

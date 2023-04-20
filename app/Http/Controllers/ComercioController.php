@@ -58,9 +58,7 @@ class ComercioController extends Controller
 
     public function store(Request $request)
     {
-
         $data = $request->only($this->fillable);
-
 
         if ($request->hasFile('logo')) {
             $filename = time() . '_' . rand() . '.' . $request->file('logo')->getClientOriginalExtension();
@@ -73,7 +71,7 @@ class ComercioController extends Controller
 
         $comercio = Comercio::create($data);
 
-        return $this->data($comercio, 'index');
+        return  redirect()->back()->with(['success' => 'Comercio ver Cadastrado com sucesso']);
     }
 
     public function update(Request $request, $id)

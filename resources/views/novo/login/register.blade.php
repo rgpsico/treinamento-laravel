@@ -9,7 +9,7 @@
             <div class="row">
 
                 <div class="form-group col-12">
-                    <label for="isProprietario">O que eu sou</label>
+                    <label for="isProprietario">Função</label>
                     <select name="type" id="type" class="form-control large">
                         <option value="">Selecione</option>
                        @foreach ($tipoUser as $tipo )
