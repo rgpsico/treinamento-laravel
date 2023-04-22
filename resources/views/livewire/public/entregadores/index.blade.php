@@ -51,7 +51,10 @@
                     </div>
                 </form>
             </div>
-            @include('livewire.public.entregadores._partials.listagemComponent')
+       
+        
+            <x-listcomponent :model="$model"  routeUrl="show.entregadores" pasta="imagens/entregadores/" />
+
 
 
         </div>

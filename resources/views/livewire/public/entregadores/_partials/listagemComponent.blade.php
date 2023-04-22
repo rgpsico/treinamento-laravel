@@ -12,10 +12,10 @@
         <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
             <div class="featured-parts rounded m-t-30">
                 <a href="{{ route('show.entregadores.public', ['id' => $data->id]) }}">
-                    @php $img = $data->gallery[0]->image  ?? '' @endphp
+                    @php $img = $data->avatar  ?? '' @endphp
                     <div class="featured-img">
                         <img style="max-width:100%; height:200px;" class="img-fluid rounded-top"
-                            src="{{ asset('imagens/imoveis/' . $img) }}" alt="{{ $data->title }}" />
+                            src="{{ asset('imagens/entregadores/' . $img) }}" alt="{{ $data->title }}" />
 
                         <img class="sponsored-img" src="{{ asset('images/ads/ads.png') }}" alt="Sponsored Image"
                             style="position:absolute; top:0; left:0;">

@@ -29,43 +29,43 @@ class Lista extends Component
     public function render()
     {
 
-        $datas = User::select('id', 'name', 'email', 'telefone', 'avatar');
+        $model = User::select('id', 'name', 'email', 'telefone', 'avatar');
 
 
         if ($this->search) {
-            $datas->where(function ($query) {
-                $datas = $query->where("name", "like", $this->search);
+            $model->where(function ($query) {
+                $model = $query->where("name", "like", $this->search);
             });
         }
 
         if ($this->place) {
-            $datas->where(function ($query) {
-                $datas = $query->where("telefone", "like", $this->place);
+            $model->where(function ($query) {
+                $model = $query->where("telefone", "like", $this->place);
             });
         }
 
 
 
 
-        $countLeads = $datas->count();
+        $countLeads = $model->count();
 
         if ($this->ordem == 'desc' || $this->ordem == 'asc') {
-            $datas = $datas->orderBy('id', $this->ordem);
+            $model = $model->orderBy('id', $this->ordem);
         } else {
 
-            $datas = $datas->orderBy('name');
+            $model = $model->orderBy('name');
         }
 
 
         if ($this->todos) {
-            $datas = $datas->paginate(null);
+            $model = $model->paginate(null);
         } else {
-            $datas = $datas->paginate(10);
+            $model = $model->paginate(10);
         }
 
 
 
-        return view('livewire.public.entregadores.index', compact('datas'));
+        return view('livewire.public.entregadores.index', compact('model'));
     }
 
 

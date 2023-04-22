@@ -15,7 +15,7 @@
                 
                     <div class="featured-img">
                         <img style="max-width:100%; height:200px;" class="img-fluid rounded-top"
-                            src="{{ asset('imagens/comercio/'.$data->logo ) }}" alt="{{ $data->nome }}" />
+                            src="{{ asset($pasta.$data->avatar ) }}" alt="{{ $data->nome }}" />
 
                         <img class="sponsored-img" src="{{ asset('images/ads/ads.png') }}" alt="Sponsored Image"
                             style="position:absolute; top:0; left:0;">
@@ -31,16 +31,12 @@
                                 <i class="fa fa-bookmark"></i></a>
                         </div>
                     </div>
-                    <div class="text-stars m-t-5">
-                      
-
-              
-
-                    </div>
+                    <div class="text-stars m-t-5"></div>
                     <div class="featured-bottum m-t-30">
                         <ul class="d-flex justify-content-between list-unstyled m-b-20">
-                            <li><a href="#">
-                                    <i class="fa fa-map-marker"></i> {{ $data->endereco }}</a></li>
+                                <li><a href="#">
+                                    <i class="fa fa-map-marker"></i> {{ $data->endereco }}</a>
+                                </li>
                           
                         </ul>
                     </div>

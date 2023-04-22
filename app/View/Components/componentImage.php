@@ -4,22 +4,19 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class listComponent extends Component
+class componentImage extends Component
 {
-    public $model;
-    public $routeUrl;
     public $pasta;
-    public $foto;
+    public $image;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($model, $routeUrl = null, $pasta)
+    public function __construct($pasta, $image)
     {
-        $this->model = $model;
-        $this->routeUrl = $routeUrl;
         $this->pasta = $pasta;
+        $this->image = $image;
     }
 
     /**
@@ -29,6 +26,6 @@ class listComponent extends Component
      */
     public function render()
     {
-        return view('components.list-component');
+        return view('components.component-image');
     }
 }

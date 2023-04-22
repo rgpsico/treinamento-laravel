@@ -9,6 +9,7 @@ use App\Models\PermissoesUser;
 use App\Models\TipoUsuario;
 use App\Models\User;
 use App\Models\UserEndereco;
+use App\Traits\UploadTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -19,6 +20,8 @@ use PhpSerial\Serial;
 
 class UserdataController extends Controller
 {
+    use UploadTrait;
+
     protected $pageTitle = 'Usuarios';
 
     /**
@@ -163,7 +166,6 @@ class UserdataController extends Controller
 
 
 
-
         if ($validator->fails()) {
             return redirect('register')
                 ->withErrors($validator)
@@ -171,10 +173,19 @@ class UserdataController extends Controller
                 ->with('error', 'Usuário Não pode ser Cadastrado!');;
         }
 
+
+        if ($request->hasFile('avatar')) {
+            $filename = time() . '_' . rand() . '.' . $request->file('avatar')->getClientOriginalExtension();
+            $path = public_path('imagens/entregadores/');
+            $request->file('avatar')->move($path, $filename);
+            $data['avatar'] = $filename;
+        }
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
+            'avatar' => $filename,
             'password' => Hash::make($request->password),
         ]);
 

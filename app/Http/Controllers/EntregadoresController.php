@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Comercio;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
@@ -19,7 +20,7 @@ class EntregadoresController extends Controller
     protected $categorias;
     use ControllerDataTrait;
 
-    public function __construct(Comercio $model, Category $categorias)
+    public function __construct(User $model, Category $categorias)
     {
         $this->model = $model;
         $this->categorias = $categorias;
@@ -27,7 +28,8 @@ class EntregadoresController extends Controller
 
     public function listar()
     {
-        return  view("entregadores.list");
+        $model = $this->model::paginate();
+        return view('entregadores.list', compact('model'));
     }
 
     public function index()

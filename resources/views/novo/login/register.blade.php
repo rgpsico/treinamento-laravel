@@ -76,6 +76,11 @@
                     @endif
                 </div>
 
+                <div class="form-group col-12">
+                    <label for="foto">Foto</label>
+                    <input type="file" name='avatar' id="avatar" class="form-control">
+                </div>
+
 
             </div>
             <div class="form-group">

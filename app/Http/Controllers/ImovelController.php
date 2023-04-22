@@ -192,7 +192,7 @@ class ImovelController extends Controller
         }
 
 
-
+        $imovel->avatar = $filename;
 
         $imovel->save();
 
@@ -237,6 +237,8 @@ class ImovelController extends Controller
                 $imagem->imovel_id = $imovel->id;
                 $imagem->image = $filename;
                 $imagem->save();
+
+                $imovel->avatar = $filename;
             }
         }
 
