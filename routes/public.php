@@ -15,7 +15,7 @@ Route::post('/login', [UserdataController::class, 'auth'])->name('user.auth');
 Route::get('/register', [UserdataController::class, 'register'])->name('user.create');;
 Route::post('/store', [UserdataController::class, 'store'])->name('user.store');;
 Route::get('/logout', [UserdataController::class, 'logout'])->name('logout');;
-
+Route::get('/', [ImovelController::class, 'categoria'])->name('novo.categoria');
 
 Route::group(['prefix' => '/public'], function () {
     Route::get('/', [ImovelController::class, 'categoria'])->name('novo.categoria');

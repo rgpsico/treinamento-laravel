@@ -6,7 +6,7 @@
             <!-- Row  -->
             <div class="row justify-content-center">
                 <div class="col-md-7 text-center">
-                    <h2 class="title">Encontre seu imóvel ideal </h2>
+                    <h2 class="title">Buscar Comércio </h2>
                 </div>
             </div>
             <!-- Row  -->
@@ -52,7 +52,7 @@
                 </form>
             </div>
           
-            <x-listcomponent :model="$model" route="show.comercio.public" />
+            <x-listcomponent :model="$model" routeUrl="show.comercio" pasta="imagens/comercio/" />
 
 
         </div>

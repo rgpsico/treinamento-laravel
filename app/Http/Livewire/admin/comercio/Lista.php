@@ -28,7 +28,7 @@ class Lista extends Component
     public function render()
     {
 
-        $model = Comercio::select('id', 'nome', 'telefone')->where('status', 0);
+        $model = Comercio::select('id', 'nome', 'telefone', 'logo')->where('status', 0);
 
 
         if ($this->search) {

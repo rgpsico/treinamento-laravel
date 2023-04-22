@@ -7,17 +7,18 @@ use Illuminate\View\Component;
 class listComponent extends Component
 {
     public $model;
-    public $route;
-
+    public $routeUrl;
+    public $pasta;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($model, $route)
+    public function __construct($model, $routeUrl = null, $pasta)
     {
         $this->model = $model;
-        $this->route = $route;
+        $this->routeUrl = $routeUrl;
+        $this->pasta = $pasta;
     }
 
     /**

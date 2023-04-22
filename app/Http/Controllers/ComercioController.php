@@ -66,6 +66,7 @@ class ComercioController extends Controller
     {
         $data = $request->only($this->fillable);
 
+
         if ($request->hasFile('logo')) {
             $filename = time() . '_' . rand() . '.' . $request->file('logo')->getClientOriginalExtension();
             $path = public_path('imagens/comercio/');

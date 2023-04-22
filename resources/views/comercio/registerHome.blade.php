@@ -72,11 +72,11 @@
 
                 <div class="form-group col-12">
                     <label for="imagem">Logo:</label>
-                    <input type="file" class="form-control" id="avatar" name="avatar" placeholder="avatar"
-                        value="{{ old('avatar') }}">
-                    @if ($errors->has('avatar'))
+                    <input type="file" class="form-control" id="logo" name="logo" placeholder="avatar"
+                        value="{{ old('logo') }}">
+                    @if ($errors->has('logo'))
                         <span class="help-block text-danger">
-                            <strong>{{ $errors->first('avatar') }}</strong>
+                            <strong>{{ $errors->first('logo') }}</strong>
                         </span>
                     @endif
                 </div>
