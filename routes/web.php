@@ -170,15 +170,15 @@ Route::group(['prefix' => '/admin'], function () {
     });
 
 
-    Route::group(['prefix' => '/comercio'], function () {
-        Route::get('/', [ComercioController::class, 'index'])->name('comercio.index');
-        Route::get('/{id}/edit', [ComercioController::class, 'edit'])->name('comercio.edit');
-        Route::put('/{id}/update', [ComercioController::class, 'update'])->name('comercio.update');
-        Route::get('/create', [ComercioController::class, 'create'])->name('comercio.create');
-        Route::get('/registerHome', [ComercioController::class, 'registerHome'])->name('comercio.registerHome');
-        Route::post('/post', [ComercioController::class, 'store'])->name('comercio.store');
-        Route::delete('/{id}/destroy', [ComercioController::class, 'destroy'])->name('comercio.destroy');
-    });
+    // Route::group(['prefix' => '/comercio'], function () {
+    //     Route::get('/', [ComercioController::class, 'index'])->name('comercio.index');
+    //     Route::get('/{id}/edit', [ComercioController::class, 'edit'])->name('comercio.edit');
+    //     Route::put('/{id}/update', [ComercioController::class, 'update'])->name('comercio.update');
+    //     Route::get('/create', [ComercioController::class, 'create'])->name('comercio.create');
+    //     Route::get('/registerHome', [ComercioController::class, 'registerHome'])->name('comercio.registerHome');
+    //     Route::post('/post', [ComercioController::class, 'store'])->name('comercio.store');
+    //     Route::delete('/{id}/destroy', [ComercioController::class, 'destroy'])->name('comercio.destroy');
+    // });
 
     Route::group(['prefix' => '/prestador'], function () {
         Route::get('/', [PrestadorServicoController::class, 'index'])->name('prestador.index');
