@@ -53,7 +53,7 @@
             </div>
        
         
-            <x-listcomponent :model="$model"  routeUrl="show.entregadores" pasta="imagens/entregadores/" />
+            <x-list-component :model="$model"  routeUrl="show.entregadores" pasta="imagens/entregadores/" />
 
 
 
