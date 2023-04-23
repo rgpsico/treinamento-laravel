@@ -20,24 +20,23 @@
             <h3 class="card-title">Adicionar {{$pageTitle}}</h3>
         </div>
 
-        <input  type="hidden" id="id" name="id"
-        class="form-control" value="{{ $model->id ?? '' }}">
+        <input type="hidden" id="id" name="id" class="form-control" value="{{ $model->id ?? '' }}"/>
         <div class="col-12 my-5">
             <div class="form-group">
-                <label for="title" class="form-label">Nome do Comércio:</label>
-                <input placeholder="Nome do comércio" type="text" id="nome" name="nome"
-                    class="form-control" value="{{ $model->nome ?? '' }}">
-                @if ($errors->has('nome'))
-                    <div class="text-danger">{{ $errors->first('nome') }}</div>
+                <label for="title" class="form-label">Nome do Entregador:</label>
+                <input placeholder="Nome do {{$pageTitle}}" type="text" id="name" name="name"
+                    class="form-control" value="{{ $model->name ?? '' }}">
+                @if ($errors->has('name'))
+                    <div class="text-danger">{{ $errors->first('name') }}</div>
                 @endif
             </div>
 
             <div class="form-group">
                 <label for="title" class="form-label">Telefone:</label>
-                <input placeholder="Telefone do comércio" type="text" id="telefone" name="telefone"
-                    class="form-control" value="{{ $model->telefone ?? '' }}">
-                @if ($errors->has('telefone'))
-                    <div class="text-danger">{{ $errors->first('telefone') }}</div>
+                <input placeholder="Telefone do entregadores" type="text" id="phone" name="phone"
+                    class="form-control" value="{{ $model->phone ?? '' }}">
+                @if ($errors->has('phone'))
+                    <div class="text-danger">{{ $errors->first('phone') }}</div>
                 @endif
             </div>
 
@@ -54,11 +53,11 @@
             </div>
 
             <div class="form-group">
-                <label for="title" class="form-label">Logo:</label>
-                <input type="file" id="logo" name="logo"
-                    class="form-control" value="{{ $model->Logo ?? '' }}">
-                @if ($errors->has('logo'))
-                    <div class="text-danger">{{ $errors->first('logo') }}</div>
+                <label for="title" class="form-label">Foto:</label>
+                <input type="file" id="avatar" name="avatar"
+                    class="form-control" value="{{ $model->avatar ?? '' }}">
+                @if ($errors->has('avatar'))
+                    <div class="text-danger">{{ $errors->first('avatar') }}</div>
                 @endif
             </div>
         </div>

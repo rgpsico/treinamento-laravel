@@ -36,8 +36,7 @@
                         <ul class="d-flex justify-content-between list-unstyled m-b-20">
                                 <li><a href="#">
                                     <i class="fa fa-map-marker"></i> {{ $data->endereco }}</a>
-                                </li>
-                          
+                                </li>                          
                         </ul>
                     </div>
                 </div>

@@ -53,6 +53,16 @@ Route::group(['prefix' => '/admin'], function () {
         Route::post('/{id}/destroy', [DepoimentoController::class, 'destroy'])->name('depoimento.destroy');
     });
 
+    Route::group(['prefix' => '/comercio'], function () {
+        Route::get('/', [ComercioController::class, 'index'])->name('comercio.index');
+        Route::get('/{id}/show', [ComercioController::class, 'show'])->name('comercio.show');
+        Route::get('/create', [ComercioController::class, 'create'])->name('comercio.create');
+        Route::get('/{id}/edit', [ComercioController::class, 'edit'])->name('comercio.edit');
+        Route::put('/{id}/update', [ComercioController::class, 'edit'])->name('comercio.update');
+        Route::post('/post', [ComercioController::class, 'store'])->name('comercio.store');
+        Route::post('/{id}/destroy', [ComercioController::class, 'destroy'])->name('comercio.destroy');
+    });
+
 
     Route::group(['prefix' => '/log'], function () {
         Route::get('/', [LogsController::class, 'index'])->name('log.index');

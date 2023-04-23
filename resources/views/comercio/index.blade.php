@@ -101,7 +101,7 @@
                                     </td>
                               
                                     <td>
-                                        <img src="{{ asset('imagens/comercio/' . $value->logo) }}"
+                                        <img src="{{ asset('imagens/comercio/' . $value->avatar) }}"
                                             width="30" height="50" class="card-img">
                                    </td>
                                     <td>{{ $value->nome }}</td>

@@ -101,11 +101,11 @@
                                     </td>
                               
                                     <td>
-                                        <img src="{{ asset('imagens/comercio/' . $value->logo) }}"
-                                            width="30" height="50" class="card-img">
+                                        <img src="{{ asset('imagens/entregadores/' . $value->avatar) }}"
+                                            width="100" height="80" class="card-img">
                                    </td>
-                                    <td>{{ $value->nome }}</td>
-                                    <td>{{ $value->telefone }}</td>
+                                    <td>{{ $value->name }}</td>
+                                    <td>{{ $value->phone }}</td>
                                     <td>{{ $value->status }}</td>
                                     <td>{{ $value->endereco }}</td>
                                     <td class="d-flex">

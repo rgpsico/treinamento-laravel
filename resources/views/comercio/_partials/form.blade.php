@@ -20,8 +20,7 @@
             <h3 class="card-title">Adicionar {{$pageTitle}}</h3>
         </div>
 
-        <input  type="text" id="id" name="id"
-        class="form-control" value="{{ $model->id }}">
+        <input  type="hidden" id="id" name="id"    class="form-control" value="{{ $model->id ?? '' }}">
         <div class="col-12 my-5">
             <div class="form-group">
                 <label for="title" class="form-label">Nome do Comércio:</label>

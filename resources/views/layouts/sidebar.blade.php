@@ -172,7 +172,7 @@
                         @endcan
 
 
-
+                        
 
 
                         @can('ver_imoveis')
@@ -256,6 +256,59 @@
                                 </ul>
                             </li>
                         @endcan
+
+                        <li class="nav-item comercio open menu-is-opening menu-open">
+                            <a href="{{ route('comercio.index') }}" 
+                            class="nav-link">
+                            <i class="fas fa-money-bill-alt"></i>
+                                <p>
+                                    Comercio
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item ">
+                                    <a href="{{ route('entregadores.index') }}"
+                                        class="nav-link entregadores">
+                                        <p class="ml-3">Entregadores</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item ">
+                                    <a href="{{ route('comercio.index') }}"
+                                        class="nav-link allComercio">
+                                        <p class="ml-3">Todos os Comercio</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="nav-item entregadores open menu-is-opening menu-open">
+                            <a href="{{ route('entregadores.index') }}" class="nav-link">
+                            <i class="fas fa-money-bill-alt"></i>
+                                <p>
+                                    Entregadores
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+
+                          
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item ">
+                                    <a href="{{ route('entregadores.index') }}"
+                                        class="nav-link allEntregadores">
+                                        <p class="ml-3">Todos os Entregadores</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
 
                         <li class="nav-item menuAcesso">
                             <a href="" class="nav-link ">
@@ -486,6 +539,22 @@
                     $('.menuDashboard').removeClass('active')
                     $('.menuAcesso').addClass('open menu-is-opening menu-open')
                     $('.permissoesCategoria').addClass('active')
+                }
+
+                if (window.location.href.indexOf('comercio') > -1) {
+                    $('.myImoveis').removeClass('active');
+                    $('.itensMenu').removeClass('active');
+                    $('.proprietario').removeClass('active');
+                    $('.espera').removeClass('active');
+                    $('.menuImoveis').removeClass('open menu-is-opening menu-open');
+
+                    $('.menuPermissao').removeClass('active')
+                    $('.menupermissoes_categoria').removeClass('active')
+                    $('.menuDashboard').removeClass('active')
+                    $('.menuAcesso').removeClass('open menu-is-opening menu-open')
+                    $('.permissoesCategoria').removeClass('active')
+                    $('.comercio').addClass('active')
+                   
                 }
 
 
