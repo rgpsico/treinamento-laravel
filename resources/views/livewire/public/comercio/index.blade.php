@@ -52,7 +52,7 @@
                 </form>
             </div>
           
-            <x-listcomponent :model="$model" routeUrl="show.comercio" pasta="imagens/comercio/" />
+            <x-list-component :model="$model" routeUrl="show.comercio" pasta="imagens/comercio/" />
 
 
         </div>
