@@ -1,5 +1,5 @@
 <div>
-    <x-bannerscomponent title="Comércio" />
+    <x-banners-component title="Comércio" />
     <!-- Categories -->
     <section class="top_listings">
         <div class="container">
