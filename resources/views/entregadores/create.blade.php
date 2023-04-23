@@ -17,5 +17,6 @@
             @method('PUT')
         @endif
         @include($partials.'._partials.form')
+        
     </form>
 @endsection
