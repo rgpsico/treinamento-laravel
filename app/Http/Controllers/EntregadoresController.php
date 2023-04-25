@@ -69,11 +69,11 @@ class EntregadoresController extends Controller
         $comercio = $this->model::find($id);
 
 
-        if ($request->hasFile('logo')) {
-            $filename = time() . '_' . rand() . '.' . $request->file('logo')->getClientOriginalExtension();
+        if ($request->hasFile('avatar')) {
+            $filename = time() . '_' . rand() . '.' . $request->file('avatar')->getClientOriginalExtension();
             $path = public_path('imagens/entregadores/');
-            $request->file('logo')->move($path, $filename);
-            $data['logo'] = $filename;
+            $request->file('avatar')->move($path, $filename);
+            $data['avatar'] = $filename;
         }
 
 

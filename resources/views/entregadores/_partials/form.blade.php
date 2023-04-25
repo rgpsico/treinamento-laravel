@@ -68,6 +68,25 @@
                     <div class="text-danger">{{ $errors->first('avatar') }}</div>
                 @endif
             </div>
+
+            <div class="col-2" style="width:20%">           
+                <div class="gallery">
+                    @if(isset($model->avatar))
+                        <div class="card img_imovel-{{$model->id}}">
+                            <div class="card-body">
+                                <img class="gallery-image" src="{{ asset('imagens/entregadores/' . $model->avatar) }}" width="140px" height="140px" alt="{{ $model->nome }}">
+                            </div>
+                            <div class="card-footer">
+                              
+                                
+                            </div>
+                        </div>
+                       
+                    @endif    
+                </div>
+                
+               
+            </div>
         </div>
 
 
