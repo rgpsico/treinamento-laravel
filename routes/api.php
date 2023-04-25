@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ComercioApiController;
 use App\Http\Controllers\Api\ImovelApicontroller;
 use App\Http\Controllers\Api\UserApiController;
 use App\Http\Controllers\Api\EntregadoresApiController;
@@ -73,6 +74,11 @@ Route::group(['prefix' => '/entregadores'], function () {
     Route::put('/{id}/updatestatus', [EntregadoresApiController::class, 'updateStatus']);
 });
 
+
+Route::group(['prefix' => '/comercio'], function () {
+    Route::put('/{id}/update', [ComercioApiController::class, 'updateEntregador']);
+    Route::put('/{id}/updatestatus', [ComercioApiController::class, 'updateStatus']);
+});
 
 Route::get('/teste', function () {
     return 'aqui';
