@@ -267,24 +267,13 @@
                                 </p>
                             </a>
 
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item ">
-                                    <a href="{{ route('entregadores.index') }}"
-                                        class="nav-link entregadores">
-                                        <p class="ml-3">Entregadores</p>
-                                    </a>
-                                </li>
-
-                            </ul>
-
-                            <ul class="nav nav-treeview">
+                           <ul class="nav nav-treeview">
                                 <li class="nav-item ">
                                     <a href="{{ route('comercio.index') }}"
                                         class="nav-link allComercio">
                                         <p class="ml-3">Todos os Comercio</p>
                                     </a>
                                 </li>
-
                             </ul>
                         </li>
 
@@ -547,14 +536,32 @@
                     $('.proprietario').removeClass('active');
                     $('.espera').removeClass('active');
                     $('.menuImoveis').removeClass('open menu-is-opening menu-open');
+                    $('.menuPermissao').removeClass('active')
+                    $('.menupermissoes_categoria').removeClass('active')
+                    $('.menuDashboard').removeClass('active')
+                    $('.menuAcesso').removeClass('open menu-is-opening menu-open')
+                    $('.entregadores').removeClass('open menu-is-opening menu-open')
+                    $('.permissoesCategoria').removeClass('active')
+                    $('.comercio').addClass('active open menu-is-opening menu-open')
+                    $('.allComercio').addClass('active')
+                }
+
+
+                if (window.location.href.indexOf('entregadores') > -1) {
+                    $('.myImoveis').removeClass('active');
+                    $('.itensMenu').removeClass('active');
+                    $('.proprietario').removeClass('active');
+                    $('.espera').removeClass('active');
+                    $('.menuImoveis').removeClass('open menu-is-opening menu-open');
 
                     $('.menuPermissao').removeClass('active')
                     $('.menupermissoes_categoria').removeClass('active')
                     $('.menuDashboard').removeClass('active')
                     $('.menuAcesso').removeClass('open menu-is-opening menu-open')
+                    $('.comercio').removeClass('open menu-is-opening menu-open')
                     $('.permissoesCategoria').removeClass('active')
-                    $('.comercio').addClass('active')
-                   
+                    $('.comercio').removeClass('active')
+                    $('.allEntregadores').addClass('active')
                 }
 
 

@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Comercio;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
@@ -20,7 +22,7 @@ class EntregadoresApiController extends Controller
     protected $categorias;
     use ControllerDataTrait;
 
-    public function __construct(Comercio $model, Category $categorias)
+    public function __construct(User $model, Category $categorias)
     {
         $this->model = $model;
         $this->categorias = $categorias;
@@ -54,7 +56,7 @@ class EntregadoresApiController extends Controller
             $data['logo'] = $filename;
         }
 
-        $entregador = Comercio::create($data);
+        $entregador = $this->model::create($data);
         return response()->json($entregador, 201);
     }
 

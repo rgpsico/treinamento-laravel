@@ -22,8 +22,8 @@
 
                     <div class="form-group selectdiv">
                         <select wire:model="type" class="form-control text-truncate">
-                            <option selected>Tipo</option>
-                            <option value="1">Casa</option>
+                            <option selected>Tipo de Comércio</option>
+                            <option value="1">Super</option>
                             <option value="2">KitNet</option>
                             <option value="3">Loja</option>
                         </select>
@@ -35,20 +35,7 @@
                             <option value="cantagalo">Cantagalo</option>
                             <option value="pavao">Pavão</option>
                         </select>
-                    </div>
-
-
-                    <div class="form-group selectdiv">
-                        <select wire:model="price" class="form-control text-truncate">
-                            <option selected>Preço até</option>
-                            <option value="300">300</option>
-                            <option value="400">400</option>
-                            <option value="500">500</option>
-                            <option value="600">600</option>
-                            <option value="700">700</option>
-                        </select>
-
-                    </div>
+                    </div>                   
                 </form>
             </div>
           

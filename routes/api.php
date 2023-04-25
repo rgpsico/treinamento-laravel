@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\ImovelApicontroller;
 use App\Http\Controllers\Api\UserApiController;
+use App\Http\Controllers\Api\EntregadoresApiController;
 use App\Http\Controllers\ImageApiController;
 use App\Http\Controllers\ItensController;
 use App\Http\Controllers\ListaEsperaController;
@@ -64,6 +65,11 @@ Route::group(['prefix' => '/listaEspera'], function () {
     Route::get('/all', [ListaEsperaController::class, 'get']);
     Route::post('/store', [ListaEsperaController::class, 'storeApi'])->name('lista.esperaApi');
     Route::delete('/{id}/delete', [ListaEsperaController::class, 'delete']);
+});
+
+
+Route::group(['prefix' => '/entregadores'], function () {
+    Route::put('/{id}/update', [EntregadoresApiController::class, 'updateEntregador']);
 });
 
 

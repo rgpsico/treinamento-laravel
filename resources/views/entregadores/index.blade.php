@@ -106,7 +106,12 @@
                                    </td>
                                     <td>{{ $value->name }}</td>
                                     <td>{{ $value->phone }}</td>
-                                    <td>{{ $value->status }}</td>
+                                    <td>
+                                    <select name="" id="status_entregadores" data-id='{{ $value->id }}'class="form-control">
+                                            <option value="1">Ativo</option>
+                                            <option value="0">inativo</option>
+                                    </select>
+                                    </td>
                                     <td>{{ $value->endereco }}</td>
                                     <td class="d-flex">
                                         <a href="{{ route($route.'.edit', ['id' => $value->id ?? '']) }}" class=" mr-2 btn btn-info"
@@ -130,4 +135,27 @@
             </div>
         </div>
     </div>
+
+    <script>
+          $(document).on('change', '#status_entregadores', function(e) {
+            e.preventDefault();
+
+            var id = $(this).data('id');
+            var url = '/api/entregadores/' + id + '/update';
+
+            $.ajax({
+                type: 'PUT',
+                url: url,
+                data: {
+                    status_admin: $(this).val()
+                },
+                success: function(data) {
+                    console.log(data.content);
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+    </script>
 @endsection

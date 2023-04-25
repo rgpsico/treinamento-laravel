@@ -30,3 +30,19 @@ if (!function_exists('diasDesdePostagem')) {
         return Carbon::parse($dataPostagem)->diffInDays();
     }
 }
+
+if (!function_exists('whatsappUrlFromPhone')) {
+    function whatsappUrlFromPhone($phoneNumber, $message = '')
+    {
+        // Remover caracteres não numéricos
+        $phoneNumber = preg_replace('/\D/', '', $phoneNumber);
+
+        // Codificar a mensagem para uso em URL
+        $encodedMessage = urlencode($message);
+
+        // Criar a URL do WhatsApp
+        $whatsappUrl = "https://wa.me/{$phoneNumber}?text={$encodedMessage}";
+
+        return $whatsappUrl;
+    }
+}
