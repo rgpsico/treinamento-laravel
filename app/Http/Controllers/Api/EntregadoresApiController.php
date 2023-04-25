@@ -87,6 +87,21 @@ class EntregadoresApiController extends Controller
     }
 
 
+    public function updateStatus(Request $request, $id)
+    {
+        $entregador = $this->model::find($id);
+        if (!$entregador) {
+            return response()->json(['error' => 'Entregador não encontrado'], 404);
+        }
+
+        $data = $request->all();
+
+
+        $entregador->update($data);
+        return response()->json($entregador);
+    }
+
+
     public function show($id)
     {
         $comercio = $this->model->find($id);

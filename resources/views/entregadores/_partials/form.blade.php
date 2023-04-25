@@ -53,6 +53,14 @@
             </div>
 
             <div class="form-group">
+                <label for="status" class="form-label">Status:</label>
+                    <select name="status" id="status" class="form-control">
+                        <option value="0" {{$model->status == 0 ? 'selected' : '' }}>Inativo</option>;
+                        <option value="1" {{$model->status == 1 ? 'selected' : '' }}>Ativo</option>;
+                    </select>
+            </div>
+
+            <div class="form-group">
                 <label for="title" class="form-label">Foto:</label>
                 <input type="file" id="avatar" name="avatar"
                     class="form-control" value="{{ $model->avatar ?? '' }}">

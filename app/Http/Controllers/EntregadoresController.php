@@ -29,7 +29,7 @@ class EntregadoresController extends Controller
     public function listar()
     {
         $model = $this->model::paginate();
-        return view('entregadores.list', compact('model'));
+        return view($this->route . '.list', compact('model'));
     }
 
     public function index()
@@ -57,7 +57,7 @@ class EntregadoresController extends Controller
         }
 
 
-        $comercio = Comercio::create($data);
+        $comercio = $this->model::create($data);
 
         return $this->data($comercio, 'index');
     }
@@ -67,9 +67,11 @@ class EntregadoresController extends Controller
 
         $data = $request->all();
         $comercio = $this->model::find($id);
+
+
         if ($request->hasFile('logo')) {
             $filename = time() . '_' . rand() . '.' . $request->file('logo')->getClientOriginalExtension();
-            $path = public_path('imagens/comercio/');
+            $path = public_path('imagens/entregadores/');
             $request->file('logo')->move($path, $filename);
             $data['logo'] = $filename;
         }
@@ -77,7 +79,7 @@ class EntregadoresController extends Controller
 
         $comercio->update($data);
 
-        return redirect()->route('comercio.index', ['comercio' => $comercio->id]);
+        return redirect()->route($this->route . '.index', ['comercio' => $comercio->id]);
     }
 
     public function show($id)

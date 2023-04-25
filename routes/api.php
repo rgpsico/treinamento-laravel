@@ -70,6 +70,7 @@ Route::group(['prefix' => '/listaEspera'], function () {
 
 Route::group(['prefix' => '/entregadores'], function () {
     Route::put('/{id}/update', [EntregadoresApiController::class, 'updateEntregador']);
+    Route::put('/{id}/updatestatus', [EntregadoresApiController::class, 'updateStatus']);
 });
 
 

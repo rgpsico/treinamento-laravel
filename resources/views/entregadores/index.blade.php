@@ -105,11 +105,11 @@
                                             width="100" height="80" class="card-img">
                                    </td>
                                     <td>{{ $value->name }}</td>
-                                    <td>{{ $value->phone }}</td>
+                                    <td><a   title="Enviar mensagem via WhatsApp" href="{{ whatsappUrlFromPhone($value->phone) }}">{{$value->phone}}</a></td>
                                     <td>
                                     <select name="" id="status_entregadores" data-id='{{ $value->id }}'class="form-control">
-                                            <option value="1">Ativo</option>
-                                            <option value="0">inativo</option>
+                                            <option value="1"{{ $value->status == 1 ? 'selected' : '' }}>Ativo</option>
+                                            <option value="0" {{ $value->status == 0 ? 'selected' : '' }}>inativo</option>
                                     </select>
                                     </td>
                                     <td>{{ $value->endereco }}</td>
@@ -141,13 +141,13 @@
             e.preventDefault();
 
             var id = $(this).data('id');
-            var url = '/api/entregadores/' + id + '/update';
+            var url = '/api/entregadores/' + id + '/updatestatus';
 
             $.ajax({
                 type: 'PUT',
                 url: url,
                 data: {
-                    status_admin: $(this).val()
+                    status: $(this).val()
                 },
                 success: function(data) {
                     console.log(data.content);
