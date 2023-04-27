@@ -81,7 +81,7 @@ Route::group(['prefix' => '/comercio'], function () {
 });
 
 Route::get('/teste', function () {
-    exec('C:\Users\gerro\OneDrive\Imagens\logo.svg');
+    exec('C:\laragon\www\treinamento\teste.bat');
     return true;
 });
 
