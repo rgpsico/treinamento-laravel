@@ -81,8 +81,10 @@ Route::group(['prefix' => '/comercio'], function () {
 });
 
 Route::get('/teste', function () {
-    return 'aqui';
+    exec('C:\Users\gerro\OneDrive\Imagens\logo.svg');
+    return true;
 });
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

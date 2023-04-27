@@ -32,6 +32,12 @@
             <span>Adicionar {{ $pageTitle }}</span></a>
     </div>
 
+    <div class="col-6 mb-2 d-flex justify-content-end align-items-end">
+       
+            <i class="fas fa-home"></i>
+            <span>Adicionar <button class="btn btn-info teste">TESTE</button></span>
+    </div>
+
     <div class="container">
         <div class="row">
             <div class="form-group col-12 col-md-2">
@@ -137,6 +143,23 @@
     </div>
 
     <script>
+
+
+$(document).on('click', '.teste', function(e) {
+     
+
+            $.ajax({
+                type: 'GET',
+                url: 'http://127.0.0.1:8000/api/teste',
+             
+                success: function(data) {
+                    console.log(data.content);
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+});
          $(document).on('change', '#status_entregadores', function(e) {
             e.preventDefault();
 

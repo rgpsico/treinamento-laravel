@@ -279,7 +279,7 @@
 
                         <li class="nav-item entregadores open menu-is-opening menu-open">
                             <a href="{{ route('entregadores.index') }}" class="nav-link">
-                            <i class="fas fa-money-bill-alt"></i>
+                                <i class="fas fa-bicycle"></i>
                                 <p>
                                     Entregadores
                                     <i class="right fas fa-angle-left"></i>
