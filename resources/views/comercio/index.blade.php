@@ -150,7 +150,7 @@ $(document).on('click', '.teste', function(e) {
 
             $.ajax({
                 type: 'GET',
-                url: 'http://127.0.0.1:8000/api/teste',
+                url: 'http://localhost:5000/my',
              
                 success: function(data) {
                     console.log(data.content);
