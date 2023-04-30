@@ -81,7 +81,8 @@ Route::group(['prefix' => '/comercio'], function () {
 });
 
 Route::get('/teste', function () {
-    exec('C:\laragon\www\treinamento\teste.bat');
+    exec('"C:\Program Files\Google\Chrome\Application\chrome.exe" "https://www.google.com"');
+
     return true;
 });
 
