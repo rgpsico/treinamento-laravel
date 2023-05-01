@@ -35,12 +35,11 @@
                                 <a class="nav-link dropdown-toggle show" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> Listas </a>
                                 <ul class="b-none dropdown-menu font-14 animated fadeInUp hidden">
                                   <li><a class="dropdown-item" href="{{ route('listar.imoveis.public') }}">Imoveis </a></li>
+                                  <li><a class="dropdown-item" href="{{ route('listar.entregadores.public') }}">Profissionais </a></li>
                                   <li><a class="dropdown-item" href="{{ route('listar.entregadores.public') }}">Entregadores </a></li>
                                   <li><a class="dropdown-item" href="{{ route('listar.comercio.public') }}">Comércio </a></li>
-                                  <li><a class="dropdown-item" href="{{ route('listar.entregadores.public') }}">Salões </a></li>
-                       
                                 </ul>
-                              </li>
+                            </li>
 
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('novo.categoria') }}">Serviços</a>
