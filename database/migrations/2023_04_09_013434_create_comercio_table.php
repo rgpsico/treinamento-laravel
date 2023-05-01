@@ -15,7 +15,7 @@ class CreateComercioTable extends Migration
     {
         Schema::create('comercio', function (Blueprint $table) {
             $table->id();
-            $table->string('logo')->nullable();
+            $table->string('avatar')->nullable();
             $table->string('nome');
             $table->string('telefone');
             $table->string('status');

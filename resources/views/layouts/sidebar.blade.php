@@ -357,7 +357,7 @@
 
 
                                 @can('ver_usuarios') 
-                                <li class="nav-item">
+                                <li class="nav-item menuUser">
                                     <a href="{{ route('users.index') }}" class="nav-link ">
                                         <i class="nav-icon fas fa-user-circle"></i>
                                         <p>
@@ -470,6 +470,21 @@
                     $('.espera').removeClass('active');
                     $('.menuDashboard').removeClass('active')
                 }
+
+                if (window.location.href.indexOf('users') > -1) {
+                    $('.myImoveis').removeClass('active');
+                    $('.itensMenu').removeClass('active');
+                    $('.comercio').removeClass('active');
+                    $('.comercio').removeClass('active');
+                    $('.comercio').removeClass('open menu-is-opening menu-open');
+                    $('.myImoveis').removeClass('open menu-is-opening menu-open');
+                    $('.proprietario').removeClass('active');
+                    $('.espera').removeClass('active');
+                    $('.menuDashboard').removeClass('active')
+                    $('.menuUser').addClass('active')
+                }
+
+                
 
                 if (window.location.href.indexOf('admin/espera') > -1) {
                     $('.myImoveis').removeClass('active');
