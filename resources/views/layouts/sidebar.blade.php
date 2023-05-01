@@ -188,7 +188,7 @@
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item ">
                                         <a href="{{ route('imovel.users', ['user_id' => Auth::user()->id]) }}"
-                                            class="nav-link myImoveis">
+                                            class="nav-link meus_imoveis">
                                             <p class="ml-3">Meus Imoveis</p>
                                         </a>
                                     </li>
@@ -210,7 +210,7 @@
                                 <ul class="nav nav-treeview">
                                     @if (Auth::user()->is_admin)
                                         <li class="nav-item">
-                                            <a href="{{ route('imovel.all') }}" class="nav-link">
+                                            <a href="{{ route('imovel.all') }}" class="nav-link imovel_all">
 
                                                 <p class="ml-3">Todos Imoveis</p>
                                             </a>
@@ -234,7 +234,7 @@
                                 <ul class="nav nav-treeview">
                                     {{-- @can('ver-itens') --}}
                                     <li class="nav-item">
-                                        <a href="{{ route('regras.index') }}" class="nav-link itensMenu">
+                                        <a href="{{ route('regras.index') }}" class="nav-link itensRegra">
 
                                             <p class="ml-3">Regras</p>
                                         </a>
@@ -299,7 +299,7 @@
                         </li>
 
 
-                        <li class="nav-item menuAcesso">
+                        <li class="nav-item Cadastro">
                             <a href="" class="nav-link ">
 
                                 <i class="nav-icon fas fa-key"></i>
@@ -312,7 +312,7 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item ">
                                     <a href="{{ route('category.index') }}"
-                                        class="nav-link permissoesCategoria">
+                                        class="nav-link Categoria">
 
                                         <p class="ml-3">Categoria</p>
                                     </a>
@@ -323,7 +323,7 @@
 
                         @if (isset(Auth::user()->is_admin))
                             <li class="nav-item menuAcesso">
-                                <a href="" class="nav-link ">
+                                <a href="" class="nav-link">
 
                                     <i class="nav-icon fas fa-key"></i>
                                     <p>
@@ -347,7 +347,7 @@
 
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item ">
-                                        <a href="{{ route('permissoes.index') }}" class="nav-link menuPermissao">
+                                        <a href="{{ route('permissoes.index') }}" class="nav-link permissoesAll">
                                             <p class="ml-3">Permissoes</p>
                                         </a>
                                     </li>
@@ -380,7 +380,7 @@
                                     <ul class="nav nav-treeview">
                                         <li class="nav-item ">
                                             <a href="{{ route('depoimento.index') }}"
-                                                class="nav-link permissoesCategoria">
+                                                class="nav-link">
 
                                                 <p class="ml-3">Depoimentos</p>
                                             </a>
@@ -401,7 +401,7 @@
                                     </a>
                                     <ul class="nav nav-treeview">
                                         <li class="nav-item ">
-                                            <a href="{{ route('log.index') }}" class="nav-link permissoesCategoria">
+                                            <a href="{{ route('log.index') }}" class="nav-link logsMenu">
 
                                                 <p class="ml-3">Logs</p>
                                             </a>
@@ -443,142 +443,61 @@
 
             $('[data-toggle="tooltip"]').tooltip(); 
 
+function updateMenu(routes) {
+    const currentUrl = window.location.href;
+   
+    let matched = false;
+
+    for (const urlPart in routes) {
+        if (currentUrl.indexOf(urlPart) > -1) {
+            console.log(routes)
+            routes[urlPart].addClass('active');
+            routes[urlPart].addClass('open menu-open menu-is-opening');
+            matched = true;
+        } else {
+            routes[urlPart].removeClass('active');
+            routes[urlPart].removeClass('open menu-is-opening menu-open');
+        }
+    }
+
+    if (!matched) {
+        // Caso nenhuma rota seja encontrada, remova a classe 'active' de todos os elementos
+        for (const urlPart in routes) {
+            routes[urlPart].removeClass('active');
+        }
+    }
+}
 
 
-            $(document).ready(function() {
-            
-  
-                if (window.location.href.indexOf('imovel/' + {{ Auth::user()->id ?? '' }} + '/myimoveis') > -1) {
-                    $('.myImoveis').addClass('active');
-                    $('.propriedade').removeClass('active');
-                    $('.itensMenu').removeClass('active');
-                }
 
-                if (window.location.href.indexOf('imovel/itens') > -1) {
-                    $('.myImoveis').removeClass('active');
-                    $('.propriedade').removeClass('active');
-                    $('.itensMenu').addClass('active');
-                    $('.espera').removeClass('active');
-                    $('.menuDashboard').removeClass('active')
-                }
+      $(document).ready(function() {
+            const id_user = {{Auth::user()->id}}
+const routes = {
+        'imovel/': $('.menuImoveis'),
+        'myimoveis':$('.meus_imoveis'),
+        'imovel/proprietario': $('.proprietario'),
+        'imovel/all':$('.imovel_all'),
+        'imovel/itens':$('.imovel_all'),
+        'imovel/itens': $('.itensMenu'), 
+        'imovel/regras': $('.itensRegra'),  
+        'admin/espera':$('.espera'),
 
+        'admin/comercio': $('.allComercio'),
+        'admin/comercio': $('.comercio'),
+        'admin/entregadores':$('.allEntregadores'),
+        'admin/entregadores':$('.entregadores'),
+        'categoria': $('.Cadastro'),
+        'admin/categoria': $('.Categoria'),
+       
 
-                if (window.location.href.indexOf('imovel/proprietario') > -1) {
-                    $('.myImoveis').removeClass('active');
-                    $('.itensMenu').removeClass('active');
-                    $('.proprietario').addClass('active');
-                    $('.espera').removeClass('active');
-                    $('.menuDashboard').removeClass('active')
-                }
-
-                if (window.location.href.indexOf('users') > -1) {
-                    $('.myImoveis').removeClass('active');
-                    $('.itensMenu').removeClass('active');
-                    $('.comercio').removeClass('active');
-                    $('.comercio').removeClass('active');
-                    $('.comercio').removeClass('open menu-is-opening menu-open');
-                    $('.myImoveis').removeClass('open menu-is-opening menu-open');
-                    $('.proprietario').removeClass('active');
-                    $('.espera').removeClass('active');
-                    $('.menuDashboard').removeClass('active')
-                    $('.menuUser').addClass('active')
-                }
-
-                
-
-                if (window.location.href.indexOf('admin/espera') > -1) {
-                    $('.myImoveis').removeClass('active');
-                    $('.itensMenu').removeClass('active');
-                    $('.proprietario').removeClass('active');
-                    $('.espera').addClass('active');
-                    $('.menuDashboard').removeClass('active')
-                }
-
-                if (window.location.href.indexOf('admin/permissoes') > -1) {
-                    $('.myImoveis').removeClass('active');
-                    $('.itensMenu').removeClass('active');
-                    $('.proprietario').removeClass('active');
-                    $('.espera').removeClass('active');
-                    $('.menuImoveis').removeClass('open menu-is-opening menu-open');
-                    $('.menuAcesso').addClass('open menu-is-opening menu-open')
-                    $('.menuPermissao').addClass('active')
-                    $('.menupermissoes_categoria').removeClass('permissoes_categoria')
-                    $('.menuDashboard').removeClass('active')
-                }
-
-
-                if (window.location.href.indexOf('admin/permissoes_categoria') > -1) {
-                    $('.myImoveis').removeClass('active');
-                    $('.itensMenu').removeClass('active');
-                    $('.proprietario').removeClass('active');
-                    $('.espera').removeClass('active');
-                    $('.menuImoveis').removeClass('open menu-is-opening menu-open');
-                    $('.menuAcesso').addClass('open menu-is-opening menu-open')
-                    $('.menuPermissao').removeClass('active')
-                    $('.menupermissoes_categoria').addClass('active')
-                    $('.menuDashboard').removeClass('active')
-                }
-
-                if (window.location.href.indexOf('dashboard') > -1) {
-                    $('.myImoveis').removeClass('active');
-                    $('.itensMenu').removeClass('active');
-                    $('.proprietario').removeClass('active');
-                    $('.espera').removeClass('active');
-                    $('.menuImoveis').removeClass('open menu-is-opening menu-open');
-                    $('.menuAcesso').removeClass('open menu-is-opening menu-open')
-                    $('.menuPermissao').removeClass('active')
-                    $('.menupermissoes_categoria').removeClass('active')
-                    $('.menuDashboard').addClass('active')
-                }
-
-                if (window.location.href.indexOf('permissoesCategoria') > -1) {
-                    $('.myImoveis').removeClass('active');
-                    $('.itensMenu').removeClass('active');
-                    $('.proprietario').removeClass('active');
-                    $('.espera').removeClass('active');
-                    $('.menuImoveis').removeClass('open menu-is-opening menu-open');
-
-                    $('.menuPermissao').removeClass('active')
-                    $('.menupermissoes_categoria').removeClass('active')
-                    $('.menuDashboard').removeClass('active')
-                    $('.menuAcesso').addClass('open menu-is-opening menu-open')
-                    $('.permissoesCategoria').addClass('active')
-                }
-
-                if (window.location.href.indexOf('comercio') > -1) {
-                    $('.myImoveis').removeClass('active');
-                    $('.itensMenu').removeClass('active');
-                    $('.proprietario').removeClass('active');
-                    $('.espera').removeClass('active');
-                    $('.menuImoveis').removeClass('open menu-is-opening menu-open');
-                    $('.menuPermissao').removeClass('active')
-                    $('.menupermissoes_categoria').removeClass('active')
-                    $('.menuDashboard').removeClass('active')
-                    $('.menuAcesso').removeClass('open menu-is-opening menu-open')
-                    $('.entregadores').removeClass('open menu-is-opening menu-open')
-                    $('.permissoesCategoria').removeClass('active')
-                    $('.comercio').addClass('active open menu-is-opening menu-open')
-                    $('.allComercio').addClass('active')
-                }
-
-
-                if (window.location.href.indexOf('entregadores') > -1) {
-                    $('.myImoveis').removeClass('active');
-                    $('.itensMenu').removeClass('active');
-                    $('.proprietario').removeClass('active');
-                    $('.espera').removeClass('active');
-                    $('.menuImoveis').removeClass('open menu-is-opening menu-open');
-
-                    $('.menuPermissao').removeClass('active')
-                    $('.menupermissoes_categoria').removeClass('active')
-                    $('.menuDashboard').removeClass('active')
-                    $('.menuAcesso').removeClass('open menu-is-opening menu-open')
-                    $('.comercio').removeClass('open menu-is-opening menu-open')
-                    $('.permissoesCategoria').removeClass('active')
-                    $('.comercio').removeClass('active')
-                    $('.allEntregadores').addClass('active')
-                }
-
+        'admin/permissoes': $('.menuAcesso'),
+       
+        
+        'admin/permissoes':$('.permissoesAll'),
+        'admin/permissaoCategoria':$('.permissoesCategoria'),
+      
+    };
+    updateMenu(routes);
 
 
 

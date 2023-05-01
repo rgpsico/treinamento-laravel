@@ -87,7 +87,7 @@ Route::group(['prefix' => '/admin'], function () {
 
 
 
-    Route::group(['prefix' => '/permissoesCategoria'], function () {
+    Route::group(['prefix' => '/permissaoCategoria'], function () {
         Route::get('/', [PermissoesCategoriaController::class, 'index'])->name('permissoes_categoria.index');
         Route::post('/store', [PermissoesCategoriaController::class, 'store'])->name('permissoes_categoria.store');
         Route::get('/create', [PermissoesCategoriaController::class, 'create'])->name('permissoes_categoria.create');
