@@ -302,7 +302,7 @@
                         <li class="nav-item Cadastro">
                             <a href="" class="nav-link ">
 
-                                <i class="nav-icon fas fa-key"></i>
+                                <i class="nav-icon fas fa-user-plus"></i>
                                 <p>
                                         Cadastro
                                 </p>
@@ -322,7 +322,7 @@
                         </li>
 
                         @if (isset(Auth::user()->is_admin))
-                            <li class="nav-item menuAcesso">
+                            <li class="nav-item menu_acesso {{ Request::is('*permissaoCategoria*') ? 'menu-is-opening menu-open' : '' }}">
                                 <a href="" class="nav-link">
 
                                     <i class="nav-icon fas fa-key"></i>
@@ -490,11 +490,11 @@ const routes = {
         'admin/categoria': $('.Categoria'),
        
 
-        'admin/permissoes': $('.menuAcesso'),
-       
+        'permissaoCategoria': $('.menu_acesso'),      
         
         'admin/permissoes':$('.permissoesAll'),
         'admin/permissaoCategoria':$('.permissoesCategoria'),
+        'permissoes': $('.menu_acesso'),   
       
     };
     updateMenu(routes);
