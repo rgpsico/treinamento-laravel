@@ -28,7 +28,8 @@ class EntregadoresController extends Controller
 
     public function listar()
     {
-        $model = $this->model::paginate();
+
+        $model = $this->model::entregadoresAtivos()->get();
         return view($this->route . '.list', compact('model'));
     }
 

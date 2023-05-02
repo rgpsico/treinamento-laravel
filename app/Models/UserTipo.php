@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TipoUsuario extends Model
+class UserTipo extends Model
 {
     use HasFactory;
 
@@ -17,6 +17,8 @@ class TipoUsuario extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
+
 
     public function userTipoUsers()
     {
