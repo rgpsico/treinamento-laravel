@@ -2,7 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Traits\UserTipoScopes;
+
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -12,7 +13,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, UserTipoScopes;
 
     /**
      * The attributes that are mass assignable.
@@ -108,11 +109,15 @@ class User extends Authenticatable
     }
 
 
+
+
     public function scopeEntregadoresAtivos(Builder $query)
     {
+        return $this->scopeUsuariosAtivosPorTipo($query, 'entregadores');
+    }
 
-        return $query->whereHas('userTipos', function (Builder $query) {
-            $query->where('users_tipo.nome', 'entregadores');
-        })->where('status', 1);
+    public function scopeProfissionaisAtivos(Builder $query)
+    {
+        return $this->scopeUsuariosAtivosPorTipo($query, 'profissional');
     }
 }
