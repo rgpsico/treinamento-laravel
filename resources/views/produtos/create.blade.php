@@ -15,9 +15,7 @@
 
             <form action="{{route('produtos.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <div class="card-body">
-
-                                    
+                <div class="card-body">                                    
                     <div class="form-group">
                         <label for="andress">Nome Produto</label>
                         <input type="text" class="form-control" id="name"  name="name" placeholder="Qual o anuncio" value="TESTE">
@@ -30,7 +28,12 @@
 
                     <div class="form-group">
                         <label for="address">Preço</label>
-                        <input type="integer" class="form-control" id="price"  name="price" placeholder="Preço do produto" value="TESTE">
+                        <input type="integer" class="form-control" id="price"  name="price" placeholder="Preço do produto" value="10">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Quantidade</label>
+                        <input type="integer" class="form-control" id="quantity"  name="quantity" placeholder="Quantidade" value="10">
                     </div>
                     
                     
@@ -38,12 +41,10 @@
                             <label for="imagemProduto">Imagens</label>
                                 <div class="input-group">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" name="imagemProduto" id="imagemProduto">
+                                        <input type="file" class="custom-file-input" multiple name="imagemProduto" id="imagemProduto">
+
                                         <label class="custom-file-label" for="imagemProduto">Escolher fotos</label>
-                                    </div>
-                                    <div class="input-group-append">
-                                        <span class="input-group-text">Enviar Imagens</span>
-                                    </div>
+                                    
                                 </div>
                         </div>
                    </div>

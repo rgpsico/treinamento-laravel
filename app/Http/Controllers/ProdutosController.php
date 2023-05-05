@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Permissoes;
 use App\Models\ProductsImagens;
 use App\Models\Produtos;
+use App\Models\UserProdutos;
 use App\Traits\UploadTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -39,26 +40,46 @@ class ProdutosController extends Controller
 
     public function store(Request $request)
     {
+
         $data = $request->all();
 
+        $result = $this->data->create($data);
+
+        $userProduct = new UserProdutos;
+        $userProduct->user_id = Auth::user()->id;
+        $userProduct->product_id = $result->id;
+        $userProduct->quantity = 5;
+        $userProduct->save();
 
         if ($request->hasFile('imagemProduto')) {
 
-            $imagemProduto = $request->file('imagemProduto');
-            $result = $this->data->create($data);
-            foreach ($imagemProduto as $prod) {
+            $imagemProduto = $request->imagemProduto;
+
+            foreach ($request->allFiles() as $prod) {
 
                 $filename = time() . '.' . $prod->getClientOriginalExtension();
 
-                $path = public_path('/imagens/produtos/');
+                // Correção: use DIRECTORY_SEPARATOR para garantir compatibilidade entre sistemas operacionais
+                $path = public_path('imagens' . DIRECTORY_SEPARATOR . 'produtos');
+
+                // Correção: Certifique-se de que o diretório exista e seja gravável
+                if (!is_dir($path)) {
+                    mkdir($path, 0755, true);
+                }
+
                 $prod->move($path, $filename);
 
-                $imagem = new ProductsImagens();
+
+
+
+
+                $imagem = new ProductsImagens(); // Correção: use o nome correto do modelo (ProductImage)
                 $imagem->product_id = $result->id;
-                $imagem->image_path = $filename;
+                $imagem->image_path = 'imagens' . DIRECTORY_SEPARATOR . 'produtos' . DIRECTORY_SEPARATOR . $filename; // Correção: inclua o diretório relativo no caminho da imagem
                 $imagem->save();
             }
         }
+
 
 
 
