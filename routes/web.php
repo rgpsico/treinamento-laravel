@@ -14,6 +14,7 @@ use App\Http\Controllers\LogsController;
 use App\Http\Controllers\PermissoesController;
 use App\Http\Controllers\PermissoesCategoriaController;
 use App\Http\Controllers\PrestadorServicoController;
+use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\ProprietarioController;
 use App\Http\Controllers\RedisController;
 use App\Http\Controllers\RegrasController;
@@ -94,6 +95,16 @@ Route::group(['prefix' => '/admin'], function () {
         Route::get('/{id}/edit', [PermissoesCategoriaController::class, 'edit'])->name('permissoes_categoria.edit');
         Route::delete('/{id}/destroy', [PermissoesCategoriaController::class, 'destroy'])->name('permissoes_categoria.destroy');
         Route::post('/{id}/update', [PermissoesCategoriaController::class, 'update'])->name('permissoes_categoria.update');
+    });
+
+
+    Route::group(['prefix' => '/produtos'], function () {
+        Route::get('/', [ProdutosController::class, 'index'])->name('produtos.index');
+        Route::post('/store', [ProdutosController::class, 'store'])->name('produtos.store');
+        Route::get('/create', [ProdutosController::class, 'create'])->name('produtos.create');
+        Route::get('/{id}/edit', [ProdutosController::class, 'edit'])->name('produtos.edit');
+        Route::delete('/{id}/destroy', [ProdutosController::class, 'destroy'])->name('produtos.destroy');
+        Route::post('/{id}/update', [ProdutosController::class, 'update'])->name('produtos.update');
     });
 
 

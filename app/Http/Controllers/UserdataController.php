@@ -9,6 +9,7 @@ use App\Models\PermissoesUser;
 use App\Models\TipoUsuario;
 use App\Models\User;
 use App\Models\UserEndereco;
+use App\Models\UserTipo;
 use App\Traits\UploadTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -134,7 +135,7 @@ class UserdataController extends Controller
     public function register()
     {
 
-        $tipoUser = TipoUsuario::all();
+        $tipoUser = UserTipo::all();
         return view('novo.login.register', compact('tipoUser'));
     }
 

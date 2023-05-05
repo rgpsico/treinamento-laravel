@@ -279,20 +279,20 @@
                         </li>
 
                         <li class="nav-item comercio open menu-is-opening menu-open">
-                            <a href="{{ route('comercio.index') }}" 
+                            <a href="{{ route('produtos.index') }}" 
                             class="nav-link">
-                            <i class="fas fa-money-bill-alt"></i>
+                            <i class="fas fa-store"></i>
                                 <p>
-                                    Comercio
+                                    Produtos
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
 
                            <ul class="nav nav-treeview">
                                 <li class="nav-item ">
-                                    <a href="{{ route('comercio.index') }}"
+                                    <a href="{{ route('produtos.index') }}"
                                         class="nav-link allComercio">
-                                        <p class="ml-3">Todos os Comercio</p>
+                                        <p class="ml-3">Todos os Produtos</p>
                                     </a>
                                 </li>
                             </ul>
