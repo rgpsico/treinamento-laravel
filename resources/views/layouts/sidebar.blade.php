@@ -54,6 +54,7 @@
     }
 </style>
 
+
 <body class="sidebar-mini" style="height: auto;">
     <div class="wrapper">
 
