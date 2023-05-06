@@ -2,53 +2,26 @@
 
 
 @section('content')
-    <style>
-        body {
-            font-size: 12px;
-        }
-
-        .card .card-title {
-            color: #D8D9E3;
-            margin-bottom: 1.5rem;
-            text-transform: capitalize;
-            font-size: 1.125rem;
-            font-weight: 600;
-        }
-
-        .fa-plus {
-            color: #D8D9E3;
-        }
-    </style>
+    
 
 @section('content')
-    <div class="container">
-        <x-alert />
-    </div>
 
-    <div class="col-6 mb-2 d-flex justify-content-start align-items-start">
-        <h1 class="text-dark font-weight-bold">{{ $pageTitle }}</h1>
-    </div>
-    <div class="col-6 mb-2 d-flex justify-content-end align-items-end">
-        <a href="{{ route('produtos.create') }}" class="btn btn-success">
-            <i class="fas fa-home"></i>
-            <span>Adicionar {{ $pageTitle }}</span></a>
-    </div>
 
-   @include('produtos._partials.filtros')
+
+<x-datatables_resources/>
+@include('produtos._partials.filtros')
 
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title text-dark">{{ $pageTitle }} <span
-                        class="text-dark small">{{ count($model) }}</span></h4>
-                <p class="card-description">
-
-                </p>
+                <h4 class="card-title text-dark">{{ $pageTitle }} </h4>
+                <p class="card-description"></p>
                 <div class="table-responsive">
-                    <table class="table table-striped">
+                    <table class="table table-striped" id="produtos">
                         <thead>
                             <tr>
                                 <th>#</th>
+                                 <th>image</th>
                                 <th>Nome</th>
                                 <th>Descrição</th>
                                 <th>Preço</th>
@@ -61,6 +34,11 @@
                                     <td>
                                         {{ $value->id }}
                                     </td>
+                                    <td>
+                                    @if (isset($value->images[0]) && !is_null($value->images[0]))
+                                        <img src="{{ asset($value->images[0]->image_path) }}" width="80" height="50">
+                                    @endif
+                                </td>
                                     <td>{{ $value->name }}</td>
                                     <td>{{ $value->description }}</td>
                                     <td>{{ $value->price }}</td>
@@ -87,4 +65,21 @@
             </div>
         </div>
     </div>
+
+    <script>
+        $(document).ready(function() {
+            var table = $('#produtos').DataTable();
+    
+            // Filtro Comércio
+            $("select[name='filtroComercio']").on('change', function() {
+                table.column(2).search($(this).val()).draw();
+            });
+    
+            // Filtro Preço
+            $("select[name='filtroPreco']").on('change', function() {
+                table.column(4).search($(this).val()).draw();
+            });
+        });
+    </script>
+    
 @endsection

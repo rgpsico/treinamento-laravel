@@ -27,6 +27,14 @@ class ProdutosController extends Controller
         return  view('produtos.index', compact('model', 'pageTitle'));
     }
 
+    public function meusProdutos()
+    {
+        $usuarioId = Auth::id(); // Obter o ID do usuário autenticado
+        $model = $this->data->doUsuario($usuarioId)->get();
+        $pageTitle = $this->pageTitle;
+        return view('produtos.index', compact('model', 'pageTitle'));
+    }
+
     public function create()
     {
         return  view('produtos.create');

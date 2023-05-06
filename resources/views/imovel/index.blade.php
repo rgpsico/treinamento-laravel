@@ -34,60 +34,15 @@
     </style>
 
 @section('content')
-    <div class="container">
-        @if (session()->has('success'))
-            <div class="row">
-                <div class=" col-12 alert alert-success">
-                    {!! html_entity_decode(session('success')) !!}
-                </div>
-            </div>
-        @endif
-    </div>
 
-    <div class="col-6 mb-2 d-flex justify-content-start align-items-start">
-        <h1 class="text-dark font-weight-bold">{{ $pageTitle ?? '' }}</h1>
-    </div>
-    <div class="col-6 mb-2 d-flex justify-content-end align-items-end">
-        <a href="{{ route('imovel.create') }}" class="btn btn-success">
-            <i class="fas fa-home"></i>
-            <span>Adicionar {{ $pageTitle ?? '' }}</span></a>
-    </div>
+<x-datatables_resources/>
 
     <div class="container">
-        <div class="row">
-            <div class="form-group col-12 col-md-2">
-                <select name="" id="tipo" class="form-control filtro">
-                    <option value="1">Kitnet</option>
-                    <option value="2">Casa</option>
-                    <option value="3">Loja</option>
-                </select>
-            </div>
-
-            <div class="form-group col-12 col-md-2">
-                <select name="" id="" class="form-control filtro">
-                    <option value="1">Status</option>
-                    <option value="2">Alugado</option>
-                    <option value="3">Vago</option>
-                </select>
-            </div>
-
-            <div class="form-group col-12 col-md-2">
-                <select name="" id="" class="form-control filtro">
-                    <option value="1">Proprietario</option>
-                    <option value="2">ROger</option>
-                    <option value="3">Fabiane</option>
-                </select>
-            </div>
-
-            <div class="form-group col-12 col-md-2">
-                <select name="" id="" class="form-control filtro">
-                    <option value="Selecione">Preço</option>
-                    <option value="1">400</option>
-                    <option value="2">500</option>
-                </select>
-            </div>
-        </div>
+        <x-alert/>
     </div>
+
+    @include('imovel._partials.header')
+   @include('imovel._partials.filtros')
 
     <div class="col-lg-12 grid-margin stretch-card">
 

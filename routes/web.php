@@ -105,6 +105,7 @@ Route::group(['prefix' => '/admin'], function () {
         Route::get('/{id}/edit', [ProdutosController::class, 'edit'])->name('produtos.edit');
         Route::delete('/{id}/destroy', [ProdutosController::class, 'destroy'])->name('produtos.destroy');
         Route::post('/{id}/update', [ProdutosController::class, 'update'])->name('produtos.update');
+        Route::get('/meus-produtos', [ProdutosController::class, 'meusProdutos'])->name('meus_produtos.index');
     });
 
 

@@ -17,8 +17,20 @@ class Produtos extends Model
         'price',
     ];
 
+    public function scopeDoUsuario($query, $usuarioId)
+    {
+        return $query->whereHas('users', function ($query) use ($usuarioId) {
+            $query->where('users.id', $usuarioId);
+        });
+    }
+
     public function users()
     {
         return $this->belongsToMany(User::class, 'users_products', 'product_id', 'user_id')->withTimestamps();
+    }
+
+    public function images()
+    {
+        return $this->hasMany(ProductsImagens::class, 'product_id');
     }
 }

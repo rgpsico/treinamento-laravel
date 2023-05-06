@@ -108,9 +108,10 @@ class User extends Authenticatable
         return $this->belongsToMany(UserTipo::class, 'users_tipo_users', 'user_id', 'tipo_usuario_id');
     }
 
+
     public function products()
     {
-        return $this->belongsToMany(Product::class, 'users_products', 'user_id', 'product_id')->withTimestamps();
+        return $this->belongsToMany(Produtos::class, 'users_products', 'user_id', 'product_id')->withTimestamps();
     }
 
 

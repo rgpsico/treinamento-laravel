@@ -14,6 +14,8 @@
     <link href={{ asset('css/style.css') }} rel="stylesheet">
     <link rel="stylesheet" href={{ asset('css/owlcarousel/owl.carousel.min.css') }} />
     <link rel="stylesheet" href={{ asset('css/owlcarousel/owl.theme.default.min.css') }} />
+
+    
 </head>
 
 <body class="iner_page">

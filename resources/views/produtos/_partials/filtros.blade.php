@@ -1,35 +1,21 @@
 <div class="container">
     <div class="row">
+       
         <div class="form-group col-12 col-md-2">
-            <select name="" id="" class="form-control">
-                <option value="Selecione">KitNets</option>
-                <option value="Selecione">Casas</option>
-                <option value="Selecione">Loja</option>
+            <select name="filtroComercio" id="filtroComercio" class="form-control">
+                <option value="">Comércio</option>
+                <option value="Comercio 01">Comercio 01</option>
+                <option value="Comercio 02">Comercio 02</option>
             </select>
         </div>
-
+        
         <div class="form-group col-12 col-md-2">
-            <select name="" id="" class="form-control">
-                <option value="Selecione">Status</option>
-                <option value="Selecione">Alugado</option>
-                <option value="Selecione">Vago</option>
+            <select name="filtroPreco" id="filtroPreco" class="form-control">
+                <option value="">Preço</option>
+                <option value="400">400</option>
+                <option value="500">500</option>
             </select>
         </div>
-
-        <div class="form-group col-12 col-md-2">
-            <select name="" id="" class="form-control">
-                <option value="Selecione">Proprietario</option>
-                <option value="Selecione">ROger</option>
-                <option value="Selecione">Fabiane</option>
-            </select>
-        </div>
-
-        <div class="form-group col-12 col-md-2">
-            <select name="" id="" class="form-control">
-                <option value="Selecione">Preço</option>
-                <option value="Selecione">400</option>
-                <option value="Selecione">500</option>
-            </select>
-        </div>
+        
     </div>
 </div>

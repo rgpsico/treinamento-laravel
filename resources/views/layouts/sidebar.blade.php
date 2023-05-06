@@ -13,7 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
-
+    
     <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
     <script src="{{ asset('js/jquery.js') }}"></script>
 
@@ -120,21 +120,8 @@
                     <div class="col-12 mb-2">
                         <div class="image d-flex justify-content-center align-items-center">
                             <a href="{{ route('users.edit', ['id' => Auth::user()->id ?? '0']) }}">
-
-
-                                @if (isset(Auth::user()->avatar))
-                                    <img src="{{ asset('/uploads/' . Auth::user()->avatar) }}" alt="Descrição da imagem"
-                                        class="img-circle elevation-2 img-fluid scale-down" width="80"
-                                        height="80" alt="User Image">
-                                @else
-                                    <img src="https://angular-material.fusetheme.com/assets/images/avatars/brian-hughes.jpg"
-                                        class="img-circle elevation-2 img-fluid scale-down" width="80"
-                                        height="80" alt="User Image">
-                                @endif
-
-
-
-
+                                <img src="" alt="Descrição da imagem" class="img-circle elevation-2 img-fluid scale-down avatar-image" width="80" height="80" alt="User Image">
+                            
                             </a>
                         </div>
                     </div>
@@ -276,6 +263,15 @@
                                     </a>
                                 </li>
                             </ul>
+
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item ">
+                                    <a href="{{ route('comercio.index') }}"
+                                        class="nav-link allComercio">
+                                        <p class="ml-3">Meu Comercio</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
 
                         <li class="nav-item comercio open menu-is-opening menu-open">
@@ -293,6 +289,15 @@
                                     <a href="{{ route('produtos.index') }}"
                                         class="nav-link allComercio">
                                         <p class="ml-3">Todos os Produtos</p>
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item ">
+                                    <a href="{{ route('meus_produtos.index') }}"
+                                        class="nav-link allComercio">
+                                        <p class="ml-3">Meus Produtos</p>
                                     </a>
                                 </li>
                             </ul>
@@ -526,3 +531,18 @@ const routes = {
                 $('li.nav-item.active').parent().addClass('menu-open menu-is-opening');
             });
         </script>
+<script>
+    $(document).ready(function() {
+        var userAvatar = "{{ asset('/uploads/' . Auth::user()->avatar) }}";
+        var defaultAvatar = "https://angular-material.fusetheme.com/assets/images/avatars/brian-hughes.jpg";
+
+        // Checar se a imagem do usuário existe
+        $('<img/>').attr('src', userAvatar).on('load', function() {
+            $(this).remove(); // Evita adicionar imagens extras ao DOM
+            $('.avatar-image').attr('src', userAvatar);
+        }).on('error', function() {
+            $(this).remove(); // Evita adicionar imagens extras ao DOM
+            $('.avatar-image').attr('src', defaultAvatar);
+        });
+    });
+</script>
