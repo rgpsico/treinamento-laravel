@@ -73,7 +73,7 @@
     <div class="col-12">
         <div class="form-group">
             <label for="">Status Admin</label>
-            <select name="status" id="status" class="form-control">
+            <select name="status_admin" id="status_admin" class="form-control">
                 <option value="" selected>Selecione</option>
                 @if (isset($data->status_admin) && !is_null($data->status_admin))
                     <option value="0" {{ $data->status_admin == 0 ? 'selected' : '' }} class="form-control">Livre

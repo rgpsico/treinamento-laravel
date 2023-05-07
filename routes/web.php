@@ -23,7 +23,7 @@ use App\Http\Controllers\SiteController;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\UserdataController;
 
-use App\Models\Post;
+
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;

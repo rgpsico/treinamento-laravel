@@ -7,29 +7,13 @@
                 <option value="3">Loja</option>
             </select>
         </div>
+        
 
-        <div class="form-group col-12 col-md-2">
-            <select name="" id="" class="form-control filtro">
-                <option value="1">Status</option>
-                <option value="2">Alugado</option>
-                <option value="3">Vago</option>
-            </select>
-        </div>
+       <x-select :options="config('options.imovel_status')" name="" label="" selected="Vago" col='2' />
 
-        <div class="form-group col-12 col-md-2">
-            <select name="" id="" class="form-control filtro">
-                <option value="1">Proprietario</option>
-                <option value="2">ROger</option>
-                <option value="3">Fabiane</option>
-            </select>
-        </div>
+         <x-userscomponent/>
 
-        <div class="form-group col-12 col-md-2">
-            <select name="" id="" class="form-control filtro">
-                <option value="Selecione">Preço</option>
-                <option value="1">400</option>
-                <option value="2">500</option>
-            </select>
-        </div>
+         <x-select :options="config('options.imovel_precos')" name="price" label="" selected="100" col='2' />
+
     </div>
 </div>

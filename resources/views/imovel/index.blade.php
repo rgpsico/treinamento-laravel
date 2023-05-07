@@ -3,37 +3,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 
 @section('content')
-    <style>
-        body {
-            font-size: 12px;
-        }
+  <link rel="stylesheet" href=" {{asset('css/ppg/imovel.css')}}">
 
-        .card .card-title {
-            color: #D8D9E3;
-            margin-bottom: 1.5rem;
-            text-transform: capitalize;
-            font-size: 1.125rem;
-            font-weight: 600;
-        }
-
-        .fa-plus {
-            color: #D8D9E3;
-        }
-
-        .livre {
-            color: green;
-        }
-
-        .alugado {
-            color: red;
-        }
-
-        .table {
-            font-size: 12px;
-        }
-    </style>
-
-@section('content')
 
 <x-datatables_resources/>
 
@@ -84,6 +55,7 @@
                                 <th>Tipo</th>
                                 <th>Status</th>
                                 <th>Status Admin</th>
+                                <th>Dono</th>
                                 <th>Data de criação</th>
                                 <th>Ações</th>
                             </tr>
@@ -150,23 +122,62 @@
     </div>
     <script>
 
+function typeCasa(tipo)
+{
+    switch (tipo) {
+        case 0:
+            return 'Casa'
+        case 1:
+            return 'KitNet'    
+        break;
+    
+        default:
+            return 'Loja'
+            break;
+    }
+}
+
+function statusImovel(tipo)
+{
+    switch (tipo) {
+        case 0:
+            return 'Livre'
+        case 1:
+            return 'Alugado'    
+        break;
+    
+    }
+}
+
+function statusAdmin(tipo)
+{
+    switch (tipo) {
+        case 0:
+            return 'Em Revisão'
+        case 1:
+            return 'Liberado'    
+        break;
+    
+    }
+}
 function row(data) {
     var created_at = moment(data.created_at).format('DD/MM/YYYY');
 
     return `
         <tr>
             <td><input type="checkbox" name="ids[]" value="${data.id}" class="checkbox-item"></td>
-            <td><img src="http://127.0.0.1:8000/imagens/imoveis/${data.gallery[0].image}" width="50"></td>
+            <td><img src="/imagens/imoveis/${data.gallery[0].image}" width="50"></td>
             <td>${data.title}</td>
             <td>${data.price}</td>
-            <td>${data.type}</td>
-            <td>${data.status}</td>
-            <td>${data.status_admin}</td>
+            <td>${typeCasa(data.type)}</td>
+            <td>${statusImovel(data.status)}</td>
+            <td>${statusAdmin(data.status_admin)}</td>
+            <td>${data.user_name}</td>
             <td>${created_at}</td>
             <td>
-                <a href="/${data.id}/edit" class="btn btn-primary btn-sm">Editar</a>
-                <a href="/${data.id}/show" class="btn btn-info btn-sm">Ver</a>
-                <a href="/${data.id}/destroy" class="btn btn-danger btn-sm">Excluir</a>
+                <a href="/admin/imovel/${data.id}/edit" class="btn btn-primary btn-sm">Editar</a>
+                <a href="/admin/imovel/${data.id}/show" class="btn btn-info btn-sm">Ver</a>
+                <a href="/admin/imovel/${data.id}/destroy" class="btn btn-danger btn-sm">Excluir</a>
             </td>
         </tr>
     `;

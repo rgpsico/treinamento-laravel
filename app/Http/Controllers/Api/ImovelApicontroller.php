@@ -44,8 +44,16 @@ class ImovelApicontroller extends Controller
             $preco = $request->input('preco');
             $query->where('price', $preco);
         }
+        $imoveis = $query->with('gallery', 'user')->get();
+        $imoveis = $imoveis->map(function ($imovel) {
+            // Criar uma cópia dos atributos do imóvel para evitar alterações no modelo original
+            $imovelData = clone $imovel;
 
-        $imoveis = $query->with('gallery')->get();
+            // Adicionar o nome do usuário ao objeto imovelData
+            $imovelData->user_name = $imovel->user->name;
+
+            return $imovelData;
+        });
 
         return response()->json(['imoveis' => $imoveis]);
     }

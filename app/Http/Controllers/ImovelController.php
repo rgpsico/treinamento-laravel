@@ -135,13 +135,14 @@ class ImovelController extends Controller
 
 
         $imovel = $this->model::findOrFail($id);
-
+        $filename = $imovel->avatars;
         $imovel->title = $request->input('title');
         $imovel->description = $request->input('description');
         $imovel->avatar = $request->input('avatar');
         $imovel->type = $request->input('type');
         $imovel->price = $request->input('price');
         $imovel->status = $request->input('status');
+        $imovel->status_admin = $request->input('status_admin');
 
         if ($request->hasFile('avatar')) {
 

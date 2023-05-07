@@ -83,6 +83,9 @@
                                 <label class="labels">Nome</label>
                                 <input type="text" class="form-control" placeholder="Nome" name="name"
                                     value="{{ $data->name }}">
+                                    @error('name')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
                             </div>
                     </div>
 
@@ -91,11 +94,17 @@
                             <label class="labels">Telefone</label>
                             <input type="text" class="form-control" name="phone" placeholder="Seu telefone"
                                 value="{{ $data->phone }}">
+                                @error('telefone')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
                         </div>
                         <div class="col-md-12">
                             <label class="labels">Cep</label>
                             <input type="text" class="form-control" name="cep" placeholder="Digite seu Cep"
                                 value="{{ $data->endereco->cep ?? '' }}">
+                            @error('cep')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
                         </div>
 
                         <div class="col-md-12">

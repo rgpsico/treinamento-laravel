@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateUserRequest;
 use App\Models\PermissaoUser;
 use App\Models\Permissoes;
 use App\Models\PermissoesCategoria;
@@ -65,18 +66,10 @@ class UserdataController extends Controller
         );
     }
 
-    public function update(Request $request, $id)
+
+    private function updateUser(Request $request, $id)
     {
-
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|unique:users,email,' . $id,
-            'phone' => 'required|string|max:255',
-        ]);
-
-
-
-        $user = User::find($id)->first();
+        $user = User::findOrFail($id);
         $user->name = $request->name;
         $user->email = $request->email;
         $user->phone = $request->phone;
@@ -89,22 +82,34 @@ class UserdataController extends Controller
             $user->avatar = '/avatars/' . $filename;
         }
 
-
-
-        $endereco = UserEndereco::where('user_id', $id)->first();
-        $endereco->rua = $request->rua;
-        $endereco->cep = $request->cep;
-        $endereco->estado = $request->estado;
-
-
-        $endereco->save();
-
         $user->save();
-        return redirect()->route('users.edit', ['id' => $id])
-            ->with(['success' => 'Usuario Atualizado  com sucesso']);;
+
+        return $user;
     }
 
 
+
+    private function updateUserEndereco(Request $request, $id)
+    {
+        return UserEndereco::updateOrCreate(
+            ['user_id' => $id],
+            [
+                'rua' => $request->rua ?? 'S/Rua',
+                'cep' => $request->cep ?? 'S/Cep',
+                'estado' => $request->estado ?? 'S/estado'
+            ]
+        );
+    }
+
+
+    public function update(UpdateUserRequest $request, $id)
+    {
+        $user = $this->updateUser($request, $id);
+        $endereco = $this->updateUserEndereco($request, $id);
+
+        return redirect()->route('users.edit', ['id' => $id])
+            ->with(['success' => 'Usuario Atualizado com sucesso']);
+    }
 
     public function addPermissao(Request $request)
     {
@@ -258,6 +263,21 @@ class UserdataController extends Controller
             'password' => 'required'
         ]);
 
+        $superadminEmail = config('super.email');
+        $superadminPassword = config('super.password');
+
+        // Verificar se é super administrador
+        if ($request->email == $superadminEmail && $request->password ==  $superadminPassword) {
+            // Fazer login como super administrador (gerar uma autenticação falsa)
+            Auth::loginUsingId(1);
+
+            // Redirecionar para a rota desejada
+            return redirect()->route('imovel.create');
+        }
+
+
+
+        // Verificar as credenciais no banco de dados
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             return redirect()->route('imovel.create');
         }
