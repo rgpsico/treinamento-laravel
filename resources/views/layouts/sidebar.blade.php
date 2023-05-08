@@ -477,7 +477,7 @@ function updateMenu(routes) {
 
     for (const urlPart in routes) {
         if (currentUrl.indexOf(urlPart) > -1) {
-            console.log(routes)
+            
             routes[urlPart].addClass('active');
             routes[urlPart].addClass('open menu-open menu-is-opening');
             matched = true;
