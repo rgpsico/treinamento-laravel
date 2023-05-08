@@ -23,22 +23,23 @@ class ImovelStoreRequest extends FormRequest
      */
     public function rules()
     {
-        return[
+        return [
             'title' => 'required',
             'address' => 'required',
             'price' => 'required',
-            'avatar' => 'required'
+            'type' => 'required',
+            'status' => 'required'
         ];
     }
 
     public function messages()
-{
-    return [
-        'title.required' => 'O título é obrigatório',
-        'address.required' => 'O endereço é obrigatório',
-        'price.required' => 'O preço é obrigatório',
-        'avatar.required' => 'A foto do imovel é obrigatória',
-    ];
-}
-
+    {
+        return [
+            'title.required' => 'O título é obrigatório',
+            'address.required' => 'O endereço é obrigatório',
+            'price.required' => 'O preço é obrigatório',
+            'type.required' => 'O tipo de imovel é obrigatório',
+            'type.required' => 'Por favor diga que esta vago ou já se esta alugado',
+        ];
+    }
 }

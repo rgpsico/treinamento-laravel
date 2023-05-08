@@ -176,9 +176,10 @@ class UserdataController extends Controller
             return redirect('register')
                 ->withErrors($validator)
                 ->withInput()
-                ->with('error', 'Usuário Não pode ser Cadastrado!');;
+                ->with('error', 'Usuário Não pode ser Cadastrado!');
         }
 
+        $filename = public_path('images/avatar.png');
 
         if ($request->hasFile('avatar')) {
             $filename = time() . '_' . rand() . '.' . $request->file('avatar')->getClientOriginalExtension();
@@ -191,7 +192,7 @@ class UserdataController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
-            'avatar' => $filename,
+            'avatar' => $filename ?? '',
             'password' => Hash::make($request->password),
         ]);
 

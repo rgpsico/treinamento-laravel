@@ -3,15 +3,15 @@
 return [
     'imovel_status' => [
         '' => 'Selecione',
-        'Vago' => 'Vago',
-        'Alugado' => 'Alugado',
+        '0' => 'Vago',
+        '1' => 'Alugado',
     ],
 
     'imovel_tipos' => [
         '' => 'Selecione',
-        'Casa' => 'Casa',
-        'Kitnet' => 'Kitnet',
-        'Loja' => 'Loja',
+        '0' => 'Casa',
+        '1' => 'Kitnet',
+        '2' => 'Loja',
     ],
 
     'imovel_precos' => [
@@ -19,6 +19,15 @@ return [
         'R$200.00' => 'R$200.00',
         'R$200.00' => 'R$200.00',
         'R$400.00' => 'R$400.00',
+
+    ],
+
+    'funcao' => [
+        '' => 'Selecione',
+        '0' => 'Quero só alugar uma casa',
+        '1' => 'Entregador',
+        '2' => 'Profissional',
+        '4' => 'Dono de imóveis',
 
     ],
 ];

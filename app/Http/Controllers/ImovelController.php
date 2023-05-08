@@ -129,7 +129,7 @@ class ImovelController extends Controller
         }
     }
 
-    public function update(Request $request, $id)
+    public function update(ImovelStoreRequest $request, $id)
     {
 
 
@@ -142,7 +142,7 @@ class ImovelController extends Controller
         $imovel->type = $request->input('type');
         $imovel->price = $request->input('price');
         $imovel->status = $request->input('status');
-        $imovel->status_admin = $request->input('status_admin');
+        $imovel->status_admin = $request->input('status_admin') ?? 0;
 
         if ($request->hasFile('avatar')) {
 
@@ -261,7 +261,7 @@ class ImovelController extends Controller
         }
 
         return redirect()->route('imovel.create')
-            ->with('success', "Imóvel criado com sucesso. <a href='/imovel/" . $imovel->id . "/show'>Clique aqui</a> para ir para a página de teste.");
+            ->with('success', "Imóvel criado com sucesso. <a href='/admin/imovel/" . $imovel->id . "/show'>Clique aqui</a> para ir para a página de teste.");
     }
 
     /**

@@ -6,32 +6,21 @@
         <form action="{{ route('user.store') }}" method="POST" id="formRegister" enctype="multipart/form-data">
 
             @csrf
-            <div class="row">
-
-                <div class="form-group col-12">
-                    <label for="isProprietario">Função</label>
-                    <select name="type" id="type" class="form-control large">
-                        <option value="">Selecione</option>
-                       @foreach ($tipoUser as $tipo )
-                          <option  style="text-transform: capitalize" value="{{$tipo->id}}">{{$tipo->nome}}</option>
-                       @endforeach
-                    </select>
-                    @if ($errors->has('type'))
-                        <span class="help-block text-danger ">
-                            <strong>{{ $errors->first('type') }}</strong>
-                        </span>
-                    @endif
-                </div>
+           <div class="row">
+          
+                <x-select :options="config('options.funcao')" name="type" label="Função" selected="Selecione" col='12' />
+                   
+           
 
                 <div class="form-group col-12">
                     <label for="name">Nome:</label>
                     <input type="text" class="form-control" id="name" name="name"
                         placeholder="Nome: Felipe Silva" value="{{ old('name') }}">
-                    @if ($errors->has('name'))
-                        <span class="help-block text-danger ">
-                            <strong>{{ $errors->first('name') }}</strong>
-                        </span>
-                    @endif
+                        @if ($errors->has('name'))
+                            <span class="help-block text-danger ">
+                                <strong>{{ $errors->first('name') }}</strong>
+                            </span>
+                        @endif
                 </div>
 
                 <div class="form-group col-12">

@@ -21,41 +21,40 @@
 <script>
     $(document).ready(function() {
         var table = $('#imovelLista').DataTable();
+                // Filtro Título
+                $("select[name='Título']").on('change', function() {
+                    table.column(2).search($(this).val()).draw();
+                });
 
-// Filtro Título
-$("select[name='Título']").on('change', function() {
-    table.column(2).search($(this).val()).draw();
-});
+                // Filtro Preço
+                $("select[name='Preco']").on('change', function() {
+                    table.column(3).search($(this).val()).draw();
+                });
 
-// Filtro Preço
-$("select[name='Preco']").on('change', function() {
-    table.column(3).search($(this).val()).draw();
-});
+                // Filtro Tipo
+                $("select[name='Tipo']").on('change', function() {
+                    table.column(4).search($(this).val()).draw();
+                });
 
-// Filtro Tipo
-$("select[name='Tipo']").on('change', function() {
-    table.column(4).search($(this).val()).draw();
-});
+                // Filtro Status
+                $("select[name='Status']").on('change', function() {
+                    table.column(5).search($(this).val()).draw();
+                });
 
-// Filtro Status
-$("select[name='Status']").on('change', function() {
-    table.column(5).search($(this).val()).draw();
-});
+                // Filtro Status Admin
+                $("select[name='Status_Admin']").on('change', function() {
+                    table.column(6).search($(this).val()).draw();
+                });
 
-// Filtro Status Admin
-$("select[name='Status_Admin']").on('change', function() {
-    table.column(6).search($(this).val()).draw();
-});
+                // Filtro Dono
+                $("select[name='users']").on('change', function() {
+                    table.column(7).search($(this).val()).draw();
+                });
 
-// Filtro Dono
-$("select[name='users']").on('change', function() {
-    table.column(7).search($(this).val()).draw();
-});
-
-// Filtro Data de criação
-$("select[name='Data de criação']").on('change', function() {
-    table.column(8).search($(this).val()).draw();
-});
+                // Filtro Data de criação
+                $("select[name='Data de criação']").on('change', function() {
+                    table.column(8).search($(this).val()).draw();
+                });
 
     });
 </script>
