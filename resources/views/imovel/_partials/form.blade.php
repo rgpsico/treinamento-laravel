@@ -199,8 +199,9 @@
 </div>
 </div>
 
+
 <div class="card-footer">
-    <button type="submit" class="btn btn-primary"> {{isset($data) == true ? 'Editar Imóvel' : 'Cadastrar Imóvel'}}</button>
+    <button type="submit" class="btn btn-primary"> {{!isset($data) == true ? 'Editar Imóvel' : 'Cadastrar Imóvel'}}</button>
 </div>
 </form>
 

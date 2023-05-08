@@ -74,10 +74,8 @@
                                     <td>{{ $value->title ?? '' }}</td>
                                     <td>R${{ $value->price ?? '' }}</td>
                                     <td>{{ $value->type == 1 ? 'Casa' : 'KitNet' }}</td>
-
                                     <td class='{{ $value->status == 1 ? 'red' : 'gren' }}'>
                                         {{ $value->status == 1 ? 'Alugado' : 'Livre' }}</td>
-
                                     <td class='{{ $value->status_admin == 1 ? 'red' : 'green' }}'>
                                         <select name="status_admin" data-id='{{ $value->id }}' id="status_admin"
                                             class="form-control">
@@ -90,9 +88,8 @@
                                         </select>
                                     </td>
 
-
-                                    <td>{{ date('d/m/Y', strtotime($value->created_at)) }}
-                                    </td>
+                                    <td>{{$value->user->name}}</td>
+                                    <td>{{ date('d/m/Y', strtotime($value->created_at)) }}</td>
                                     <td class="d-flex">
                                         <a href="{{ route('imovel.show', ['id' => $value->id]) }}"
                                             class=" mr-2 btn btn-dark" style="height:40px; padding:10px;">
@@ -187,7 +184,7 @@ function row(data) {
    
 
  
-    $('.filtro').change(function() {
+    $('.filtros').change(function() {
 
     var tipo = $(this).val();
    
@@ -283,4 +280,46 @@ function row(data) {
             });
         });
     </script>
+
+<script>
+    $(document).ready(function() {
+        var table = $('#imovelLista').DataTable();
+
+// Filtro Título
+$("select[name='Título']").on('change', function() {
+    table.column(2).search($(this).val()).draw();
+});
+
+// Filtro Preço
+$("select[name='Preco']").on('change', function() {
+    table.column(3).search($(this).val()).draw();
+});
+
+// Filtro Tipo
+$("select[name='Tipo']").on('change', function() {
+    table.column(4).search($(this).val()).draw();
+});
+
+// Filtro Status
+$("select[name='Status']").on('change', function() {
+    table.column(5).search($(this).val()).draw();
+});
+
+// Filtro Status Admin
+$("select[name='Status_Admin']").on('change', function() {
+    table.column(6).search($(this).val()).draw();
+});
+
+// Filtro Dono
+$("select[name='users']").on('change', function() {
+    table.column(7).search($(this).val()).draw();
+});
+
+// Filtro Data de criação
+$("select[name='Data de criação']").on('change', function() {
+    table.column(8).search($(this).val()).draw();
+});
+
+    });
+</script>
 @endsection

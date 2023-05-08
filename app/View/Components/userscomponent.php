@@ -7,15 +7,22 @@ use Illuminate\View\Component;
 
 class userscomponent extends Component
 {
-    protected $users;
+
+    public $col;
+    public $typeValue;
+    public $users;
+
+
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct($col = '4', $typeValue = 'name')
     {
-        $this->users = $user;
+        $this->col = $col;
+        $this->typeValue = $typeValue;
+        $this->users = User::all();
     }
 
     /**
@@ -25,7 +32,10 @@ class userscomponent extends Component
      */
     public function render()
     {
-        $users = $this->users->all(['id', 'name']);
-        return view('components.userscomponent', compact('users'));
+        return view('components.userscomponent', [
+            'users' => $this->users,
+            'col' => $this->col,
+            'typeValue' => $this->typeValue
+        ]);
     }
 }
