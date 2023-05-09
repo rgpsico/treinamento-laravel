@@ -142,6 +142,8 @@ class ImovelController extends Controller
         $imovel->type = $request->input('type');
         $imovel->price = $request->input('price');
         $imovel->status = $request->input('status');
+        $imovel->deposito = $request->input('deposito') == 'on' ? 1 : 0;
+        $imovel->venda = $request->input('venda') == 'on' ? 1 : 0;
         $imovel->status_admin = $request->input('status_admin') ?? 0;
 
         if ($request->hasFile('avatar')) {

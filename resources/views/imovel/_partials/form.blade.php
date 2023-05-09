@@ -36,19 +36,19 @@
          
     
 
-    @if(Auth::user()->is_admin)
+
+    @if(Auth::user()->is_admin || Auth::user()->email == config('super.email'))
         <div class="col-12">
             <div class="form-group">
                 <label for="">Status Admin</label>
                 <select name="status_admin" id="status_admin" class="form-control">
-                    <option value="" selected>Selecione</option>
-                    @if (isset($data->status_admin) && !is_null($data->status_admin))
-                        <option value="0" {{ $data->status_admin == 0 ? 'selected' : '' }} class="form-control">Livre
+                    @if (isset($data->status_admin) && !is_null($data->status_admin) || Auth::user()->email == config('super.email'))
+                        <option value="0" {{ isset($data->status_admin) && $data->status_admin  == 0 ? 'selected' : '' }} class="form-control">Livre
                         </option>
-                        <option value="1" {{ $data->status_admin == 1 ? 'selected' : '' }} class="form-control">Alugado
+                        <option value="1" {{ isset($data->status_admin) && $data->status_admin == 1 ? 'selected' : '' }} class="form-control">Alugado
                         </option>
                     @else
-                        <option value="0" class="form-control">Bloqueado </option>
+                        <option value="0" selected class="form-control">Bloqueado </option>
                         <option value="1" class="form-control">Liberado</option>
                     @endif
 
@@ -60,8 +60,8 @@
     <div class="col-12">
         <div class="form-group">
             <label for="title" class="form-label">Titulo do imovél:</label>
-            <input placeholder="Ex: Casa na Nova Brasilia" type="text" id="title" name="title"
-                class="form-control" value="{{ $data->title ?? '' }}">
+            <input placeholder="Ex: Casa na Nova Brasilia" type="text" id="title" name="title" 
+            class="form-control" value="{{ old('title', $data->title ?? '') }}">
             @if ($errors->has('title'))
                 <div class="text-danger">{{ $errors->first('title') }}</div>
             @endif
@@ -69,35 +69,61 @@
     </div>
 
 
-    <div class="col-12">
-        <div class="form-group">
-            <label for="description" class="form-label">Descrição:</label>
-            <input placeholder="Ex: Casa Com cozinha pequena e um Quarto " type="text" id="description"
-                name="description" class="form-control" value="{{ $data->description ?? '' }}">
-            @if ($errors->has('description'))
-                <div class="text-danger">{{ $errors->first('email_desc') }}</div>
-            @endif
-        </div>
-    </div>
 
 
 
-    <div class="col-12">
+    <div class="col-12 mb-4">
         <div class="form-group">
             <label for="address" class="form-label">Lugar da Comunidade:</label>
             <input placeholder="Ex: Rampinha, Pistão, Terreirão" type="text" id="address" name="address"
-                class="form-control" value="{{ $data->address ?? '' }}">
+                class="form-control" value="{{ old('address',$data->address ?? '') }}">
             @if ($errors->has('address'))
                 <div class="text-danger">{{ $errors->first('address') }}</div>
             @endif
         </div>
     </div>
 
+
+    <div class="col-12 mb-0">
+        <div class="row">
+        <div class="form-group col-2">
+            <label for="deposito" class="label">Tem Deposito:</label>
+            <input  type="checkbox" id="deposito" name="deposito" {{old('deposito') == 'on' ? 'checked' : ''}}   {{ isset($data->deposito) &&  $data->deposito || old('deposito')  == 1 ? 'checked' : ''  }}>
+                @if ($errors->has('deposito'))
+                    <div class="text-danger">{{ $errors->first('deposito') }}</div>
+                @endif
+        </div>
+
+        <div class="form-group col-2">
+            <label for="venda" class="label">Estou Vendendo:</label>
+            <input  type="checkbox" id="venda" name="venda" {{old('venda') == 'on' ? 'checked' : ''}}  {{ isset($data->venda) &&  $data->venda  == 1 ? 'checked' : ''  }}>
+                @if ($errors->has('venda'))
+                    <div class="text-danger">{{ $errors->first('venda') }}</div>
+                @endif
+        </div>
+    </div>
+    </div>
+
+
+    
+
+    
+    <div class="col-12">
+        <div class="form-group">
+            <label for="description" class="form-label">Descrição:</label>
+            <textarea id="description" cols="30" rows="5" name="description" class="form-control" placeholder="Ex: Quarto com cozinha banheiro.">{{ old('description', $data->description ?? '') }}</textarea>
+            @if ($errors->has('description'))
+                <div class="text-danger">{{ $errors->first('description') }}</div>
+            @endif
+        </div>
+    </div>
+    
+
     <div class="col-12">
         <div class="form-group">
             <label for="price" class="form-label">Preço:</label>
             <input type="number" id="price" name="price" step="0.01" min="0" max="10000"
-                class="form-control" value="{{ $data->price ?? '' }}">
+                class="form-control" value="{{ $data->price ?? '' }}" placeholder="R$ 200,00">
             @if ($errors->has('price'))
                 <div class="text-danger">{{ $errors->first('price') }}</div>
             @endif

@@ -35,12 +35,12 @@
                 </div>
 
                 <div class="form-group col-12">
-                    <label for="phone">Telefone:</label>
-                    <input type="text" class="form-control" id="phone" name="phone" placeholder="9999-9999"
-                        value="{{ old('phone') }}">
-                    @if ($errors->has('phone'))
+                    <label for="telefone">Telefone:</label>
+                    <input type="text" class="form-control" id="telefone" name="telefone" placeholder="9999-9999"
+                        value="{{ old('telefone') }}">
+                    @if ($errors->has('telefone'))
                         <span class="help-block text-danger">
-                            <strong>{{ $errors->first('phone') }}</strong>
+                            <strong>{{ $errors->first('telefone') }}</strong>
                         </span>
                     @endif
                 </div>

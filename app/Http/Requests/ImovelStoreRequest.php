@@ -39,7 +39,7 @@ class ImovelStoreRequest extends FormRequest
             'address.required' => 'O endereço é obrigatório',
             'price.required' => 'O preço é obrigatório',
             'type.required' => 'O tipo de imovel é obrigatório',
-            'type.required' => 'Por favor diga que esta vago ou já se esta alugado',
+            'status.required' => 'O imovel esta vago ?',
         ];
     }
 }

@@ -72,7 +72,7 @@ class UserdataController extends Controller
         $user = User::findOrFail($id);
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->phone = $request->phone;
+        $user->telefone = $request->telefone;
 
         if ($request->hasFile('avatar')) {
             $avatar = $request->file('avatar');
@@ -158,14 +158,14 @@ class UserdataController extends Controller
             'name' => 'required',
             'email' => 'required|unique:users',
             'type' => 'required',
-            'phone' => 'required',
+            'telefone' => 'required',
             'password' => 'required|same:confirm_password',
         ], [
             'name.required' => 'O campo nome é obrigatório.',
             'email.required' => 'O campo email é obrigatório.',
             'email.unique' => 'Este email já está em uso.',
             'type.required' => 'O campo tipo é obrigatório.',
-            'phone.required' => 'O campo telefone é obrigatório.',
+            'telefone.required' => 'O campo telefone é obrigatório.',
             'password.required' => 'O campo senha é obrigatório.',
             'password.same' => 'As senhas informadas não são iguais.',
         ]);
@@ -191,7 +191,7 @@ class UserdataController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'phone' => $request->phone,
+            'telefone' => $request->telefone,
             'avatar' => $filename ?? '',
             'password' => Hash::make($request->password),
         ]);
