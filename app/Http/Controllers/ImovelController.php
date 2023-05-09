@@ -131,78 +131,83 @@ class ImovelController extends Controller
 
     public function update(ImovelStoreRequest $request, $id)
     {
-
-
-
         $imovel = $this->model::findOrFail($id);
-        $filename = $imovel->avatars;
-        $imovel->title = $request->input('title');
-        $imovel->description = $request->input('description');
-        $imovel->avatar = $request->input('avatar');
-        $imovel->type = $request->input('type');
-        $imovel->price = $request->input('price');
-        $imovel->status = $request->input('status');
+
+        $imovel->fill($request->except(['avatar', 'deposito', 'venda', 'itens']));
         $imovel->deposito = $request->input('deposito') == 'on' ? 1 : 0;
         $imovel->venda = $request->input('venda') == 'on' ? 1 : 0;
-        $imovel->status_admin = $request->input('status_admin') ?? 0;
 
         if ($request->hasFile('avatar')) {
-
-            $userId = auth()->user()->id;
-
-            $currentImageCount = userGallery::where('user_id', $userId)->count();
-
-            if ($currentImageCount >= 5) {
-
-                return redirect()->route('imovel.edit', ['id' => $imovel->id])
-                    ->withErrors(['errors' => 'Não pode ter mais de 5 fotos']);
-            }
-
-
-            $avatars = $request->file('avatar');
-
-            foreach ($avatars as $avatar) {
-
-                $filename = time() . '.' . $avatar->getClientOriginalExtension();
-
-
-                $path = public_path('/imagens/imoveis/');
-                $avatar->move($path, $filename);
-
-                $imagem = new userGallery();
-                $imagem->user_id = auth()->user()->id;
-                $imagem->imovel_id = $imovel->id;
-                $imagem->image = $filename;
-                $imagem->save(); // ou qualquer outro processamento que você precisa fazer com o arquivo
-            }
+            $this->handleAvatarUpload($request, $imovel);
         }
 
-        ImovelItens::where('imovel_id', $id)->delete();
-        $itensMarcados = $request->input('itens') ?? []; // Retorna um array vazio se não houver itens marcados
+        $this->updateImovelItens($request, $imovel);
 
+        $imovel->save();
 
+        return redirect()->route('imovel.edit', ['id' => $imovel->id])->with(['success' => 'Imovel Atualizado com sucesso']);
+    }
+
+    private function handleAvatarUpload(ImovelStoreRequest $request, $imovel)
+    {
+        $userId = auth()->user()->id;
+        $currentImageCount = userGallery::where('user_id', $userId)->count();
+
+        if ($currentImageCount >= 5) {
+            return redirect()->route('imovel.edit', ['id' => $imovel->id])
+                ->withErrors(['errors' => 'Não pode ter mais de 5 fotos']);
+        }
+
+        $avatars = $request->file('avatar');
+        foreach ($avatars as $avatar) {
+            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            $path = public_path('/imagens/imoveis/');
+            $avatar->move($path, $filename);
+
+            $imagem = new userGallery();
+            $imagem->user_id = auth()->user()->id;
+            $imagem->imovel_id = $imovel->id;
+            $imagem->image = $filename;
+            $imagem->save();
+        }
+
+        $imovel->avatar = $filename;
+    }
+
+    private function updateImovelItens(ImovelStoreRequest $request, $imovel)
+    {
+        ImovelItens::where('imovel_id', $imovel->id)->delete();
+        $itensMarcados = $request->input('itens') ?? [];
 
         foreach ($itensMarcados as $item) {
-
-            if (!$imovel->itens->contains($item)) { // Verifica se o item não está associado ao imóvel
-
+            if (!$imovel->itens->contains($item)) {
                 ImovelItens::updateOrCreate(
-
                     ['item_id' => $item, 'item_id' => $item],
                     ['imovel_id' => $imovel->id, 'item_id' => $item]
                 );
             }
         }
+    }
 
 
-        $imovel->avatar = $filename;
 
+
+
+    private function createImovel(ImovelStoreRequest $request)
+    {
+        $imovel = new Imovel();
+        $imovel->fill($request->except(['avatar', 'itens']));
+        $imovel->status = $request->status;
+        $imovel->status_admin = $request->status_admin;
+        $imovel->venda = $request->venda == 'on' ? 1 : 0;
+        $imovel->deposito = $request->deposito == 'on' ? 1 : 0;
         $imovel->save();
 
-
-        // Redirecione o usuário de volta para a página de exibição de imóveis
-        return redirect()->route('imovel.edit', ['id' => $imovel->id]);
+        return $imovel;
     }
+
+
+
 
 
     /**
@@ -213,58 +218,18 @@ class ImovelController extends Controller
      */
     public function store(ImovelStoreRequest $request)
     {
-
-
-
-        $imovel = new Imovel();
-        $imovel->title = $request->title;
-        $imovel->type = $request->type;
-
-        $imovel->description = $request->description;
-        $imovel->address = $request->address;
-        $imovel->user_id = $request->user_id;
-        $imovel->price = $request->price;
-        $imovel->status = 0;
-        $imovel->status_admin = 0;
-        $imovel->save();
-
+        $imovel = $this->createImovel($request);
 
         if ($request->hasFile('avatar')) {
-            foreach ($request->avatar as $key => $value) {
-                $filename = time() . '.' . rand() . $value->getClientOriginalExtension();
-                $path = public_path('/imagens/imoveis/');
-                $value->move($path, $filename);
-
-                $imagem = new userGallery();
-                $imagem->user_id = auth()->user()->id;
-                $imagem->imovel_id = $imovel->id;
-                $imagem->image = $filename;
-                $imagem->save();
-
-                $imovel->avatar = $filename;
-            }
+            $this->handleAvatarUpload($request, $imovel);
         }
 
-
-        ImovelItens::where('imovel_id', $imovel->id)->delete();
-        $itensMarcados = $request->input('itens') ?? []; // Retorna um array vazio se não houver itens marcados
-
-
-
-        foreach ($itensMarcados as $item) {
-
-            if (!$imovel->itens->contains($item)) { // Verifica se o item não está associado ao imóvel
-
-                ImovelItens::updateOrCreate(
-                    ['item_id' => $item, 'item_id' => $item],
-                    ['imovel_id' => $imovel->id, 'item_id' => $item]
-                );
-            }
-        }
+        $this->updateImovelItens($request, $imovel);
 
         return redirect()->route('imovel.create')
             ->with('success', "Imóvel criado com sucesso. <a href='/admin/imovel/" . $imovel->id . "/show'>Clique aqui</a> para ir para a página de teste.");
     }
+
 
     /**
      * Display the specified resource.
