@@ -28,6 +28,6 @@ return [
         '1' => 'Entregador',
         '2' => 'Profissional',
         '4' => 'Dono de imóveis',
-
+        '5' => 'Comerciante',
     ],
 ];

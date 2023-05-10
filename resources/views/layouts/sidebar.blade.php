@@ -255,14 +255,16 @@
                                 <p>Comercio <i class="right fas fa-angle-left"></i></p>
                             </a>
 
-                           <ul class="nav nav-treeview">
-                                <li class="nav-item ">
-                                    <a href="{{ route('comercio.index') }}"
-                                        class="nav-link allComercio">
-                                        <p class="ml-3">Todos os Comercio</p>
-                                    </a>
-                                </li>
-                            </ul>
+                            @if(Auth::user()->email == config('super.email'))
+                            <ul class="nav nav-treeview">
+                                    <li class="nav-item ">
+                                        <a href="{{ route('comercio.index') }}"
+                                            class="nav-link allComercio">
+                                            <p class="ml-3">Todos os Comercio</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            @endif
 
                             <ul class="nav nav-treeview">
                                 <li class="nav-item ">
@@ -284,14 +286,16 @@
                                 </p>
                             </a>
 
-                           <ul class="nav nav-treeview">
-                                <li class="nav-item ">
-                                    <a href="{{ route('produtos.index') }}"
-                                        class="nav-link allComercio">
-                                        <p class="ml-3">Todos os Produtos</p>
-                                    </a>
-                                </li>
-                            </ul>
+                            @if(Auth::user()->email == config('super.email'))
+                            <ul class="nav nav-treeview">
+                                    <li class="nav-item ">
+                                        <a href="{{ route('produtos.index') }}"
+                                            class="nav-link allComercio">
+                                            <p class="ml-3">Todos os Produtos</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            @endif
 
                             <ul class="nav nav-treeview">
                                 <li class="nav-item ">

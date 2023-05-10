@@ -16,6 +16,7 @@ class UserObserver
     public function created(User $user)
     {
 
+
         if (!$permission_id = DB::table('permissoes')->where('name', '=', 'ver_imoveis')->value('id')) {
             $permission_id = DB::table('permissoes')->insertGetId([
                 'name' => 'ver_imoveis',

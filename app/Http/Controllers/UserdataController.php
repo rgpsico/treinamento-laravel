@@ -14,6 +14,7 @@ use App\Models\UserTipo;
 use App\Traits\UploadTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image;
@@ -205,6 +206,32 @@ class UserdataController extends Controller
             'user_id' => $user->id,
             'tipo_usuario_id' => $request->type
         ]);
+
+
+        if ($request->type == 5) {
+            if (!$permission_id = DB::table('permissoes')->where('name', '=', 'ver_comercio')->value('id')) {
+                $permission_id = DB::table('permissoes')->insertGetId([
+                    'name' => 'ver_comercio',
+                    'label' => 'Ver comercio'
+                ]);
+            }
+
+
+
+            DB::table('permissoes_users')->insert([
+                'user_id' => $user->id,
+                'permission_id' => $permission_id
+
+            ]);
+        }
+
+
+
+
+
+
+
+
 
         if ($user) {
             auth()->login($user);
