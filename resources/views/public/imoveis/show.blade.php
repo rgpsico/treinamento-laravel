@@ -50,62 +50,51 @@
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                     <div class="detail_box">
                         <div class="detail_head">
-                            <h3> {{ $data->title }}<br>
-                            </h3>
-                            <p>{{ $data->description }} </p>
+                            <h1> {{ $data->title }}  <span style="font-size:29px; text-align: center; color:red; font-weight:bold; ">{{$data->venda == 1 ? '(Venda)' : '(Aluguel)'}}</span><br>
+                            </h1>
+                            <p style="text-transform: capitalize; margin-right:10px;">{{ $data->description }} </p>
                             <ul class="list-unstyled text-capitalize m-b-0 m-t-15">
                                 <li class="d-inline-block p-r-20">
-                                    <a href="#">
-                                        <i class="fa fa-clock-o ml-2">
+                                    <a href="#" style="font-size: 19px">
+                                        <i class="fa fa-clock-o ml-2" >
                                         </i> Postado <span>{{ diasDesdePostagem($data->created_at) == '0' ? 'Hoje' : "a ".diasDesdePostagem($data->created_at). " dias." }}</span>
                                     </a>
                                 </li>
                             </ul>
                         </div>
-                        <ul class="list-unstyled d-inline-block float-left detail_left m-b-0">
-                           @if(count($data->itens) > 0)
-                           <h4>Itens</h4> 
-                           @endif  
-                            @foreach ( $data->itens as $value )
-                                <li>{{$value->itens->name}}</li> 
-                            @endforeach                       
-                            <li>    <i class="fas fa-money-bill"></i> {{ $data->deposito == 0 ? 'Não precisa de deposito*' : 'Precisa de deposito' }}</li> 
-                            <li> <i class="fas fa-sun"></i> <div class="warranty d-inline-block">10 minutos da praia<br>
-                                        </div>
-                                    </li> 
-                                    <li class="d-inline-block pr-3 detail_prize my-3"> Preço Mensal : </li>
-                                    <li class="d-inline-block Price_m detail_prize text-dark font-weight-bold"> {{ $data->price }}</li>
-                              
+                        <ul class="list-unstyled d-inline-block float-left detail_left m-b-0">                                               
+                            <li style="font-size:20px; margin-bottom:10px; margin-top:15px;">    
+                            <i class="fas fa-money-bill"></i> {{ $data->deposito == 0 ? 'Não precisa de deposito*' : 'Precisa de deposito' }}
+                        </li> 
+                            <li><i class="fas fa-sun"></i><div class="warranty d-inline-block">10 minutos da praia<br></div></li> 
+                            <li class="d-inline-block pr-3 detail_prize my-3" style="font-size:20px;"> Preço Mensal : </li>
+                            <li class="d-inline-block Price_m detail_prize text-dark font-weight-bold" style="font-size:40px; "> R$ {{ str_replace('.',',', $data->price) }}</li>
                         </ul>   
                        
-                        <ul class="list-unstyled d-inline-block m-l-60 detail_right  m-b-0">
-                            @if(count($data->itens) > 0)
-                            <h4>Regras</h4> 
-                            @endif  
-                            <ul class="list-unstyled d-inline-block float-left detail_left m-b-0">                             
-                                    <li></li>
-                             
-                           </ul>
-                        </ul>
+                        
                         
                         <div class="detail_bottum m-t-15">
                             <div class="row">
-                                <div class="col-lg-12 col-xl-6 col-md-12 col-sm-12 col-12">
+                                <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12 col-12">
                                     <div class="form-check">
                                        
-                                        <label class="form-check-label"> </label>
-                                     
+                                        <label class="form-check-label">Itens </label>                                     
                                         <div class="warranty d-inline-block">
+                                            @foreach ( $data->itens as $value )
+                                                <span>{{$value->itens->name}}</span> 
+                                            @endforeach 
                                            
                                             <br>
                                         </div>
                                     </div>
                                     
                                 </div>
-                                <div class="col-lg-12 col-xl-6 col-md-12 col-sm-12 col-12">
+                                <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12 col-12 my-4">
                                     <div class="form-check">
-                                        <label class="form-check-label"> </label>
-                                       
+                                        <label class="form-check-label">Regra </label>
+                                        @foreach ( $data->regras as $value )
+                                        <span>{{$value->itens->name}}</span> 
+                                    @endforeach 
 
                                         
                                     </div>

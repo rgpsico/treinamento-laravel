@@ -145,7 +145,7 @@ class ImovelController extends Controller
 
         $imovel->save();
 
-        return redirect()->route('imovel.edit', ['id' => $imovel->id])->with(['success' => 'Imovel Atualizado com sucesso']);
+        return redirect()->route('imovel.edit', ['id' => $imovel->id])->with(['success' => 'Imovel Atualizado com sucesso clique <a href="/public/imoveis/5/detalhes">Aqui </a> Para ver como ficara pros visitantes ']);
     }
 
     private function handleAvatarUpload(ImovelStoreRequest $request, $imovel)
@@ -198,7 +198,7 @@ class ImovelController extends Controller
         $imovel = new Imovel();
         $imovel->fill($request->except(['avatar', 'itens']));
         $imovel->status = $request->status;
-        $imovel->status_admin = $request->status_admin;
+        $imovel->status_admin = $request->status_admin ?? 0;
         $imovel->venda = $request->venda == 'on' ? 1 : 0;
         $imovel->deposito = $request->deposito == 'on' ? 1 : 0;
         $imovel->save();
@@ -227,7 +227,7 @@ class ImovelController extends Controller
         $this->updateImovelItens($request, $imovel);
 
         return redirect()->route('imovel.create')
-            ->with('success', "Imóvel criado com sucesso. <a href='/admin/imovel/" . $imovel->id . "/show'>Clique aqui</a> para ir para a página de teste.");
+            ->with('success', "Imóvel criado com sucesso. <a href='/admin/imovel/" . $imovel->id . "/show'>Clique aqui</a>.");
     }
 
 
