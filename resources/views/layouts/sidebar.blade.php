@@ -148,7 +148,7 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
 
-                        @can('ver_dashboard')
+                       @if(Auth::user()->email == config('super.email'))
                             <li class="nav-item">
                                 <a href="{{ route('dashboard') }}" class="nav-link menuDashboard">
                                     <i class="nav-icon fas fa-chart-pie"></i>
@@ -157,7 +157,8 @@
                                     </p>
                                 </a>
                             </li>
-                        @endcan
+                        @endif    
+                       
 
 
                         
@@ -183,7 +184,7 @@
 
                                 </ul>
 
-                                @if (Auth::user()->is_admin)
+                                @if (Auth::user()->email == config('super.email') )
                                     <ul class="nav nav-treeview">
                                         <li class="nav-item">
                                             <a href="{{ route('proprietario.index') }}" class="nav-link proprietario">
@@ -196,7 +197,7 @@
                                 @endif
 
                                 <ul class="nav nav-treeview">
-                                    @if (Auth::user()->is_admin)
+                                    @if ( Auth::user()->email == config('super.email') )
                                         <li class="nav-item">
                                             <a href="{{ route('imovel.all') }}" class="nav-link imovel_all">
 
@@ -208,52 +209,50 @@
                                 </ul>
 
                                 <ul class="nav nav-treeview">
-                                    {{-- @can('ver-itens') --}}
+                                    @can('ver_imoveis')
                                     <li class="nav-item">
                                         <a href="{{ route('itens.index') }}" class="nav-link itensMenu">
 
                                             <p class="ml-3">Itens</p>
                                         </a>
                                     </li>
-                                    {{-- @endcan --}}
+                                    @endcan
 
                                 </ul>
 
                                 <ul class="nav nav-treeview">
-                                    {{-- @can('ver-itens') --}}
+                                    @can('ver_imoveis')
                                     <li class="nav-item">
                                         <a href="{{ route('regras.index') }}" class="nav-link itensRegra">
 
                                             <p class="ml-3">Regras</p>
                                         </a>
                                     </li>
-                                    {{-- @endcan --}}
+                                    @endcan
 
                                 </ul>
 
-                                <ul class="nav nav-treeview">
-                                    <li class="nav-item">
-                                        <a href="{{ route('espera.index') }}" class="nav-link espera">
+                                @can('ver_imoveis')
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="{{ route('espera.index') }}" class="nav-link espera">
 
-                                            <p class="ml-3">
-                                                Lista de espera
+                                                <p class="ml-3">
+                                                    Lista de espera
 
-                                            </p>
-                                        </a>
-                                    </li>
-                                </ul>
+                                                </p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                @endcan
                             </li>
                         @endcan
 
-
+                           @can('ver_comercio')     
                           <li class="nav-item comercio open menu-is-opening menu-open">
-                            <a href="{{ route('comercio.index') }}" 
-                            class="nav-link">
+                             <a href="{{ route('comercio.index') }}" class="nav-link">
                             <i class="fas fa-money-bill-alt"></i>
-                                <p>
-                                    Comercio
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
+                                <p>Comercio <i class="right fas fa-angle-left"></i></p>
                             </a>
 
                            <ul class="nav nav-treeview">
@@ -274,7 +273,7 @@
                                 </li>
                             </ul>
                         </li>
-
+                    
                         <li class="nav-item comercio open menu-is-opening menu-open">
                             <a href="{{ route('produtos.index') }}" 
                             class="nav-link">
@@ -303,8 +302,9 @@
                                 </li>
                             </ul>
                         </li>
-
-                        <li class="nav-item entregadores open menu-is-opening menu-open">
+                        @endcan
+                        @if (Auth::user()->email == config('super.email') )
+                            <li class="nav-item entregadores open menu-is-opening menu-open">
                             <a href="{{ route('entregadores.index') }}" class="nav-link">
                                 <i class="fas fa-bicycle"></i>
                                 <p>
@@ -312,7 +312,7 @@
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
-
+                       
                           
                             <ul class="nav nav-treeview">
                                 <li class="nav-item ">
@@ -324,42 +324,40 @@
 
                             </ul>
                         </li>
+                        @endif   
 
 
-                        <li class="nav-item Cadastro">
-                            <a href="" class="nav-link ">
+                        @if (Auth::user()->email == config('super.email') )
+                            <li class="nav-item Cadastro">
+                                <a href="" class="nav-link ">
 
-                                <i class="nav-icon fas fa-user-plus"></i>
-                                <p>
-                                        Cadastro
-                                </p>
-                                <i class="right fas fa-angle-left"></i>
-                            </a>
-
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item ">
-                                    <a href="{{ route('category.index') }}"
-                                        class="nav-link Categoria">
-
-                                        <p class="ml-3">Categoria</p>
-                                    </a>
-                                </li>
-
-                            </ul>
-                        </li>
-
-                        @if (isset(Auth::user()->is_admin))
-                            <li class="nav-item menu_acesso {{ Request::is('*permissaoCategoria*') ? 'menu-is-opening menu-open' : '' }}">
-                                <a href="" class="nav-link">
-
-                                    <i class="nav-icon fas fa-key"></i>
+                                    <i class="nav-icon fas fa-user-plus"></i>
                                     <p>
-                                        Acesso
-
+                                            Cadastro
                                     </p>
                                     <i class="right fas fa-angle-left"></i>
                                 </a>
 
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item ">
+                                        <a href="{{ route('category.index') }}"
+                                            class="nav-link Categoria">
+
+                                            <p class="ml-3">Categoria</p>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                        @endcan
+
+                        @if (Auth::user()->email == config('super.email'))
+                            <li class="nav-item menu_acesso {{ Request::is('*permissaoCategoria*') ? 'menu-is-opening menu-open' : '' }}">
+                                <a href="" class="nav-link">
+                                    <i class="nav-icon fas fa-key"></i>
+                                    <p>Acesso</p>
+                                    <i class="right fas fa-angle-left"></i>
+                                </a>
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item ">
                                         <a href="{{ route('permissoes_categoria.index') }}"
@@ -368,7 +366,6 @@
                                             <p class="ml-3">Permissoes Categoria</p>
                                         </a>
                                     </li>
-
                                 </ul>
 
 
@@ -383,7 +380,7 @@
 
 
 
-                                @can('ver_usuarios') 
+                               
                                 <li class="nav-item menuUser">
                                     <a href="{{ route('users.index') }}" class="nav-link ">
                                         <i class="nav-icon fas fa-user-circle"></i>
@@ -415,9 +412,9 @@
 
                                     </ul>
                                 </li>
-                            @endcan
+                           
 
-                            @can('ver_dashboard')
+                           
                                 <li class="nav-item">
                                     <a href="{{ route('dashboard') }}" class="nav-link menuDashboard">
                                         <i class="nav-icon fas fa-chart-pie"></i>
@@ -429,25 +426,15 @@
                                     <ul class="nav nav-treeview">
                                         <li class="nav-item ">
                                             <a href="{{ route('log.index') }}" class="nav-link logsMenu">
-
                                                 <p class="ml-3">Logs</p>
                                             </a>
                                         </li>
-
                                     </ul>
                                 </li>
-                            @endcan
-
-
-
-
-
                             </li>
                         @endif
-
                     </ul>
                 </nav>
-
             </div>
 
         </aside>

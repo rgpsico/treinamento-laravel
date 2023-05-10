@@ -188,6 +188,9 @@ class UserdataController extends Controller
             $data['avatar'] = $filename;
         }
 
+
+
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -195,6 +198,8 @@ class UserdataController extends Controller
             'avatar' => $filename ?? '',
             'password' => Hash::make($request->password),
         ]);
+
+
 
         $user->userTipoUsers()->create([
             'user_id' => $user->id,
