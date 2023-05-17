@@ -26,7 +26,7 @@ return [
         '' => 'Selecione',
         '1' => 'Quero só alugar uma casa',
         '2' => 'Entregador',
-        '' => 'Profissional',
+        '3' => 'Profissional',
         '4' => 'Dono de imóveis',
         '5' => 'Comerciante',
     ],
