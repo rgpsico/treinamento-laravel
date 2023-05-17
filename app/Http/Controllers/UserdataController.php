@@ -201,11 +201,28 @@ class UserdataController extends Controller
         ]);
 
 
+        $tiposUsuarios = [
+            'Quero so alugar uma casa',
+            'Entregador',
+            'Profissional',
+            'Dono de imoveis',
+            'Comerciante',
+        ];
 
-        $user->userTipoUsers()->create([
-            'user_id' => $user->id,
-            'tipo_usuario_id' => $request->type
-        ]);
+        foreach ($tiposUsuarios as $tipoUsuario) {
+            UserTipo::firstOrCreate([
+                'nome' => $tipoUsuario
+            ]);
+        }
+
+        if ($tipoUsuario) {
+            $user->userTipoUsers()->create([
+                'user_id' => $user->id,
+                'tipo_usuario_id' => $request->type
+            ]);
+        }
+
+
 
 
         if ($request->type == 5) {

@@ -24,9 +24,9 @@ return [
 
     'funcao' => [
         '' => 'Selecione',
-        '0' => 'Quero só alugar uma casa',
-        '1' => 'Entregador',
-        '2' => 'Profissional',
+        '1' => 'Quero só alugar uma casa',
+        '2' => 'Entregador',
+        '' => 'Profissional',
         '4' => 'Dono de imóveis',
         '5' => 'Comerciante',
     ],
