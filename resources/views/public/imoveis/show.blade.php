@@ -44,13 +44,17 @@
                             </ul>
                         </div>
                     </div>
+                   <div class="description my-2">
+                    <p>{{ ucfirst($data->description) }}</p>
+                   </div>
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
                     <div class="detail_box">
                         <div class="detail_head">
                             <h1> {{ $data->title }} <span style="font-size:29px; text-align: center; color:red; font-weight:bold; ">{{$data->venda == 1 ? '(Venda)' : '(Aluguel)'}}</span><br>
                             </h1>
-                            <p style="text-transform: capitalize; margin-right:10px;">{{ $data->description }} </p>
+                            <p style="text-transform: capitalize; margin-right:10px;">{{ Illuminate\Support\Str::limit(ucfirst($data->description), 100) }}
+                            </p>
                             <ul class="list-unstyled text-capitalize m-b-0 m-t-15">
                                 <li class="d-inline-block p-r-20">
                                     <a href="#" style="font-size: 19px">

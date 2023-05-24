@@ -20,6 +20,7 @@ class ImageApiController extends Controller
     {
         if ($model = $this->model->find($id)) {
             $path = public_path('imagens/imoveis/' . $model->image);
+
             if (file_exists($path)) {
                 unlink($path);
             }
