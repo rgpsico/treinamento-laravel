@@ -19,6 +19,58 @@
     object-fit: cover;
 }
 
+body {
+  font-family: Arial, sans-serif;
+}
+
+.form-control {
+  border-radius: 0;
+  border: 1px solid #ccc;
+}
+
+.label {
+  font-weight: bold;
+  color: #444;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.btn-primary:hover {
+  background-color: #0069d9;
+}
+
+.text-danger {
+  color: #dc3545;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card {
+  margin-bottom: 20px;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+}
+
+
 </style>
 <div class="card-body">
 
