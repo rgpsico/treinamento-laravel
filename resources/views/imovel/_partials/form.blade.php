@@ -86,23 +86,24 @@
 
     <div class="col-12 mb-0">
         <div class="row">
-        <div class="form-group col-2">
-            <label for="deposito" class="label">Tem Deposito:</label>
-            <input  type="checkbox" id="deposito" name="deposito" {{old('deposito') == 'on' ? 'checked' : ''}}   {{ isset($data->deposito) &&  $data->deposito || old('deposito')  == 1 ? 'checked' : ''  }}>
+            <div class="form-group col-12 col-md-2">
+                <label for="deposito" class="label">Tem Deposito:</label>
+                <input  type="checkbox" id="deposito" name="deposito" {{old('deposito') == 'on' ? 'checked' : ''}}   {{ isset($data->deposito) &&  $data->deposito || old('deposito')  == 1 ? 'checked' : ''  }}>
                 @if ($errors->has('deposito'))
                     <div class="text-danger">{{ $errors->first('deposito') }}</div>
                 @endif
-        </div>
-
-        <div class="form-group col-2">
-            <label for="venda" class="label">Estou Vendendo:</label>
-            <input  type="checkbox" id="venda" name="venda" {{old('venda') == 'on' ? 'checked' : ''}}  {{ isset($data->venda) &&  $data->venda  == 1 ? 'checked' : ''  }}>
+            </div>
+    
+            <div class="form-group col-12 col-md-2">
+                <label for="venda" class="label">Estou Vendendo:</label>
+                <input  type="checkbox" id="venda" name="venda" {{old('venda') == 'on' ? 'checked' : ''}}  {{ isset($data->venda) &&  $data->venda  == 1 ? 'checked' : ''  }}>
                 @if ($errors->has('venda'))
                     <div class="text-danger">{{ $errors->first('venda') }}</div>
                 @endif
+            </div>
         </div>
     </div>
-    </div>
+    
 
 
     
@@ -197,7 +198,10 @@
 </div>
 </form>
 
+<script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
+
 <script>
+      CKEDITOR.replace( 'description' );
    $(document).ready(function() {
     $(document).on('click', '.excluir_imagem', function(e) {
         e.preventDefault();
