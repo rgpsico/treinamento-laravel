@@ -114,8 +114,8 @@ class ComercioController extends Controller
     public function showPublic($id)
     {
 
-        $produtos = $this->produtos->where('', $id)->get();
-        return view('comercio.public.show');
+        $produtos = $this->produtos->where('comercio_id', $id)->orderBy('id', 'desc')->get();
+        return view('comercio.public.show', compact('produtos'));
     }
 
     public function edit($id)

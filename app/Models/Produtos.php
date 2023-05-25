@@ -15,6 +15,7 @@ class Produtos extends Model
         'name',
         'description',
         'price',
+        'comercio_id'
     ];
 
     public function scopeDoUsuario($query, $usuarioId)

@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Comercio;
+use App\Models\Produtos;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +16,8 @@ class usersTableSeeder extends Seeder
      */
     public function run()
     {
-        User::factory(10)->create();
+        //User::factory(10)->create();
+        // Comercio::factory(20)->create();
+        Produtos::factory(20)->create();
     }
 }
