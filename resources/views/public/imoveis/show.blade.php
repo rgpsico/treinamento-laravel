@@ -19,8 +19,8 @@
         }
     </style>
     <!-- Detail_part -->
-    <section class="detail_part m-t-50">
-        <div class="container mb-5">
+    <section class="detail_part">
+        <div class="container mb-1">
             <div class="row" style="padding:10px;">
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
                     <div class="detail_box">
@@ -44,9 +44,7 @@
                             </ul>
                         </div>
                     </div>
-                   <div class="description my-2">
-                    <p>{{ ucfirst($data->description) }}</p>
-                   </div>
+                  
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
                     <div class="detail_box">
@@ -73,28 +71,7 @@
                             <li style="my-1"><i class="fas fa-sun"></i> <div class="warranty d-inline-block"> 10 minutos da praia<br></div></li> 
                             <li class="d-inline-block pr-3 detail_prize my-3" style="font-size:20px;"> Preço {{$data->venda  == 1 ? 'Venda' : 'Mensal'}}: <span style="font-size:20px; font-weight:bold; "> R$ {{ str_replace('.',',', $data->price) }} </span></li>
                         </ul>   
-                        <div class="row">
-                            <div class="col-12 col-md-6 my-2" style="padding: 0;">
-                                <span class="" style="font-weight: bold; font-size:14px; color:green;">Iténs</span>
-                                <ul style="list-style:none; text-decoration:none; width:200px; margin:0; padding:0;">
-                                    @foreach ( $data->itens as $value )
-                                        <li>{{$value->itens->name}}</li> 
-                                    @endforeach 
-                                </ul>                              
-                            </div>
-
-                            <div class="col-12 col-md-6 my-2">
-                                <div class="col-6" style="padding: 0;">
-                                    <span class="" style="font-weight: bold; font-size:14px; color:red;">Regras</span>
-                                    <ul style="list-style:none; text-decoration:none; width:200px; margin:0; padding:0;">
-                                        @foreach ( $data->regras as $value )
-                                            <li>{{$value->regras->descricao}}</li> 
-                                        @endforeach 
-                                    </ul>
-                                </div>
-                            </div>
                         
-                        </div>
                         <div class="col-12 d-flex my-4">
                             <div class="detail_btn d-flex col-12 my-4">
                                 <button class="btn_chat w-80 text-white mr-1 py-1 border-0" 
@@ -120,12 +97,61 @@
                                     @endif
                                 </div>
                         </div>
+
+                      
+                        <div class="row">
+                            <div class="col-12 col-lg-6 my-2">
+                                <h2 style="font-weight: bold; ">Iténs</h2>
+                                <ul style="list-style:none; text-decoration:none; width:200px; margin:0; padding:0;">
+                                    @foreach ( $data->itens as $value )
+                                        <li>{{$value->itens->name}}</li> 
+                                    @endforeach 
+                                </ul>                              
+                            </div>
+                        
+                            <div class="col-12 col-lg-6 my-2">
+                                <h2 style="font-weight: bold; mb-2">Regras</h2>
+                                <ul style="list-style:none; text-decoration:none; width:200px; margin:0; padding:0;">
+                                    @foreach ( $data->regras as $value )
+                                        <li>{{$value->regras->descricao}}</li> 
+                                    @endforeach 
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        
+                     
                     </div>                    
                 </div>                
             </div>
         </div>
         
     </section>
+
+    <section class="description">
+        <div class="container"> 
+          
+          <!-- Row  -->
+          <div class="row justify-content-left" >
+            <div class="col-md-7 text-left">
+              <h2 class="title">Descrição</h2>
+            </div>
+          </div>
+          <!-- Row  -->
+          
+          <div class="row mb-2">
+            <div class="col-md-9">
+              <div class="description_box" style="min-height:200px;">
+                {{$data->description}}
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="single-sidebar"> 
+                <img class="add_img img-fluid" src="images/google_adds2.png" alt="Classified Plus"> </div>
+            </div>
+          </div>
+        </div>
+      </section>
     <!--End Description -->
 
     
