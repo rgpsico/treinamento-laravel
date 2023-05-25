@@ -124,4 +124,9 @@ class User extends Authenticatable
     {
         return $this->scopeUsuariosAtivosPorTipo($query, 'profissional');
     }
+
+    public function comercios()
+    {
+        return $this->hasMany(Comercio::class);
+    }
 }

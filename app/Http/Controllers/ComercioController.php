@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Comercio;
+use App\Models\Produtos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
@@ -14,13 +15,15 @@ class ComercioController extends Controller
     protected $view = 'comercio';
     protected $route = 'comercio';
     protected $model;
+    protected $produtos;
     protected $categorias;
     protected $fillable = ['nome', 'endereco', 'telefone', 'status', 'logo'];
 
-    public function __construct(Comercio $model, Category $categoria)
+    public function __construct(Comercio $model, Category $categoria, Produtos $produtos)
     {
         $this->model = $model;
         $this->categorias = $categoria;
+        $this->produtos = $produtos;
     }
 
     public function index()
@@ -101,10 +104,18 @@ class ComercioController extends Controller
 
     public function show($id)
     {
+        dd($id);
         $comercio = $this->model->find($id);
         return view($this->view . '.show', [
             'comercio' => $comercio
         ]);
+    }
+
+    public function showPublic($id)
+    {
+
+        $produtos = $this->produtos->where('', $id)->get();
+        return view('comercio.public.show');
     }
 
     public function edit($id)
