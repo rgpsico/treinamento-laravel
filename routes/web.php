@@ -31,6 +31,7 @@ use Illuminate\Support\Str;
 
 Route::get('/stripe', [StripeController::class, 'index'])->name('stripe.index');
 
+Route::get('/{id}/profissional', [PrestadorServicoController::class, 'profissional'])->name('profissional');
 
 Route::prefix('admin')->middleware(['check_user_authenticated'])->group(function () {
     Route::group(['prefix' => '/categoria'], function () {
@@ -200,6 +201,7 @@ Route::prefix('admin')->middleware(['check_user_authenticated'])->group(function
         Route::get('/registerHome', [PrestadorServicoController::class, 'registerHome'])->name('prestador.registerHome');
         Route::post('/post', [PrestadorServicoController::class, 'store'])->name('prestador.store');
         Route::delete('/{id}/destroy', [PrestadorServicoController::class, 'destroy'])->name('prestador.destroy');
+        Route::get('/{id}/profile', [PrestadorServicoController::class, 'profile'])->name('prestador.profile');
     });
 
     Route::group(['prefix' => '/saloes'], function () {

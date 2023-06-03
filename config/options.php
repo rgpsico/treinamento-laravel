@@ -14,6 +14,11 @@ return [
         '2' => 'Loja',
     ],
 
+    'simples' => [
+        '1' => 'Sim',
+        '0' => 'Não',
+    ],
+
     'imovel_precos' => [
         '' => 'Selecione',
         'R$200.00' => 'R$200.00',

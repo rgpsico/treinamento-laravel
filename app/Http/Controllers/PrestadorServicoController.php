@@ -56,7 +56,21 @@ class PrestadorServicoController extends Controller
         return $this->data($model, 'registerHome');
     }
 
+    public function profile($id)
+    {
+        $model = $this->model::where('id', $id)->get();
+        return view($this->view . '.profile', [
+            'model' => $model
+        ]);
+    }
 
+    public function profissional($id)
+    {
+        $model = $this->model::where('id', $id)->get();
+        return view($this->view . '.template01.index', [
+            'model' => $model
+        ]);
+    }
 
     public function store(Request $request)
     {
