@@ -36,7 +36,7 @@
             </div>
        
         
-            <x-list-componentEntregadores :model="$model"  routeUrl="show.profissionais" pasta="imagens/profissionais/" />
+            <x-list-componentProfissionais :model="$model"  routeUrl="show.profissionais" pasta="imagens/entregadores/" />
 
 
 
