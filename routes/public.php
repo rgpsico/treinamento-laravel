@@ -3,6 +3,7 @@
 use App\Http\Controllers\ComercioController;
 use App\Http\Controllers\EntregadoresController;
 use App\Http\Controllers\ImovelController;
+use App\Http\Controllers\ProfissionaisController;
 use App\Http\Controllers\UserdataController;
 use app\Modulos\Entregadores\Models\Entregadores;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +35,12 @@ Route::group(['prefix' => '/public'], function () {
     Route::group(['prefix' => '/entregadores'], function () {
         Route::get('', [EntregadoresController::class, 'listar'])->name('listar.entregadores.public');
         Route::get('/{id}/detalhes', [EntregadoresController::class, 'show'])->name('show.entregadores.public');
+    });
+
+
+    Route::group(['prefix' => '/profissionais'], function () {
+        Route::get('', [ProfissionaisController::class, 'listar'])->name('listar.profissionais.public');
+        Route::get('/{id}/detalhes', [ProfissionaisController::class, 'show'])->name('show.profissionais.public');
     });
 
 
