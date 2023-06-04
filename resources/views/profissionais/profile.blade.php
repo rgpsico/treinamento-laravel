@@ -2,5 +2,5 @@
 
 
 @section('content')
-    @include('prestador._partials.profileForm')
+    @include('profissionais._partials.profileForm')
 @endsection

@@ -14,6 +14,13 @@ return [
         '2' => 'Loja',
     ],
 
+    'select_profissionais' => [
+        '' => 'Selecione',
+        '1' => 'Eletricista',
+        '2' => 'Pedreiro',
+        '4' => 'Entulheiro',
+    ],
+
     'simples' => [
         '1' => 'Sim',
         '0' => 'Não',

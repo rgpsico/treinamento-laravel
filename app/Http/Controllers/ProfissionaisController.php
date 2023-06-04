@@ -17,10 +17,44 @@ class ProfissionaisController extends Controller
         $this->model = $model;
     }
 
-    public function listar()
+    public function profissional($id)
+    {
+        $model = $this->model::where('id', $id)->first();
+        return view($this->view . '.profile', [
+            'model' => $model
+        ]);
+    }
+
+
+    public function store(Request $request)
     {
 
-        $model = $this->model::all();
-        return view($this->view . '.list', compact('model'));
+        $validatedData = $request->validate([
+            'nome' => 'required',
+            'telefone' => 'required',
+            'email' => 'required|email',
+        ]);
+
+
+        $user = User::findOrFail($request->user_id);
+
+        $user->update([
+            'email' => $request->email,
+            'telefone' => $request->telefone,
+        ]);
+
+        $professional = $user->profissional()->firstOrCreate([]);
+
+
+        $professional->update([
+            'nome' => $request->nome,
+            'endereco' => $request->endereco,
+            'instragan' => $request->instragan,
+            'facebook' => $request->facebook,
+            'sobre' => $request->sobre,
+
+        ]);
+
+        return redirect()->back();
     }
 }

@@ -15,6 +15,7 @@ use App\Http\Controllers\PermissoesController;
 use App\Http\Controllers\PermissoesCategoriaController;
 use App\Http\Controllers\PrestadorServicoController;
 use App\Http\Controllers\ProdutosController;
+use App\Http\Controllers\ProfissionaisController;
 use App\Http\Controllers\ProprietarioController;
 use App\Http\Controllers\RedisController;
 use App\Http\Controllers\RegrasController;
@@ -22,8 +23,7 @@ use App\Http\Controllers\SaloesController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\UserdataController;
-
-
+use App\Models\Profissional;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
@@ -42,6 +42,11 @@ Route::prefix('admin')->middleware(['check_user_authenticated'])->group(function
         Route::post('/{id}/update', [CategoryController::class, 'update'])->name('category.update');
         Route::post('/post', [CategoryController::class, 'store'])->name('category.store');
         Route::delete('/{id}/destroy', [CategoryController::class, 'destroy'])->name('category.destroy');
+    });
+
+    Route::group(['prefix' => '/profissional'], function () {
+        Route::get('/{id}/profile', [ProfissionaisController::class, 'profissional'])->name('profissional.profile');
+        Route::post('/store', [ProfissionaisController::class, 'store'])->name('profissional.store');
     });
 
 
@@ -201,7 +206,6 @@ Route::prefix('admin')->middleware(['check_user_authenticated'])->group(function
         Route::get('/registerHome', [PrestadorServicoController::class, 'registerHome'])->name('prestador.registerHome');
         Route::post('/post', [PrestadorServicoController::class, 'store'])->name('prestador.store');
         Route::delete('/{id}/destroy', [PrestadorServicoController::class, 'destroy'])->name('prestador.destroy');
-        Route::get('/{id}/profile', [PrestadorServicoController::class, 'profile'])->name('prestador.profile');
     });
 
     Route::group(['prefix' => '/saloes'], function () {

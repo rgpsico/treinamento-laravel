@@ -160,7 +160,7 @@
                         @endif    
                        
                         <li class="nav-item">
-                            <a href="{{ route('prestador.profile',['id' => Auth::user()->id]) }}" class="nav-link menuDashboard">
+                            <a href="{{ route('profissional.profile',['id' => Auth::user()->id]) }}" class="nav-link menuDashboard">
                                 <i class="nav-icon fas fa-chart-pie"></i>
                                 <p>
                                     Perfil Profissional

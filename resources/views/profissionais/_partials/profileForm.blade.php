@@ -86,17 +86,17 @@ body {
     <input type="hidden" name="user_id" value="{{ Auth::id() }}">
 
 
-    <x-select :options="config('options.imovel_tipos')" name="type" label="Tipo de Profisional" selected="Selecione" col='12' :data="$data ?? ''" />
+    <x-select :options="config('options.select_profissionais')" name="type" label="Tipo de Profisional" selected="Selecione" col='12' :data="$data ?? ''" />
         
        
-    <x-select :options="config('options.simples')" name="status" value="id" label="Exibir na primeira Pagina" selected="Selecione" col='12' :data="$data ?? ''" />
+    <x-select :options="config('options.simples')" name="status" value="id" label="Exibir na primeira Pagina" selected="Selecione" col='12' :data="$model ?? ''" />
        
   
     <div class="col-12">
         <div class="form-group">
             <label for="nome" class="form-label">Nome do Profissional</label>
             <input placeholder="Ex: Casa na Nova Brasilia" type="text" id="nome" name="nome" 
-            class="form-control" value="{{ old('nome', $data->nome ?? '') }}">
+            class="form-control" value="{{ old('nome', $model->name ?? '') }}">
             @if ($errors->has('nome'))
                 <div class="text-danger">{{ $errors->first('nome') }}</div>
             @endif
@@ -108,7 +108,7 @@ body {
         <div class="form-group">
             <label for="telefone" class="form-label">Telefone para contato</label>
             <input placeholder="(21) 9999-9999" type="text" id="telefone" name="telefone"
-                class="form-control" value="{{ old('telefone',$data->telefone ?? '') }}">
+                class="form-control" value="{{ old('telefone',$model->telefone ?? '') }}">
             @if ($errors->has('telefone'))
                 <div class="text-danger">{{ $errors->first('telefone') }}</div>
             @endif
@@ -119,7 +119,7 @@ body {
         <div class="form-group">
             <label for="email" class="form-label">Email</label>
             <input placeholder="profissional@12.com" type="text" id="email" name="email"
-                class="form-control" value="{{ old('email',$data->email ?? '') }}">
+                class="form-control" value="{{ old('email',$model->email ?? '') }}">
             @if ($errors->has('email'))
                 <div class="text-danger">{{ $errors->first('email') }}</div>
             @endif
@@ -130,7 +130,7 @@ body {
         <div class="form-group">
             <label for="endereco" class="form-label">Endereço</label>
             <input placeholder="Rua saint Roman" type="text" id="endereco" name="endereco"
-                class="form-control" value="{{ old('endereco',$data->profissional->endereco ?? '') }}">
+                class="form-control" value="{{ old('endereco',$model->profissional->endereco ?? '') }}">
             @if ($errors->has('endereco'))
                 <div class="text-danger">{{ $errors->first('endereco') }}</div>
             @endif
@@ -141,7 +141,7 @@ body {
         <div class="form-group">
             <label for="instragan" class="form-label">Instagran</label>
             <input placeholder=" @intragran " type="text" id="instragan" name="instragan"
-                class="form-control" value="{{ old('instragan', $data->profissional->instragan ?? '') }}">
+                class="form-control" value="{{ old('instragan', $model->profissional->instragan ?? '') }}">
             @if ($errors->has('instragan'))
                 <div class="text-danger">{{ $errors->first('instragan') }}</div>
             @endif
@@ -152,7 +152,7 @@ body {
         <div class="form-group">
             <label for="facebook" class="form-label">FaceBook</label>
             <input placeholder="Facebook" type="text" id="facebook" name="facebook"
-                class="form-control" value="{{ old('facebook',$data->profissional->facebook ?? '') }}">
+                class="form-control" value="{{ old('facebook',$model->profissional->facebook ?? '') }}">
             @if ($errors->has('facebook'))
                 <div class="text-danger">{{ $errors->first('facebook') }}</div>
             @endif
@@ -163,7 +163,7 @@ body {
         <div class="form-group">
             <label for="description" class="form-label">Descrição do seu serviço:</label>
             <textarea id="description" cols="30" rows="5" name="sobre" class="form-control" 
-            placeholder="Ex: Profissional da area de tecnologia">{{ old('sobre', $data->profissional->sobre ?? '') }}</textarea>
+            placeholder="Ex: Profissional da area de tecnologia">{{ old('sobre', $model->profissional->sobre ?? '') }}</textarea>
             @if ($errors->has('sobre'))
                 <div class="text-danger">{{ $errors->first('sobre') }}</div>
             @endif
@@ -205,7 +205,7 @@ body {
     
     <div class="card-footer">
         <button type="submit" class="btn btn-primary"> 
-            {{isset($data) && $data == true ? 'Editar Perfil' : 'Cadastrar Perfil'}}
+            {{isset($model) && $model == true ? 'Editar Perfil' : 'Cadastrar Perfil'}}
         </button>
     </div>
     </form>

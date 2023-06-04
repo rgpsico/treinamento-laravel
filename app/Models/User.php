@@ -129,4 +129,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Comercio::class);
     }
+
+    public function profissional()
+    {
+        return $this->hasOne(Profissional::class);
+    }
 }
