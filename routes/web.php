@@ -46,6 +46,8 @@ Route::prefix('admin')->middleware(['check_user_authenticated'])->group(function
 
     Route::group(['prefix' => '/profissional'], function () {
         Route::get('/{id}/profile', [ProfissionaisController::class, 'profissional'])->name('profissional.profile');
+        Route::get('/{id}/page', [ProfissionaisController::class, 'profissionalPageBootrap'])->name('profissional.page');
+
         Route::post('/store', [ProfissionaisController::class, 'store'])->name('profissional.store');
     });
 

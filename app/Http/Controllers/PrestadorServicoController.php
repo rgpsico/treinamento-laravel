@@ -64,13 +64,7 @@ class PrestadorServicoController extends Controller
         ]);
     }
 
-    public function profissional($id)
-    {
-        $model = $this->model::where('id', $id)->get();
-        return view($this->view . '.template01.index', [
-            'model' => $model
-        ]);
-    }
+
 
     public function store(Request $request)
     {

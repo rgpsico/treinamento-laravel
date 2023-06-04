@@ -17,10 +17,24 @@ class ProfissionaisController extends Controller
         $this->model = $model;
     }
 
+    public function listar()
+    {
+
+        return view($this->view . '.list');
+    }
+
     public function profissional($id)
     {
         $model = $this->model::where('id', $id)->first();
         return view($this->view . '.profile', [
+            'model' => $model
+        ]);
+    }
+
+    public function profissionalPageBootrap($id)
+    {
+        $model = $this->model::where('id', $id)->first();
+        return view($this->view . '.template01.index', [
             'model' => $model
         ]);
     }
