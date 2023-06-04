@@ -134,4 +134,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Profissional::class);
     }
+
+    public function profissionalGallery()
+    {
+        return $this->hasMany(ProfissionalGallery::class);
+    }
 }

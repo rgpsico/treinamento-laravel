@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ProfissionalGallery;
 use App\Models\User;
+use App\Traits\UploadTrait;
 use Illuminate\Http\Request;
 
 class ProfissionaisController extends Controller
 {
+    use UploadTrait;
 
     protected $pageTitle = 'Profissionais';
     protected $view = 'profissionais';
@@ -25,7 +28,7 @@ class ProfissionaisController extends Controller
 
     public function profissional($id)
     {
-        $model = $this->model::where('id', $id)->first();
+        $model = $this->model::with('profissionalGallery')->where('id', $id)->first();
         return view($this->view . '.profile', [
             'model' => $model
         ]);
@@ -42,6 +45,7 @@ class ProfissionaisController extends Controller
 
     public function store(Request $request)
     {
+
 
         $validatedData = $request->validate([
             'nome' => 'required',
@@ -68,6 +72,32 @@ class ProfissionaisController extends Controller
             'sobre' => $request->sobre,
 
         ]);
+
+        // Fazer upload das fotos principais
+        if ($request->hasfile('fotos_principais')) {
+            foreach ($request->file('fotos_principais') as $file) {
+                $path = $this->uploadOne($file, 'fotos_principais');
+
+                ProfissionalGallery::create([
+                    'user_id' => $user->id,
+                    'image' => $path,
+                    'type' => 'fotos_principais',  // por exemplo
+                ]);
+            }
+        }
+
+        // Fazer upload das fotos do slider
+        if ($request->hasfile('fotos_slider')) {
+            foreach ($request->file('fotos_slider') as $file) {
+                $path = $this->uploadOne($file, 'fotos_slider');
+
+                ProfissionalGallery::create([
+                    'user_id' => $user->id,
+                    'image' => $path,
+                    'type' => 'fotos_portfolio',  // por exemplo
+                ]);
+            }
+        }
 
         return redirect()->back();
     }

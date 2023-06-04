@@ -81,7 +81,7 @@ body {
 <div class="card-body">
 
 
-    <form action="{{route('profissional.store')}}" method="POST">
+    <form action="{{route('profissional.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
     <input type="hidden" name="user_id" value="{{ Auth::id() }}">
 
@@ -174,24 +174,37 @@ body {
 
     <div class="row">
         <div class="form-group col-6">
-            <label class="label"> Fotos Principal</label>
+            <label class="label"> Foto Principal</label>
             <br>
-            <input type="file" name="foto[]" multiple id="foto" class="forn-control" maxlength="5">
+            <input type="file" name="fotos_principais[]" multiple id="fotos_principais" class="forn-control" maxlength="5">
             @if ($errors->has('foto'))
                 <div class="text-danger">{{ $errors->first('foto') }}</div>
             @endif
         </div>
-        <div class="col-12">           
-            <div class="gallery">                  
-            </div>          
-        </div>
     </div>
+        <div class="gallery">
+            @if(isset($model->profissionalGallery))
+                @foreach ($model->profissionalGallery as $gallery)
+                <div class="card profissionais-{{$gallery->id}}">
+                    <div class="card-body">
+                        <img class="gallery-image" src="{{ asset('imagens/profissionais/' . $gallery->image) }}" alt="{{ $model->name }}">
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-danger excluir_imagem" data-id={{$gallery->id}}>
+                            <i class="fas fa-trash-alt "></i> Excluir
+                        </button>
+                        
+                    </div>
+                </div>
+                @endforeach
+            @endif    
+        </div>
 
     <div class="row">
         <div class="form-group col-6">
             <label class="label">Foto do Slider (4) Fotos</label>
             <br>
-            <input type="file" name="foto[]" multiple id="foto" class="forn-control" maxlength="5">
+            <input type="file" name="fotos_slider[]" multiple id="fotos_slider" class="forn-control" maxlength="5">
             @if ($errors->has('foto'))
                 <div class="text-danger">{{ $errors->first('foto') }}</div>
             @endif

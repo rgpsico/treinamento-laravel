@@ -332,9 +332,14 @@
                                     <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Circus Tent</h2>
                                     <!-- Icon Divider-->
                                     <div class="divider-custom">
-                                        <div class="divider-custom-line"></div>
-                                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                        <div class="divider-custom-line"></div>
+                                        <div class="divider-custom-line">
+
+                                        </div>
+                                        <div class="divider-custom-icon">
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <div class="divider-custom-line">                                            
+                                        </div>
                                     </div>
                                     <!-- Portfolio Modal - Image-->
                                     <img class="img-fluid rounded mb-5" src="{{asset('templates/assets/img/portfolio/circus.png')}}" alt="..." />
