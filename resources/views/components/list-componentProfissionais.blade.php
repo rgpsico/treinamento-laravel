@@ -13,10 +13,13 @@
             <div class="featured-parts rounded m-t-30">
                 <a href="{{route('profissional.page', ['id' => $data->id])}}" target="_blank">
                 
+                  
                     <div class="featured-img">
+                        @if (isset($data->fotosPrincipais[0])) 
                         <img style="max-width:100%; height:200px;" class="img-fluid rounded-top"
-                            src="{{ asset('uploads/'.$data->avatar ) }}" alt="{{ $data->nome }}" />
-
+                            src="{{ asset('imagens/profissionais/'.$data->fotosPrincipais[0]->image) }}" alt="{{ $data->nome }}" />
+                        @endif
+                           
                         <img class="sponsored-img" src="{{ asset('images/ads/ads.png') }}" alt="Sponsored Image"
                             style="position:absolute; top:0; left:0;">
                     </div>
