@@ -139,4 +139,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(ProfissionalGallery::class);
     }
+
+    public function fotosPrincipais()
+    {
+        return $this->hasMany(ProfissionalGallery::class)->where('type', 'foto_principal');
+    }
+
+    public function sliderImages()
+    {
+        return $this->hasMany(ProfissionalGallery::class)->where('type', 'foto_slider');
+    }
 }

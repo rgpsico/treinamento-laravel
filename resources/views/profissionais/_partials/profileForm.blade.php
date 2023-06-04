@@ -183,17 +183,17 @@ body {
         </div>
     </div>
         <div class="gallery">
-            @if(isset($model->profissionalGallery))
-                @foreach ($model->profissionalGallery as $gallery)
+            @if(isset($model->fotosPrincipais))
+                @foreach ($model->fotosPrincipais as $gallery)
                 <div class="card profissionais-{{$gallery->id}}">
                     <div class="card-body">
-                        <img class="gallery-image" src="{{ asset('imagens/profissionais/' . $gallery->image) }}" alt="{{ $model->name }}">
+                        <img class="gallery-image" src="{{ asset('imagens/profissionais/' . $gallery->image) }}" alt="{{ $model->name }}"
+                         width="200px" height="200px" style="width:200px; height:200px;">
                     </div>
                     <div class="card-footer">
                         <button class="btn btn-danger excluir_imagem" data-id={{$gallery->id}}>
                             <i class="fas fa-trash-alt "></i> Excluir
-                        </button>
-                        
+                        </button>                        
                     </div>
                 </div>
                 @endforeach
@@ -202,7 +202,7 @@ body {
 
     <div class="row">
         <div class="form-group col-6">
-            <label class="label">Foto do Slider (4) Fotos</label>
+            <label class="label">Foto do Portifólio (4) Fotos</label>
             <br>
             <input type="file" name="fotos_slider[]" multiple id="fotos_slider" class="forn-control" maxlength="5">
             @if ($errors->has('foto'))
@@ -210,8 +210,23 @@ body {
             @endif
         </div>
         <div class="col-12">           
-            <div class="gallery">                  
-            </div>          
+            <div class="gallery">
+                @if(isset($model->sliderImages))
+                    @foreach ($model->sliderImages as $gallery)
+                    <div class="card profissionais-{{$gallery->id}}">
+                        <div class="card-body">
+                            <img class="gallery-image" src="{{ asset('imagens/profissionais/' . $gallery->image) }}" alt="{{ $model->name }}"
+                             width="200px" height="200px" style="width:200px; height:200px;">
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-danger excluir_imagem" data-id={{$gallery->id}}>
+                                <i class="fas fa-trash-alt "></i> Excluir
+                            </button>                        
+                        </div>
+                    </div>
+                    @endforeach
+                @endif    
+            </div>        
         </div>
     </div>
 
@@ -246,7 +261,7 @@ body {
         
         if (confirm('Tem certeza que deseja excluir essa imagem?')) { // pergunta de confirmação
             $.ajax({
-                url: "/api/galeria/"+id+'/delete',
+                url: "/api/profissionalImage/"+id+'/delete',
                 type: 'DELETE',
                 headers: {
                     'X-CSRF-TOKEN': token // adicionar o cabeçalho CSRF com o valor do token
@@ -255,8 +270,9 @@ body {
                     alert(response.message )
                     if(response.message == "Imagem excluída com sucesso.")
                     {
-                        $('.img_imovel-'+id).hide('slow')
+                       
                     }
+                    $('.profissionais-'+id).hide('slow')
                 },
                 error: function(xhr, status, error) {
                     console.error(error);

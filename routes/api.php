@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\ComercioApiController;
 use App\Http\Controllers\Api\ImovelApicontroller;
 use App\Http\Controllers\Api\UserApiController;
 use App\Http\Controllers\Api\EntregadoresApiController;
+use App\Http\Controllers\Api\ProfissionaisApiController;
 use App\Http\Controllers\ImageApiController;
 use App\Http\Controllers\ItensController;
 use App\Http\Controllers\ListaEsperaController;
@@ -58,6 +59,10 @@ Route::group(['prefix' => '/imovel'], function () {
 
 Route::group(['prefix' => '/galeria'], function () {
     Route::delete('/{id}/delete', [ImageApiController::class, 'delete']);
+});
+
+Route::group(['prefix' => '/profissionalImage'], function () {
+    Route::delete('/{id}/delete', [ProfissionaisApiController::class, 'delete']);
 });
 
 

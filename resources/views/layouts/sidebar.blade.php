@@ -161,7 +161,7 @@
                        
                         <li class="nav-item">
                             <a href="{{ route('profissional.profile',['id' => Auth::user()->id]) }}" class="nav-link menuDashboard">
-                                <i class="nav-icon fas fa-chart-pie"></i>
+                                <i class="fas fa-hard-hat"></i>
                                 <p>
                                     Perfil Profissional
                                 </p>
@@ -317,7 +317,7 @@
                         @if (Auth::user()->email == config('super.email') )
                             <li class="nav-item entregadores open menu-is-opening menu-open">
                             <a href="{{ route('entregadores.index') }}" class="nav-link">
-                                <i class="fas fa-bicycle"></i>
+                                <i class="fas fa-bicycle" style="font-size:10px;"></i>
                                 <p>
                                     Entregadores
                                     <i class="right fas fa-angle-left"></i>

@@ -76,12 +76,14 @@ class ProfissionaisController extends Controller
         // Fazer upload das fotos principais
         if ($request->hasfile('fotos_principais')) {
             foreach ($request->file('fotos_principais') as $file) {
-                $path = $this->uploadOne($file, 'fotos_principais');
+                $filename = time() . '.' . $file->getClientOriginalExtension();
+                $path = public_path('/imagens/profissionais/');
+                $file->move($path, $filename);
 
                 ProfissionalGallery::create([
                     'user_id' => $user->id,
-                    'image' => $path,
-                    'type' => 'fotos_principais',  // por exemplo
+                    'image' => $filename,
+                    'type' => 'foto_principal',  // por exemplo
                 ]);
             }
         }
@@ -89,12 +91,14 @@ class ProfissionaisController extends Controller
         // Fazer upload das fotos do slider
         if ($request->hasfile('fotos_slider')) {
             foreach ($request->file('fotos_slider') as $file) {
-                $path = $this->uploadOne($file, 'fotos_slider');
+                $filename = time() . '.' . $file->getClientOriginalExtension();
+                $path = public_path('/imagens/profissionais/');
+                $file->move($path, $filename);
 
                 ProfissionalGallery::create([
                     'user_id' => $user->id,
-                    'image' => $path,
-                    'type' => 'fotos_portfolio',  // por exemplo
+                    'image' => $filename,
+                    'type' => 'foto_slider',  // por exemplo
                 ]);
             }
         }
