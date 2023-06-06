@@ -86,10 +86,10 @@ body {
     <input type="hidden" name="user_id" value="{{ Auth::id() }}">
 
 
-    <x-select :options="config('options.select_profissionais')" name="tipo" label="Tipo de Profisional" selected="Selecione" col='12' :data="$data ?? ''" />
+    <x-select :options="config('options.select_profissionais')" name="tipo" label="Tipo de Profisional" selected="tipo" col='12' :data="$data ?? ''" />
         
        
-    <x-select :options="config('options.simples')" name="status" value="id" label="Exibir na primeira Pagina" selected="Selecione" col='12' :data="$model ?? ''" />
+    <x-select :options="config('options.simples')" name="status" value="status" label="Exibir na primeira Pagina" selected="status" col='12' :data="$model ?? ''" />
        
   
     <div class="col-12">
