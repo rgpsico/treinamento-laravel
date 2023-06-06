@@ -70,7 +70,8 @@ class ProfissionaisController extends Controller
             'instragan' => $request->instragan,
             'facebook' => $request->facebook,
             'sobre' => $request->sobre,
-
+            'status' => $request->status,
+            'tipo' => $request->tipo,
         ]);
 
         // Fazer upload das fotos principais
