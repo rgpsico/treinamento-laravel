@@ -10,7 +10,10 @@ class Profissional extends Model
     use HasFactory;
 
     protected $table = 'profissional';
-    protected $fillable = ['user_id', 'especialidade', 'sobre', 'facebook', 'instagran', 'experiencia', 'endereco'];
+    protected $fillable = [
+        'user_id', 'especialidade', 'sobre', 'facebook', 'instagran', 'experiencia', 'endereco',
+        'status', 'tipo'
+    ];
 
 
     public function user()
