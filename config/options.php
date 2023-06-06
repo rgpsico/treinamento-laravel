@@ -16,9 +16,9 @@ return [
 
     'select_profissionais' => [
         '' => 'Selecione',
-        '1' => 'Eletricista',
-        '2' => 'Pedreiro',
-        '4' => 'Entulheiro',
+        1 => 'Eletricista',
+        2 => 'Pedreiro',
+        4 => 'Entulheiro',
     ],
 
     'simples' => [

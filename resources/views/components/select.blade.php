@@ -5,9 +5,14 @@
         <label class="labels mb-0">{{ $label }}</label>
     @endisset
 
+  
+ 
     @if (isset($data) && $data != null)
+    
         <select name="{{$name}}" id="{{$name}}" class="form-control m-0">
             @foreach($options as $value => $label)
+      
+          
                 <option value="{{ $value }}" {{ ($data[$name] == $value) ? 'selected' : '' }}>{{ $label }}</option>
             @endforeach
         </select>
