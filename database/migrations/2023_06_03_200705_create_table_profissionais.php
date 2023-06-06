@@ -21,6 +21,7 @@ class CreateTableProfissionais extends Migration
             $table->string('facebook')->nullable();
             $table->string('instagran')->nullable();
             $table->string('endereco')->nullable();
+            $table->integer('tipo')->default(0);
             $table->timestamps();
         });
     }

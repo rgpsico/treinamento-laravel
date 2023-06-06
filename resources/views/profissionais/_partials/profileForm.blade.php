@@ -106,9 +106,9 @@ body {
   
     <div class="col-12 mb-4">
         <div class="form-group">
-            <label for="telefone" class="form-label">Telefone para contato</label>
+            <label for="telefone" class="form-label">Telefone parasss contato</label>
             <input placeholder="(21) 9999-9999" type="text" id="telefone" name="telefone"
-                class="form-control" value="{{ old('telefone',$model->telefone ?? '') }}">
+                class="form-control" value="{{ old('telefone', $model->telefone ?? '') }}">
             @if ($errors->has('telefone'))
                 <div class="text-danger">{{ $errors->first('telefone') }}</div>
             @endif

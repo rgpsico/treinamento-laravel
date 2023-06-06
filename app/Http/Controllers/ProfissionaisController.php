@@ -103,6 +103,6 @@ class ProfissionaisController extends Controller
             }
         }
 
-        return redirect()->back();
+        return redirect()->route('profissional.profile', ['id' => $user->id]);
     }
 }
