@@ -17,7 +17,7 @@ class CreateUsersProductsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('product_id');
-            $table->integer('quantity'); // Novo campo: quantidade
+            $table->integer('quantity');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
