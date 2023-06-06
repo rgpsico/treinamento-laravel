@@ -15,7 +15,6 @@ class AddComercioIdToProdutosTable extends Migration
     {
         Schema::table('products', function (Blueprint $table) {
             $table->unsignedBigInteger('comercio_id')->after('id');
-
             $table->foreign('comercio_id')->references('id')->on('comercios')->onDelete('cascade');
         });
     }
@@ -28,7 +27,7 @@ class AddComercioIdToProdutosTable extends Migration
     public function down()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->dropForeign(['comercio_id']);
+            // $table->dropForeign(['id']);
             $table->dropColumn('comercio_id');
         });
     }
