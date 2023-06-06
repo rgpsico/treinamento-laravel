@@ -22,6 +22,7 @@ class CreateTableProfissionais extends Migration
             $table->string('instagran')->nullable();
             $table->string('endereco')->nullable();
             $table->integer('tipo')->default(0);
+            $table->integer('status')->default(0); // 1 ativo 0 inativo
             $table->timestamps();
         });
     }
