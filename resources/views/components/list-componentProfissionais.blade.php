@@ -4,12 +4,31 @@
         top: 0;
         left: 0;
     }
+    .fade-out {
+    transition: opacity 0.3s ease;
+}
+
+.fade-in {
+    transition: opacity 0.3s ease;
+    display: none;  /* Inicialmente escondida */
+}
+
+[wire\:loading].fade-in,  /* Mostra enquanto carrega */
+[wire\:loading.remove].fade-out {  /* Esconde enquanto carrega */
+    opacity: 0;
+}
+
+[wire\:loading].fade-in {  
+    display: block;  /* Mostra enquanto carrega */
+}
+
+
 </style>
 
-<div class="row">
+<div class="row fade-out" >
 
     @foreach ($model as $data)
-        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6" wire:loading.remove>
             <div class="featured-parts rounded m-t-30">
                 <a href="{{route('profissional.page', ['id' => $data->id])}}" target="_blank">
                 

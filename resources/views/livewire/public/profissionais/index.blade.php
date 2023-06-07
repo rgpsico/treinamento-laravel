@@ -21,7 +21,7 @@
                     </div>
 
                     <div class="form-group selectdiv col-5">
-                        <x-select :options="config('options.select_profissionais')"  wiremodel="tipo" selected="Selecione" col='12'  />
+                        <x-select :options="config('options.select_profissionais')"   wiremodel="tipo" selected="Selecione" col='12'  />
 
                     </div>
                   
@@ -36,7 +36,7 @@
             </div>
        
         
-            <x-list-componentProfissionais :model="$model"  routeUrl="show.profissionais" pasta="imagens/entregadores/" />
+            <x-list-componentProfissionais wire:loading.remove :model="$model"  routeUrl="show.profissionais" pasta="imagens/entregadores/" />
 
 
 
