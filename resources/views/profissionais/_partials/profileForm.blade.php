@@ -75,20 +75,17 @@ body {
 
 
 <div class="col-6 mb-2 d-flex justify-content-start align-items-start">
-    <h1 class="text-dark font-weight-bold">Editar Perfil  </h1>
+    <h1 class="text-dark font-weight-bold">Editar Perfil Profissional  </h1>
 </div>
 
 <div class="card-body">
-
-
     <form action="{{route('profissional.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
     <input type="hidden" name="user_id" value="{{ Auth::id() }}">
 
-
     <x-select :options="config('options.select_profissionais')" name="tipo" label="Tipo de Profisional" selected="tipo" col='12' :data="$model->profissional ?? ''" />
         
-       
+  
     <x-select :options="config('options.simples')" name="status" value="status" label="Exibir na primeira Pagina" selected="status" col='12' :data="$model->profissional ?? ''" />
        
   

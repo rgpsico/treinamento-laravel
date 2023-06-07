@@ -223,7 +223,7 @@ class UserdataController extends Controller
             $user->profissional()->create([
                 'user_id' => $user->id,
                 'especialidade' => 1,
-                'tipo' => 1
+                // 'tipo' => 1
             ]);
 
             $user->userTipoUsers()->create([
