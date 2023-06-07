@@ -173,7 +173,7 @@ body {
         <div class="form-group col-6">
             <label class="label"> Foto Principal</label>
             <br>
-            <input type="file" name="fotos_principais[]" multiple id="fotos_principais" class="forn-control" maxlength="5">
+            <input type="file" name="fotos_principais[]"  id="fotos_principais" class="forn-control" maxlength="5">
             @if ($errors->has('foto'))
                 <div class="text-danger">{{ $errors->first('foto') }}</div>
             @endif
@@ -266,6 +266,14 @@ body {
 });
 
    $(document).ready(function() {
+
+    $('#fotos_principais').on('change', function() {
+        if(this.files.length > 1) {
+            alert('Você só pode selecionar 1 arquivo.');
+            this.value = '';
+        }
+    });
+
     $(document).on('click', '.excluir_imagem', function(e) {
         e.preventDefault();
 

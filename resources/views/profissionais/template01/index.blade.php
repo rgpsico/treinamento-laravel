@@ -15,27 +15,55 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+      
         <link href="{{asset('templates/css/styles.css')}}" rel="stylesheet" />
     </head>
     
     <style>
-        #seu_id {
+
+.whatsapp-button{
     position: fixed;
-    right: 0;
-    bottom: 40px;
-    transform: rotate(-20deg);
-    transform-origin: 100% 100%;
-    z-index: 999;
-    font-size: 70px;
-    color:green;
- 
+    bottom: 20px;
+    right: 25px;
+    z-index: 99;
+    background-color: #25d366;
+    border-radius: 50px;
+    color: #ffffff;
+    text-decoration: none;
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    -webkit-box-shadow: 0px 0px 25px -6px rgba(0,0,0,1);
+    -moz-box-shadow: 0px 0px 25px -6px rgba(0,0,0,1);
+    box-shadow: 0px 0px 25px -6px rgba(0,0,0,1);
+    animation: effect 5s infinite ease-in;
 }
 
+@keyframes effect {
+    20%, 100% {
+        width: 50px;
+        height: 50px;
+        font-size: 30px;
+    }
+    0%, 10%{
+        width: 55px;
+        height: 55px;
+        font-size: 35px;
+    }
+    5%{
+        width: 50px;
+        height: 50px;
+        font-size: 30px;
+    }
+}
         </style>
     <body id="page-top">
-        <a href="#" id="seu_id">
-            <i class="fab fa-whatsapp" style="font-size: 40px"></i>
-        </a>
+        <a target="_blank" href="https://api.whatsapp.com/send?phone=&text=" class="whatsapp-button"><i class="fab fa-whatsapp"></i></a>
         
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
@@ -169,19 +197,15 @@
                     <!-- Footer Social Icons-->
                     <div class="col-lg-4 mb-5 mb-lg-0">
                         <h4 class="text-uppercase mb-4">MInhas redes sociais </h4>
-                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a>
-                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-linkedin-in"></i></a>
-                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
+                       
+                        <a class="btn btn-outline-light btn-social mx-1" href="{{$model->profissional->facebook ?? ''}}"><i class="fab fa-fw fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social mx-1" href="{{$model->profissional->facebook ??  ''}}"><i class="fab fa-fw fa-twitter"></i></a>
                     </div>
                     <!-- Footer About Text-->
                     <div class="col-lg-4">
                         <h4 class="text-uppercase mb-4">Sobre  Nós</h4>
-                        <p class="lead mb-0">
-                           Todos os direitos 
-                            <a href="https://rogerneves.com.br">Roger Neves</a>
-                            .
-                        </p>
+                       <p>{!! \Illuminate\Support\Str::limit($model->profissional->sobre, 100, '...') !!}
+                    </p>
                     </div>
                 </div>
             </div>

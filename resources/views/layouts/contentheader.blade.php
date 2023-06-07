@@ -1,3 +1,4 @@
+@livewireStyles
 <div class="content-wrapper" style="min-height: 1302.12px;">
 
     <div class="content-header">
@@ -12,3 +13,4 @@
             </div>
         </div>
     </div>
+    @livewireScripts

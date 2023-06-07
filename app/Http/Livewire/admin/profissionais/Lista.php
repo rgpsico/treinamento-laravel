@@ -15,37 +15,44 @@ class Lista extends Component
     protected $paginationTheme = 'bootstrap';
 
     public $search;
-    public $type;
+    public $tipo;
     public $place;
     public $price;
     public $todos = false;
     public $qualificado;
     public $ordem;
 
-    protected $queryString = ['search'];
+    protected $queryString = ['search', 'tipo'];
 
     protected $listeners = ['todos' => 'todos'];
 
     public function render()
     {
 
-        $model = User::with('fotosPrincipais')->select('id', 'name', 'email', 'telefone', 'avatar');
-
+        $model = User::with('fotosPrincipais')
+            ->whereHas('profissional', function ($query) {
+                $query->where('profissional.status', 1);
+            })
+            ->select('id', 'name', 'email', 'telefone', 'avatar');
 
 
         if ($this->search) {
             $model->where(function ($query) {
-                $model = $query->where("name", "like", $this->search);
+                $query->where("name", "like", $this->search);
+            });
+        }
+
+        if ($this->tipo) {
+            $model->whereHas('profissional', function ($query) {
+                $query->where('profissional.tipo', $this->tipo);
             });
         }
 
         if ($this->place) {
             $model->where(function ($query) {
-                $model = $query->where("telefone", "like", $this->place);
+                $query->where("telefone", "like", $this->place);
             });
         }
-
-
 
 
         $countLeads = $model->count();
@@ -63,8 +70,6 @@ class Lista extends Component
         } else {
             $model = $model->paginate(10);
         }
-
-
 
         return view('livewire.public.profissionais.index', compact('model'));
     }
