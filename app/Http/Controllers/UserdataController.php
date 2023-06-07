@@ -159,13 +159,14 @@ class UserdataController extends Controller
             'name' => 'required',
             'email' => 'required|unique:users',
             'type' => 'required',
-            'telefone' => 'required',
+            'telefone' => 'required|unique:users',
             'password' => 'required|same:confirm_password',
         ], [
             'name.required' => 'O campo nome é obrigatório.',
-            'email.required' => 'O campo email é obrigatório.',
             'email.unique' => 'Este email já está em uso.',
+            'email.required' => 'O campo email é obrigatório.',
             'type.required' => 'O campo tipo é obrigatório.',
+            'telefone.unique' => 'Este Telefone já está em uso.',
             'telefone.required' => 'O campo telefone é obrigatório.',
             'password.required' => 'O campo senha é obrigatório.',
             'password.same' => 'As senhas informadas não são iguais.',
@@ -201,6 +202,9 @@ class UserdataController extends Controller
         ]);
 
 
+
+        auth()->login($user);
+
         $tiposUsuarios = [
             'Quero so alugar uma casa',
             'Entregador',
@@ -216,6 +220,12 @@ class UserdataController extends Controller
         }
 
         if ($tipoUsuario) {
+            $user->profissional()->create([
+                'user_id' => $user->id,
+                'especialidade' => 1,
+                'tipo' => 1
+            ]);
+
             $user->userTipoUsers()->create([
                 'user_id' => $user->id,
                 'tipo_usuario_id' => $request->type
@@ -224,6 +234,10 @@ class UserdataController extends Controller
 
 
 
+
+        if ($request->type == 3) {
+            return redirect()->route('profissional.profile', ['id' => $user->id])->with('success', 'Cadastrado com sucesso!');
+        }
 
         if ($request->type == 5) {
             if (!$permission_id = DB::table('permissoes')->where('name', '=', 'ver_comercio')->value('id')) {
@@ -243,17 +257,7 @@ class UserdataController extends Controller
         }
 
 
-
-
-
-
-
-
-
-        if ($user) {
-            auth()->login($user);
-            return redirect()->route('novo.categoria')->with('success', 'Cadastrado com sucesso!');
-        }
+        return redirect()->route('novo.categoria')->with('success', 'Cadastrado com sucesso!');
     }
 
     /**
