@@ -20,6 +20,7 @@ return [
         2 => 'Mestre de Obra',
         3 => 'Eletricista',
         4 => 'Adestrador',
+        5 => 'Moto-Taxi',
     ],
 
     'simples' => [

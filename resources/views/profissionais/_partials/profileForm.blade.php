@@ -5,13 +5,14 @@
         font-weight: 600;
     }
 
-    .gallery {
+    .gallery 
+    {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
     margin-top: 20px;
-}
+   }
 
 .gallery-image {
     width: 200px;
@@ -103,7 +104,7 @@ body {
   
     <div class="col-12 mb-4">
         <div class="form-group">
-            <label for="telefone" class="form-label">Telefone parasss contato</label>
+            <label for="telefone" class="form-label">Telefone</label>
             <input placeholder="(21) 9999-9999" type="text" id="telefone" name="telefone"
                 class="form-control" value="{{ old('telefone', $model->telefone ?? '') }}">
             @if ($errors->has('telefone'))

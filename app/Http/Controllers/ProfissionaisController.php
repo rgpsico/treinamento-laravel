@@ -57,6 +57,7 @@ class ProfissionaisController extends Controller
         $user = User::findOrFail($request->user_id);
 
         $user->update([
+            'name' => $request->nome,
             'email' => $request->email,
             'telefone' => $request->telefone,
         ]);
@@ -66,6 +67,7 @@ class ProfissionaisController extends Controller
 
         $professional->update([
             'nome' => $request->nome,
+            'titulo' => $request->titulo,
             'endereco' => $request->endereco,
             'instragan' => $request->instragan,
             'facebook' => $request->facebook,
@@ -81,21 +83,34 @@ class ProfissionaisController extends Controller
                 $path = public_path('/imagens/profissionais/');
                 $file->move($path, $filename);
 
-                ProfissionalGallery::create([
-                    'user_id' => $user->id,
-                    'image' => $filename,
-                    'type' => 'foto_principal',  // por exemplo
-                ]);
+                ProfissionalGallery::updateOrCreate(
+                    [
+                        'user_id' => $user->id,
+                        'type' => 'foto_principal',
+                    ],
+                    [
+                        'image' => $filename,
+                    ]
+                );
             }
         }
 
         // Fazer upload das fotos do slider
         if ($request->hasfile('fotos_slider')) {
-            foreach ($request->file('fotos_slider') as $file) {
-                $filename = time() . '.' . $file->getClientOriginalExtension();
+            $uploadedFiles = [];
+
+
+
+            foreach ($request->file('fotos_slider') as $key => $file) {
+                $filename = time() . $key . '.' . $file->getClientOriginalExtension();
                 $path = public_path('/imagens/profissionais/');
                 $file->move($path, $filename);
 
+                $uploadedFiles[] = $filename; // Armazena os nomes dos arquivos carregados em um array
+            }
+
+            // Após percorrer o loop, insira os registros no banco de dados
+            foreach ($uploadedFiles as $filename) {
                 ProfissionalGallery::create([
                     'user_id' => $user->id,
                     'image' => $filename,

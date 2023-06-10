@@ -36,7 +36,7 @@
             </div>
        
         
-            <x-list-componentProfissionais wire:loading.remove :model="$model"  routeUrl="show.profissionais" pasta="imagens/entregadores/" />
+            <x-list-componentProfissionais :model="$model"  routeUrl="show.profissionais" pasta="imagens/entregadores/" />
 
 
 
