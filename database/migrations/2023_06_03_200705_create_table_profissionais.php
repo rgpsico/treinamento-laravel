@@ -16,7 +16,7 @@ class CreateTableProfissionais extends Migration
         Schema::create('profissional', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('titulo')->nullable();
+
             $table->string('especialidade')->nullable();
             $table->string('sobre')->nullable();
             $table->string('facebook')->nullable();
