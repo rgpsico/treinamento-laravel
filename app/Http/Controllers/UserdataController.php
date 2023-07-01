@@ -154,7 +154,6 @@ class UserdataController extends Controller
     public function store(Request $request)
     {
 
-
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|unique:users',
@@ -171,7 +170,6 @@ class UserdataController extends Controller
             'password.required' => 'O campo senha é obrigatório.',
             'password.same' => 'As senhas informadas não são iguais.',
         ]);
-
 
 
         if ($validator->fails()) {
@@ -233,27 +231,21 @@ class UserdataController extends Controller
         }
 
 
-
-
         if ($request->type == 3) {
-            return redirect()->route('profissional.profile', ['id' => $user->id])->with('success', 'Cadastrado com sucesso!');
+
+            return redirect()->route(
+                'profissional.profile',
+                ['id' => $user->id]
+            )->with('success', 'Cadastrado com sucesso!');
         }
 
-        if ($request->type == 5) {
+        if ($request->type == 4) {
             if (!$permission_id = DB::table('permissoes')->where('name', '=', 'ver_comercio')->value('id')) {
                 $permission_id = DB::table('permissoes')->insertGetId([
                     'name' => 'ver_comercio',
                     'label' => 'Ver comercio'
                 ]);
             }
-
-
-
-            DB::table('permissoes_users')->insert([
-                'user_id' => $user->id,
-                'permission_id' => $permission_id
-
-            ]);
         }
 
 

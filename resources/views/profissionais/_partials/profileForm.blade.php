@@ -101,6 +101,19 @@ body {
         </div>
     </div>
 
+    <div class="col-12">
+        <div class="form-group">
+            <label for="titulo" class="form-label">Nome da Empresa</label>
+            <input placeholder="Ex: Redes de proteção ltda" type="text" id="titulo" 
+            name="titulo" 
+            class="form-control" 
+            value="{{ old('titulo', $model->profissional->titulo ?? '') }}">
+            @if ($errors->has('titulo'))
+                <div class="text-danger">{{ $errors->first('titulo') }}</div>
+            @endif
+        </div>
+    </div>
+
   
     <div class="col-12 mb-4">
         <div class="form-group">

@@ -20,7 +20,7 @@
                             placeholder="Nome do Entregador">
                     </div>
 
-                    <div class="form-group selectdiv col-5">
+                    <div class="form-group selectdiv">
                         <x-select :options="config('options.select_profissionais')"   wiremodel="tipo" selected="Selecione" col='12'  />
 
                     </div>

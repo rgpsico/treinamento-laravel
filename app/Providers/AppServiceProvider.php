@@ -37,6 +37,7 @@ class AppServiceProvider extends AuthServiceProvider
         User::observe(UserObserver::class);
 
 
+
         $permissoes = Permissoes::all() ?? '';
 
 

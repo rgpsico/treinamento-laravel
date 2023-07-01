@@ -12,7 +12,7 @@ class Profissional extends Model
     protected $table = 'profissional';
     protected $fillable = [
         'user_id', 'especialidade', 'sobre', 'facebook', 'instagran', 'experiencia', 'endereco',
-        'status', 'tipo'
+        'status', 'tipo',   'titulo'
     ];
 
 

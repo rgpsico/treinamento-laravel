@@ -21,6 +21,8 @@ class StripeController extends Controller
     {
         $valor = 10 * 100;
         $email = "rgyr2010@hotmail.com";
+
+        dd($request->all());
         $token = $request->input('stripeToken');
 
 

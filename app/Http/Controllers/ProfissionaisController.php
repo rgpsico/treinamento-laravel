@@ -76,6 +76,8 @@ class ProfissionaisController extends Controller
             'tipo' => $request->tipo,
         ]);
 
+
+
         // Fazer upload das fotos principais
         if ($request->hasfile('fotos_principais')) {
             foreach ($request->file('fotos_principais') as $file) {
