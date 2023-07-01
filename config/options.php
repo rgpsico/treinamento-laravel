@@ -22,6 +22,14 @@ return [
         4 => 'Adestrador',
         5 => 'Moto-Taxi',
     ],
+    'select_comunidade' => [
+        '' => 'Selecione',
+        1 => 'Cantagalo',
+        2 => 'Pavão'
+        // 3 => 'Eletricista',
+        // 4 => 'Adestrador',
+        // 5 => 'Moto-Taxi',
+    ],
 
     'simples' => [
         '1' => 'Sim',

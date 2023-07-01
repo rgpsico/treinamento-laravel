@@ -121,6 +121,7 @@ body {
     </div>
 
 
+    <x-select :options="config('options.select_comunidade')"  label="Comunidade" wiremodel="place" selected="Selecione" col='12'  />
 
 
 
