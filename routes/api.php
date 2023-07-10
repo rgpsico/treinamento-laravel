@@ -10,6 +10,7 @@ use App\Http\Controllers\ItensController;
 use App\Http\Controllers\ListaEsperaController;
 use App\Http\Controllers\ProprietarioController;
 use App\Http\Controllers\StripeController;
+use App\Http\Controllers\TreinoController;
 use App\Http\Controllers\UserdataController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -42,6 +43,10 @@ Route::group(['prefix' => '/users'], function () {
 Route::group(['prefix' => '/itens'], function () {
     Route::post('/store', [ItensController::class, 'store']);
     Route::delete('/{id}/delete', [ItensController::class, 'delete']);
+});
+
+Route::group(['prefix' => '/gpt'], function () {
+    Route::post('/', [TreinoController::class, 'gpt']);
 });
 
 Route::post('/upload-imagem', [UserApiController::class, 'upload'])->name('user.upload');

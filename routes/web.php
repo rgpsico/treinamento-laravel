@@ -237,6 +237,20 @@ Route::middleware(['auth'])->get('/dashboard', [DashBoardController::class, 'ind
 
 Route::get('/redis', [RedisController::class, 'index']);
 
+Route::get('/users/nocache', function () {
+    return App\Models\User::all();
+});
+
+
+use Illuminate\Support\Facades\Cache;
+
+Route::get('/users/cache', function () {
+    return Cache::remember('users', 60, function () {
+        return App\Models\User::all();
+    });
+});
+
+
 Route::get('/treino', [SiteController::class, 'index']);
 
 Route::get('/create-posts', function () {

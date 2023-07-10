@@ -53,8 +53,12 @@
 
                             @if (!Auth::check())
                             <li class="nav-item"> 
-                               <a class="nav-link" href="{{ route('user.create') }}">Registrar</a>
+                               <a class="nav-link" href="{{ route('user.create') }}">Registrar Aluno</a>
                             </li>
+
+                            <li class="nav-item"> 
+                                <a class="nav-link" href="{{ route('user.create') }}">Registrar Professor</a>
+                             </li>
                              @endif 
                             
                               @if (Auth::check())
