@@ -104,6 +104,7 @@ class PrestadorServicoController extends Controller
         return redirect()->route('comercio.index', ['comercio' => $comercio->id]);
     }
 
+
     public function show($id)
     {
         $model = $this->model->find($id);

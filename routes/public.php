@@ -13,7 +13,12 @@ Route::get('/home', [ImovelController::class, 'home'])->name('novo.home');
 
 Route::get('/login', [UserdataController::class, 'login'])->name('user.login');
 Route::post('/login', [UserdataController::class, 'auth'])->name('user.auth');
+
 Route::get('/register', [UserdataController::class, 'register'])->name('user.create');;
+Route::get('/registerAmigo', [UserdataController::class, 'registerAmigo'])->name('user.registerAmigo');;
+Route::get('/registerHome', [EntregadoresController::class, 'registerHome'])->name('entregadores.registerHome');
+
+
 Route::post('/store', [UserdataController::class, 'store'])->name('user.store');;
 Route::get('/logout', [UserdataController::class, 'logout'])->name('logout');;
 Route::get('/', [ImovelController::class, 'categoria']);
@@ -42,14 +47,4 @@ Route::group(['prefix' => '/public'], function () {
         Route::get('', [ProfissionaisController::class, 'listar'])->name('listar.profissionais.public');
         Route::get('/{id}/detalhes', [ProfissionaisController::class, 'show'])->name('show.profissionais.public');
     });
-
-
-
-
-
-
-
-
-
-    Route::get('/registerHome', [EntregadoresController::class, 'registerHome'])->name('entregadores.registerHome');
 });

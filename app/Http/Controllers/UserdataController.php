@@ -145,6 +145,15 @@ class UserdataController extends Controller
         return view('novo.login.register', compact('tipoUser'));
     }
 
+
+
+    public function registerAmigo()
+    {
+
+        $tipoUser = UserTipo::all();
+        return view('novo.login.registerAmigo', compact('tipoUser'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -159,7 +168,7 @@ class UserdataController extends Controller
             'email' => 'required|unique:users',
             'type' => 'required',
             'telefone' => 'required|unique:users',
-            'password' => 'required|same:confirm_password',
+            // 'password' => 'required|same:confirm_password',
         ], [
             'name.required' => 'O campo nome é obrigatório.',
             'email.unique' => 'Este email já está em uso.',
@@ -167,8 +176,8 @@ class UserdataController extends Controller
             'type.required' => 'O campo tipo é obrigatório.',
             'telefone.unique' => 'Este Telefone já está em uso.',
             'telefone.required' => 'O campo telefone é obrigatório.',
-            'password.required' => 'O campo senha é obrigatório.',
-            'password.same' => 'As senhas informadas não são iguais.',
+            // 'password.required' => 'O campo senha é obrigatório.',
+            // 'password.same' => 'As senhas informadas não são iguais.',
         ]);
 
 
@@ -196,7 +205,7 @@ class UserdataController extends Controller
             'email' => $request->email,
             'telefone' => $request->telefone,
             'avatar' => $filename ?? '',
-            'password' => Hash::make($request->password),
+            'password' => Hash::make($request->password ?? '12456'),
         ]);
 
 
@@ -249,7 +258,7 @@ class UserdataController extends Controller
         }
 
 
-        return redirect()->route('novo.categoria')->with('success', 'Cadastrado com sucesso!');
+        return redirect()->route('entregadores.registerHome')->with('success', 'Cadastrado com sucesso!');
     }
 
     /**

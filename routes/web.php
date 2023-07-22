@@ -33,6 +33,8 @@ Route::get('/stripe', [StripeController::class, 'index'])->name('stripe.index');
 
 Route::get('/{id}/profissional', [PrestadorServicoController::class, 'profissional'])->name('profissional');
 Route::get('/{id}/page', [ProfissionaisController::class, 'profissionalPageBootrap'])->name('profissional.page');
+Route::get('indicacao', [ProfissionaisController::class, 'indicacao'])->name('indicacao');
+Route::post('indicacao', [ProfissionaisController::class, 'indicacao'])->name('indicacao');
 
 Route::prefix('admin')->middleware(['check_user_authenticated'])->group(function () {
     Route::group(['prefix' => '/categoria'], function () {

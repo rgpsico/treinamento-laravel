@@ -36,17 +36,17 @@ class AppServiceProvider extends AuthServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-        Permissoes::observe(PermissoesObserver::class);
-        User::observe(UserObserver::class);
+        // Permissoes::observe(PermissoesObserver::class);
+        // User::observe(UserObserver::class);
 
-        $permissoes = Cache::remember('permissoes', 60, function () {
-            return Permissoes::all();
-        });
+        // $permissoes = Cache::remember('permissoes', 60, function () {
+        //     return Permissoes::all();
+        // });
 
-        foreach ($permissoes as $permissao) {
-            Gate::define($permissao->name, function ($user) use ($permissao) {
-                return $user->temPermissao($permissao->name) || $user->is_admin;
-            });
-        }
+        // foreach ($permissoes as $permissao) {
+        //     Gate::define($permissao->name, function ($user) use ($permissao) {
+        //         return $user->temPermissao($permissao->name) || $user->is_admin;
+        //     });
+        // }
     }
 }

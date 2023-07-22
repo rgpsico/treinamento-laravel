@@ -43,6 +43,41 @@ class ProfissionaisController extends Controller
     }
 
 
+
+    public function indicacao(Request $request)
+    {
+        $validatedData = $request->validate([
+            'nome' => 'required',
+            'telefone' => 'required',
+            'email' => 'required|email',
+        ]);
+
+        dd('aaa');
+
+
+        $user = User::findOrFail($request->user_id);
+
+        $user->update([
+            'name' => $request->nome,
+            'email' => $request->email,
+            'telefone' => $request->telefone,
+        ]);
+
+        $professional = $user->profissional()->firstOrCreate([]);
+
+
+        $professional->update([
+            'nome' => $request->nome,
+            'titulo' => $request->titulo,
+            'endereco' => $request->endereco,
+            'instragan' => $request->instragan,
+            'facebook' => $request->facebook,
+            'sobre' => $request->sobre,
+            'status' => $request->status,
+            'tipo' => $request->tipo,
+        ]);
+    }
+
     public function store(Request $request)
     {
 
