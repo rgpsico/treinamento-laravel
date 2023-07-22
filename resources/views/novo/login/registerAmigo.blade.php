@@ -1,9 +1,9 @@
 <x-layout title="Register">
     <div class="container p-5">
-        {{-- <x-alert /> --}}
+        <x-alert />
 
 
-        <form action="{{ route('user.store') }}" method="POST" id="formRegister" enctype="multipart/form-data">
+        <form action="{{ route('user.storeIndicacao') }}" method="POST" id="formRegister" enctype="multipart/form-data">
 
             @csrf
            <div class="row">

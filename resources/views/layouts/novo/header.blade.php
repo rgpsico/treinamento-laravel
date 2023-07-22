@@ -55,8 +55,8 @@
                             <li class="nav-item dropdown"> 
                                 <a class="nav-link dropdown-toggle show" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> Registro </a>
                                 <ul class="b-none dropdown-menu font-14 animated fadeInUp hidden">                                       
-                                  <li><a class="dropdown-item" href="{{ route('user.create') }}">SOu Profissional </a></li>
-                                  <li><a class="dropdown-item" href="{{ route('user.registerAmigo') }}">Sou Amigo de um Profissional </a></li>
+                                  <li><a class="dropdown-item" href="{{ route('user.create') }}">Sou Profissional </a></li>
+                                  <li><a class="dropdown-item" href="{{ route('user.registerAmigo') }}">Quero regitrar um Profissional </a></li>
                                 
                                 </ul>
                             </li>

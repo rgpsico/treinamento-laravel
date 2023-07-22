@@ -261,6 +261,99 @@ class UserdataController extends Controller
         return redirect()->route('entregadores.registerHome')->with('success', 'Cadastrado com sucesso!');
     }
 
+
+    public function storeIndicacao(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|unique:users',
+            'type' => 'required',
+            'telefone' => 'required|unique:users',
+            // 'password' => 'required|same:confirm_password',
+        ], [
+            'name.required' => 'O campo nome é obrigatório.',
+            'email.unique' => 'Este email já está em uso.',
+            'email.required' => 'O campo email é obrigatório.',
+            'type.required' => 'O campo tipo é obrigatório.',
+            'telefone.unique' => 'Este Telefone já está em uso.',
+            'telefone.required' => 'O campo telefone é obrigatório.',
+            // 'password.required' => 'O campo senha é obrigatório.',
+            // 'password.same' => 'As senhas informadas não são iguais.',
+        ]);
+
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput()
+                ->with('error', 'Usuário Não pode ser Cadastrado!');
+        }
+
+        $filename = public_path('images/avatar.png');
+
+        if ($request->hasFile('avatar')) {
+            $filename = time() . '_' . rand() . '.' . $request->file('avatar')->getClientOriginalExtension();
+            $path = public_path('imagens/entregadores/');
+            $request->file('avatar')->move($path, $filename);
+            $data['avatar'] = $filename;
+        }
+
+
+
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'telefone' => $request->telefone,
+            'avatar' => $filename ?? '',
+            'password' => Hash::make($request->password ?? '12456'),
+        ]);
+
+
+        $tiposUsuarios = [
+            'Quero so alugar uma casa',
+            'Entregador',
+            'Profissional',
+            'Dono de imoveis',
+            'Comerciante',
+        ];
+
+        foreach ($tiposUsuarios as $tipoUsuario) {
+            UserTipo::firstOrCreate([
+                'nome' => $tipoUsuario
+            ]);
+        }
+
+        if ($tipoUsuario) {
+            $user->profissional()->create([
+                'user_id' => $user->id,
+                'especialidade' => 1,
+                // 'tipo' => 1
+            ]);
+
+            $user->userTipoUsers()->create([
+                'user_id' => $user->id,
+                'tipo_usuario_id' => $request->type
+            ]);
+        }
+
+
+        if ($request->type == 3) {
+
+            return redirect()->route(
+                'profissional.profile',
+                ['id' => $user->id]
+            )->with('success', 'Cadastrado com sucesso!');
+        }
+
+
+
+
+        return redirect()->route('entregadores.registerHome')->with('success', 'Cadastrado com sucesso!');
+    }
+
+
     /**
      * Display the specified resource.
      *
