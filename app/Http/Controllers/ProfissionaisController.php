@@ -86,6 +86,7 @@ class ProfissionaisController extends Controller
             'nome' => 'required',
             'telefone' => 'required',
             'email' => 'required|email',
+            'tipo' => 'required',
         ]);
 
 

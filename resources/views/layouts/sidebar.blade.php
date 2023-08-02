@@ -246,7 +246,6 @@
 
                                                 <p class="ml-3">
                                                     Lista de espera
-
                                                 </p>
                                             </a>
                                         </li>
