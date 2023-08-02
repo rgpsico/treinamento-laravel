@@ -34,37 +34,20 @@
 
     <div class="container">
         <div class="row">
+            <x-select :options="config('options.select_profissionais')" name="tipo" label="Tipo de Profisional" selected="tipo" col='12' :data="$model->profissional ?? ''" />
+        
+
             <div class="form-group col-12 col-md-2">
-                <select name="" id="" class="form-control">
-                    <option value="Selecione">KitNets</option>
-                    <option value="Selecione">Casas</option>
-                    <option value="Selecione">Loja</option>
+                <select name="status" id="status" class="form-control">
+                    <option value="">Selecione</option>
+                    <option value="1">Ativo</option>
+                    <option value="0">Inativo</option>
                 </select>
             </div>
 
-            <div class="form-group col-12 col-md-2">
-                <select name="" id="" class="form-control">
-                    <option value="Selecione">Status</option>
-                    <option value="Selecione">Alugado</option>
-                    <option value="Selecione">Vago</option>
-                </select>
-            </div>
+           
 
-            <div class="form-group col-12 col-md-2">
-                <select name="" id="" class="form-control">
-                    <option value="Selecione">Proprietario</option>
-                    <option value="Selecione">ROger</option>
-                    <option value="Selecione">Fabiane</option>
-                </select>
-            </div>
-
-            <div class="form-group col-12 col-md-2">
-                <select name="" id="" class="form-control">
-                    <option value="Selecione">Preço</option>
-                    <option value="Selecione">400</option>
-                    <option value="Selecione">500</option>
-                </select>
-            </div>
+           
         </div>
     </div>
 
