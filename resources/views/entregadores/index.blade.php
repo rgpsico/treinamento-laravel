@@ -34,7 +34,7 @@
 
     <div class="container">
         <div class="row">
-            <x-select :options="config('options.select_profissionais')" name="tipo" label="Tipo de Profisional" selected="tipo" col='12' :data="$model->profissional ?? ''" />
+            <x-select :options="config('options.select_profissionais')" name="tipo" label="Tipo de Profisional" selected="tipo" col='12' :data="$model ?? ''" />
         
 
             <div class="form-group col-12 col-md-2">
