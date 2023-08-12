@@ -22,10 +22,7 @@
         <button type="submit" class="btn btn-primary">Entrar</button>
         <a href="{{route('user.create')}}" class="btn btn-success"> Registrar </a>
 
-        <div class="list-unstyled list-inline social-login">
-          <a href="#" class="facebook"> <img src="{{asset('images/fb.png')}}" alt="Classified Plus">Continue wiith Facbook</a>
-          <a href="#" class="google"> <img src="{{asset('images/google_p.png')}}" alt="Classified Plus"> <span>Continue with Google</span></a>
-          </div>
+      
       </form>
   </div>
 </div>
