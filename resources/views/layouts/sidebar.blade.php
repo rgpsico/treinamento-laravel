@@ -168,6 +168,14 @@
                             </a>
                         </li>
 
+                        <li class="nav-item">
+                            <a href="{{ route('evento.index',['id' => Auth::user()->id]) }}" class="nav-link menuDashboard">
+                                <i class="fas fa-hard-hat"></i>
+                                <p>
+                                    Eventos
+                                </p>
+                            </a>
+                        </li>
                         
 
 
@@ -202,6 +210,7 @@
 
                                     </ul>
                                 @endif
+
 
                                 <ul class="nav nav-treeview">
                                     @if ( Auth::user()->email == config('super.email') )

@@ -7,6 +7,7 @@ use App\Http\Controllers\ConfiguracaoController;
 use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\DepoimentoController;
 use App\Http\Controllers\EntregadoresController;
+use App\Http\Controllers\EventoController;
 use App\Http\Controllers\ImovelController;
 use App\Http\Controllers\ItensController;
 use App\Http\Controllers\ListaEsperaController;
@@ -21,6 +22,7 @@ use App\Http\Controllers\RedisController;
 use App\Http\Controllers\RegrasController;
 use App\Http\Controllers\SaloesController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\SocialLiteController;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\UserdataController;
 use App\Models\Profissional;
@@ -35,6 +37,12 @@ Route::get('/{id}/profissional', [PrestadorServicoController::class, 'profission
 Route::get('/{id}/page', [ProfissionaisController::class, 'profissionalPageBootrap'])->name('profissional.page');
 Route::get('indicacao', [ProfissionaisController::class, 'indicacao'])->name('indicacao');
 Route::post('indicacao', [ProfissionaisController::class, 'indicacao'])->name('indicacao');
+
+
+Route::get('/google', [SocialLiteController::class, 'redirectToGoogle'])->name('login.google');
+Route::get('/googleh', [SocialLiteController::class, 'handleGoogleCallback'])->name('handle.google');
+
+
 
 Route::prefix('admin')->middleware(['check_user_authenticated'])->group(function () {
     Route::group(['prefix' => '/categoria'], function () {
@@ -51,6 +59,16 @@ Route::prefix('admin')->middleware(['check_user_authenticated'])->group(function
         Route::get('/{id}/profile', [ProfissionaisController::class, 'profissional'])->name('profissional.profile');
 
         Route::post('/store', [ProfissionaisController::class, 'store'])->name('profissional.store');
+    });
+
+    Route::group(['prefix' => '/evento'], function () {
+        Route::get('/', [EventoController::class, 'index'])->name('evento.index');
+        Route::get('/{id}/edit', [EventoController::class, 'edit'])->name('evento.edit');
+        Route::put('/{id}/update', [EventoController::class, 'update'])->name('evento.update');
+        Route::get('/create', [EventoController::class, 'create'])->name('evento.create');
+        Route::post('/post', [EventoController::class, 'store'])->name('evento.store');
+        Route::delete('/{id}/destroy', [EventoController::class, 'destroy'])->name('evento.destroy');
+        Route::post('/{id}/show', [EventoController::class, 'destroy'])->name('evento.show');
     });
 
 
@@ -166,6 +184,8 @@ Route::prefix('admin')->middleware(['check_user_authenticated'])->group(function
             Route::delete('/{id}/destroy', [ProprietarioController::class, 'destroy'])->name('proprietario.destroy');
             Route::post('/{id}/show', [ProprietarioController::class, 'destroy'])->name('proprietario.show');
         });
+
+
 
 
 

@@ -33,8 +33,15 @@
         <button  class="buttons login_btn" name="login" value="Login" id="loginCria">
             Continue 
         </button>
+
+        
     </div>
        </form>
     </div>  
+
+    <a href="{{ route('login.google') }}" class="google"> 
+      <img src="{{asset('images/google_p.png')}}" alt="Classified Plus"> 
+      <span>Continue with Google</span>
+  </a>
     </x-layout>
     

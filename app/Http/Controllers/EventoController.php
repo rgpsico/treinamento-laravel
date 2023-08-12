@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 class EventoController extends Controller
 {
     protected $model;
+    protected $view = 'eventos';
     protected $pageTitle = 'Itens';
 
     public function __construct(Eventos $model)
@@ -19,20 +20,20 @@ class EventoController extends Controller
     {
         $model = $this->model::all(['id', 'name', 'descricao']);
         $pageTitle = $this->pageTitle;
-        return view('imovel.itens.index')->with(['model' => $model, 'pageTitle' => $pageTitle]);
+        return view($this->view.'.index')->with(['model' => $model, 'pageTitle' => $pageTitle]);
     }
 
     public function create()
     {
 
-        return view('imovel.itens.create');
+        return view($this->view.'.create');
     }
 
     public function edit($id)
     {
 
         if ($model = $this->model->where('id', $id)->first()) {
-            return view('imovel.itens.create', compact('model'));
+            return view($this->view.'.create', compact('model'));
         }
     }
 
