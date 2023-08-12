@@ -40,7 +40,7 @@ Route::post('indicacao', [ProfissionaisController::class, 'indicacao'])->name('i
 
 
 Route::get('/google', [SocialLiteController::class, 'redirectToGoogle'])->name('login.google');
-Route::get('/googleh', [SocialLiteController::class, 'handleGoogleCallback'])->name('handle.google');
+Route::get('/callback', [SocialLiteController::class, 'handleGoogleCallback'])->name('handle.google');
 
 
 
