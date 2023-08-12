@@ -22,6 +22,7 @@ class SocialLiteController extends Controller
         try {
             $googleUser = Socialite::driver('google')->user();
 
+            dd($googleUser);
             $user = User::where('email', $googleUser->email)->first();
 
             if (!$user) {
