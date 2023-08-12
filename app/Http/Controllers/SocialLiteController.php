@@ -14,7 +14,7 @@ class SocialLiteController extends Controller
 
     public function redirectToGoogle()
     {
-        dd(Socialite::driver('google')->redirect());
+        return Socialite::driver('google')->redirect();
     }
 
     public function handleGoogleCallback()
@@ -22,7 +22,7 @@ class SocialLiteController extends Controller
         try {
             $googleUser = Socialite::driver('google')->user();
 
-            dd($googleUser);
+
             $user = User::where('email', $googleUser->email)->first();
 
             if (!$user) {
