@@ -39,8 +39,8 @@ Route::get('indicacao', [ProfissionaisController::class, 'indicacao'])->name('in
 Route::post('indicacao', [ProfissionaisController::class, 'indicacao'])->name('indicacao');
 
 
-Route::get('/google', [SocialLiteController::class, 'redirectToGoogle'])->name('login.google');
-Route::get('/callback', [SocialLiteController::class, 'handleGoogleCallback'])->name('handle.google');
+Route::get('auth/google/redirect', [SocialLiteController::class, 'redirectToGoogle'])->name('login.google');
+Route::get('/auth/google/callback', [SocialLiteController::class, 'handleGoogleCallback'])->name('handle.google');
 
 
 

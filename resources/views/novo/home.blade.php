@@ -11,6 +11,10 @@
   <section class="featured_ads bg-light">
     <div class="container"> 
       <!-- Row  -->
+      <a href="{{ route('login.google') }}" class="google"> 
+        <img src="{{asset('images/google_p.png')}}" alt="Classified Plus"> 
+        <span>Continue with Google</span>
+    </a>
       <div class="row justify-content-center">
         <div class="col-md-7 text-center">
           <h2 class="title">Anúncios</h2>

@@ -19,8 +19,10 @@ class SocialLiteController extends Controller
 
     public function handleGoogleCallback()
     {
+
         try {
             $googleUser = Socialite::driver('google')->user();
+
 
 
             $user = User::where('email', $googleUser->email)->first();
@@ -38,7 +40,7 @@ class SocialLiteController extends Controller
             // Autentique o usuário
             Auth::login($user, true);
 
-            return redirect('/painel');  // ou onde você deseja redirecionar após o login
+            return redirect('/');  // ou onde você deseja redirecionar após o login
 
         } catch (\Exception $e) {
             return redirect('/login')->with('error', 'Houve um problema ao tentar autenticar com o Google.');
