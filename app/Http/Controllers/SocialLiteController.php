@@ -14,7 +14,7 @@ class SocialLiteController extends Controller
 
     public function redirectToGoogle()
     {
-        return Socialite::driver('google')->redirect();
+        dd(Socialite::driver('google')->redirect());
     }
 
     public function handleGoogleCallback()
