@@ -37,7 +37,7 @@ class SocialLiteController extends Controller
             // Autentique o usuário
             Auth::login($user, true);
 
-            return redirect('/home');  // ou onde você deseja redirecionar após o login
+            return redirect('/painel');  // ou onde você deseja redirecionar após o login
 
         } catch (\Exception $e) {
             return redirect('/login')->with('error', 'Houve um problema ao tentar autenticar com o Google.');
