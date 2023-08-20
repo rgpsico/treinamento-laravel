@@ -89,13 +89,14 @@
           <!-- Row  -->
           <div class="row">
             <div class="col-md-5 text-left m-t-50">
-                <img src="{{asset('imagens/entregadores/'.$model->avatar)}}" alt="Classified Plus">
+                <img src="{{asset('imagens/entregadores/'.$model->avatar)}}" alt="Classified Plus" class="card-img">
               </div>
             <div class="col-md-7">
               <h2 class="title">Serviços</h2>
               <div class="clearfix"></div>
               <p class="p-t-30 mb-4">Entregadores multifuncionais realizam entregas, removem entulhos, compram pães, efetuam compras e prestam favores variados, agindo como auxiliares versáteis para atender às necessidades do dia a dia. Eles se esforçam para oferecer comodidade e eficiência.</p>
-              <div class="phone-call cbh-phone cbh-green cbh-show  cbh-static" id="clbh_phone_div" style=""><a id="WhatsApp-button" href="https://wa.me/{{$model->telefone}}" target="_blank" class="phoneJs" title="WhatsApp 360imagem">
+              <div class="phone-call cbh-phone cbh-green cbh-show  cbh-static" id="clbh_phone_div" style="">
+                <a id="WhatsApp-button" href="https://wa.me/{{$model->telefone}}" target="_blank" class="phoneJs" title="WhatsApp 360imagem">
                 <div class="cbh-ph-circle"></div>
                 <div class="cbh-ph-circle-fill"></div>
                 <div class="cbh-ph-img-circle1"></div>
@@ -121,6 +122,9 @@
 </x-layout>
 
 <script>
+     $(".card-img").on("error", function(){
+        $(this).attr('src', '{{ asset("images/entregadoravatar.png") }}');
+    });
     $(document).ready(function() {
         $('.thumb-gallery').click(function() {
             $('.principal').attr('src', $(this).attr('src')).fadeOut();
@@ -130,7 +134,7 @@
                 $('.principal').fadeIn();
             };
         })
-
+     
 
     })
 </script>
