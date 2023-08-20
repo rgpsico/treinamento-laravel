@@ -32,6 +32,15 @@
             </div>
 
             <div class="form-group">
+                <label for="title" class="form-label">Email:</label>
+                <input placeholder="Email" type="text" id="email" name="email"
+                    class="form-control" value="{{ $model->email ?? '' }}">
+                @if ($errors->has('email'))
+                    <div class="text-danger">{{ $errors->first('email') }}</div>
+                @endif
+            </div>
+
+            <div class="form-group">
                 <label for="title" class="form-label">Telefone:</label>
                 <input placeholder="Telefone do entregadores" type="text" id="phone" name="phone"
                     class="form-control" value="{{ $model->phone ?? '' }}">
@@ -55,8 +64,9 @@
             <div class="form-group">
                 <label for="status" class="form-label">Status:</label>
                     <select name="status" id="status" class="form-control">
-                        <option value="0" {{$model->status == 0 ? 'selected' : '' }}>Inativo</option>;
-                        <option value="1" {{$model->status == 1 ? 'selected' : '' }}>Ativo</option>;
+                        <option value="0" {{ isset($model->status) && $model->status == 0 ? 'selected' : '' }}>Inativo</option>
+                        <option value="1" {{ isset($model->status) && $model->status == 1 ? 'selected' : '' }}>Ativo</option>
+
                     </select>
             </div>
 

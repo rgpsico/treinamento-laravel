@@ -118,7 +118,13 @@
         </div>
     </div>
 
+
     <script>
+         $("img.card-img").on("error", function(){
+        $(this).attr('src', '{{ asset("images/entregadoravatar.png") }}');
+    });
+
+
           $(document).on('change', '#status_entregadores', function(e) {
             e.preventDefault();
 

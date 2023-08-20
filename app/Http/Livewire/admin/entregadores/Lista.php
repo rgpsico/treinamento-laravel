@@ -29,7 +29,7 @@ class Lista extends Component
     public function render()
     {
 
-        $model = User::entregadoresAtivos()->select('id', 'name', 'email', 'telefone', 'avatar');
+        $model = User::usuariosAtivosPorTipo()->select('id', 'name', 'email', 'telefone', 'avatar');
 
 
 

@@ -29,7 +29,7 @@ class EntregadoresController extends Controller
     public function listar()
     {
 
-        $model = $this->model::entregadoresAtivos()->get();
+        $model = User::usuariosAtivosPorTipo()->get();
         return view($this->route . '.list', compact('model'));
     }
 
@@ -47,8 +47,10 @@ class EntregadoresController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->only($this->fillable);
+        $data = $request->except('id');
 
+
+        $data['password'] = bcrypt('124');
 
         if ($request->hasFile('logo')) {
             $filename = time() . '_' . rand() . '.' . $request->file('logo')->getClientOriginalExtension();
@@ -60,7 +62,7 @@ class EntregadoresController extends Controller
 
         $comercio = $this->model::create($data);
 
-        return $this->data($comercio, 'index');
+        return redirect()->back()->with(['success' => 'Cadastrado com sucesso']);
     }
 
     public function update(Request $request, $id)
