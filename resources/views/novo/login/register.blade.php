@@ -6,8 +6,7 @@
         <form action="{{ route('user.store') }}" method="POST" id="formRegister" enctype="multipart/form-data">
 
             @csrf
-           <div class="row">
-          
+           <div class="row">          
                      
             <div class="form-group col-12">
                 <label for="name">Função:</label>
