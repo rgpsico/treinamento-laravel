@@ -14,6 +14,7 @@ class CreateTableEventos extends Migration
     public function up()
     {
         Schema::create('eventos', function (Blueprint $table) {
+            $table->id();
             $table->string('titulo')->nullable();
             $table->string('descricao')->nullable();
             $table->timestamp('data_evento')->nullable();
