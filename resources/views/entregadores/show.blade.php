@@ -94,8 +94,6 @@
         })
 
 
-        $("img.card-img").on("error", function(){
-        $(this).attr('src', '{{ asset("images/entregadoravatar.png") }}');
-    });
+        
     })
 </script>

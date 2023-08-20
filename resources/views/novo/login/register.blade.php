@@ -8,9 +8,18 @@
             @csrf
            <div class="row">
           
-                <x-select :options="config('options.funcao')" name="type" label="Função" selected="Selecione" col='12' />
-                   
-           
+                     
+            <div class="form-group col-12">
+                <label for="name">Função:</label>
+                <select name="type" id="type" class="form-control" onchange="handleSelectChange(this)">
+                    @foreach ($tipoUser as $key => $value)
+                        <option value="{{ $value->id }}">{{ $value->nome }}</option>
+                    @endforeach
+                    <optgroup label="----------------">
+                        <option value="addNew"><button class="btn btn-success" id="addFuncao">+ Cadastrar Nova Função</button></option>
+                    </optgroup>
+                </select>
+            </div>
 
                 <div class="form-group col-12">
                     <label for="name">Nome:</label>
