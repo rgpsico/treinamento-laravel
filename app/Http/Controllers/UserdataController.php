@@ -145,12 +145,27 @@ class UserdataController extends Controller
         return view('novo.login.register', compact('tipoUser'));
     }
 
+    public static function getSelectOptions()
+    {
+        $tipos = UserTipo::all();
+
+        $options = ['' => 'Selecione'];
+
+        foreach ($tipos as $tipo) {
+            $options[$tipo->id] = $tipo->nome;
+        }
+
+        return $options;
+    }
+
+
 
 
     public function registerAmigo()
     {
 
-        $tipoUser = UserTipo::all();
+        $tipoUser = UserTipo::where('id', '!=', 1)->get();
+
         return view('novo.login.registerAmigo', compact('tipoUser'));
     }
 

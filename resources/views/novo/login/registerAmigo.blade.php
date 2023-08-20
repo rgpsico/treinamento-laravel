@@ -1,3 +1,4 @@
+@include('novo.login._partials.modal')
 <x-layout title="Register">
     <div class="container p-5">
         <x-alert />
@@ -7,9 +8,19 @@
 
             @csrf
            <div class="row">
-          
-                <x-select :options="config('options.select_profissionais')" name="type" label="Função" selected="Selecione" col='12' />
-                   
+            
+            <div class="form-group col-12">
+                <label for="name">Função:</label>
+                <select name="type" id="type" class="form-control" onchange="handleSelectChange(this)">
+                    @foreach ($tipoUser as $key => $value)
+                        <option value="{{ $value->id }}">{{ $value->nome }}</option>
+                    @endforeach
+                    <optgroup label="----------------">
+                        <option value="addNew"><button class="btn btn-success" id="addFuncao">+ Cadastrar Nova Função</button></option>
+                    </optgroup>
+                </select>
+            </div>
+            
            
 
                 <div class="form-group col-12">
@@ -62,3 +73,49 @@
         </form>
     </div>
 </x-layout>
+
+<script>
+
+function handleSelectChange(selectElement) {
+    if (selectElement.value === "addNew") {
+        // Abra o modal aqui
+        $('#addProfissaoModal').modal('show');
+
+        // Reset o valor selecionado para o default
+        selectElement.value = '';
+    }
+}
+    $(document).ready(function() {
+     
+
+
+
+    $('#saveProfissao').click(function() {
+        const nome = $('#nomeProfissao').val();
+        const descricao = $('#descricaoProfissao').val();
+
+        if (!nome || !descricao) {
+            alert('Preencha todos os campos obrigatórios!');
+            return;
+        }
+
+        $.ajax({
+            url: '/api/cadastrar-profissao', // Altere para o endpoint correto
+            method: 'POST',
+            data: {
+                nome: nome,
+                descricao: descricao
+            },
+            success: function(response) {
+                // Aqui você pode adicionar o novo item ao dropdown sem recarregar a página, se desejar.
+                $('#type').append(new Option(nome, response.id, true, true));
+                $('#addProfissaoModal').modal('hide');
+            },
+            error: function() {
+                alert('Erro ao adicionar profissão!');
+            }
+        });
+    });
+});
+
+</script>

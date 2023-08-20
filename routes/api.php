@@ -30,6 +30,8 @@ Route::post('/auth', [UserdataController::class, 'authApi']);
 
 Route::post('/register', [UserdataController::class, 'store']);
 
+Route::post('/cadastrar-profissao', [ProfissionaisApiController::class, 'storeProfissao']);
+
 
 Route::delete('/propietario/{id}/delete', [ProprietarioController::class, 'delete']);
 

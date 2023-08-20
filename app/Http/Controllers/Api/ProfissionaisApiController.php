@@ -8,6 +8,7 @@ use App\Models\Comercio;
 use App\Models\Profissional;
 use App\Models\ProfissionalGallery;
 use App\Models\User;
+use App\Models\UserTipo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
@@ -110,5 +111,20 @@ class ProfissionaisApiController extends Controller
         $gallery->delete();
 
         return response()->json(['message' => 'model e suas imagens foram excluídos com sucesso']);
+    }
+
+    public function storeProfissao(Request $request)
+    {
+        $request->validate([
+            'nome' => 'required',
+            //  'descricao' => 'required',
+        ]);
+
+        $profissao = new UserTipo();
+        $profissao->nome = $request->nome;
+        //  $profissao->descricao = $request->descricao;
+        $profissao->save();
+
+        return response()->json(['id' => $profissao->id]);
     }
 }

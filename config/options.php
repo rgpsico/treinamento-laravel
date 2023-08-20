@@ -17,10 +17,11 @@ return [
     'select_profissionais' => [
         '' => 'Selecione',
         1 => 'Eletricista',
-        2 => 'Mestre de Obra',
+        2 => 'Entregador',
         3 => 'Eletricista',
         4 => 'Adestrador',
         5 => 'Moto-Taxi',
+
     ],
 
     'select_comunidade' => [
