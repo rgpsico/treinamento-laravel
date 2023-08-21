@@ -34,7 +34,7 @@ class EventoController extends Controller
 
         $pageTitle = 'Evento';
 
-        $route = 'Evento';
+        $route = 'evento';
 
         if ($model = $this->model->where('id', $id)->first()) {
             return view($this->view . '.create', compact('model', 'route', 'pageTitle'));
