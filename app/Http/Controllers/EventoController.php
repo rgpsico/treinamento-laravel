@@ -32,8 +32,10 @@ class EventoController extends Controller
     public function edit($id)
     {
 
+        $pageTitle = 'Evento';
+
         if ($model = $this->model->where('id', $id)->first()) {
-            return view($this->view . '.create', compact('model'));
+            return view($this->view . '.create', compact('model', 'route', 'pageTitle'));
         }
     }
 
