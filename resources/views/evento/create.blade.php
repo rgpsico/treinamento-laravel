@@ -17,6 +17,6 @@
         @if (isset($model) && isset($model->id))
             @method('PUT')
         @endif
-        @include($partials.'._partials.form')
+        @include('evento._partials.form')
     </form>
 @endsection
