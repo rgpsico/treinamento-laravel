@@ -65,14 +65,14 @@
             @enderror
         </div>
 
-        <!-- Imagem (Apenas adicionado como um exemplo extra) -->
+        {{-- <!-- Imagem (Apenas adicionado como um exemplo extra) -->
         <div class="form-group">
             <label for="imagem">Imagem do Evento:</label>
             <input type="file" id="imagem" name="imagem" class="form-control">
             @error('imagem')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
-        </div>
+        </div> --}}
 
         <button type="submit" class="btn btn-primary">{{ isset($evento) ? 'Atualizar' : 'Cadastrar' }} Evento</button>
     </form>
