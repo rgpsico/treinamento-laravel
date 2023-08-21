@@ -18,22 +18,22 @@ class EventoController extends Controller
 
     public function index()
     {
-        $model = $this->model::all(['id', 'name', 'descricao']);
+        $model = $this->model::all(['id', 'titulo', 'descricao', 'data_evento']);
         $pageTitle = $this->pageTitle;
-        return view($this->view.'.index')->with(['model' => $model, 'pageTitle' => $pageTitle]);
+        return view($this->view . '.index')->with(['model' => $model, 'pageTitle' => $pageTitle]);
     }
 
     public function create()
     {
 
-        return view($this->view.'.create');
+        return view($this->view . '.create');
     }
 
     public function edit($id)
     {
 
         if ($model = $this->model->where('id', $id)->first()) {
-            return view($this->view.'.create', compact('model'));
+            return view($this->view . '.create', compact('model'));
         }
     }
 

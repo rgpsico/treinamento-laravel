@@ -91,11 +91,11 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Logo</th>
-                                <th>Nome</th>
-                                <th>Telefone</th>
+                                <th>Titulo</th>
+                                <th>Data do Evento</th>
+                                <th>Decrição</th>
                                 <th>Status</th>
-                                <th>Endereço</th>
+                                <th>Local</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
@@ -105,20 +105,15 @@
                                     <td>
                                         {{ $value->id }}
                                     </td>
-                              
+                                    <td>{{ $value->titulo ?? '' }}</td>
+                                    <td>{{ $value->data_evento ?? '' }}</td>
                                     <td>
-                                        <img src="{{ asset('imagens/comercio/' . $value->avatar) }}"
-                                            width="30" height="50" class="card-img">
-                                   </td>
-                                    <td>{{ $value->nome }}</td>
-                                    <td>{{ $value->telefone }}</td>
-                                    <td>
-                                        <select name="" id="status_entregadores" data-id='{{ $value->id }}'class="form-control">
+                                        <select name="" id="status_evento" data-id='{{ $value->id }}'class="form-control">
                                                 <option value="1"{{ $value->status == 1 ? 'selected' : '' }}>Ativo</option>
                                                 <option value="0" {{ $value->status == 0 ? 'selected' : '' }}>inativo</option>
                                         </select>
                                         </td>
-                                    <td>{{ $value->endereco }}</td>
+                                    <td>{{ $value->local ?? '' }}</td>
                                     <td class="d-flex">
                                         <a href="{{ route($route.'.edit', ['id' => $value->id ?? '']) }}" class=" mr-2 btn btn-info"
                                             style="height:40px; padding:10px;">
@@ -160,11 +155,11 @@ $(document).on('click', '.teste', function(e) {
                 }
             });
 });
-         $(document).on('change', '#status_entregadores', function(e) {
+         $(document).on('change', '#status_evento', function(e) {
             e.preventDefault();
 
             var id = $(this).data('id');
-            var url = '/api/comercio/' + id + '/updatestatus';
+            var url = '/api/evento/' + id + '/updatestatus';
 
             $.ajax({
                 type: 'PUT',
