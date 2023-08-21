@@ -20,7 +20,7 @@ class EventoController extends Controller
     {
         $model = $this->model::all(['id', 'titulo', 'descricao', 'data_evento']);
         $pageTitle = $this->pageTitle;
-        return view($this->view . '.index')->with(['model' => $model, 'pageTitle' => $pageTitle]);
+        return view('evento.index')->with(['model' => $model, 'pageTitle' => $pageTitle]);
     }
 
     public function create()
