@@ -15,4 +15,9 @@ class Eventos extends Model
         'local',
         'capacidade'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 }

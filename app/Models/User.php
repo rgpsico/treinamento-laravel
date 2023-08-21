@@ -114,6 +114,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Produtos::class, 'users_products', 'user_id', 'product_id')->withTimestamps();
     }
 
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
+
 
     public function scopeEntregadoresAtivos(Builder $query)
     {

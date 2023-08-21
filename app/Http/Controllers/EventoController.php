@@ -52,11 +52,19 @@ class EventoController extends Controller
 
     public function store(Request $request)
     {
+        $data = $request->validate([
+            'titulo' => 'required|string|max:255',
+            'descricao' => 'required|string',
+            'data_evento' => 'required|date',
+            'local' => 'nullable|string|max:255',
+            'capacidade' => 'nullable|integer|default:200'
+        ]);
 
-        $item = $this->model;
-        $item->titulo = $request->titulo;
-        $item->descricao = $request->descricao;
-        $item->save();
+        $data['capacidade'] = $data['capacidade'] ?? 200;
+
+        $data['user_id'] = auth()->id();
+
+        Eventos::create($data);
 
         return redirect()->route('evento.index')
             ->with('success', 'Item  criado com sucesso.');
