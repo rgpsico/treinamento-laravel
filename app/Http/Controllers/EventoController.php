@@ -26,7 +26,7 @@ class EventoController extends Controller
     public function create()
     {
 
-        return view($this->view . '.create', ['route' => 'evento']);
+        return view($this->view . '.create', ['route' => 'evento', 'pageTitle' => 'Criar Evento']);
     }
 
     public function edit($id)
