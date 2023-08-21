@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 class EventoController extends Controller
 {
     protected $model;
-    protected $view = 'eventos';
-    protected $pageTitle = 'Itens';
-
+    protected $view = 'evento';
+    protected $pageTitle = 'Eventos';
+    protected $route = 'evenetos';
     public function __construct(Eventos $model)
     {
         $this->model = $model;
@@ -20,7 +20,7 @@ class EventoController extends Controller
     {
         $model = $this->model::all(['id', 'titulo', 'descricao', 'data_evento']);
         $pageTitle = $this->pageTitle;
-        return view('evento.index')->with(['model' => $model, 'pageTitle' => $pageTitle]);
+        return view('evento.index')->with(['model' => $model, 'pageTitle' => $pageTitle, 'route' => 'evento']);
     }
 
     public function create()
