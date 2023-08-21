@@ -66,7 +66,7 @@ class EventoController extends Controller
 
         $data['capacidade'] = $data['capacidade'] ?? 200;
 
-        $data['user_id'] = auth()->id();
+        // $data['user_id'] = auth()->id();
 
         Eventos::create($data);
 
