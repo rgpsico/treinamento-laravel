@@ -14,13 +14,13 @@ class CreateTableEventos extends Migration
     public function up()
     {
         Schema::create('eventos', function (Blueprint $table) {
-            $table->id();
-            $table->string('titulo')->nullable();
-            $table->string('descricao')->nullable();
-            $table->timestamp('data_evento')->nullable();
-            $table->decimal('valor_masculino')->nullable();
-            $table->decimal('valor_feminino')->nullable();
-            $table->timestamps();
+            $table->id(); // Chave primária auto-incrementada
+            $table->string('titulo'); // Coluna para o título do evento
+            $table->text('descricao'); // Coluna para a descrição do evento
+            $table->date('data_evento'); // Coluna para a data do evento
+            $table->string('local'); // Coluna para o local do evento
+            $table->integer('capacidade'); // Coluna para a capacidade do evento
+            $table->timestamps(); // Colunas created_at e updated_at
         });
     }
 

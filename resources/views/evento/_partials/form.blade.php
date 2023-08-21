@@ -1,86 +1,57 @@
-<style>
-    .form-label {
-        display: inline-block;
-        margin-bottom: 0.1rem;
-        font-weight: 600;
-    }
-</style>
+<div class="container mt-5">
+    <form action="{{ route('evento.store') }}" method="post" enctype="multipart/form-data">
+        @csrf
 
-<div class="container">
-    <div class="card card-primary">
-
-        @if (session()->has('success'))
-            <div class="row">
-                <div class=" col-12 alert alert-success">
-                    {{ session()->get('success') }}
-                </div>
-            </div>
-        @endif
-        <div class="card-header">
-            <h3 class="card-title">Adicionar {{$pageTitle}}</h3>
+        <!-- Título -->
+        <div class="form-group">
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" name="titulo" class="form-control" placeholder="Título do Evento" value="{{ old('titulo') }}">
+            @error('titulo')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
 
-        <input  type="hidden" id="id" name="id"    class="form-control" value="{{ $model->id ?? '' }}">
-        <div class="col-12 my-5">
-            <div class="form-group">
-                <label for="title" class="form-label">Nome do Comércio:</label>
-                <input placeholder="Nome do comércio" type="text" id="nome" name="nome"
-                    class="form-control" value="{{ $model->nome ?? '' }}">
-                @if ($errors->has('nome'))
-                    <div class="text-danger">{{ $errors->first('nome') }}</div>
-                @endif
-            </div>
-
-            <div class="form-group">
-                <label for="title" class="form-label">Telefone:</label>
-                <input placeholder="Telefone do comércio" type="text" id="telefone" name="telefone"
-                    class="form-control" value="{{ $model->telefone ?? '' }}">
-                @if ($errors->has('telefone'))
-                    <div class="text-danger">{{ $errors->first('telefone') }}</div>
-                @endif
-            </div>
-
-            <input  type="hidden" id="status" name="status"
-            class="form-control" value="0">
-
-            <div class="form-group">
-                <label for="title" class="form-label">Endereço:</label>
-                <input placeholder="Endereço Pistão " type="text" id="endereco" name="endereco"
-                    class="form-control" value="{{ $model->endereco ?? '' }}">
-                @if ($errors->has('endereco'))
-                    <div class="text-danger">{{ $errors->first('endereco') }}</div>
-                @endif
-            </div>
-
-            <div class="form-group">
-                <label for="title" class="form-label">Logo:</label>
-                <input type="file" id="logo" name="logo"
-                    class="form-control" value="{{ $model->Logo ?? '' }}">
-                @if ($errors->has('logo'))
-                    <div class="text-danger">{{ $errors->first('logo') }}</div>
-                @endif
-            </div>
+        <!-- Descrição -->
+        <div class="form-group">
+            <label for="descricao">Descrição:</label>
+            <textarea id="descricao" name="descricao" class="form-control" rows="3" placeholder="Descrição do Evento">{{ old('descricao') }}</textarea>
+            @error('descricao')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
 
-
-
-
-
-        <div class="card-footer">
-            <button type="submit" class="btn btn-primary">{{ isset($model) ? 'Atualizar' : 'Cadastrar' }}</button>
+        <!-- Data do Evento -->
+        <div class="form-group">
+            <label for="data_evento">Data do Evento:</label>
+            <input type="date" id="data_evento" name="data_evento" class="form-control" value="{{ old('data_evento') }}">
+            @error('data_evento')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
-    </div>
 
-</div>
-<div class="card m-5">
-    <div class="card-body">
-        <h5 class="card-title">{{$pageTitle}} </h5>
-        <p class="card-text">
-            Você pode dizer quais {{$pageTitle}} Loja material de consstrução , padaria , cantina etc.
-        </p>
+        <!-- Local -->
+        <div class="form-group">
+            <label for="local">Local:</label>
+            <select id="local" name="local" class="form-control">
+                <!-- Opções de Locais -->
+                <option value="local1">Local 1</option>
+                <option value="local2">Local 2</option>
+                <!-- Adicione quantas opções precisar -->
+            </select>
+            @error('local')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
 
-    </div>
-</div>
-</div>
-</form>
+        <!-- Capacidade -->
+        <div class="form-group">
+            <label for="capacidade">Capacidade:</label>
+            <input type="number" id="capacidade" name="capacidade" class="form-control" placeholder="Capacidade de Pessoas" value="{{ old('capacidade') }}">
+            @error('capacidade')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <button type="submit" class="btn btn-primary">Cadastrar Evento</button>
+    </form>
 </div>

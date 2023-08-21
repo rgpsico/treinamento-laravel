@@ -41,7 +41,7 @@ class EventoController extends Controller
     {
 
         $model = $this->model::findOrFail($id); // Busca o model pelo ID ou lança uma exceção se não encontrá-lo
-        $model->name = $request->name;
+        $model->titulo = $request->titulo;
         $model->descricao = $request->descricao;
         $model->save();
 
@@ -54,11 +54,11 @@ class EventoController extends Controller
     {
 
         $item = $this->model;
-        $item->name = $request->name;
+        $item->titulo = $request->titulo;
         $item->descricao = $request->descricao;
         $item->save();
 
-        return redirect()->route('itens.index')
+        return redirect()->route('evento.index')
             ->with('success', 'Item  criado com sucesso.');
     }
 
