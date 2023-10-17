@@ -28,7 +28,7 @@
                             <img class="img-fluid principal"
                                 width="550px"
                                 height="400px"
-                                src="{{ asset('imagens/imoveis/' . $data->gallery[0]->image) }}"
+                                src="{{ asset('imagens/imoveis/' . $data->gallery[0]->image ?? '') }}"
                                 alt="{{ $data->title }}">
                         @endif
                         <div class="m-t-20">
@@ -36,7 +36,7 @@
                                 @if (isset($data->gallery))
                                     @foreach ($data->gallery as $key => $gallery)
                                         <li> <img class="img-fluid thumb-gallery"
-                                                src="{{ asset('imagens/imoveis/' . $data->gallery[$key]->image) }}"
+                                                src="{{ asset('imagens/imoveis/' . $data->gallery[$key]->image ?? '') }}"
                                                 alt="slide {{ $key }}">
                                         </li>
                                     @endforeach
