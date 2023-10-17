@@ -332,7 +332,7 @@
                             <a href="{{ route('entregadores.index') }}" class="nav-link">
                                 <i class="fas fa-bicycle" ></i>
                                 <p>
-                                    Entregadores
+                                    Usuários
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -342,10 +342,9 @@
                                 <li class="nav-item ">
                                     <a href="{{ route('entregadores.index') }}"
                                         class="nav-link allEntregadores">
-                                        <p class="ml-3">Todos os Entregadores</p>
+                                        <p class="ml-3">Todos os Usuários</p>
                                     </a>
                                 </li>
-
                             </ul>
                         </li>
                         @endif   
