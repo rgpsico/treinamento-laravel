@@ -470,13 +470,14 @@
             const name = document.querySelector('.name');
             const email = document.querySelector('.email');
             $('.icones').show();
+            $('.fa-angle-left').show()
             menuIcon.addEventListener('click', function() {
                 // Mostra o elemento
                 $('.icones').toggle(); // Alterna entre mostrar/esconder o elemento
 
                 name.style.display = 'none';
                 email.style.display = 'none';
-
+                $('.fa-angle-left').toggle()
             });
 
             $('[data-toggle="tooltip"]').tooltip(); 
