@@ -154,7 +154,7 @@
                        @if(Auth::user()->email == config('super.email'))
                             <li class="nav-item">
                                 <a href="{{ route('dashboard') }}" class="nav-link menuDashboard">
-                                    <i class="nav-icon fas fa-chart-pie custom-icon-alignment"></i>
+                                    <i class=" fas fa-chart-pie custom-icon-alignment"></i>
                                     <p>
                                         Dashboard
                                     </p>
@@ -187,7 +187,7 @@
 
                             <li class="nav-item menuImoveis open menu-is-opening menu-open">
                                 <a href="{{ route('permissoes_categoria.index') }}" class="nav-link">
-                                    <i class="nav-icon fas fa-home"></i>
+                                    <i class=" fas fa-home"></i>
                                     <p>
                                         Imoveis
                                         <i class="right fas fa-angle-left"></i>
@@ -330,7 +330,7 @@
                         @if (Auth::user()->email == config('super.email') )
                             <li class="nav-item entregadores open menu-is-opening menu-open">
                             <a href="{{ route('entregadores.index') }}" class="nav-link">
-                                <i class="fas fa-bicycle" style="font-size:10px;"></i>
+                                <i class="fas fa-bicycle" ></i>
                                 <p>
                                     Entregadores
                                     <i class="right fas fa-angle-left"></i>
@@ -355,7 +355,7 @@
                             <li class="nav-item Cadastro">
                                 <a href="" class="nav-link ">
 
-                                    <i class="nav-icon fas fa-user-plus"></i>
+                                    <i class=" fas fa-user-plus"></i>
                                     <p>
                                             Cadastro
                                     </p>
@@ -378,7 +378,7 @@
                         @if (Auth::user()->email == config('super.email'))
                             <li class="nav-item menu_acesso {{ Request::is('*permissaoCategoria*') ? 'menu-is-opening menu-open' : '' }}">
                                 <a href="" class="nav-link">
-                                    <i class="nav-icon fas fa-key"></i>
+                                    <i class=" fas fa-key"></i>
                                     <p>Acesso</p>
                                     <i class="right fas fa-angle-left"></i>
                                 </a>
@@ -407,7 +407,7 @@
                                
                                 <li class="nav-item menuUser">
                                     <a href="{{ route('users.index') }}" class="nav-link ">
-                                        <i class="nav-icon fas fa-user-circle"></i>
+                                        <i class=" fas fa-user-circle"></i>
                                         <p>
                                             Usuário
 
@@ -441,7 +441,7 @@
                            
                                 <li class="nav-item">
                                     <a href="{{ route('dashboard') }}" class="nav-link menuDashboard">
-                                        <i class="nav-icon fas fa-chart-pie"></i>
+                                        <i class=" fas fa-chart-pie"></i>
                                         <p>
                                             Administrativo
                                         </p>
