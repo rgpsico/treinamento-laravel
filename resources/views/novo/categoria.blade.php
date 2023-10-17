@@ -20,8 +20,7 @@
             </div>
             <!-- Row  -->
             <div class="row">
-
-                <div class="col-md-4 m-t-30">
+                <div class="col-md-4 m-t-30" style="opacity: 0.7;">
                     <div class="categories_box">
                         <a href="{{ route('listar.imoveis.public') }}">
                             <img src="images/Categories/categories5.png" alt="Classified Plus" />
@@ -39,14 +38,15 @@
 
                 <div class="col-md-4 m-t-30" style="opacity: 0.7;">
                     <div class="categories_box">
-                         <a href="{{route('listar.comercio.public')}}">
+                        <a href="https://ppgfood.com.br" target="_blank">
                             <img src="images/Categories/categories4.png" alt="Classified Plus" />
-                        <div class="overlay text-center">
-                            <a href="{{route('listar.comercio.public')}}"><img src="{{ asset('images/amburguer.png') }}" alt="Classified Plus" />
-                                <p> Comercio </p>
-                            </a>
-                        </div>
-                    </a>
+                            <div class="overlay text-center">
+                                <a href="https://ppgfood.com.br" target="_blank">
+                                    <img src="{{ asset('images/amburguer.png') }}" alt="Classified Plus" />
+                                    <p> Lanchonetes </p>
+                                </a>
+                            </div>
+                        </a>
                     </div>
                 </div>
 
