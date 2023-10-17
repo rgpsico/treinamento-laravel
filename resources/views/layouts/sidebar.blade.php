@@ -54,12 +54,7 @@
         }
     }
 
-    .custom-icon-alignment {
-    display: inline-block;  /* Garante que o ícone e o texto fiquem na mesma linha */
-    vertical-align: middle; /* Alinha verticalmente ao meio do texto */
-    margin-right: 10px;     /* Adiciona algum espaço à direita do ícone */
-}
-
+    
 </style>
 
 
@@ -158,17 +153,21 @@
 
                        @if(Auth::user()->email == config('super.email'))
                             <li class="nav-item">
-                                <a href="{{ route('dashboard') }}" class="nav-link menuDashboard custom-icon-alignment">
-                                    <i class="fas fa-chart-pie"></i>
-                                    <p>Dashboard</p>
+                                <a href="{{ route('dashboard') }}" class="nav-link menuDashboard">
+                                    <i class="nav-icon fas fa-chart-pie custom-icon-alignment"></i>
+                                    <p>
+                                        Dashboard
+                                    </p>
                                 </a>
                             </li>
                         @endif    
                        
                         <li class="nav-item">
-                            <a href="{{ route('profissional.profile',['id' => Auth::user()->id]) }}" class="nav-link menuDashboard custom-icon-alignment">
+                            <a href="{{ route('profissional.profile',['id' => Auth::user()->id]) }}" class="nav-link menuDashboard">
                                 <i class="fas fa-hard-hat"></i>
-                                <p>Perfil Profissional</p>
+                                <p>
+                                    Perfil Profissional
+                                </p>
                             </a>
                         </li>
 
@@ -179,13 +178,18 @@
                                     Eventos
                                 </p>
                             </a>
-                        </li>                        
-     
+                        </li>
+                        
 
-                            <li class="nav-item">
+                        
+                      
+                 
+
+                            <li class="nav-item menuImoveis open menu-is-opening menu-open">
                                 <a href="{{ route('permissoes_categoria.index') }}" class="nav-link">
-                                    <i class="fas fa-home"></i>
-                                    <p>Imoveis
+                                    <i class="nav-icon fas fa-home"></i>
+                                    <p>
+                                        Imoveis
                                         <i class="right fas fa-angle-left"></i>
                                     </p>
                                 </a>
@@ -197,12 +201,14 @@
                                             <p class="ml-3">Meus Imoveis</p>
                                         </a>
                                     </li>
+
                                 </ul>
 
                                 @if (Auth::user()->email == config('super.email') )
                                     <ul class="nav nav-treeview">
                                         <li class="nav-item">
                                             <a href="{{ route('proprietario.index') }}" class="nav-link proprietario">
+
                                                 <p class="ml-3">Proprietários</p>
                                             </a>
                                         </li>
@@ -322,10 +328,9 @@
                         </li>
                         @endcan
                         @if (Auth::user()->email == config('super.email') )
-                           
-                        <li class="nav-item">
+                            <li class="nav-item entregadores open menu-is-opening menu-open">
                             <a href="{{ route('entregadores.index') }}" class="nav-link">
-                                <i class="fas fa-bicycle"></i>
+                                <i class="fas fa-bicycle" style="font-size:10px;"></i>
                                 <p>
                                     Entregadores
                                     <i class="right fas fa-angle-left"></i>
@@ -349,8 +354,11 @@
                         @if (Auth::user()->email == config('super.email') )
                             <li class="nav-item Cadastro">
                                 <a href="" class="nav-link ">
-                                    <i class="fas fa-user-plus"></i>
-                                    <p>Cadastro</p>
+
+                                    <i class="nav-icon fas fa-user-plus"></i>
+                                    <p>
+                                            Cadastro
+                                    </p>
                                     <i class="right fas fa-angle-left"></i>
                                 </a>
 
@@ -370,7 +378,7 @@
                         @if (Auth::user()->email == config('super.email'))
                             <li class="nav-item menu_acesso {{ Request::is('*permissaoCategoria*') ? 'menu-is-opening menu-open' : '' }}">
                                 <a href="" class="nav-link">
-                                    <i class="fas fa-key"></i>
+                                    <i class="nav-icon fas fa-key"></i>
                                     <p>Acesso</p>
                                     <i class="right fas fa-angle-left"></i>
                                 </a>
@@ -399,7 +407,7 @@
                                
                                 <li class="nav-item menuUser">
                                     <a href="{{ route('users.index') }}" class="nav-link ">
-                                        <i class="fas fa-user-circle"></i>
+                                        <i class="nav-icon fas fa-user-circle"></i>
                                         <p>
                                             Usuário
 
@@ -433,7 +441,7 @@
                            
                                 <li class="nav-item">
                                     <a href="{{ route('dashboard') }}" class="nav-link menuDashboard">
-                                        <i class="fas fa-chart-pie"></i>
+                                        <i class="nav-icon fas fa-chart-pie"></i>
                                         <p>
                                             Administrativo
                                         </p>
