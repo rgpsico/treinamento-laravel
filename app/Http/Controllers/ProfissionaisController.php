@@ -28,14 +28,16 @@ class ProfissionaisController extends Controller
 
     public function profissional($id)
     {
+        dd("aaa");
         $model = $this->model::with('profissionalGallery')->where('id', $id)->first();
         return view($this->view . '.profile', [
             'model' => $model
         ]);
     }
 
-    public function profissionalPageBootrap($id)
+    public function profissionalPageBootrap()
     {
+        $id = 1;
         $model = $this->model::where('id', $id)->first();
         return view($this->view . '.template01.index', [
             'model' => $model

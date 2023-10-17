@@ -22,6 +22,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 </head>
+
 <style>
     #navbarToggleExternalContent {
         transform: translateX(-100%);
@@ -52,6 +53,13 @@
             display: none;
         }
     }
+
+    .custom-icon-alignment {
+    display: inline-block;  /* Garante que o ícone e o texto fiquem na mesma linha */
+    vertical-align: middle; /* Alinha verticalmente ao meio do texto */
+    margin-right: 10px;     /* Adiciona algum espaço à direita do ícone */
+}
+
 </style>
 
 
@@ -150,21 +158,17 @@
 
                        @if(Auth::user()->email == config('super.email'))
                             <li class="nav-item">
-                                <a href="{{ route('dashboard') }}" class="nav-link menuDashboard">
-                                    <i class="nav-icon fas fa-chart-pie"></i>
-                                    <p>
-                                        Dashboard
-                                    </p>
+                                <a href="{{ route('dashboard') }}" class="nav-link menuDashboard custom-icon-alignment">
+                                    <i class="fas fa-chart-pie"></i>
+                                    <p>Dashboard</p>
                                 </a>
                             </li>
                         @endif    
                        
                         <li class="nav-item">
-                            <a href="{{ route('profissional.profile',['id' => Auth::user()->id]) }}" class="nav-link menuDashboard">
+                            <a href="{{ route('profissional.profile',['id' => Auth::user()->id]) }}" class="nav-link menuDashboard custom-icon-alignment">
                                 <i class="fas fa-hard-hat"></i>
-                                <p>
-                                    Perfil Profissional
-                                </p>
+                                <p>Perfil Profissional</p>
                             </a>
                         </li>
 
@@ -175,18 +179,13 @@
                                     Eventos
                                 </p>
                             </a>
-                        </li>
-                        
+                        </li>                        
+     
 
-                        
-                      
-                 
-
-                            <li class="nav-item menuImoveis open menu-is-opening menu-open">
+                            <li class="nav-item">
                                 <a href="{{ route('permissoes_categoria.index') }}" class="nav-link">
-                                    <i class="nav-icon fas fa-home"></i>
-                                    <p>
-                                        Imoveis
+                                    <i class="fas fa-home"></i>
+                                    <p>Imoveis
                                         <i class="right fas fa-angle-left"></i>
                                     </p>
                                 </a>
@@ -198,14 +197,12 @@
                                             <p class="ml-3">Meus Imoveis</p>
                                         </a>
                                     </li>
-
                                 </ul>
 
                                 @if (Auth::user()->email == config('super.email') )
                                     <ul class="nav nav-treeview">
                                         <li class="nav-item">
                                             <a href="{{ route('proprietario.index') }}" class="nav-link proprietario">
-
                                                 <p class="ml-3">Proprietários</p>
                                             </a>
                                         </li>
@@ -325,7 +322,7 @@
                         </li>
                         @endcan
                         @if (Auth::user()->email == config('super.email') )
-                            <li class="nav-item entregadores open menu-is-opening menu-open">
+                            <li class="nav-item">
                             <a href="{{ route('entregadores.index') }}" class="nav-link">
                                 <i class="fas fa-bicycle" style="font-size:10px;"></i>
                                 <p>
