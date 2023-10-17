@@ -12,9 +12,11 @@ class SelectTipoProfissional extends Component
      *
      * @return void
      */
-    public function __construct()
+    public $selected;
+
+    public function __construct($selected = null)
     {
-        //
+        $this->selected = $selected;
     }
 
     /**

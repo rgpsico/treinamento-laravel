@@ -41,9 +41,10 @@
             </div>
 
             
-            <x-select-tipo-profissional></x-select-tipo-profissional>
+            <x-select-tipo-profissional :selected="$model->tipo ?? ''"></x-select-tipo-profissional>
 
-            
+
+
             <div class="form-group">
                 <label for="title" class="form-label">Telefone:</label>
                 <input placeholder="Telefone do entregadores" type="text" id="phone" name="phone"
