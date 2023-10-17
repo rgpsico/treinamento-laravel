@@ -178,8 +178,10 @@
                         </li>
                         
 
+                        
+                      
+                 
 
-                        @can('ver_imoveis')
                             <li class="nav-item menuImoveis open menu-is-opening menu-open">
                                 <a href="{{ route('permissoes_categoria.index') }}" class="nav-link">
                                     <i class="nav-icon fas fa-home"></i>
@@ -261,7 +263,7 @@
                                     </ul>
                                 @endcan
                             </li>
-                        @endcan
+                    
 
                            @can('ver_comercio')     
                           <li class="nav-item comercio open menu-is-opening menu-open">
