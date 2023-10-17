@@ -35,7 +35,7 @@
     <div class="col-6 mb-2 d-flex justify-content-end align-items-end">
        
             <i class="fas fa-home"></i>
-            <span>Adicionar <button class="btn btn-info teste">TESTE</button></span>
+        
     </div>
 
     <div class="container">
