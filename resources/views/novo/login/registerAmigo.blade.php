@@ -92,9 +92,9 @@ function handleSelectChange(selectElement) {
 
     $('#saveProfissao').click(function() {
         const nome = $('#nomeProfissao').val();
-        const descricao = $('#descricaoProfissao').val();
+       // const descricao = $('#descricaoProfissao').val();
 
-        if (!nome || !descricao) {
+        if (!nome) {
             alert('Preencha todos os campos obrigatórios!');
             return;
         }
@@ -103,8 +103,8 @@ function handleSelectChange(selectElement) {
             url: '/api/cadastrar-profissao', // Altere para o endpoint correto
             method: 'POST',
             data: {
-                nome: nome,
-                descricao: descricao
+                nome: nome
+                //descricao: descricao
             },
             success: function(response) {
                 // Aqui você pode adicionar o novo item ao dropdown sem recarregar a página, se desejar.
