@@ -22,13 +22,12 @@ class ProfissionaisController extends Controller
 
     public function listar()
     {
-
         return view($this->view . '.list');
     }
 
     public function profissional($id)
     {
-        dd("aaa");
+
         $model = $this->model::with('profissionalGallery')->where('id', $id)->first();
         return view($this->view . '.profile', [
             'model' => $model
@@ -53,8 +52,6 @@ class ProfissionaisController extends Controller
             'telefone' => 'required',
             'email' => 'required|email',
         ]);
-
-        dd('aaa');
 
 
         $user = User::findOrFail($request->user_id);

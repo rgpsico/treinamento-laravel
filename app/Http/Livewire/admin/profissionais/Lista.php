@@ -29,6 +29,7 @@ class Lista extends Component
     public function render()
     {
 
+
         $model = User::with('fotosPrincipais')
             ->whereHas('profissional', function ($query) {
                 $query->where('profissional.status', 1);
@@ -70,6 +71,7 @@ class Lista extends Component
         } else {
             $model = $model->paginate(10);
         }
+
 
         return view('livewire.public.profissionais.index', compact('model'));
     }

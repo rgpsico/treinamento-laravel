@@ -5,7 +5,7 @@
             <div class="row justify-content-center ">
                 <!-- Column -->
                 <div class="text-center">
-                    <h1 class="title">Casa e KitNets</h1>
+                    <h1 class="title"></h1>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
