@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image;
 use PhpSerial\Serial;
@@ -28,7 +29,7 @@ class UserdataController extends Controller
     protected $pageTitle = 'Usuarios';
 
     /**
-     * Display a listing of the resource.
+     * Display a listing of the resource.f
      *
      * @return \Illuminate\Http\Response
      */
@@ -477,5 +478,23 @@ class UserdataController extends Controller
     {
         Auth::logout();
         return redirect()->route('listar.imoveis.public');
+    }
+
+    public function destroy($id)
+    {
+        $user = User::find($id);
+
+        if ($user) {
+            // Se o usuário tiver um avatar e você quiser deletá-lo do disco
+            if ($user->avatar) {
+                Storage::delete($user->avatar);
+            }
+
+            $user->delete();
+
+            return redirect()->route('users.index')->with('success', 'Usuário deletado com sucesso.');
+        } else {
+            return redirect()->route('users.index')->with('error', 'Usuário não encontrado.');
+        }
     }
 }

@@ -111,18 +111,18 @@
 
                                     <td class="d-flex">
 
-                                        <a href="{{ route('users.edit', ['id' => $value->id]) }}" class=" mr-2 btn btn-info"
-                                            style="height:40px; padding:10px;">
+                                        <a href="{{ route('users.edit', ['id' => $value->id]) }}" class=" mr-2 btn btn-info" style="height:40px; padding:10px;">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <form action="{{ route('users.destroy', ['id' => $value->id]) }}" method="POST">
-                                            @method('POST')
+                                    
+                                        <form id="deleteForm" action="{{ route('users.destroy', ['id' => $value->id]) }}" method="POST">
+                                            @method('DELETE')
                                             @csrf
-                                            <button class="btn btn-danger mr-2" type="submit"
-                                                style="height:40px; padding:10px;">
+                                            <button class="btn btn-danger mr-2" type="button" onclick="confirmDelete()" style="height:40px; padding:10px;">
                                                 <i class="fas fa-trash-alt"></i>
                                             </button>
                                         </form>
+                                    
                                     </td>
                                 </tr>
                             @endforeach
@@ -133,3 +133,11 @@
         </div>
     </div>
 @endsection
+
+<script>
+    function confirmDelete() {
+        if (confirm("Você tem certeza que deseja deletar este usuário?")) {
+            document.getElementById('deleteForm').submit();
+        }
+    }
+</script>

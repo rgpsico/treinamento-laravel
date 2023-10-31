@@ -114,7 +114,7 @@ Route::prefix('admin')->middleware(['check_user_authenticated'])->group(function
         Route::get('/create', [UserdataController::class, 'create'])->name('users.create');
         Route::get('/{id}/edit', [UserdataController::class, 'edit'])->name('users.edit');
         Route::post('/{id}/update', [UserdataController::class, 'update'])->name('users.update');
-        Route::delete('/{id}/destroy', [UserdataController::class, 'edit'])->name('users.destroy');
+        Route::delete('/{id}/destroy', [UserdataController::class, 'destroy'])->name('users.destroy');
         Route::post('/addPermisssao', [UserdataController::class, 'addPermissao'])->name('users.addPermissao');
     });
 
