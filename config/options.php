@@ -18,10 +18,10 @@ return [
         '' => 'Selecione',
         1 => 'Eletricista',
         2 => 'Entregador',
-        // 3 => 'Eletricista',
+        3 => 'Encanador',
         4 => 'Adestrador',
         5 => 'Moto-Taxi',
-
+        6 => 'Pedreiro',
     ],
 
     'select_comunidade' => [

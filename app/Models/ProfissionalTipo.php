@@ -9,7 +9,7 @@ class ProfissionalTipo extends Model
 {
     use HasFactory;
 
-    protected $table = 'imoveis';
+    protected $table = 'profissional_tipo';
 
     protected $fillable =  ['nome', 'descricao'];
 
