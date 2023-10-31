@@ -18,7 +18,7 @@ return [
         '' => 'Selecione',
         1 => 'Eletricista',
         2 => 'Entregador',
-        3 => 'Eletricista',
+        // 3 => 'Eletricista',
         4 => 'Adestrador',
         5 => 'Moto-Taxi',
 
