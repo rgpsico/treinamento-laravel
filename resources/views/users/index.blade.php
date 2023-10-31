@@ -105,7 +105,7 @@
                                     <td><input type="checkbox"></td>
 
                                     <td>{{ $value->name ?? '' }}</td>
-                                    <td>{{ $value->phone ?? '' }}</td>
+                                    <td>{{ $value->telefone ?? '' }}</td>
 
 
 
@@ -116,8 +116,8 @@
                                             <i class="fas fa-edit"></i>
                                         </a>
                                         <form action="{{ route('users.destroy', ['id' => $value->id]) }}" method="POST">
+                                            @method('POST')
                                             @csrf
-                                            @method('DELETE')
                                             <button class="btn btn-danger mr-2" type="submit"
                                                 style="height:40px; padding:10px;">
                                                 <i class="fas fa-trash-alt"></i>
