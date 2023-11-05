@@ -7,6 +7,7 @@ use App\Models\PermissaoUser;
 use App\Models\Permissoes;
 use App\Models\PermissoesCategoria;
 use App\Models\PermissoesUser;
+use App\Models\ProfissionalTipo;
 use App\Models\TipoUsuario;
 use App\Models\User;
 use App\Models\UserEndereco;
@@ -165,7 +166,7 @@ class UserdataController extends Controller
     public function registerAmigo()
     {
 
-        $tipoUser = UserTipo::where('id', '!=', 1)->get();
+        $tipoUser = ProfissionalTipo::all();
 
         return view('novo.login.registerAmigo', compact('tipoUser'));
     }

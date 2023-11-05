@@ -19,9 +19,9 @@
                     </div>
 
 
+                  
                     <div class="form-group selectdiv">
-                        <x-select :options="config('options.select_profissionais')"   wiremodel="tipo" selected="Selecione" col='12'  />
-
+                        <x-select :options="$tipos"   wiremodel="tipo" selected="Selecione" col='12'  />
                     </div>
                    
                     <div class="form-group selectdiv">
