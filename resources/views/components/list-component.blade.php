@@ -9,7 +9,7 @@
 <div class="row">
 
     @foreach ($model as $data)
-        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6" onclick="teste()">
             <div class="featured-parts rounded m-t-30">
                 <a href="{{ route($routeUrl.'.public', ['id' => $data->id]) }}">
                 
@@ -45,4 +45,9 @@
     @endforeach
 </div>
 
+<script>
+    function teste(){
+        alert("AQUI")
+    }
+</script>
 <button class="view-btn hvr-pulse-grow" wire:click="todos">Ver todos</button>

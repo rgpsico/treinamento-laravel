@@ -92,4 +92,10 @@ class StripeController extends Controller
 
         return response()->json(['content' => $data]);
     }
+
+
+    public function teste()
+    {
+        return view('teste.index');
+    }
 }

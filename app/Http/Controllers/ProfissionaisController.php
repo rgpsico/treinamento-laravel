@@ -34,9 +34,9 @@ class ProfissionaisController extends Controller
         ]);
     }
 
-    public function profissionalPageBootrap()
+    public function profissionalPageBootrap($id)
     {
-        $id = 1;
+
         $model = $this->model::where('id', $id)->first();
         return view($this->view . '.template01.index', [
             'model' => $model

@@ -49,6 +49,6 @@ Route::group(['prefix' => '/public'], function () {
 
     Route::group(['prefix' => '/profissionais'], function () {
         Route::get('', [ProfissionaisController::class, 'listar'])->name('listar.profissionais.public');
-        Route::get('/{id}/detalhes', [ProfissionaisController::class, 'show'])->name('show.profissionais.public');
+        Route::get('/{id}/detalhes', [ProfissionaisController::class, 'profissionalPageBootrap'])->name('show.profissionais.public');
     });
 });

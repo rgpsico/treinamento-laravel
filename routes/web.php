@@ -31,14 +31,17 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 
 
+Route::get('/testepdf', [StripeController::class, 'teste'])->name('stripe.teste');
+
+
 Route::get('/stripe', [StripeController::class, 'index'])->name('stripe.index');
 
-Route::domain('meudominio1.local')->group(function () {
-    Route::get('', [ProfissionaisController::class, 'profissionalPageBootrap'])->name('profissional.page');
-});
+
+//Route::get('', [ProfissionaisController::class, 'profissional'])->name('profissional.page');
+
 
 Route::get('/{id}/profissional', [PrestadorServicoController::class, 'profissional'])->name('profissional');
-//Route::get('/{id}/page', [ProfissionaisController::class, 'profissionalPageBootrap'])->name('profissional.page');
+Route::get('/{id}/page', [ProfissionaisController::class, 'profissionalPageBootrap'])->name('profissional.page');
 Route::get('indicacao', [ProfissionaisController::class, 'indicacao'])->name('indicacao');
 Route::post('indicacao', [ProfissionaisController::class, 'indicacao'])->name('indicacao');
 

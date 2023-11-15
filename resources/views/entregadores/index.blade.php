@@ -29,7 +29,7 @@
     <div class="col-6 mb-2 d-flex justify-content-end align-items-end">
         <a href="{{ route($route.'.create') }}" class="btn btn-success">
             <i class="fas fa-home"></i>
-            <span>Adicionar {{ $pageTitle }}</span></a>
+            <span>Adicionar aa {{ $pageTitle }}</span></a>
     </div>
 
     <div class="container">

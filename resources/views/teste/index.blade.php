@@ -1,89 +1,81 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap 5 Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+ 
+</head>
+<body>
+
+<div class="container-fluid p-5 bg-primary text-white text-center">
+  <h1>My First Bootstrap Page</h1>
+  <p>Resize this responsive page to see the effect!</p> 
+</div>
+  
+<div class="container mt-5">
+    @include('teste.teste')
+</div>
+
+<button class="btn btn-success" id="save-pdf">Assinar PNG</button>
+<script src="https://code.jquery.com/jquery-3.6.0.js" ></script>
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 
 
-@section('content')
-    <style>
-        .card .card-title {
-            color: #D8D9E3;
-            margin-bottom: 1.5rem;
-            text-transform: capitalize;
-            font-size: 1.125rem;
-            font-weight: 600;
+<script>
+    $(document).ready(function(){
+
+   
+        $(document).on('click', '#save-pdf', function() {
+    html2canvas(document.querySelector(".contrato"), { scale: 1.8 }).then(canvas => {
+        var imgData = canvas.toDataURL('image/jpeg', 1.0);
+        window.jsPDF = window.jspdf.jsPDF
+        var pdf = new jsPDF('p', 'mm', 'a4');
+
+        var pageWidth = pdf.internal.pageSize.getWidth();
+        var pageHeight = pdf.internal.pageSize.getHeight();
+
+        // Definindo as margens
+        var margin = 4; // margem em milímetros
+        var imgWidth = pageWidth - 2 * margin;
+        var imgHeight = canvas.height * imgWidth / canvas.width;
+
+        var heightLeft = imgHeight;
+        var position = 0;
+
+        // Adiciona a imagem na primeira página
+        pdf.addImage(imgData, 'JPEG', margin, position + margin, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
+
+        // Enquanto houver conteúdo, crie novas páginas e adicione a imagem
+        while (heightLeft >= 0) {
+            position -= pageHeight;
+            pdf.addPage();
+            pdf.addImage(imgData, 'JPEG', margin, position + margin, imgWidth, imgHeight);
+            heightLeft -= pageHeight;
         }
 
-        .fa-plus {
-            color: #D8D9E3;
-        }
-    </style>
-
-    <div class="col-6 mb-2 d-flex justify-content-start align-items-start">
-        <span class="text-dark font-weight-bold"></span>
-    </div>
-    <div class="col-6 mb-2 d-flex justify-content-end align-items-end">
-        <button class="d-flex align-items-center" style="background: #0f172a; border-radius:100%;">
-            <i class="fas fa-plus "></i>
-
-        </button>
-    </div>
-
-    <div class="col-lg-12 grid-margin stretch-card">
-
-        <div class="card">
+        pdf.save('contrato.pdf');
+    });
+});
 
 
-            <div class="card-body">
 
-                <h4 class="card-title text-dark">Usuários <span class="text-dark small">99</span></h4>
-                <p class="card-description">
 
-                </p>
-                <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>
-                                    User
-                                </th>
-                                <th>
-                                    First name
-                                </th>
-                                <th>
-                                    Progress
-                                </th>
-                                <th>
-                                    Amount
-                                </th>
-                                <th>
-                                    Deadline
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="py-1">
-                                    <img src="../../../../images/faces/face1.jpg" alt="image">
-                                </td>
-                                <td>
-                                    Herman Beck
-                                </td>
-                                <td>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: 25%"
-                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </td>
-                                <td>
-                                    $ 77.99
-                                </td>
-                                <td>
-                                    May 15, 2015
-                                </td>
-                            </tr>
 
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-@endsection
+function dataURLToBlob(dataurl) {
+    var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+        bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+    while(n--){
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new Blob([u8arr], {type:mime});
+}
+})
+</script>
+
+</body>
+</html>
