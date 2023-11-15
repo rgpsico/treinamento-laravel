@@ -66,6 +66,8 @@ Route::prefix('admin')->middleware(['check_user_authenticated'])->group(function
         Route::get('/{id}/profile', [ProfissionaisController::class, 'profissional'])->name('profissional.profile');
 
         Route::post('/store', [ProfissionaisController::class, 'store'])->name('profissional.store');
+
+        Route::get('/tipo', [ProfissionaisController::class, 'profissionalTipo'])->name('profissional.tipo');
     });
 
     Route::group(['prefix' => '/evento'], function () {

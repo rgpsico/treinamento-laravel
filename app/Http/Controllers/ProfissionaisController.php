@@ -43,6 +43,12 @@ class ProfissionaisController extends Controller
         ]);
     }
 
+    public function profissionalTipo()
+    {
+
+        return view('tipouser.index');
+    }
+
 
 
     public function indicacao(Request $request)

@@ -363,10 +363,10 @@
 
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item ">
-                                        <a href="{{ route('category.index') }}"
+                                        <a href="{{ route('profissoes.tipo') }}"
                                             class="nav-link Categoria">
 
-                                            <p class="ml-3">Categoria</p>
+                                            <p class="ml-3">Profissões</p>
                                         </a>
                                     </li>
 
