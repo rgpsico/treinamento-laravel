@@ -353,23 +353,20 @@
                         @if (Auth::user()->email == config('super.email') )
                             <li class="nav-item Cadastro">
                                 <a href="" class="nav-link ">
-
                                     <i class=" fas fa-user-plus"></i>
                                     <p>
-                                            Cadastro
+                                        Cadastro
                                     </p>
                                     <i class="right fas fa-angle-left"></i>
                                 </a>
 
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item ">
-                                        <a href="{{ route('profissoes.tipo') }}"
+                                        <a href="{{ route('profissional.tipo') }}"
                                             class="nav-link Categoria">
-
                                             <p class="ml-3">Profissões</p>
                                         </a>
                                     </li>
-
                                 </ul>
                             </li>
                         @endcan

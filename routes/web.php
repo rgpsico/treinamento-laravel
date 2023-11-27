@@ -64,11 +64,19 @@ Route::prefix('admin')->middleware(['check_user_authenticated'])->group(function
 
     Route::group(['prefix' => '/profissional'], function () {
         Route::get('/{id}/profile', [ProfissionaisController::class, 'profissional'])->name('profissional.profile');
-
         Route::post('/store', [ProfissionaisController::class, 'store'])->name('profissional.store');
-
         Route::get('/tipo', [ProfissionaisController::class, 'profissionalTipo'])->name('profissional.tipo');
     });
+
+
+    Route::group(['prefix' => '/profissao'], function () {
+        Route::get('/profissionais', [ProfissionaisController::class, 'profissionalTipo'])->name('profissaoTipo.index');
+        Route::get('/profissionais/{id}/edit', [ProfissionaisController::class, 'profissaolEdit'])->name('profissao.edit');
+        Route::delete('/profissionais/{id}', [ProfissionaisController::class, 'profissaoDestroy'])->name('profissao.destroy');
+    });
+
+
+
 
     Route::group(['prefix' => '/evento'], function () {
         Route::get('/', [EventoController::class, 'index'])->name('evento.index');

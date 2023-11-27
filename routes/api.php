@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\ComercioApiController;
 use App\Http\Controllers\Api\ImovelApicontroller;
 use App\Http\Controllers\Api\UserApiController;
 use App\Http\Controllers\Api\EntregadoresApiController;
+use App\Http\Controllers\Api\ProfissaoApiController;
 use App\Http\Controllers\Api\ProfissionaisApiController;
 use App\Http\Controllers\ImageApiController;
 use App\Http\Controllers\ItensController;
@@ -34,6 +35,13 @@ Route::post('/cadastrar-profissao', [ProfissionaisApiController::class, 'storePr
 
 
 Route::delete('/propietario/{id}/delete', [ProprietarioController::class, 'delete']);
+
+
+Route::group(['prefix' => '/profissao'], function () {
+    Route::put('/{id}', [ProfissaoApiController::class, 'update'])->name('profissao.update');;
+    Route::delete('/{id}', [ProfissaoApiController::class, 'delete'])->name('profissao.delete');
+});
+
 
 Route::group(['prefix' => '/users'], function () {
     Route::post('/post', [UserApiController::class, 'store']);

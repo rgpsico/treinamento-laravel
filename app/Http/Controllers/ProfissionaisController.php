@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ProfissionalGallery;
 use App\Models\User;
+use App\Models\UserTipo;
 use App\Traits\UploadTrait;
 use Illuminate\Http\Request;
 
@@ -15,9 +16,11 @@ class ProfissionaisController extends Controller
     protected $view = 'profissionais';
     protected $route = 'profissionais';
     protected $model;
-    public function __construct(User $model)
+    protected $profissao;
+    public function __construct(User $model, UserTipo $profissao)
     {
         $this->model = $model;
+        $this->profissao = $profissao;
     }
 
     public function listar()
@@ -45,9 +48,37 @@ class ProfissionaisController extends Controller
 
     public function profissionalTipo()
     {
+        $model = $this->profissao::all();
 
-        return view('tipouser.index');
+        return view('profissao.index', [
+            'model' =>  $model,
+            'pageTitle' => 'Profissões'
+        ]);
     }
+
+    public function profissaolEdit($id)
+    {
+        $model = $this->profissao::where('id', $id)->first();
+
+        return view('profissao.edit', [
+            'model' =>  $model
+        ]);
+    }
+
+    public function profissaoDestroy($id)
+    {
+        $model = $this->profissao::where('id', $id)->first();
+
+        if ($model) {
+            $model->delete();
+            // Redireciona para a lista de profissões com uma mensagem de sucesso
+            return redirect()->route('profissao.index')->with('success', 'Profissão excluída com sucesso.');
+        } else {
+            // Redireciona de volta com uma mensagem de erro se a profissão não for encontrada
+            return back()->with('error', 'Profissão não encontrada.');
+        }
+    }
+
 
 
 
