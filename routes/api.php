@@ -38,6 +38,7 @@ Route::delete('/propietario/{id}/delete', [ProprietarioController::class, 'delet
 
 
 Route::group(['prefix' => '/profissao'], function () {
+    Route::put('/store', [ProfissaoApiController::class, 'storeProfissao'])->name('profissao.store');;
     Route::put('/{id}', [ProfissaoApiController::class, 'update'])->name('profissao.update');;
     Route::delete('/{id}', [ProfissaoApiController::class, 'delete'])->name('profissao.delete');
 });

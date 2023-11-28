@@ -101,7 +101,6 @@ class ProfissaoApiController extends Controller
 
         $profissao = new UserTipo();
         $profissao->nome = $request->nome;
-        //  $profissao->descricao = $request->descricao;
         $profissao->save();
 
         return response()->json(['id' => $profissao->id]);

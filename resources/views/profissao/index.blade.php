@@ -169,10 +169,12 @@
 
       $('#addNewProfissao').on('click', function() {
          $('.modal-title').text("Adicionar Profissão");
-        $('#editProfissaoForm')[0].reset(); // Limpa o formulário
+        $('#editProfissaoForm')[0].reset(); 
         $('#profissaoId').val('');
         $('#operationType').val('add');
-       
+        $('#saveChanges').text('Atualizar')
+        $('#saveChanges').addClass('inserir')
+        $('#saveChanges').removeClass('atualizar')
         
 
         $(".operationType").text("Criar Profissão")
@@ -181,7 +183,7 @@
 
     $('.editBtn').on('click', function(e) {
         e.preventDefault();
-        
+        $('.modal-title').text("Atualizar Profissão");
         // Obter os dados da linha
         var id = $(this).data('id');
         var nome = $(this).data('nome');
@@ -189,16 +191,42 @@
         // Preencher o formulário no modal
         $('#profissaoId').val(id);
         $('#nomeProfissao').val(nome);
-
+        $('#saveChanges').removeClass('inserir')
+        $('#saveChanges').addClass('atualizar')
+        $('#saveChanges').text('Atualizar')
         
         $('#editProfissaoModal').modal('show');
     });
 
 
-   
-    $('#saveChanges').on('click', function(e) {
-    e.preventDefault();
+    $(document).on("click",'.inserir', function(e) {
+      e.preventDefault();
 
+    var id = $('#profissaoId').val();
+    var nome = $('#nomeProfissao').val();
+
+    $.ajax({
+        url: '/api/profissao/store', 
+        type: 'POST', // Método HTTP
+        data: {
+            nome: nome,
+            _token: $('meta[name="csrf-token"]').attr('content'), // CSRF token
+   
+        },
+        success: function(response) {                    
+            $('#editProfissaoModal').modal('hide');
+            location.reload();         
+        },
+        error: function(xhr, status, error) {
+            // Trate erros aqui
+        }
+    });
+   
+});
+   
+    $(document).on("click",'.atualizar', function(e) {
+    e.preventDefault();
+        
     var id = $('#profissaoId').val();
     var nome = $('#nomeProfissao').val();
 
@@ -224,5 +252,6 @@
 
 
 });
+    
 
 </script>
