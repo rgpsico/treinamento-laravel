@@ -143,8 +143,8 @@ class UserdataController extends Controller
     public function register()
     {
 
-        $tipoUser = UserTipo::all();
-        return view('novo.login.register', compact('tipoUser'));
+        $profissionalTipo = ProfissionalTipo::all();
+        return view('novo.login.register', compact('profissionalTipo'));
     }
 
     public static function getSelectOptions()
@@ -166,7 +166,7 @@ class UserdataController extends Controller
     public function registerAmigo()
     {
 
-        $tipoUser = ProfissionalTipo::all();
+        $profissionalTipo = ProfissionalTipo::all();
 
         return view('novo.login.registerAmigo', compact('tipoUser'));
     }
