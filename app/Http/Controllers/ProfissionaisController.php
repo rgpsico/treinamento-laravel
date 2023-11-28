@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ProfissionalGallery;
+use App\Models\ProfissionalTipo;
 use App\Models\User;
 use App\Models\UserTipo;
 use App\Traits\UploadTrait;
@@ -17,7 +18,9 @@ class ProfissionaisController extends Controller
     protected $route = 'profissionais';
     protected $model;
     protected $profissao;
-    public function __construct(User $model, UserTipo $profissao)
+
+
+    public function __construct(User $model, ProfissionalTipo $profissao)
     {
         $this->model = $model;
         $this->profissao = $profissao;

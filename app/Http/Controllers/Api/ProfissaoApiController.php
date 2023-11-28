@@ -23,7 +23,7 @@ class ProfissaoApiController extends Controller
 
 
 
-    public function __construct(UserTipo $model)
+    public function __construct(ProfissionalTipo $model)
     {
         $this->model = $model;
     }
@@ -99,7 +99,7 @@ class ProfissaoApiController extends Controller
             //  'descricao' => 'required',
         ]);
 
-        $profissao = new UserTipo();
+        $profissao = new ProfissionalTipo();
         $profissao->nome = $request->nome;
         $profissao->save();
 

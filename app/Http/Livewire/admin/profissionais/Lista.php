@@ -4,7 +4,6 @@ namespace App\Http\Livewire\Admin\Profissionais;
 
 use App\Models\ProfissionalTipo;
 use App\Models\User;
-use App\Models\UserTipo;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -30,7 +29,7 @@ class Lista extends Component
     public function render()
     {
 
-        $tipos = UserTipo::pluck('nome', 'id')->all();
+        $tipos = ProfissionalTipo::pluck('nome', 'id')->all();
         $tipos = ['' => 'Selecione'] + $tipos;
 
 

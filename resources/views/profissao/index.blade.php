@@ -106,7 +106,6 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-
                                 <th>id</th>
                                 <th>Nome</th>
                                 <th>Ações</th>
