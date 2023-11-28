@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin\Profissionais;
 
 use App\Models\ProfissionalTipo;
 use App\Models\User;
+use App\Models\UserTipo;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -29,7 +30,7 @@ class Lista extends Component
     public function render()
     {
 
-        $tipos = ProfissionalTipo::pluck('nome', 'id')->all();
+        $tipos = UserTipo::pluck('nome', 'id')->all();
         $tipos = ['' => 'Selecione'] + $tipos;
 
 
@@ -49,7 +50,6 @@ class Lista extends Component
 
         if ($this->tipo) {
             $model->whereHas('profissional', function ($query) {
-                // Assumindo que 'tipo_id' é a chave estrangeira em 'profissionais' que se refere a 'profissional_tipo'
                 $query->where('tipo', $this->tipo);
             });
         }
