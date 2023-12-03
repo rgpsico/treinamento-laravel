@@ -168,7 +168,7 @@ class UserdataController extends Controller
 
         $profissionalTipo = ProfissionalTipo::all();
 
-        return view('novo.login.registerAmigo', compact('tipoUser'));
+        return view('novo.login.registerAmigo', compact('profissionalTipo'));
     }
 
     /**
