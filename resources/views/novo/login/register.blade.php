@@ -14,9 +14,9 @@
                     @foreach ($profissionalTipo as $key => $value)
                         <option value="{{ $value->id }}">{{ $value->nome }}</option>
                     @endforeach
-                    <optgroup label="----------------">
+                    {{-- <optgroup label="----------------">
                         <option value="addNew"><button class="btn btn-success" id="addFuncao">+ Cadastrar Nova Função</button></option>
-                    </optgroup>
+                    </optgroup> --}}
                 </select>
             </div>
 
