@@ -31,6 +31,9 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 
 
+Route::get('/testejogo', [StripeController::class, 'testeJogo'])->name('stripe.teste');
+
+
 Route::get('/testepdf', [StripeController::class, 'teste'])->name('stripe.teste');
 
 

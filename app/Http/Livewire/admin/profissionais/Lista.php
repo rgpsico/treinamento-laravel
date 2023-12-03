@@ -47,7 +47,7 @@ class Lista extends Component
         }
 
 
-        if ($this->tipo) {
+        if ($this->tipo && $this->tipo != '') {
             $model->whereHas('profissional', function ($query) {
                 $query->where('tipo', $this->tipo);
             });

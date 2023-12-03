@@ -16,6 +16,12 @@ class StripeController extends Controller
     }
 
 
+    public function testeJogo()
+    {
+        return view('teste.jogo');
+    }
+
+
 
     public function pagamento(Request $request)
     {
