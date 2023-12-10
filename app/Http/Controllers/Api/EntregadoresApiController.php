@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Comercio;
+use App\Models\Profissional;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -20,10 +21,14 @@ class EntregadoresApiController extends Controller
     protected $model;
     protected $fillable = ['nome', 'endereco', 'telefone', 'status', 'logo'];
     protected $categorias;
+    protected $profissional;
+
+
     use ControllerDataTrait;
 
-    public function __construct(User $model, Category $categorias)
+    public function __construct(User $model, Category $categorias, Profissional $profissional)
     {
+        $this->profissional = $profissional;
         $this->model = $model;
         $this->categorias = $categorias;
     }
@@ -89,16 +94,16 @@ class EntregadoresApiController extends Controller
 
     public function updateStatus(Request $request, $id)
     {
-        $entregador = $this->model::find($id);
-        if (!$entregador) {
+        $profissional = $this->profissional::find($id);
+        if (!$profissional) {
             return response()->json(['error' => 'Entregador não encontrado'], 404);
         }
 
         $data = $request->all();
 
 
-        $entregador->update($data);
-        return response()->json($entregador);
+        $profissional->update($data);
+        return response()->json($profissional);
     }
 
 

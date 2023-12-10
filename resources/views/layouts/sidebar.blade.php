@@ -332,7 +332,7 @@
                             <a href="{{ route('entregadores.index') }}" class="nav-link">
                                 <i class="fas fa-bicycle" ></i>
                                 <p>
-                                    Usuários
+                                    Profissionais
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -340,9 +340,36 @@
                           
                             <ul class="nav nav-treeview">
                                 <li class="nav-item ">
+                                    <a href="{{ route('profissional.todos') }}"
+                                        class="nav-link allEntregadores">
+                                        <p class="ml-3">Todos os Profisionais aaa</p>
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item ">
                                     <a href="{{ route('entregadores.index') }}"
                                         class="nav-link allEntregadores">
-                                        <p class="ml-3">Todos os Usuários</p>
+                                        <p class="ml-3">Entregadores</p>
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item ">
+                                    <a href="{{ route('entregadores.index') }}"
+                                        class="nav-link allEntregadores">
+                                        <p class="ml-3">Eletricistas</p>
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item ">
+                                    <a href="{{ route('entregadores.index') }}"
+                                        class="nav-link allEntregadores">
+                                        <p class="ml-3">Pedreiro</p>
                                     </a>
                                 </li>
                             </ul>

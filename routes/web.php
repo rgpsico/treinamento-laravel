@@ -43,7 +43,7 @@ Route::get('/stripe', [StripeController::class, 'index'])->name('stripe.index');
 //Route::get('', [ProfissionaisController::class, 'profissional'])->name('profissional.page');
 
 
-Route::get('/{id}/profissional', [PrestadorServicoController::class, 'profissional'])->name('profissional');
+// Route::get('/{id}/profissional', [PrestadorServicoController::class, 'profissional']);
 Route::get('/{id}/page', [ProfissionaisController::class, 'profissionalPageBootrap'])->name('profissional.page');
 Route::get('indicacao', [ProfissionaisController::class, 'indicacao'])->name('indicacao');
 Route::post('indicacao', [ProfissionaisController::class, 'indicacao'])->name('indicacao');
@@ -66,6 +66,7 @@ Route::prefix('admin')->middleware(['check_user_authenticated'])->group(function
     });
 
     Route::group(['prefix' => '/profissional'], function () {
+        Route::get('/', [ProfissionaisController::class, 'all'])->name('profissional.todos');
         Route::get('/{id}/profile', [ProfissionaisController::class, 'profissional'])->name('profissional.profile');
         Route::post('/store', [ProfissionaisController::class, 'store'])->name('profissional.store');
         Route::get('/tipo', [ProfissionaisController::class, 'profissionalTipo'])->name('profissional.tipo');

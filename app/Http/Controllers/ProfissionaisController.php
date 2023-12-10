@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Profissional;
 use App\Models\ProfissionalGallery;
 use App\Models\ProfissionalTipo;
 use App\Models\User;
@@ -18,12 +19,13 @@ class ProfissionaisController extends Controller
     protected $route = 'profissionais';
     protected $model;
     protected $profissao;
+    protected $profissionais;
 
-
-    public function __construct(User $model, ProfissionalTipo $profissao)
+    public function __construct(User $model, ProfissionalTipo $profissao, Profissional $profissionais)
     {
         $this->model = $model;
         $this->profissao = $profissao;
+        $this->profissionais = $profissionais;
     }
 
     public function listar()
@@ -46,6 +48,17 @@ class ProfissionaisController extends Controller
         $model = $this->model::where('id', $id)->first();
         return view($this->view . '.template01.index', [
             'model' => $model
+        ]);
+    }
+
+    public function all()
+    {
+        $model = $this->profissionais::all();
+
+        return view('profissionais.index', [
+            'model' =>  $model,
+            'route' => 'prestador',
+            'pageTitle' => 'Profissões'
         ]);
     }
 

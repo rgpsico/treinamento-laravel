@@ -90,6 +90,11 @@ Route::group(['prefix' => '/listaEspera'], function () {
 });
 
 
+Route::group(['prefix' => '/profissionais'], function () {
+    Route::put('/{id}/update', [ProfissionaisApiController::class, 'updateEntregador']);
+    Route::put('/{id}/updatestatus', [ProfissionaisApiController::class, 'updateStatus']);
+});
+
 Route::group(['prefix' => '/entregadores'], function () {
     Route::put('/{id}/update', [EntregadoresApiController::class, 'updateEntregador']);
     Route::put('/{id}/updatestatus', [EntregadoresApiController::class, 'updateStatus']);
