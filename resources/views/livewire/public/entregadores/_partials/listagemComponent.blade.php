@@ -40,7 +40,7 @@
                     </div>
                     <div class="featured-bottum m-t-30">
                         <ul class="d-flex justify-content-between list-unstyled m-b-20">
-                            <li><a href="#"><i class="fa fa-map-marker"></i> {{ $data->address }}</a></li>
+                            <li><a href="#"><i class="fa fa-map-marker"></i> {{ $data->endereco->rua }}</a></li>
                             <li><a href="#"><i class="fa fa-heart-o"></i> Salvar</a></li>
                         </ul>
                     </div>
